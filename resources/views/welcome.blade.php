@@ -9,7 +9,28 @@
     <link rel="stylesheet" type="text/css" href="semantic/semantic.min.css">
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
 
+    {{-- GOOGLE FONTS --}}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap" rel="stylesheet">
+
     <style>
+        .ui.menu{
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.4rem;
+            box-shadow: none;
+            border: 0;
+        }
+        .ui.menu .item{
+            color: #061C38;
+            color: rgb(2,48,71)
+        }
+        .ui.menu a.item:hover{
+            color: rgb(251,133,0);
+        }
+        .ui.menu .dropdown.item:hover{
+            color: rgb(251,133,0);
+        }
         .logo{
             height:auto!important;
             width: 295px!important;
