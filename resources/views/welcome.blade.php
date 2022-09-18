@@ -561,7 +561,10 @@
 
 
 
-
+      #map {
+          height: 350px;
+          width: 100%;
+      }
 
 
 
@@ -687,12 +690,46 @@
             <div class="ui container our-tours center aligned">
                 <h2 class="">OUR TOURS</h2>
                 <div class="ui grid">
-                    <div class="four wide column"></div>
-                    <div class="four wide column"></div>
-                    <div class="four wide column"></div>
-                    <div class="four wide column"></div>
+                    <div class="four wide column">FISHING TOURS</div>
+                    <div class="four wide column">SUNSET AT SEA</div>
+                    <div class="four wide column">SNORKEL</div>
+                    <div class="four wide column">WHALE WATCHING</div>
                 </div>
             </div>
+
+            <div class="ui container fluid why center aligned">
+              <h2 class="">OUR TOURS</h2>
+              <div class="ui grid">
+                  <div class="two wide column"></div>
+                  <div class="two wide column">
+                      WHY CABO?
+                    <button>LEARN MORE</button>
+                  </div>
+              </div>
+            </div>
+
+            <div class="ui container our-tours center aligned">
+                <h2 class="">TESTIMONIALS</h2>
+                <div class="ui grid">
+                    <div class="three wide column">
+                      ROBERT, FISHING TOURS </br>
+                      I have been fishing Cabo for years.
+                      I usually partake in the Harbor Hustle and like to negotiate and look at the boat prior to booking,
+                      as well as the success of boat on that particular day.
+                    </div>
+                    <div class="three wide column">
+                      SAMMY,SUNSET AT SEA <br>
+                      Carlos was a wonderful guide!!! Was incredibly engaging and ensured we had a wonderful time from ...
+                    </div>
+                    <div class="three wide column">
+                      BRIAN NEAL, SNORKEL<br>
+                      We went on a Beach hopping snorkeling adventure with Fernando and Julio as our guides. It was AMAZING!!!
+                    </div>
+
+                </div>
+            </div>
+            <div id="map"></div>
+
 
          </main>
 
@@ -715,8 +752,24 @@
   <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <script>
+    function initMap() {
+        var uluru = {lat: 22.879869, lng: -109.906256};
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 15,
+            center: uluru
+        });
+        var marker = new google.maps.Marker({
+            position: uluru,
+            map: map,
+            title: 'Polaris Refrigeración'
+        });
+    }
+  </script>
+  <script async defer
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDl3QdpavEMHbNxiU9AqmO577Hir0EZ_Ho&callback=initMap">
+  </script>
+  <script>
     $(document).ready(()=>{
-
 
       const navbarMenu = document.getElementById("menu");
       const burgerMenu = document.getElementById("burger");
@@ -762,5 +815,6 @@
 
     });
   </script>
+
 </body>
 </html>
