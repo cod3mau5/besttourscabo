@@ -404,7 +404,7 @@
 
       .logo{
           height:auto!important;
-          width: 277px!important;
+          width: 244px!important;
       }
 
       .burger {
@@ -429,6 +429,10 @@
       }
 
       @media only screen and (min-width: 48rem) {
+        .logo{
+          height:auto!important;
+          width: 285px!important;
+      }
         .burger {
           display: none;
           visibility: hidden;
