@@ -82,6 +82,7 @@
         box-sizing: inherit;
         scroll-behavior: smooth;
         height: -webkit-fill-available;
+        background-color: #045184;
       }
 
       .no-gutter{
@@ -137,14 +138,13 @@
         ====================================*/
 
         .main-menu {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        margin-top: 25px;  /* Space for logo */
-        overflow: visible;
-
-        max-width: 700px;  /* Keeps the buttons getting too far from each other on largest screens */
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          margin-top: 25px;  /* Space for logo */
+          overflow: visible;
+          max-width: 700px;  /* Keeps the buttons getting too far from each other on largest screens */
         }
 
         .main-menu a {
@@ -404,7 +404,7 @@
 
       .logo{
           height:auto!important;
-          width: 295px!important;
+          width: 277px!important;
       }
 
       .burger {
@@ -559,10 +559,31 @@
       }
 
 
+      /*====================================
+        OUR TOURS
+      ====================================*/
+      .our-tours .four{
+        padding:0!important;
+      }
+      .our-tours .four img{
+        width: 100%;
+      }
 
+
+      /*====================================
+        WHY CABO
+      ====================================*/
+      .why-cabo .img{
+        height: 661px;
+        background-image: url('assets/img/why_cabo.webp');
+        background-size: cover;
+      }
+      .why-cabo .column{
+        background-color: #8ECAE6;
+      }
 
       #map {
-          height: 350px;
+          height: 340px;
           width: 100%;
       }
 
@@ -690,19 +711,37 @@
             <div class="ui container our-tours center aligned">
                 <h2 class="">OUR TOURS</h2>
                 <div class="ui grid">
-                    <div class="four wide column">FISHING TOURS</div>
-                    <div class="four wide column">SUNSET AT SEA</div>
-                    <div class="four wide column">SNORKEL</div>
-                    <div class="four wide column">WHALE WATCHING</div>
+                    <div class="four wide column">
+                      <img src="assets/img/fishing_tours.webp" alt="">
+                      FISHING TOURS
+                    </div>
+                    <div class="four wide column">
+                      <img src="assets/img/sunset.webp" alt="">
+                      SUNSET AT SEA
+                    </div>
+                    <div class="four wide column">
+                      <img src="assets/img/snorkel.webp" alt="">
+                      SNORKEL
+                    </div>
+                    <div class="four wide column">
+                      <img src="assets/img/whale_watching.webp" alt="">
+                      WHALE WATCHING
+                    </div>
                 </div>
             </div>
 
-            <div class="ui container fluid why center aligned">
-              <h2 class="">OUR TOURS</h2>
+            <div class="ui container fluid why-cabo">
               <div class="ui grid">
-                  <div class="two wide column"></div>
-                  <div class="two wide column">
+                  <div class="eight wide column img"></div>
+                  <div class="eight wide column">
                       WHY CABO?
+                      <p>
+                        Being the # 1 destination in all of Mexico for its water and land activities,
+                        for the warmth of its people and gastronomy, for its geography and culture,
+                        and most importantly, its safety. Los Cabos, a beautiful desert paradise with a subtropical climate,
+                        which makes it the perfect place to take a vacation.
+                        That is why we have a little more than 5 million visitors a year.
+                      </p>
                     <button>LEARN MORE</button>
                   </div>
               </div>
@@ -728,8 +767,8 @@
 
                 </div>
             </div>
-            <div id="map"></div>
 
+            <div id="map"></div>
 
          </main>
 
