@@ -786,7 +786,7 @@
 
       @media only screen and (max-width: 767px){
         #testimonials h2{
-            font-size: 2.5rem;
+            font-size: 38px;
         }
       }
 
