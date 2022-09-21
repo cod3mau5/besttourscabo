@@ -82,7 +82,6 @@
         box-sizing: inherit;
         scroll-behavior: smooth;
         height: -webkit-fill-available;
-        background-color: #045184;
       }
 
       .no-gutter{
@@ -516,13 +515,13 @@
       }
 
       .slider-box p{
-          color: #023047;
-          font-family: "Helvetica Black";
-          font-size: 2.5rem;
-          line-height: 1;
-          text-align: center;
-          margin-bottom:2rem;
-          min-height: 150px;
+        color: #023047;
+        font-family: "Helvetica Black";
+        font-size: 2.5rem;
+        line-height: 1.3;
+        text-align: center;
+        margin-bottom: 1rem;
+        min-height: 100px;
       }
 
       .slider-box button{
@@ -566,23 +565,69 @@
       /*====================================
         OUR TOURS
       ====================================*/
-      .our-tours .four{
-        padding:0!important;
+      @media only screen and (max-width: 767px){
+        #our-tours{
+          margin-left: 0!important;
+          margin-right: 0!important;
+        }
       }
-      .our-tours .four img{
+      #our-tours{
+        background-color: #045184;
+      }
+      #our-tours .ui.container{
+        padding:2.5rem 0;
+      }
+      #our-tours h2{
+        font-family: "Helvetica Black";
+        font-size: 3rem;
+        color: #2b689c;
+        letter-spacing: 3px;
+      }
+      #our-tours .four{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 0 0.5rem!important;
+        min-height: 260px;
+      }
+      #our-tours .four img{
         width: 100%;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+      }
+      #our-tours .ui.stackable.grid{
+        padding-top: 2rem;
+        padding-bottom: 4rem;
+      }
+      #our-tours .four p{
+        position: absolute;
+        text-shadow: -1px -1px 1px rgba(255,255,255,.1), 1px 1px 1px rgba(0,0,0,.5), 3px 3px 3px rgba(0,0,0,0.54);
+      }
+      #our-tours .four p.title{
+        font-family: "Helvetica Black";
+        letter-spacing:2px;
+        color: #ffffff;
+        font-size:1.3rem;
+      }
+      #our-tours .four p a{
+        padding-top: 1rem;
+        color: #ffffff!important;
+        position: relative;
+        font-size:1rem;
+        top: 13px;
       }
 
 
       /*====================================
         WHY CABO
       ====================================*/
-      .why-cabo .img{
+      #why-cabo .img{
         height: 661px;
         background-image: url('assets/img/why_cabo.webp');
         background-size: cover;
       }
-      .why-cabo .column{
+      #why-cabo .column{
         background-color: #8ECAE6;
       }
 
@@ -591,7 +636,13 @@
           width: 100%;
       }
 
+      /*====================================
+        TESTIMONIALS
+      ====================================*/
 
+      #testimonials{
+        background-color: rgb(255,219,129);
+      }
 
     </style>
 
@@ -712,29 +763,35 @@
               </div>
             </section>
 
-            <div class="ui container our-tours center aligned">
-                <h2 class="">OUR TOURS</h2>
-                <div class="ui grid">
-                    <div class="four wide column">
-                      <img src="assets/img/fishing_tours.webp" alt="">
-                      FISHING TOURS
-                    </div>
-                    <div class="four wide column">
-                      <img src="assets/img/sunset.webp" alt="">
-                      SUNSET AT SEA
-                    </div>
-                    <div class="four wide column">
-                      <img src="assets/img/snorkel.webp" alt="">
-                      SNORKEL
-                    </div>
-                    <div class="four wide column">
-                      <img src="assets/img/whale_watching.webp" alt="">
-                      WHALE WATCHING
-                    </div>
-                </div>
+            <div class="container fluid" id="our-tours">
+              <div class="ui container center aligned">
+                  <h2 class="">OUR TOURS</h2>
+                  <div class="ui stackable grid">
+                      <div class="four wide column">
+                        <img src="assets/img/fishing_tours.webp" alt="">
+                        <p class="title">FISHING TOURS</p>
+                        <p class="subtitle"><a href="#">Read more</a></p>
+                      </div>
+                      <div class="four wide column">
+                        <img src="assets/img/sunset.webp" alt="">
+                        <p class="title">SUNSET AT SEA</p>
+                        <p class="subtitle"><a href="#">Read more</a></p>
+                      </div>
+                      <div class="four wide column">
+                        <img src="assets/img/snorkel.webp" alt="">
+                        <p class="title">SNORKEL</p>
+                        <p class="subtitle"><a href="#">Read more</a></p>
+                      </div>
+                      <div class="four wide column">
+                        <img src="assets/img/whale_watching.webp" alt="">
+                        <p class="title">WHALE WATCHING</p>
+                        <p class="subtitle"><a href="#">Read more</a></p>
+                      </div>
+                  </div>
+              </div>
             </div>
 
-            <div class="ui container fluid why-cabo">
+            <div class="ui container fluid" id="why-cabo">
               <div class="ui grid">
                   <div class="eight wide column img"></div>
                   <div class="eight wide column">
@@ -751,7 +808,8 @@
               </div>
             </div>
 
-            <div class="ui container our-tours center aligned">
+            <div class="container fluid" id="testimonials">
+              <div class="ui container center aligned">
                 <h2 class="">TESTIMONIALS</h2>
                 <div class="ui grid">
                     <div class="three wide column">
@@ -768,8 +826,8 @@
                       BRIAN NEAL, SNORKEL<br>
                       We went on a Beach hopping snorkeling adventure with Fernando and Julio as our guides. It was AMAZING!!!
                     </div>
-
-                </div>
+                  </div>
+              </div>
             </div>
 
             <div id="map"></div>
@@ -813,7 +871,6 @@
   </script>
   <script>
     $(document).ready(()=>{
-
       const navbarMenu = document.getElementById("menu");
       const burgerMenu = document.getElementById("burger");
       const headerMenu = document.getElementById("header");
