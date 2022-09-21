@@ -796,6 +796,14 @@
         }
       }
 
+    /*====================================
+        WINDY
+    ====================================*/
+      #windy iframe{
+        width: 100%;
+        max-width: 650px;
+      }
+
     </style>
 
 </head>
@@ -874,7 +882,7 @@
 
             {{-- SLIDER --}}
             <section class="section banner banner-section">
-                <div class="ui fluid container no-gutter" style="margin:0px!important">
+                <div class="ui container fluid" style="margin:0px!important">
                     <div class="slider-hero">
                         <div>
                             <img src="{{ asset('assets/img/slider/slide_fishing.jpg') }}" alt="">
@@ -1025,6 +1033,9 @@
                   </div>
               </div>
             </div>
+            <div class="ui container center aligned" id="windy">
+                <iframe src="https://embed.windy.com/embed2.html?lat=23.277&amp;lon=-109.753&amp;detailLat=23.277&amp;detailLon=-109.753&amp;width=450&amp;height=450&amp;zoom=5&amp;level=surface&amp;overlay=wind&amp;product=ecmwf&amp;menu=&amp;message=&amp;marker=&amp;calendar=now&amp;pressure=&amp;type=map&amp;location=coordinates&amp;detail=&amp;metricWind=mph&amp;metricTemp=default&amp;radarRange=-1" height="450" frameborder="0"></iframe>
+            </div>
 
             {{-- GOOGLE MAP --}}
             <div id="map"></div>
@@ -1034,7 +1045,21 @@
 
 
         <footer>
-
+            <div class="ui container">
+                <div class="ui stackable grid">
+                    <div class="eight wide column">
+                        <h3>Contact Us</h3>
+                        <p>Ask us what you want</p>
+                        <p>We are here for any question you have.</p>
+                        <p>Cabo san lucas, Baja California Sur, México.</p>
+                        <p><a href="tel:+52 1 624 132 3343"> office +52 1 624 132 3343</a></p>
+                        <p><a href="mailto:info@besttourscabo.com">info@besttourscabo.com</a></p>
+                    </div>
+                    <div class="eight wide column">
+                        <h3>Send Us an Email</h3>
+                    </div>
+                </div>
+            </div>
         </footer>
 
     </div>
