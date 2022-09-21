@@ -785,6 +785,15 @@
         #testimonials h2{
             font-size: 32px;
         }
+        .svg-container{
+            padding:0 7.7rem;
+        }
+        #testimonials .column > .column > div p{
+            padding: 0.3rem 3.5rem;
+            margin-bottom: 2rem;
+            min-height: 155px;
+            color: #fff;
+        }
       }
 
     </style>
