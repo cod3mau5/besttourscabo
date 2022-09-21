@@ -31,6 +31,25 @@
           src: url("//db.onlinewebfonts.com/t/b14220270a922222bb9500e01fd40f4f.eot"); src: url("//db.onlinewebfonts.com/t/b14220270a922222bb9500e01fd40f4f.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/b14220270a922222bb9500e01fd40f4f.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/b14220270a922222bb9500e01fd40f4f.woff") format("woff"), url("//db.onlinewebfonts.com/t/b14220270a922222bb9500e01fd40f4f.ttf") format("truetype"), url("//db.onlinewebfonts.com/t/b14220270a922222bb9500e01fd40f4f.svg#HelveticaLTW04-Black") format("svg");
       }
 
+      @font-face {
+        font-family: "Lulo Clean Bold";
+        src: url("//db.onlinewebfonts.com/t/39a2c7f346d5cfae7045aeb2fb50d9ad.eot");
+        src: url("//db.onlinewebfonts.com/t/39a2c7f346d5cfae7045aeb2fb50d9ad.eot?#iefix") format("embedded-opentype"),
+        url("//db.onlinewebfonts.com/t/39a2c7f346d5cfae7045aeb2fb50d9ad.woff2") format("woff2"),
+        url("//db.onlinewebfonts.com/t/39a2c7f346d5cfae7045aeb2fb50d9ad.woff") format("woff"),
+        url("//db.onlinewebfonts.com/t/39a2c7f346d5cfae7045aeb2fb50d9ad.ttf") format("truetype"),
+        url("//db.onlinewebfonts.com/t/39a2c7f346d5cfae7045aeb2fb50d9ad.svg#LuloCleanW01-OneBold") format("svg");
+    }
+
+    @font-face {
+        font-family: "Avenir Light";
+        src: url("//db.onlinewebfonts.com/t/116af611cbcd9e4bada60b4e700430c1.eot");
+        src: url("//db.onlinewebfonts.com/t/116af611cbcd9e4bada60b4e700430c1.eot?#iefix") format("embedded-opentype"),
+        url("//db.onlinewebfonts.com/t/116af611cbcd9e4bada60b4e700430c1.woff2") format("woff2"),
+        url("//db.onlinewebfonts.com/t/116af611cbcd9e4bada60b4e700430c1.woff") format("woff"),
+        url("//db.onlinewebfonts.com/t/116af611cbcd9e4bada60b4e700430c1.ttf") format("truetype"),
+        url("//db.onlinewebfonts.com/t/116af611cbcd9e4bada60b4e700430c1.svg#Avenir Light") format("svg");
+    }
       /* colors */
       :root {
         --color-white-100: hsl(206, 0%, 100%);
@@ -132,9 +151,9 @@
 
 
 
-        /*====================================
-            MENU STYLES
-        ====================================*/
+    /*====================================
+        MENU STYLES
+    ====================================*/
 
         .main-menu {
           width: 100%;
@@ -154,9 +173,9 @@
             border-bottom: 2px solid #ddd;
         }
 
-        /*====================================
+    /*====================================
         DROPDOWN MENU STYLES
-        ====================================*/
+    ====================================*/
 
         /* The hidden-at-first drop menus */
         .drop-menu {
@@ -562,9 +581,9 @@
       }
 
 
-      /*====================================
+    /*====================================
         OUR TOURS
-      ====================================*/
+    ====================================*/
       @media only screen and (max-width: 767px){
         #our-tours{
           margin-left: 0!important;
@@ -619,26 +638,85 @@
       }
 
 
-      /*====================================
+    /*====================================
         WHY CABO
-      ====================================*/
-      #why-cabo .img{
-        height: 661px;
-        background-image: url('assets/img/why_cabo.webp');
-        background-size: cover;
-      }
-      #why-cabo .column{
-        background-color: #8ECAE6;
-      }
+    ====================================*/
 
+        #why-cabo .img{
+            height: 661px;
+            background-image: url('assets/img/why_cabo.webp');
+            background-size: cover;
+        }
+        #why-cabo .column{
+            background-color: #8ECAE6;
+        }
+        #why-cabo .column:nth-child(2){
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 4rem 13rem;
+            text-align: center;
+        }
+        #why-cabo .column:nth-child(2) h2{
+            font-family: "Lulo Clean Bold";
+            font-size: 2.9rem;
+            color: rgb(2,48,71);
+            padding: 0 3rem;
+            margin-bottom: 2.6rem;
+            letter-spacing: 7px;
+        }
+        #why-cabo .column:nth-child(2) p{
+            font-family: "Avenir Light";
+            font-size: 1.1rem;
+            color: #000000;
+        }
+        #why-cabo .column:nth-child(2) button{
+            font-size: 1rem;
+            background-color: transparent;
+            padding: 0.5rem 1.5rem;
+            border: 4px solid #000000;
+            cursor: pointer;
+            max-width: 80%;
+            align-self: center;
+        }
+        #why-cabo .column:nth-child(2) button:hover{
+            background-color: rgb(251,133,0);
+            border: 4px solid rgb(2,48,71);
+            color: #ffffff;
+            font-weight: bolder;
+        }
+        @media only screen and (max-width: 767px){
+            #why-cabo .column:nth-child(2){
+                padding: 2.5rem 1rem!important;
+            }
+            #why-cabo{
+                margin-left: 0!important;
+                margin-right: 0!important;
+            }
+            #why-cabo .img{
+                padding: 0!important;
+                height: 368px;
+            }
+            #why-cabo .ui.stackable.grid{
+                display: flex;
+                flex-direction: column-reverse;
+            }
+            #why-cabo .column:nth-child(2) button{
+                margin-top:2rem;
+            }
+        }
+
+    /*====================================
+        GOOGLE MAP
+    ====================================*/
       #map {
           height: 340px;
           width: 100%;
       }
 
-      /*====================================
+    /*====================================
         TESTIMONIALS
-      ====================================*/
+    ====================================*/
 
       #testimonials{
         background-color: rgb(255,219,129);
@@ -721,46 +799,46 @@
 
             <section class="section banner banner-section">
                 <div class="ui fluid container no-gutter" style="margin:0px!important">
-                  <div class="slider-hero">
-                      <div>
-                        <img src="{{ asset('assets/img/slider/slide_1.jpg') }}" alt="">
-                        <div class="slider-box">
-                            <p>
-                                Whale <br>
-                                Watching
-                            </p>
-                            <button>Book Now</button>
+                    <div class="slider-hero">
+                        <div>
+                            <img src="{{ asset('assets/img/slider/slide_fishing.jpg') }}" alt="">
+                            <div class="slider-box">
+                                <p>
+                                    Fishing <br>
+                                    Tours
+                                </p>
+                                <button>Book Now</button>
+                            </div>
                         </div>
-                      </div>
-                      <div>
-                        <img src="{{ asset('assets/img/slider/slide_2.jpg') }}" alt="">
-                        <div class="slider-box">
-                            <p>
-                                Fishing <br>
-                                Tours
-                            </p>
-                            <button>Book Now</button>
+                        <div>
+                            <img src="{{ asset('assets/img/slider/slide_whales.jpg') }}" alt="">
+                            <div class="slider-box">
+                                <p>
+                                    Whale <br>
+                                    Watching
+                                </p>
+                                <button>Book Now</button>
+                            </div>
                         </div>
-                      </div>
-                      <div>
-                        <img src="{{ asset('assets/img/slider/slide_3.jpg') }}" alt="">
-                        <div class="slider-box">
-                            <p>
-                                Sunset at <br>
-                                Sea
-                            </p>
-                            <button>Book Now</button>
+                        <div>
+                            <img src="{{ asset('assets/img/slider/slide_sunset.jpg') }}" alt="">
+                            <div class="slider-box">
+                                <p>
+                                    Sunset at <br>
+                                    Sea
+                                </p>
+                                <button>Book Now</button>
+                            </div>
                         </div>
-                      </div>
-                      <div>
-                        <img src="{{ asset('assets/img/slider/slide_4.jpg') }}" alt="">
-                        <div class="slider-box">
-                            <p>Snorkel</p>
-                            <button>Book Now</button>
+                        <div>
+                            <img src="{{ asset('assets/img/slider/slide_snorkel.jpg') }}" alt="">
+                            <div class="slider-box">
+                                <p>Snorkel</p>
+                                <button>Book Now</button>
+                            </div>
                         </div>
-                      </div>
-                  </div>
-              </div>
+                    </div>
+                </div>
             </section>
 
             <div class="container fluid" id="our-tours">
@@ -792,10 +870,10 @@
             </div>
 
             <div class="ui container fluid" id="why-cabo">
-              <div class="ui grid">
+              <div class="ui stackable grid">
                   <div class="eight wide column img"></div>
                   <div class="eight wide column">
-                      WHY CABO?
+                      <h2>WHY CABO?</h2>
                       <p>
                         Being the # 1 destination in all of Mexico for its water and land activities,
                         for the warmth of its people and gastronomy, for its geography and culture,
