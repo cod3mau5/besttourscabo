@@ -14,6 +14,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"></script>
+    <script src="https://api.windy.com/assets/map-forecast/libBoot.js"></script>
+    {{-- FONT AWESOME --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <style>
       /* Fonts */
@@ -32,125 +36,134 @@
       }
 
       @font-face {
-        font-family: "Lulo Clean Bold";
-        src: url("//db.onlinewebfonts.com/t/39a2c7f346d5cfae7045aeb2fb50d9ad.eot");
-        src: url("//db.onlinewebfonts.com/t/39a2c7f346d5cfae7045aeb2fb50d9ad.eot?#iefix") format("embedded-opentype"),
-        url("//db.onlinewebfonts.com/t/39a2c7f346d5cfae7045aeb2fb50d9ad.woff2") format("woff2"),
-        url("//db.onlinewebfonts.com/t/39a2c7f346d5cfae7045aeb2fb50d9ad.woff") format("woff"),
-        url("//db.onlinewebfonts.com/t/39a2c7f346d5cfae7045aeb2fb50d9ad.ttf") format("truetype"),
-        url("//db.onlinewebfonts.com/t/39a2c7f346d5cfae7045aeb2fb50d9ad.svg#LuloCleanW01-OneBold") format("svg");
-    }
-
-    @font-face {
-        font-family: "Avenir Light";
-        src: url("//db.onlinewebfonts.com/t/116af611cbcd9e4bada60b4e700430c1.eot");
-        src: url("//db.onlinewebfonts.com/t/116af611cbcd9e4bada60b4e700430c1.eot?#iefix") format("embedded-opentype"),
-        url("//db.onlinewebfonts.com/t/116af611cbcd9e4bada60b4e700430c1.woff2") format("woff2"),
-        url("//db.onlinewebfonts.com/t/116af611cbcd9e4bada60b4e700430c1.woff") format("woff"),
-        url("//db.onlinewebfonts.com/t/116af611cbcd9e4bada60b4e700430c1.ttf") format("truetype"),
-        url("//db.onlinewebfonts.com/t/116af611cbcd9e4bada60b4e700430c1.svg#Avenir Light") format("svg");
-    }
-      /* colors */
-      :root {
-        --color-white-100: hsl(206, 0%, 100%);
-        --color-white-200: hsl(206, 0%, 90%);
-        --color-white-300: hsl(206, 0%, 80%);
-        --color-white-400: hsl(206, 0%, 65%);
-        --color-white-500: hsl(206, 0%, 50%);
-        --color-black-100: hsl(217, 30%, 18%);
-        --color-black-200: hsl(217, 27%, 15%);
-        --color-black-300: hsl(217, 27%, 12%);
-        --color-black-400: hsl(217, 52%, 9%);
-        --color-blue-100: hsl(215, 97%, 87%);
-        --color-blue-200: hsl(215, 96%, 78%);
-        --color-blue-300: hsl(215, 94%, 68%);
-        --color-blue-400: hsl(215, 91%, 60%);
-        --color-blue-500: hsl(215, 83%, 53%);
-        --color-blue-600: hsl(215, 76%, 48%);
-        --shadow-small: 0 1px 3px 0 rgba(0, 0, 0, 0.1),
-          0 1px 2px 0 rgba(0, 0, 0, 0.06);
-        --shadow-medium: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
-          0 2px 4px -1px rgba(0, 0, 0, 0.06);
-        --shadow-large: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
-          0 4px 6px -2px rgba(0, 0, 0, 0.05);
-      }
-
-
-      /* Helpers */
-
-      *,
-      *::before,
-      *::after {
-        padding: 0;
-        margin: 0;
-        box-sizing: border-box;
-        list-style: none;
-        list-style-type: none;
-        text-decoration: none;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        border: none;
-      }
-
-      a{
-        color: unset!important;
-      }
-      html {
-        font-size: 100%;
-        box-sizing: inherit;
-        scroll-behavior: smooth;
-        height: -webkit-fill-available;
-      }
-      html,body{
-        overflow-x: hidden!important;
-      }
-      @media only screen and (max-width: 767px){
-        .no-gutter{
-          margin-left: 0px!important;
-          margin-right: 0px!important;
+            font-family: "Lulo Clean Bold";
+            src: url("//db.onlinewebfonts.com/t/39a2c7f346d5cfae7045aeb2fb50d9ad.eot");
+            src: url("//db.onlinewebfonts.com/t/39a2c7f346d5cfae7045aeb2fb50d9ad.eot?#iefix") format("embedded-opentype"),
+            url("//db.onlinewebfonts.com/t/39a2c7f346d5cfae7045aeb2fb50d9ad.woff2") format("woff2"),
+            url("//db.onlinewebfonts.com/t/39a2c7f346d5cfae7045aeb2fb50d9ad.woff") format("woff"),
+            url("//db.onlinewebfonts.com/t/39a2c7f346d5cfae7045aeb2fb50d9ad.ttf") format("truetype"),
+            url("//db.onlinewebfonts.com/t/39a2c7f346d5cfae7045aeb2fb50d9ad.svg#LuloCleanW01-OneBold") format("svg");
         }
-      }
 
-      /* header */
-      .header {
-        position: fixed;
-        top: 0;
-        left: 0;
-        z-index: 100;
-        width: 100%;
-        height: 115px;
-        margin: 0 auto;
-        background-color: var(--color-white-100);
-        box-shadow: var(--shadow-medium);
-      }
+        @font-face {
+            font-family: "Avenir Light";
+            src: url("//db.onlinewebfonts.com/t/116af611cbcd9e4bada60b4e700430c1.eot");
+            src: url("//db.onlinewebfonts.com/t/116af611cbcd9e4bada60b4e700430c1.eot?#iefix") format("embedded-opentype"),
+            url("//db.onlinewebfonts.com/t/116af611cbcd9e4bada60b4e700430c1.woff2") format("woff2"),
+            url("//db.onlinewebfonts.com/t/116af611cbcd9e4bada60b4e700430c1.woff") format("woff"),
+            url("//db.onlinewebfonts.com/t/116af611cbcd9e4bada60b4e700430c1.ttf") format("truetype"),
+            url("//db.onlinewebfonts.com/t/116af611cbcd9e4bada60b4e700430c1.svg#Avenir Light") format("svg");
+        }
 
-      .navbar {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        align-content: center;
-        justify-content: space-between;
-        width: 100%;
-        height: auto;
-        margin: 10px auto;
-      }
+        @font-face {
+            font-family: "Futura"; src: url("//db.onlinewebfonts.com/t/e8c6a63541de0a4211a9358cbe74690f.eot");
+            src: url("//db.onlinewebfonts.com/t/e8c6a63541de0a4211a9358cbe74690f.eot?#iefix") format("embedded-opentype"),
+            url("//db.onlinewebfonts.com/t/e8c6a63541de0a4211a9358cbe74690f.woff2") format("woff2"),
+            url("//db.onlinewebfonts.com/t/e8c6a63541de0a4211a9358cbe74690f.woff") format("woff"),
+            url("//db.onlinewebfonts.com/t/e8c6a63541de0a4211a9358cbe74690f.ttf") format("truetype"),
+            url("//db.onlinewebfonts.com/t/e8c6a63541de0a4211a9358cbe74690f.svg#Futura") format("svg");
+        }
+        /* colors */
+        :root {
+            --color-white-100: hsl(206, 0%, 100%);
+            --color-white-200: hsl(206, 0%, 90%);
+            --color-white-300: hsl(206, 0%, 80%);
+            --color-white-400: hsl(206, 0%, 65%);
+            --color-white-500: hsl(206, 0%, 50%);
+            --color-black-100: hsl(217, 30%, 18%);
+            --color-black-200: hsl(217, 27%, 15%);
+            --color-black-300: hsl(217, 27%, 12%);
+            --color-black-400: hsl(217, 52%, 9%);
+            --color-blue-100: hsl(215, 97%, 87%);
+            --color-blue-200: hsl(215, 96%, 78%);
+            --color-blue-300: hsl(215, 94%, 68%);
+            --color-blue-400: hsl(215, 91%, 60%);
+            --color-blue-500: hsl(215, 83%, 53%);
+            --color-blue-600: hsl(215, 76%, 48%);
+            --shadow-small: 0 1px 3px 0 rgba(0, 0, 0, 0.1),
+            0 1px 2px 0 rgba(0, 0, 0, 0.06);
+            --shadow-medium: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+            0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-large: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+            0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
 
-      .brand {
-        font-family: inherit;
-        font-size: 1.6rem;
-        font-weight: 600;
-        line-height: 1.25;
-        margin: 0;
-        letter-spacing: -1px;
-        text-transform: uppercase;
-        color: var(--color-blue-500);
-      }
+
+        /* Helpers */
+
+        *,
+        *::before,
+        *::after {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            list-style: none;
+            list-style-type: none;
+            text-decoration: none;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            border: none;
+        }
+
+        a{
+            color: unset!important;
+        }
+        html {
+            font-size: 100%;
+            box-sizing: inherit;
+            scroll-behavior: smooth;
+            height: -webkit-fill-available;
+        }
+        html,body{
+            overflow-x: hidden!important;
+        }
+        @media only screen and (max-width: 767px){
+            .no-gutter{
+            margin-left: 0px!important;
+            margin-right: 0px!important;
+            }
+        }
+
+        /* header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 100;
+            width: 100%;
+            height: 115px;
+            margin: 0 auto;
+            background-color: var(--color-white-100);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .navbar {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            align-content: center;
+            justify-content: space-between;
+            width: 100%;
+            height: auto;
+            margin: 10px auto;
+        }
+
+        .brand {
+            font-family: inherit;
+            font-size: 1.6rem;
+            font-weight: 600;
+            line-height: 1.25;
+            margin: 0;
+            letter-spacing: -1px;
+            text-transform: uppercase;
+            color: var(--color-blue-500);
+        }
 
 
 
-    /*====================================
-        MENU STYLES
-    ====================================*/
+        /*====================================
+            MENU STYLES
+        ====================================*/
 
         .main-menu {
           width: 100%;
@@ -170,9 +183,9 @@
             border-bottom: 2px solid #ddd;
         }
 
-    /*====================================
-        DROPDOWN MENU STYLES
-    ====================================*/
+        /*====================================
+            DROPDOWN MENU STYLES
+        ====================================*/
 
         /* The hidden-at-first drop menus */
         .drop-menu {
@@ -305,20 +318,20 @@
 
 
       .menu{
-          font-family: 'Oswald', sans-serif;
-          font-size: 1.4rem;
-          box-shadow: none;
-          border: 0;
-      }
-      .menu .menu-item{
-          color: rgb(2,48,71)!important;
-      }
-      .menu a.item:hover{
-          color: rgb(251,133,0)!important;
-      }
-      .menu .dropdown.item:hover{
-          color: rgb(251,133,0);
-      }
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.4rem;
+            box-shadow: none;
+            border: 0;
+        }
+        .menu .menu-item{
+            color: rgb(2,48,71)!important;
+        }
+        .menu a.item:hover{
+            color: rgb(251,133,0)!important;
+        }
+        .menu .dropdown.item:hover{
+            color: rgb(251,133,0);
+        }
       .menu {
         position: fixed;
         top: 0;
@@ -405,182 +418,182 @@
       }
 
       @media (max-width: 768px) {
-          .ui.fixed.menu .ui.container{
-              display: none!important;
-          }
-          .ui.fixed.menu .ui.container.mobile{
-              display: flex!important;
-              flex-direction: column;
-          }
+            .ui.fixed.menu .ui.container{
+                display: none!important;
+            }
+            .ui.fixed.menu .ui.container.mobile{
+                display: flex!important;
+                flex-direction: column;
+            }
 
-      }
+        }
 
 
 
-      .logo{
-          height:auto!important;
-          width: 244px!important;
-      }
-
-      .burger {
-        position: relative;
-        display: block;
-        cursor: pointer;
-        -webkit-user-select: none;
-          -moz-user-select: none;
-            -ms-user-select: none;
-                user-select: none;
-        order: 1;
-        z-index: 12;
-        width: 1.75rem;
-        height: 1rem;
-        margin-right: 1rem;
-        border: none;
-        outline: none;
-        background: none;
-        visibility: visible;
-        transform: rotate(0deg);
-        transition: 0.35s ease;
-      }
-
-      @media only screen and (min-width: 48rem) {
         .logo{
-          height:auto!important;
-          width: 285px!important;
-      }
+            height:auto!important;
+            width: 244px!important;
+        }
+
         .burger {
-          display: none;
-          visibility: hidden;
+            position: relative;
+            display: block;
+            cursor: pointer;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+                -ms-user-select: none;
+                    user-select: none;
+            order: 1;
+            z-index: 12;
+            width: 1.75rem;
+            height: 1rem;
+            margin-right: 1rem;
+            border: none;
+            outline: none;
+            background: none;
+            visibility: visible;
+            transform: rotate(0deg);
+            transition: 0.35s ease;
         }
-      }
-      .burger-line {
-        position: absolute;
-        display: block;
-        right: 0;
-        width: 100%;
-        height: 2px;
-        border: none;
-        outline: none;
-        opacity: 1;
-        transform: rotate(0deg);
-        background-color: var(--color-black-300);
-        transition: 0.25s ease-in-out;
-      }
 
-      .burger-line:nth-child(1) {
-        top: 0px;
-      }
-      .burger-line:nth-child(2) {
-        top: 0.5rem;
-      }
-      .burger-line:nth-child(3) {
-        top: 1rem;
-      }
-      .burger.is-active .burger-line:nth-child(1) {
-        top: 0.5rem;
-        transform: rotate(135deg);
-      }
-      .burger.is-active .burger-line:nth-child(2) {
-        right: -1.5rem;
-        opacity: 0;
-        visibility: hidden;
-      }
-      .burger.is-active .burger-line:nth-child(3) {
-        top: 0.5rem;
-        transform: rotate(-135deg);
-      }
-      .no-border{
-          border: 0px transparent solid!important;
-      }
-      .no-border::before{
-          content: ''!important;
-          width: 0px!important;
-          background: transparent!important;
-      }
-      .ui.container.mobile{
-          display: none;
-      }
-
-
-      /* Main */
-      .main {
-        margin: 0 auto;
-        padding: 115px 0px 0px 0px;
-      }
-
-      /* Slider */
-      .slider-hero img{
-          height: auto;
-          width: 100%;
-      }
-      .slick-prev,.slick-next{
-          z-index: 1000;
-      }
-      .slick-prev{
-          left: 0;
-      }
-      .slick-next{
-          right: 0;
-      }
-
-      .slider-box {
-          position: inherit;
-          background-color: rgba(255, 255, 255, 0.65);
-          display: block;
-          padding: 1rem 0;
-      }
-
-      .slider-box p{
-        color: #023047;
-        font-family: "Helvetica Black";
-        font-size: 2.5rem;
-        line-height: 1.3;
-        text-align: center;
-        margin-bottom: 1rem;
-        min-height: 100px;
-      }
-
-      .slider-box button{
-          position: inherit;
-          width: 100%;
-          border: none;
-          padding: 1rem;
-          background-image: radial-gradient(#FFB702, #FB8500);
-          color: #023047;
-          font-size: 2rem;
-          font-family: 'Impact';
-          cursor: pointer;
-      }
-
-      @media only screen and (min-width:992px) {
-        .slider-box{
+        @media only screen and (min-width: 48rem) {
+            .logo{
+            height:auto!important;
+            width: 285px!important;
+        }
+            .burger {
+            display: none;
+            visibility: hidden;
+            }
+        }
+        .burger-line {
             position: absolute;
-            top: 35%;
-            left: 35%;
-            background-color: rgba(255, 255, 255, 0.65);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 1rem 4rem 2.5rem 1rem;
-        }
-        .slider-box p{
-            font-size: 5.4rem;
-            line-height: 1;
-            margin-bottom:1rem;
-            min-height: unset;
-        }
-        .slider-box button{
-            position: absolute;
-            bottom: 0;
+            display: block;
             right: 0;
-            width: auto;
+            width: 100%;
+            height: 2px;
+            border: none;
+            outline: none;
+            opacity: 1;
+            transform: rotate(0deg);
+            background-color: var(--color-black-300);
+            transition: 0.25s ease-in-out;
         }
-      }
+
+        .burger-line:nth-child(1) {
+            top: 0px;
+        }
+        .burger-line:nth-child(2) {
+            top: 0.5rem;
+        }
+        .burger-line:nth-child(3) {
+            top: 1rem;
+        }
+        .burger.is-active .burger-line:nth-child(1) {
+            top: 0.5rem;
+            transform: rotate(135deg);
+        }
+        .burger.is-active .burger-line:nth-child(2) {
+            right: -1.5rem;
+            opacity: 0;
+            visibility: hidden;
+        }
+        .burger.is-active .burger-line:nth-child(3) {
+            top: 0.5rem;
+            transform: rotate(-135deg);
+        }
+        .no-border{
+            border: 0px transparent solid!important;
+        }
+        .no-border::before{
+            content: ''!important;
+            width: 0px!important;
+            background: transparent!important;
+        }
+        .ui.container.mobile{
+            display: none;
+        }
 
 
-    /*====================================
-        OUR TOURS
-    ====================================*/
+        /* Main */
+        .main {
+            margin: 0 auto;
+            padding: 115px 0px 0px 0px;
+        }
+
+        /* Slider */
+        .slider-hero img{
+            height: auto;
+            width: 100%;
+        }
+        .slick-prev,.slick-next{
+            z-index: 1000;
+        }
+        .slick-prev{
+            left: 0;
+        }
+        .slick-next{
+            right: 0;
+        }
+
+        .slider-box {
+            position: inherit;
+            background-color: rgba(255, 255, 255, 0.65);
+            display: block;
+            padding: 1rem 0;
+        }
+
+        .slider-box p{
+            color: #023047;
+            font-family: "Helvetica Black";
+            font-size: 2.5rem;
+            line-height: 1.3;
+            text-align: center;
+            margin-bottom: 1rem;
+            min-height: 100px;
+        }
+
+        .slider-box button{
+            position: inherit;
+            width: 100%;
+            border: none;
+            padding: 1rem;
+            background-image: radial-gradient(#FFB702, #FB8500);
+            color: #023047;
+            font-size: 2rem;
+            font-family: 'Impact';
+            cursor: pointer;
+        }
+
+        @media only screen and (min-width:992px) {
+            .slider-box{
+                position: absolute;
+                top: 35%;
+                left: 35%;
+                background-color: rgba(255, 255, 255, 0.65);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 1rem 4rem 2.5rem 1rem;
+            }
+            .slider-box p{
+                font-size: 5.4rem;
+                line-height: 1;
+                margin-bottom:1rem;
+                min-height: unset;
+            }
+            .slider-box button{
+                position: absolute;
+                bottom: 0;
+                right: 0;
+                width: auto;
+            }
+        }
+
+
+        /*====================================
+            OUR TOURS
+        ====================================*/
       @media only screen and (max-width: 767px){
         #our-tours{
           margin-left: 0!important;
@@ -635,9 +648,9 @@
       }
 
 
-    /*====================================
-        WHY CABO
-    ====================================*/
+        /*====================================
+            WHY CABO
+        ====================================*/
         #why-cabo .img{
             height: 661px;
             background-image: url('assets/img/why_cabo.webp');
@@ -702,107 +715,159 @@
             }
         }
 
-    /*====================================
-        GOOGLE MAP
-    ====================================*/
-      #map {
-          height: 340px;
-          width: 100%;
-      }
-
-    /*====================================
-        TESTIMONIALS
-    ====================================*/
-      #testimonials{
-        background-color: rgb(255,219,129);
-        padding: 3.5rem 0 5rem 0;
-      }
-      #testimonials h2{
-        font-family: "Helvetica Black";
-        color: #FB8500;
-        font-size: 3rem;
-        margin-bottom: 2.5rem;
-      }
-      #testimonials .column{
-        padding: 0 0.7rem 0 0.7rem;
-      }
-      #testimonials .column > .column {
-        display: flex;
-      }
-      #testimonials .column > .column > div{
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        height: 100%;
-        width: 100%;
-      }
-      #testimonials .column > .column > div h3{
-        color: #ffb703;
-      }
-      #testimonials .column > .column > div p{
-        padding: 0.3rem 5rem;
-        margin-bottom: 2rem;
-        min-height: 155px;
-        color: #fff;
-      }
-
-      .bg-blue{
-        position: relative;
-        width: 100%;
-        height: auto;
-        background-color: rgba(4, 81, 132, 0.7);
-      }
-      #robert{
-        background:radial-gradient(circle, rgba(4,81,132,0.7147233893557423) 0%, rgba(4,81,132,0.85) 40%, rgba(4,81,132,0.9) 99%),
-        url('assets/img/robert.webp');
-        background-size:cover;
-        background-repeat: no-repeat;
-      }
-      #sammy{
-        background:radial-gradient(circle, rgba(4,81,132,0.7147233893557423) 0%, rgba(4,81,132,0.85) 40%, rgba(4,81,132,0.9) 99%),
-        url('assets/img/sammy.webp');
-        background-size:cover;
-        background-repeat: no-repeat;
-      }
-      #bryan{
-        background:radial-gradient(circle, rgba(4,81,132,0.7147233893557423) 0%, rgba(4,81,132,0.85) 40%, rgba(4,81,132,0.9) 99%),
-        url('assets/img/bryan.webp');
-        background-size:cover;
-        background-repeat: no-repeat;
-      }
-      .svg-container{
-        fill: #ffb703;
-        height: auto;
-        padding:0 10.1rem;
-        margin-bottom: 1rem;
-      }
-      .svg-container svg{
-        color: #ffb703;
-        transform: rotate(180deg);
-      }
-
-      @media only screen and (max-width: 767px){
-        #testimonials h2{
-            font-size: 32px;
+        /*====================================
+            GOOGLE MAP
+        ====================================*/
+        #map {
+            height: 340px;
+            width: 100%;
         }
-        .svg-container{
-            padding:0 7.7rem;
+
+        /*====================================
+            TESTIMONIALS
+        ====================================*/
+        #testimonials{
+            background-color: rgb(255,219,129);
+            padding: 3.5rem 0 5rem 0;
+        }
+        #testimonials h2{
+            font-family: "Helvetica Black";
+            color: #FB8500;
+            font-size: 3rem;
+            margin-bottom: 2.5rem;
+        }
+        #testimonials .column{
+            padding: 0 0.7rem 0 0.7rem;
+        }
+        #testimonials .column > .column {
+            display: flex;
+        }
+        #testimonials .column > .column > div{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+            width: 100%;
+        }
+        #testimonials .column > .column > div h3{
+            color: #ffb703;
         }
         #testimonials .column > .column > div p{
-            padding: 0.3rem 3.5rem;
+            padding: 0.3rem 5rem;
             margin-bottom: 2rem;
             min-height: 155px;
             color: #fff;
         }
-      }
 
-    /*====================================
-        WINDY
-    ====================================*/
-      #windy iframe{
-        width: 100%;
-        max-width: 650px;
-      }
+        .bg-blue{
+            position: relative;
+            width: 100%;
+            height: auto;
+            background-color: rgba(4, 81, 132, 0.7);
+        }
+        #robert{
+            background:radial-gradient(circle, rgba(4,81,132,0.7147233893557423) 0%, rgba(4,81,132,0.85) 40%, rgba(4,81,132,0.9) 99%),
+            url('assets/img/robert.webp');
+            background-size:cover;
+            background-repeat: no-repeat;
+        }
+        #sammy{
+            background:radial-gradient(circle, rgba(4,81,132,0.7147233893557423) 0%, rgba(4,81,132,0.85) 40%, rgba(4,81,132,0.9) 99%),
+            url('assets/img/sammy.webp');
+            background-size:cover;
+            background-repeat: no-repeat;
+        }
+        #bryan{
+            background:radial-gradient(circle, rgba(4,81,132,0.7147233893557423) 0%, rgba(4,81,132,0.85) 40%, rgba(4,81,132,0.9) 99%),
+            url('assets/img/bryan.webp');
+            background-size:cover;
+            background-repeat: no-repeat;
+        }
+        .svg-container{
+            fill: #ffb703;
+            height: auto;
+            padding:0 10.1rem;
+            margin-bottom: 1rem;
+        }
+        .svg-container svg{
+            color: #ffb703;
+            transform: rotate(180deg);
+        }
+
+        @media only screen and (max-width: 767px){
+            #testimonials h2{
+                font-size: 32px;
+            }
+            .svg-container{
+                padding:0 7.7rem;
+            }
+            #testimonials .column > .column > div p{
+                padding: 0.3rem 3.5rem;
+                margin-bottom: 2rem;
+                min-height: 155px;
+                color: #fff;
+            }
+        }
+
+        /*====================================
+            WINDY
+        ====================================*/
+        /* #windy iframe{
+            width: 100%;
+            max-width: 650px;
+        } */
+        #windy {
+            width: 100%;
+            height: 300px;
+        }
+        footer{
+            padding: 2.5rem 0!important;
+        }
+        footer p,
+        footer h3{
+            font-family: "Futura";
+            color: #023047!important;
+        }
+        footer h3{
+            font-size: 2rem;
+        }
+        footer p{
+            font-size:18px;
+        }
+        footer #contactus-footer{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        footer .social-media{
+            padding: 0;
+            margin:0;
+            font-size: 2.3rem;
+            margin-top:1.5rem;
+        }
+        footer .social-media li{
+            display: inline;
+            margin: 1rem 1rem 0 1rem;
+        }
+        footer input,
+        footer textarea{
+            background: #023047!important;
+            border-radius: 0px!important;
+            color: #fff !important;
+        }
+        footer textarea{
+            height: 11rem!important;
+        }
+        footer .button{
+            background-color:#FB8500!important;
+            border-radius: 0px!important;
+            color: #023047!important;
+            font-family: "Impact"!important;
+            float: right;
+            width: 50%;
+            font-size: 1.3rem!important;
+            padding: 0.5rem 0;
+        }
 
     </style>
 
@@ -1033,9 +1098,9 @@
                   </div>
               </div>
             </div>
-            <div class="ui container center aligned" id="windy">
-                <iframe src="https://embed.windy.com/embed2.html?lat=23.277&amp;lon=-109.753&amp;detailLat=23.277&amp;detailLon=-109.753&amp;width=450&amp;height=450&amp;zoom=5&amp;level=surface&amp;overlay=wind&amp;product=ecmwf&amp;menu=&amp;message=&amp;marker=&amp;calendar=now&amp;pressure=&amp;type=map&amp;location=coordinates&amp;detail=&amp;metricWind=mph&amp;metricTemp=default&amp;radarRange=-1" height="450" frameborder="0"></iframe>
-            </div>
+
+            {{-- WINDY --}}
+            <div id="windy"></div>
 
             {{-- GOOGLE MAP --}}
             <div id="map"></div>
@@ -1047,16 +1112,49 @@
         <footer>
             <div class="ui container">
                 <div class="ui stackable grid">
-                    <div class="eight wide column">
-                        <h3>Contact Us</h3>
-                        <p>Ask us what you want</p>
-                        <p>We are here for any question you have.</p>
-                        <p>Cabo san lucas, Baja California Sur, México.</p>
-                        <p><a href="tel:+52 1 624 132 3343"> office +52 1 624 132 3343</a></p>
-                        <p><a href="mailto:info@besttourscabo.com">info@besttourscabo.com</a></p>
+                    <div class="eight wide column" id="contactus-footer">
+                        <div>
+                            <h3>Contact Us</h3>
+                            <p>Ask us what you want</p>
+                            <p>We are here for any question you have.</p>
+                            <p>Cabo san lucas, Baja California Sur, México.</p>
+                            <p><a href="tel:+52 1 624 132 3343"> office +52 1 624 132 3343</a></p>
+                            <p><a href="mailto:info@besttourscabo.com">info@besttourscabo.com</a></p>
+                        </div>
+                        <ul class="social-media">
+                            <li>
+                                <a href="https://www.instagram.com/besttourscabo/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                            </li>
+                            <li>
+                                <a href="https://www.facebook.com/besttourscabo" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                            </li>
+                            <li>
+                                <a href="https://www.youtube.com/" target="_blank"><i class="fab fa-youtube"></i></a>
+                            </li>
+                            <li>
+                                <a href="https://www.tiktok.com/@besttourscabo" target="_blank"><i class="fab fa-tiktok"></i></a>
+                            </li>
+                        </ul>
                     </div>
-                    <div class="eight wide column">
-                        <h3>Send Us an Email</h3>
+                    <div class="eight wide column" id="sendmail-footer">
+                        <h3>Send us an email</h3>
+                        <div class="ui form">
+                        </div>
+                        <div class="ui form">
+                            <div class="field">
+                                <label>E-mail</label>
+                                <input type="email" placeholder="example@mail.com">
+                            </div>
+                            {{-- <div class="ui error message">
+                                <div class="header">Action Forbidden</div>
+                                <p>You can only sign up for an account once with a given e-mail address.</p>
+                            </div> --}}
+                            <div class="field">
+                                <label>Mesage</label>
+                                <textarea></textarea>
+                            </div>
+                            <div class="ui submit button">Send</div>
+                          </div>
                     </div>
                 </div>
             </div>
@@ -1074,6 +1172,34 @@
   <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script>
+    const options = {
+    // Required: API key
+        key: 'OuceyI0dcHgee8OEzVhUz1mNNyBqTrKY', // REPLACE WITH YOUR KEY !!!
+
+        // Put additional console output
+        verbose: true,
+
+        // Optional: Initial state of the map
+        lat: 22.879869,
+        lon: -109.906256,
+        zoom: 7,
+    };
+
+    // Initialize Windy API
+    windyInit(options, windyAPI => {
+        // windyAPI is ready, and contain 'map', 'store',
+        // 'picker' and other usefull stuff
+
+        const { map } = windyAPI;
+        // .map is instance of Leaflet map
+
+        L.popup()
+            .setLatLng([22.879869, -109.906256])
+            .setContent('Best Tours Cabo')
+            .openOn(map);
+    });
+  </script>
   <script>
     function initMap() {
         var uluru = {lat: 22.879869, lng: -109.906256};
