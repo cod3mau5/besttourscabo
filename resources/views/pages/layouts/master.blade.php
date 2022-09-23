@@ -43,9 +43,14 @@
                     <ul class="menu-inner">
 
                         <div class="menu-item dropdown-wrapper">
-                            <a class="menu-button">OUR TOURS</a>
+                            <a class="menu-button">TOURS & ACTIVITIES</a>
 
                             <div class="drop-menu">
+                                <li class="menu-item menu-button">
+                                    <a href="{{ route('traditional_arch_tour')}}">
+                                        TRADITIONAL ARCH TOUR
+                                    </a>
+                                </li>
                                 <li class="menu-item menu-button">
                                     <a href="{{ route('whale_watching')}}">
                                         WHALE WATCHING

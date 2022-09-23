@@ -158,8 +158,6 @@
             </div>
         </div>
 
-
-
         {{-- GOOGLE MAP --}}
         <div id="map"></div>
 

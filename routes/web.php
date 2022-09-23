@@ -19,6 +19,9 @@ Route::get('/', function () {
 })->name('home');
 
 // TOURS
+Route::get('/traditional_arch_tour', function () {
+    return view('pages.traditional_arch_tour');
+})->name('traditional_arch_tour');
 Route::get('/whale_watching', function () {
     return view('pages.whale_watching');
 })->name('whale_watching');
