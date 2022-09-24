@@ -132,7 +132,7 @@
                 margin: 0!important;
                 width: calc(100% - 20px);
                 width: 100%;
-                z-index: 100;
+                z-index: 9999;
             }
 
             .button-container button{
@@ -142,7 +142,7 @@
                 box-shadow: 3px 3px 29px 11px #FFF!important;
                 -webkit-box-shadow: 3px 3px 29px 11px #FFF!important;
                 -moz-box-shadow: 3px 3px 29px 11px #FFF!important;
-                z-index: 200;
+                z-index: 99999;
             }
         }
         @media only screen and (max-width:480px) {}
