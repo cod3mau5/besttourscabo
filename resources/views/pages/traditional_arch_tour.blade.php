@@ -6,6 +6,10 @@
       href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"
     />
     <style>
+        :root{
+        --main_blue:#023047;
+          --main_orange:#ffb703;
+        }
         main{
             margin-top: 115px;
         }
@@ -137,9 +141,6 @@
                 background-color: var(--main_blue)!important;
                 color: white !important;;
                 width: 100%;
-                box-shadow: 3px 3px 29px 11px #FFF!important;
-                -webkit-box-shadow: 3px 3px 29px 11px #FFF!important;
-                -moz-box-shadow: 3px 3px 29px 11px #FFF!important;
             }
         }
         @media only screen and (max-width:480px) {}
