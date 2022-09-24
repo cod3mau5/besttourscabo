@@ -158,7 +158,10 @@
         }
 
         .current ~ li:after {
-        background-color: #555;
+            background-color: #555;
+        }
+        #amenities_price{
+            padding: 1rem;
         }
 
         .card-price {
@@ -206,11 +209,25 @@
             left: -9px;
             top: 17px;
         }
+        #price .column{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #price .card-price{
+            text-align: right;
+        }
 
         .description h1{
             text-align: center;
         }
 
+        .button-container button{
+            float: right;
+            margin-top: 1rem!important;
+            background-color: var(--main_blue)!important;
+            color: white !important;
+        }
         @media only screen and (min-width:1200px) {}
         @media only screen and (min-width:1100px) {}
         @media only screen and (max-width:920px) {}
@@ -230,8 +247,6 @@
             }
 
             .button-container button{
-                background-color: var(--main_blue)!important;
-                color: white !important;;
                 width: 100%;
                 box-shadow: 3px 3px 29px 11px #FFF!important;
                 -webkit-box-shadow: 3px 3px 29px 11px #FFF!important;
@@ -272,12 +287,29 @@
                 <li class="">Selection</li>
                 <li class="">Date</li>
             </ol>
-            <div class="ui two column grid">
+            <div class="ui two column grid" id="amenities_price">
                 <div class="row">
-                    <div class="column">Amenities</div>
                     <div class="column">
-                        Price
-                        <p class="card-price"><b>$1,250 usd</b></p>
+                        <p>Amenities</p>
+                        <div class="ui two column grid">
+                            <div class="row">
+                                <div class="column"><i class="fa-solid fa-fish-fins"></i> food & drinks</div>
+                                <div class="column"><i class="fa-solid fa-fish-fins"></i> food & drinks</div>
+                                <div class="column"><i class="fa-solid fa-fish-fins"></i> food & drinks</div>
+                                <div class="column"><i class="fa-solid fa-fish-fins"></i> food & drinks</div>
+                                <div class="column"><i class="fa-solid fa-fish-fins"></i> food & drinks</div>
+                                <div class="column"><i class="fa-solid fa-fish-fins"></i> food & drinks</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column" id="price">
+                        <p>Price</p>
+                        <div class="ui two column stackable grid">
+                            <div class="row">
+                                <div class="column">Price per person</div>
+                                <div class="column"><p class="card-price"><b>$1,250 usd</b></p></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
