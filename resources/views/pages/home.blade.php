@@ -163,6 +163,7 @@
 
     </main>
 @endsection
+
 @section('footer_scripts')
     <script>
         function initMap() {

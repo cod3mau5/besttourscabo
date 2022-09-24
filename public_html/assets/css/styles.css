@@ -1,45 +1,39 @@
       /* Fonts */
       @font-face {
         font-family: "Impact";
-        src: url("//db.onlinewebfonts.com/t/4cbf858ccd9ffd3923bed6843a474080.eot");
-        src: url("//db.onlinewebfonts.com/t/4cbf858ccd9ffd3923bed6843a474080.eot?#iefix") format("embedded-opentype"),
-        url("//db.onlinewebfonts.com/t/4cbf858ccd9ffd3923bed6843a474080.woff2") format("woff2"),
-        url("//db.onlinewebfonts.com/t/4cbf858ccd9ffd3923bed6843a474080.woff") format("woff"),
-        url("//db.onlinewebfonts.com/t/4cbf858ccd9ffd3923bed6843a474080.ttf") format("truetype"),
-        url("//db.onlinewebfonts.com/t/4cbf858ccd9ffd3923bed6843a474080.svg#Impact") format("svg");
+        src: url("../fonts/impact.eot");
+        src: url("../fonts/impact.woff2") format("woff2"),
+        url("../fonts/impact.woff") format("woff"),
+        url("../fonts/impact.ttf") format("truetype");
     }
     @font-face {
         font-family: "Helvetica Black";
-        src: url("//db.onlinewebfonts.com/t/b14220270a922222bb9500e01fd40f4f.eot"); src: url("//db.onlinewebfonts.com/t/b14220270a922222bb9500e01fd40f4f.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/b14220270a922222bb9500e01fd40f4f.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/b14220270a922222bb9500e01fd40f4f.woff") format("woff"), url("//db.onlinewebfonts.com/t/b14220270a922222bb9500e01fd40f4f.ttf") format("truetype"), url("//db.onlinewebfonts.com/t/b14220270a922222bb9500e01fd40f4f.svg#HelveticaLTW04-Black") format("svg");
+        src: url("../fonts/helvetica_black.eot");
+        src: url("../fonts/helvetica_black.woff2") format("woff2"),
+        url("../fonts/helvetica_black.woff") format("woff"),
+        url("../fonts/helvetica_black.ttf") format("truetype");
     }
 
     @font-face {
           font-family: "Lulo Clean Bold";
-          src: url("//db.onlinewebfonts.com/t/39a2c7f346d5cfae7045aeb2fb50d9ad.eot");
-          src: url("//db.onlinewebfonts.com/t/39a2c7f346d5cfae7045aeb2fb50d9ad.eot?#iefix") format("embedded-opentype"),
-          url("//db.onlinewebfonts.com/t/39a2c7f346d5cfae7045aeb2fb50d9ad.woff2") format("woff2"),
-          url("//db.onlinewebfonts.com/t/39a2c7f346d5cfae7045aeb2fb50d9ad.woff") format("woff"),
-          url("//db.onlinewebfonts.com/t/39a2c7f346d5cfae7045aeb2fb50d9ad.ttf") format("truetype"),
-          url("//db.onlinewebfonts.com/t/39a2c7f346d5cfae7045aeb2fb50d9ad.svg#LuloCleanW01-OneBold") format("svg");
+          src: url("../fonts/lulo_bold.eot");
+          src: url("../fonts/lulo_bold.woff2") format("woff2"),
+          url("../fonts/lulo_bold.woff") format("woff"),
+          url("../fonts/lulo_bold.ttf") format("truetype");
       }
 
       @font-face {
           font-family: "Avenir Light";
-          src: url("//db.onlinewebfonts.com/t/116af611cbcd9e4bada60b4e700430c1.eot");
-          src: url("//db.onlinewebfonts.com/t/116af611cbcd9e4bada60b4e700430c1.eot?#iefix") format("embedded-opentype"),
-          url("//db.onlinewebfonts.com/t/116af611cbcd9e4bada60b4e700430c1.woff2") format("woff2"),
-          url("//db.onlinewebfonts.com/t/116af611cbcd9e4bada60b4e700430c1.woff") format("woff"),
-          url("//db.onlinewebfonts.com/t/116af611cbcd9e4bada60b4e700430c1.ttf") format("truetype"),
-          url("//db.onlinewebfonts.com/t/116af611cbcd9e4bada60b4e700430c1.svg#Avenir Light") format("svg");
+          src: url("../fonts/avenir_light.eot");
+          src: url("../fonts/avenir_light.woff2") format("woff2"),
+          url("../fonts/avenir_light.woff") format("woff"),
+          url("../fonts/avenir_light.ttf") format("truetype");
       }
 
       @font-face {
-          font-family: "Futura"; src: url("//db.onlinewebfonts.com/t/e8c6a63541de0a4211a9358cbe74690f.eot");
-          src: url("//db.onlinewebfonts.com/t/e8c6a63541de0a4211a9358cbe74690f.eot?#iefix") format("embedded-opentype"),
-          url("//db.onlinewebfonts.com/t/e8c6a63541de0a4211a9358cbe74690f.woff2") format("woff2"),
-          url("//db.onlinewebfonts.com/t/e8c6a63541de0a4211a9358cbe74690f.woff") format("woff"),
-          url("//db.onlinewebfonts.com/t/e8c6a63541de0a4211a9358cbe74690f.ttf") format("truetype"),
-          url("//db.onlinewebfonts.com/t/e8c6a63541de0a4211a9358cbe74690f.svg#Futura") format("svg");
+          font-family: "Futura"; src: url("../fonts/futura.eot");
+          src: url("../fonts/futura.woff2") format("woff2"),
+          url("../fonts/futura.ttf") format("truetype");
       }
       /* colors */
       :root {

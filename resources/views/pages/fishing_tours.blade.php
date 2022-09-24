@@ -6,6 +6,7 @@
         }
     </style>
 @endsection
+
 @section('content')
     <main>
         <h1 style="text-align: center">FISHING TOURS</h1>

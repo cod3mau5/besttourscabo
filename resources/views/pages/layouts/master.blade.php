@@ -17,7 +17,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap" rel="stylesheet">
 
         {{-- FONT AWESOME --}}
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"/>
 
         {{-- CUSTOM CSS --}}
         <link rel="stylesheet" href="assets/css/styles.css">
@@ -28,132 +28,11 @@
     <body>
         <div id="app">
 
-            {{-- HEADER MENU --}}
-            <header class="header" id="header">
-                <nav class="navbar container">
-                <a href="{{ url('/') }}" class="brand">
-                    <img class="logo" src="{{ asset('assets/img/logo_horizontal.png') }}">
-                </a>
-                <div class="burger" id="burger">
-                    <span class="burger-line"></span>
-                    <span class="burger-line"></span>
-                    <span class="burger-line"></span>
-                </div>
-                <div class="menu" id="menu">
-                    <ul class="menu-inner">
-
-                        <div class="menu-item dropdown-wrapper">
-                            <a class="menu-button">TOURS & ACTIVITIES</a>
-
-                            <div class="drop-menu">
-                                <li class="menu-item menu-button">
-                                    <a href="{{ route('traditional_arch_tour')}}">
-                                        TRADITIONAL ARCH TOUR
-                                    </a>
-                                </li>
-                                <li class="menu-item menu-button">
-                                    <a href="{{ route('whale_watching')}}">
-                                        WHALE WATCHING
-                                    </a>
-                                </li>
-                                <li class="menu-item menu-button">
-                                    <a href="{{ route('fishing_tours')}}">
-                                        FISHING TOURS
-                                    </a>
-                                </li>
-                                <li class="menu-item menu-button">
-                                    <a href="{{ route('sunset_at_sea')}}">
-                                        SUNSET AT SEA
-                                    </a>
-                                </li>
-                                <li class="menu-item menu-button">
-                                    <a href="{{ route('snorkel')}}">
-                                        SNORKEL
-                                    </a>
-                                </li>
-                            </div>
-                        </div>
-
-                        <li class="menu-item">
-                            <a href="{{ route('transportation')}}" class="item no-border menu-link">
-                                TRANSPORTATION
-                            </a>
-                        </li>
-
-                        <li class="menu-item">
-                            <a href="{{ route('about_us')}}" class="item no-border menu-link">
-                                ABOUT US
-                            </a>
-                        </li>
-
-                        <li class="menu-item">
-                            <a href="{{ route('contact')}}" class="item no-border menu-link">
-                                CONTACT
-                            </a>
-                        </li>
-
-                    </ul>
-                </div>
-                <button class="switch" id="switch">
-                    <i class="switch-light bx bx-sun"></i>
-                    <i class="switch-dark bx bx-moon"></i>
-                </button>
-                </nav>
-            </header>
+            @include('pages.sections.header')
 
             @yield('content')
 
-            {{-- FOOTER --}}
-            <footer>
-                <div class="ui container">
-                    <div class="ui stackable grid">
-                        <div class="eight wide column" id="contactus-footer">
-                            <div>
-                                <h3>Contact Us</h3>
-                                <p>Ask us what you want</p>
-                                <p>We are here for any question you have.</p>
-                                <p>Cabo san lucas, Baja California Sur, México.</p>
-                                <p><a href="tel:+52 1 624 132 3343"> office +52 1 624 132 3343</a></p>
-                                <p><a href="mailto:info@besttourscabo.com">info@besttourscabo.com</a></p>
-                            </div>
-                            <ul class="social-media">
-                                <li>
-                                    <a href="https://www.instagram.com/besttourscabo/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-                                </li>
-                                <li>
-                                    <a href="https://www.facebook.com/besttourscabo" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                                </li>
-                                <li>
-                                    <a href="https://www.youtube.com/" target="_blank"><i class="fab fa-youtube"></i></a>
-                                </li>
-                                <li>
-                                    <a href="https://www.tiktok.com/@besttourscabo" target="_blank"><i class="fab fa-tiktok"></i></a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="eight wide column" id="sendmail-footer">
-                            <h3>Send us an email</h3>
-                            <div class="ui form">
-                            </div>
-                            <div class="ui form">
-                                <div class="field">
-                                    <label>E-mail</label>
-                                    <input type="email" placeholder="example@mail.com">
-                                </div>
-                                {{-- <div class="ui error message">
-                                    <div class="header">Action Forbidden</div>
-                                    <p>You can only sign up for an account once with a given e-mail address.</p>
-                                </div> --}}
-                                <div class="field">
-                                    <label>Mesage</label>
-                                    <textarea placeholder="Write your message here"></textarea>
-                                </div>
-                                <div class="ui submit button">Send</div>
-                                </div>
-                        </div>
-                    </div>
-                </div>
-            </footer>
+            @include('pages.sections.footer')
 
         </div>
         {{--  #app --}}
@@ -200,16 +79,16 @@
             });
 
             $('.slider-hero').slick({
-            infinite: true,
-            speed: 500,
-            fade: true,
-            cssEase: 'linear',
-            autoplay: true,
-            autoplaySpeed: 4000,
-            pauseOnHover: false,
-            dots: false,
-            prevArrow: false,
-            nextArrow: false
+                infinite: true,
+                speed: 500,
+                fade: true,
+                cssEase: 'linear',
+                autoplay: true,
+                autoplaySpeed: 4000,
+                pauseOnHover: false,
+                dots: false,
+                prevArrow: false,
+                nextArrow: false
             });
 
         });
