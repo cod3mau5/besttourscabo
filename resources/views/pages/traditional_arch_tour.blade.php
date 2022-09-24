@@ -59,6 +59,7 @@
             counter-reset: wizard;
             width: 100%;
             margin: 10px auto;
+            z-index: 100;
         }
 
         .steps li {
@@ -130,8 +131,8 @@
                 position: fixed;
                 margin: 0!important;
                 width: calc(100% - 20px);
-                z-index: 11;
                 width: 100%;
+                z-index: 100;
             }
 
             .button-container button{
@@ -141,6 +142,7 @@
                 box-shadow: 3px 3px 29px 11px #FFF!important;
                 -webkit-box-shadow: 3px 3px 29px 11px #FFF!important;
                 -moz-box-shadow: 3px 3px 29px 11px #FFF!important;
+                z-index: 200;
             }
         }
         @media only screen and (max-width:480px) {}
