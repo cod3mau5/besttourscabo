@@ -21,10 +21,23 @@
             background: radial-gradient(circle, var(--main_orange) 10%, var(--secondary_orange) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: -3px 6px 5px rgb(0 0 0 / 13%);
             margin: 0;
             font-size: 42px;
-            background-color: var(--main_blue);
         }
+        .tour-title:before{
+            bottom: 2px;
+            color: #023047;
+            content: attr(title);
+            left: 9px;
+            position: absolute;
+            text-shadow: none;
+            transform-origin: bottom left;
+            transform: skew(20deg) scale(1, 0.95);
+            z-index: -1;
+        }
+
         .grid-gallery > div{
             width: 100%;
             height: 250px;
@@ -264,7 +277,7 @@
                     <div class="column">Amenities</div>
                     <div class="column">
                         Price
-                        <p class="card-price">1250 р.</p>
+                        <p class="card-price"><b>$1,250 usd</b></p>
                     </div>
                 </div>
             </div>
