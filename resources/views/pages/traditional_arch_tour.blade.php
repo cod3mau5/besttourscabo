@@ -49,6 +49,71 @@
             }
 
         }
+      /*====================================
+          STEPS
+      ====================================*/
+        .steps {
+            background-color: white;
+            position: relative;
+            overflow: hidden;
+            counter-reset: wizard;
+            width: 100%;
+            margin: 10px auto;
+        }
+
+        .steps li {
+            position: relative;
+            float: left;
+            width: 33.3%;
+            text-align: center;
+            color: var(--main_blue);
+            font-weight: bolder;
+        }
+
+        .current ~ li {
+            color: black;
+        }
+
+        .steps li:before {
+            font-weight: bolder;
+            counter-increment: wizard;
+            content: counter(wizard);
+            display: block;
+            color: var(--main_blue);
+            background-color: var(--main_orange);
+            border: 2px solid var(--main_orange);
+            text-align: center;
+            width: 2em;
+            height: 2em;
+            line-height: 2em;
+            border-radius: 2em;
+            position: relative;
+            left: 50%;
+            margin-bottom: 1em;
+            margin-left: -1em;
+            z-index: 1;
+        }
+        .current ~ li:before {
+            background-color: var(--main_blue);
+            color: #FFF;
+            border-color: var(--main_blue);
+        }
+
+        .steps li + li:after {
+            content: "";
+            display: block;
+            width: 100%;
+            background-color: var(--main_orange);
+            height: 2px;
+            position: absolute;
+            left: -50%;
+            top: 1em;
+            z-index: 0;
+        }
+
+        .current ~ li:after {
+        background-color: #555;
+        }
 
         @media only screen and (min-width:1200px) {}
         @media only screen and (min-width:1100px) {}
@@ -59,6 +124,24 @@
                 margin-left:0px!important;
                 margin-right:0px!important;
             }
+            .button-container{
+                bottom: 10px;
+                padding: 10px;
+                position: fixed;
+                margin: 0!important;
+                width: calc(100% - 20px);
+                z-index: 11;
+                width: 100%;
+            }
+
+            .button-container button{
+                background-color: var(--main_blue)!important;
+                color: white !important;;
+                width: 100%;
+                box-shadow: 3px 3px 29px 11px #FFF!important;
+                -webkit-box-shadow: 3px 3px 29px 11px #FFF!important;
+                -moz-box-shadow: 3px 3px 29px 11px #FFF!important;
+            }
         }
         @media only screen and (max-width:480px) {}
         @media only screen and (max-width:320px) {}
@@ -68,17 +151,26 @@
 @section('content')
     <main id="traditional_arch_tour">
         <div class="ui container">
-            <h2 class="tour-title">TRADITIONAL ARCH TOUR</h2>
+
 
             <div class="swiper mySwiper">
                 <div class="grid-gallery swiper-wrapper">
-                    <div class="swiper-slide" style="background-image:url('assets/img/tours/traditional_arch_tour/img_1.jpg')"></div>
+                    <div class="swiper-slide" style="background-image:url('assets/img/tours/traditional_arch_tour/img_1.webp')"></div>
                     <div class="swiper-slide" style="background-image:url('assets/img/tours/traditional_arch_tour/img_2.jpg')"></div>
                     <div class="swiper-slide" style="background-image:url('assets/img/tours/traditional_arch_tour/img_3.jpg')"></div>
                     <div class="swiper-slide" style="background-image:url('assets/img/tours/traditional_arch_tour/img_4.jpg')"></div>
                 </div>
                 <div class="swiper-pagination"></div>
             </div>
+
+            <ol class="steps">
+                <li class="current">Details</li>
+                <li class="">Selection</li>
+                <li class="">Date</li>
+            </ol>
+
+            <h2 class="tour-title">TRADITIONAL ARCH TOUR</h2>
+
 
             <div class="description">
                 {{-- <h1>Descripción</h1>
@@ -94,6 +186,14 @@
                     Once the tour ends, you will have the option, if you wish, to stay as long as you like at Playa del Amor, where you can walk, swim or sunbathe. You can return in any of the boats that come back to the marina every hour, the last one being at 5 or 6pm depending on the season.
                 </p>
             </div>
+
+            <div class="button-container">
+                <button class="ui right labeled icon button">
+                    <i class="right arrow icon"></i>
+                    Next
+                </button>
+            </div>
+
         </div>
     </main>
 @endsection
@@ -108,7 +208,7 @@
 
         function mobil() {
             $('.grid-gallery').html(`
-                <div class="swiper-slide" style="background-image:url('assets/img/tours/traditional_arch_tour/img_1.jpg')"></div>
+                <div class="swiper-slide" style="background-image:url('assets/img/tours/traditional_arch_tour/img_1.webp')"></div>
                 <div class="swiper-slide" style="background-image:url('assets/img/tours/traditional_arch_tour/img_2.jpg')"></div>
                 <div class="swiper-slide" style="background-image:url('assets/img/tours/traditional_arch_tour/img_3.jpg')"></div>
                 <div class="swiper-slide" style="background-image:url('assets/img/tours/traditional_arch_tour/img_4.jpg')"></div>
@@ -126,7 +226,7 @@
             var swiper = new Swiper(".mySwiper");
             swiper.destroy();
             $('.grid-gallery').html(`
-                <div style="background-image:url('assets/img/tours/traditional_arch_tour/img_1.jpg')"></div>
+                <div style="background-image:url('assets/img/tours/traditional_arch_tour/img_1.webp')"></div>
                 <div style="background-image:url('assets/img/tours/traditional_arch_tour/img_2.jpg')"></div>
                 <div style="background-image:url('assets/img/tours/traditional_arch_tour/img_3.jpg')"></div>
                 <div style="background-image:url('assets/img/tours/traditional_arch_tour/img_4.jpg')"></div>
