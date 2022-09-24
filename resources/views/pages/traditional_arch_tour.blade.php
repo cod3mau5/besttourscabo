@@ -22,6 +22,24 @@
             background-size: cover;
         }
 
+        .shadow-image {
+            bottom: 0;
+            z-index: 2;
+            width: 100%;
+            height: 70px;
+            position: absolute;
+            background-image: linear-gradient(to bottom,rgba(0,0,0,0),rgba(0,0,0,.77));
+        }
+        .swiper-pagination-bullet{
+            background:#FFF;
+            opacity:1;
+        }
+        .swiper-pagination-bullet-active{
+            background: var(--main_orange)!important;
+        }
+        .swiper-horizontal>.swiper-pagination-bullets, .swiper-pagination-bullets.swiper-pagination-horizontal, .swiper-pagination-custom, .swiper-pagination-fraction{
+            bottom: 1px !important;
+        }
         @media(min-width: 920px){
             .grid-gallery > div{
                 width: unset;
@@ -112,7 +130,7 @@
             position: absolute;
             left: -50%;
             top: 1em;
-            z-index: 10;
+            z-index: 5;
         }
 
         .current ~ li:after {
@@ -158,10 +176,18 @@
 
             <div class="swiper mySwiper">
                 <div class="grid-gallery swiper-wrapper">
-                    <div class="swiper-slide" style="background-image:url('assets/img/tours/traditional_arch_tour/img_1.webp')"></div>
-                    <div class="swiper-slide" style="background-image:url('assets/img/tours/traditional_arch_tour/img_2.jpg')"></div>
-                    <div class="swiper-slide" style="background-image:url('assets/img/tours/traditional_arch_tour/img_3.jpg')"></div>
-                    <div class="swiper-slide" style="background-image:url('assets/img/tours/traditional_arch_tour/img_4.jpg')"></div>
+                    <div class="swiper-slide" style="background-image:url('assets/img/tours/traditional_arch_tour/img_1.webp')">
+                        <div class="shadow-image"></div>
+                    </div>
+                    <div class="swiper-slide" style="background-image:url('assets/img/tours/traditional_arch_tour/img_2.jpg')">
+                        <div class="shadow-image"></div>
+                    </div>
+                    <div class="swiper-slide" style="background-image:url('assets/img/tours/traditional_arch_tour/img_3.jpg')">
+                        <div class="shadow-image"></div>
+                    </div>
+                    <div class="swiper-slide" style="background-image:url('assets/img/tours/traditional_arch_tour/img_4.jpg')">
+                        <div class="shadow-image"></div>
+                    </div>
                 </div>
                 <div class="swiper-pagination"></div>
             </div>
@@ -211,10 +237,18 @@
 
         function mobil() {
             $('.grid-gallery').html(`
-                <div class="swiper-slide" style="background-image:url('assets/img/tours/traditional_arch_tour/img_1.webp')"></div>
-                <div class="swiper-slide" style="background-image:url('assets/img/tours/traditional_arch_tour/img_2.jpg')"></div>
-                <div class="swiper-slide" style="background-image:url('assets/img/tours/traditional_arch_tour/img_3.jpg')"></div>
-                <div class="swiper-slide" style="background-image:url('assets/img/tours/traditional_arch_tour/img_4.jpg')"></div>
+                <div class="swiper-slide" style="background-image:url('assets/img/tours/traditional_arch_tour/img_1.webp')">
+                    <div class="shadow-image"></div>
+                </div>
+                <div class="swiper-slide" style="background-image:url('assets/img/tours/traditional_arch_tour/img_2.jpg')">
+                    <div class="shadow-image"></div>
+                </div>
+                <div class="swiper-slide" style="background-image:url('assets/img/tours/traditional_arch_tour/img_3.jpg')">
+                    <div class="shadow-image"></div>
+                </div>
+                <div class="swiper-slide" style="background-image:url('assets/img/tours/traditional_arch_tour/img_4.jpg')">
+                    <div class="shadow-image"></div>
+                </div>
             `);
             var swiper = new Swiper(".mySwiper", {
                 pagination: {
