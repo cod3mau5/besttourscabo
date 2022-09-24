@@ -59,7 +59,6 @@
             counter-reset: wizard;
             width: 100%;
             margin: 10px auto;
-            z-index: 100;
         }
 
         .steps li {
@@ -92,7 +91,7 @@
             left: 50%;
             margin-bottom: 1em;
             margin-left: -1em;
-            z-index: 1;
+            z-index: 100;
         }
         .current ~ li:before {
             background-color: var(--main_blue);
@@ -109,7 +108,7 @@
             position: absolute;
             left: -50%;
             top: 1em;
-            z-index: 0;
+            z-index: 10;
         }
 
         .current ~ li:after {
@@ -130,9 +129,8 @@
                 padding: 10px;
                 position: fixed;
                 margin: 0!important;
-                width: calc(100% - 20px);
                 width: 100%;
-                z-index: 9999;
+                z-index: 11;
             }
 
             .button-container button{
@@ -142,7 +140,6 @@
                 box-shadow: 3px 3px 29px 11px #FFF!important;
                 -webkit-box-shadow: 3px 3px 29px 11px #FFF!important;
                 -moz-box-shadow: 3px 3px 29px 11px #FFF!important;
-                z-index: 99999;
             }
         }
         @media only screen and (max-width:480px) {}
