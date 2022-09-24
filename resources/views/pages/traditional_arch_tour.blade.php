@@ -113,7 +113,7 @@
             left: 50%;
             margin-bottom: 1em;
             margin-left: -1em;
-            z-index: 5;
+            z-index: 6;
         }
         .current ~ li:before {
             background-color: var(--main_blue);
