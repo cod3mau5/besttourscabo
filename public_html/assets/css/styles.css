@@ -403,14 +403,14 @@ MEDIA QUERIES
         flex-direction: column;
     }
     .navbar{
-        padding: 0 1.2rem!important;
+        padding: 0 2.3rem!important;
     }
     .logo{
         height: auto!important;
-        width: 200px!important;
+        width: 185px!important;
     }
     .header{
-        height: 93px;
+        height: 85px;
     }
 }
 
@@ -497,8 +497,8 @@ MEDIA QUERIES
 
 /* Main */
 .main {
-    margin: 0 auto;
-    padding: 115px 0px 0px 0px;
+    margin: 87.7px auto 0 auto;
+    padding: 0px;
 }
 
 /* Slider */

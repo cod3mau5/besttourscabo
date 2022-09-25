@@ -13,7 +13,7 @@
           --secondary_orange:#ff7e00;
         }
         main{
-            margin-top: 115px;
+            margin-top: 100px;
         }
         .tour-title {
             text-align: center!important;
