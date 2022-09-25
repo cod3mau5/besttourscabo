@@ -289,7 +289,7 @@
                 position: sticky;
                 left: 0px;
                 margin: 0!important;
-                bottom: 8%;
+                bottom: 50px;
                 width: 100%;
                 height: auto;
                 z-index: 11;
