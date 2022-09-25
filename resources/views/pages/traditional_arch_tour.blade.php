@@ -284,7 +284,7 @@ background: radial-gradient(circle, rgba(246,246,246,1) 32%, rgba(246,246,246,0.
                 margin-right:0px!important;
             }
             .button-container{
-                padding: 0 10px 7px 10px;
+                padding: 3rem 10px 7px 10px;
                 position: sticky;
                 left: 0px;
                 margin: 0!important;
@@ -299,7 +299,7 @@ background: radial-gradient(circle, rgba(246,246,246,1) 32%, rgba(246,246,246,0.
                 box-shadow: 3px 3px 29px 11px #FFF!important;
                 -webkit-box-shadow: 3px 3px 29px 11px #FFF!important;
                 -moz-box-shadow: 3px 3px 29px 11px #FFF!important;
-                margin: 2rem 0 10px 0!important;
+                margin: 0!important;
             }
             #price p:nth-child(2){
                 position: relative;
