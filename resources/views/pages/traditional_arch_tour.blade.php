@@ -15,6 +15,9 @@
         main{
             margin-top: 100px;
         }
+        #traditional_arch_tour .ui.container > div{
+            position: relative;
+        }
         .tour-title {
             text-align: center!important;
             font-family: 'Work Sans', sans-serif;
@@ -238,9 +241,10 @@
                 margin-right:0px!important;
             }
             .button-container{
-                bottom: 10px;
                 padding: 10px;
-                position: fixed;
+                position: sticky;
+                left: 0px;
+                bottom: 60px;
                 margin: 0!important;
                 width: 100%;
                 z-index: 11;
@@ -251,6 +255,8 @@
                 box-shadow: 3px 3px 29px 11px #FFF!important;
                 -webkit-box-shadow: 3px 3px 29px 11px #FFF!important;
                 -moz-box-shadow: 3px 3px 29px 11px #FFF!important;
+                margin-left: 0px!important;
+                margin-right: 0px!important;
             }
         }
         @media only screen and (max-width:480px) {}
@@ -261,105 +267,105 @@
 @section('content')
     <main id="traditional_arch_tour">
         <div class="ui container">
+            <div>
+                <h2 class="tour-title">TRADITIONAL ARCH TOUR</h2>
 
-            <h2 class="tour-title">TRADITIONAL ARCH TOUR</h2>
-
-            <div class="swiper mySwiper">
-                <div class="grid-gallery swiper-wrapper">
-                    <div class="swiper-slide" style="background-image:url('assets/img/tours/traditional_arch_tour/img_1.webp')">
-                        <div class="shadow-image"></div>
+                <div class="swiper mySwiper">
+                    <div class="grid-gallery swiper-wrapper">
+                        <div class="swiper-slide" style="background-image:url('assets/img/tours/traditional_arch_tour/img_1.webp')">
+                            <div class="shadow-image"></div>
+                        </div>
+                        <div class="swiper-slide" style="background-image:url('assets/img/tours/traditional_arch_tour/img_2.jpg')">
+                            <div class="shadow-image"></div>
+                        </div>
+                        <div class="swiper-slide" style="background-image:url('assets/img/tours/traditional_arch_tour/img_3.jpg')">
+                            <div class="shadow-image"></div>
+                        </div>
+                        <div class="swiper-slide" style="background-image:url('assets/img/tours/traditional_arch_tour/img_4.jpg')">
+                            <div class="shadow-image"></div>
+                        </div>
                     </div>
-                    <div class="swiper-slide" style="background-image:url('assets/img/tours/traditional_arch_tour/img_2.jpg')">
-                        <div class="shadow-image"></div>
-                    </div>
-                    <div class="swiper-slide" style="background-image:url('assets/img/tours/traditional_arch_tour/img_3.jpg')">
-                        <div class="shadow-image"></div>
-                    </div>
-                    <div class="swiper-slide" style="background-image:url('assets/img/tours/traditional_arch_tour/img_4.jpg')">
-                        <div class="shadow-image"></div>
-                    </div>
+                    <div class="swiper-pagination"></div>
                 </div>
-                <div class="swiper-pagination"></div>
-            </div>
 
-            <ol class="steps">
-                <li class="current">Details</li>
-                <li class="">Selection</li>
-                <li class="">Date</li>
-            </ol>
-            <div class="ui two column grid" id="amenities_price">
-                <div class="row">
-                    <div class="column">
-                        <p>Amenities</p>
-                        <div class="ui two column grid">
-                            <div class="row">
-                                <div class="column"><i class="fa-solid fa-fish-fins"></i> food & drinks</div>
-                                <div class="column"><i class="fa-solid fa-fish-fins"></i> food & drinks</div>
-                                <div class="column"><i class="fa-solid fa-fish-fins"></i> food & drinks</div>
-                                <div class="column"><i class="fa-solid fa-fish-fins"></i> food & drinks</div>
-                                <div class="column"><i class="fa-solid fa-fish-fins"></i> food & drinks</div>
-                                <div class="column"><i class="fa-solid fa-fish-fins"></i> food & drinks</div>
+                <ol class="steps">
+                    <li class="current">Details</li>
+                    <li class="">Selection</li>
+                    <li class="">Date</li>
+                </ol>
+                <div class="ui two column grid" id="amenities_price">
+                    <div class="row">
+                        <div class="column">
+                            <p>Amenities</p>
+                            <div class="ui two column grid">
+                                <div class="row">
+                                    <div class="column"><i class="fa-solid fa-fish-fins"></i> food & drinks</div>
+                                    <div class="column"><i class="fa-solid fa-fish-fins"></i> food & drinks</div>
+                                    <div class="column"><i class="fa-solid fa-fish-fins"></i> food & drinks</div>
+                                    <div class="column"><i class="fa-solid fa-fish-fins"></i> food & drinks</div>
+                                    <div class="column"><i class="fa-solid fa-fish-fins"></i> food & drinks</div>
+                                    <div class="column"><i class="fa-solid fa-fish-fins"></i> food & drinks</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column" id="price">
+                            <p>Price</p>
+                            <div class="ui two column stackable grid">
+                                <div class="row">
+                                    <div class="column">Price per person</div>
+                                    <div class="column"><p class="card-price"><b>$1,250 usd</b></p></div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="column" id="price">
-                        <p>Price</p>
-                        <div class="ui two column stackable grid">
-                            <div class="row">
-                                <div class="column">Price per person</div>
-                                <div class="column"><p class="card-price"><b>$1,250 usd</b></p></div>
-                            </div>
+                </div>
+                <div class="description">
+                    {{-- <h1>Descripción</h1>
+                    <p class="tour-description">
+                        Uno de los Paseos Más Sencillos y Agradables de Cabo!...<br>
+                        Durante este paseo visitamos la famosa formación rocosa de Cabo San Lucas "El Arco", junto con otros puntos atractivos de esa zona como lo son: la colonia de leones marinos, La Roca del Pelícano, El Dedo de Neptuno, La Playa del Amor y del Divorcio y sus alrededores. Tendrá la oportunidad de observar algunas de las especies marinas que habitan este pedacito de mar.<br><br>
+                        Una vez que el paseo finaliza, usted tendrá la opción si lo desea, de quedarse el tiempo que guste en la Playa del Amor, donde podrá caminar, nadar o asolearse. Usted podrá regresar en cualquiera de las lanchas que vienen de regreso a la marina cada hora, la última que es a las 5 o 6pm dependiendo la temporada.
+                    </p> --}}
+                    <h1>About this tour</h1>
+                    <p class="tour-description">
+
+                    </p>
+                    <div class="ui styled fluid accordion">
+                        <div class="title active">
+                        <i class="dropdown icon"></i>
+                        Tour description
+                        </div>
+                        <div class="content active">
+                        <p class="transition visible">
+                            One of the Easiest and Most Pleasant Tours in Cabo!...<br>
+                            During this tour we visit the famous rock formation of Cabo San Lucas "El Arco", along with other attractive points in that area such as: the sea lion colony, Pelican Rock, Neptune's Finger, Love Beach and of Divorce and its surroundings. You will have the opportunity to observe some of the marine species that inhabit this little piece of the sea.<br><br>
+                            Once the tour ends, you will have the option, if you wish, to stay as long as you like at Playa del Amor, where you can walk, swim or sunbathe. You can return in any of the boats that come back to the marina every hour, the last one being at 5 or 6pm depending on the season.</p>
+                        </div>
+                        <div class="title">
+                        <i class="dropdown icon"></i>
+                        What kinds of dogs are there?
+                        </div>
+                        <div class="content">
+                        <p class="transition hidden">There are many breeds of dogs. Each breed varies in size and temperament. Owners often select a breed of dog that they find to be compatible with their own lifestyle and desires from a companion.</p>
+                        </div>
+                        <div class="title">
+                        <i class="dropdown icon"></i>
+                        How do you acquire a dog?
+                        </div>
+                        <div class="content">
+                        <p class="transition hidden">Three common ways for a prospective owner to acquire a dog is from pet shops, private owners, or shelters.</p>
+                        <p class="transition hidden">A pet shop may be the most convenient way to buy a dog. Buying a dog from a private owner allows you to assess the pedigree and upbringing of your dog before choosing to take it home. Lastly, finding your dog from a shelter, helps give a good home to a dog who may not find one so readily.</p>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="description">
-                {{-- <h1>Descripción</h1>
-                <p class="tour-description">
-                    Uno de los Paseos Más Sencillos y Agradables de Cabo!...<br>
-                    Durante este paseo visitamos la famosa formación rocosa de Cabo San Lucas "El Arco", junto con otros puntos atractivos de esa zona como lo son: la colonia de leones marinos, La Roca del Pelícano, El Dedo de Neptuno, La Playa del Amor y del Divorcio y sus alrededores. Tendrá la oportunidad de observar algunas de las especies marinas que habitan este pedacito de mar.<br><br>
-                    Una vez que el paseo finaliza, usted tendrá la opción si lo desea, de quedarse el tiempo que guste en la Playa del Amor, donde podrá caminar, nadar o asolearse. Usted podrá regresar en cualquiera de las lanchas que vienen de regreso a la marina cada hora, la última que es a las 5 o 6pm dependiendo la temporada.
-                </p> --}}
-                <h1>About this tour</h1>
-                <p class="tour-description">
 
-                </p>
-                <div class="ui styled fluid accordion">
-                    <div class="title active">
-                      <i class="dropdown icon"></i>
-                      Tour description
-                    </div>
-                    <div class="content active">
-                      <p class="transition visible">
-                        One of the Easiest and Most Pleasant Tours in Cabo!...<br>
-                        During this tour we visit the famous rock formation of Cabo San Lucas "El Arco", along with other attractive points in that area such as: the sea lion colony, Pelican Rock, Neptune's Finger, Love Beach and of Divorce and its surroundings. You will have the opportunity to observe some of the marine species that inhabit this little piece of the sea.<br><br>
-                        Once the tour ends, you will have the option, if you wish, to stay as long as you like at Playa del Amor, where you can walk, swim or sunbathe. You can return in any of the boats that come back to the marina every hour, the last one being at 5 or 6pm depending on the season.</p>
-                    </div>
-                    <div class="title">
-                      <i class="dropdown icon"></i>
-                      What kinds of dogs are there?
-                    </div>
-                    <div class="content">
-                      <p class="transition hidden">There are many breeds of dogs. Each breed varies in size and temperament. Owners often select a breed of dog that they find to be compatible with their own lifestyle and desires from a companion.</p>
-                    </div>
-                    <div class="title">
-                      <i class="dropdown icon"></i>
-                      How do you acquire a dog?
-                    </div>
-                    <div class="content">
-                      <p class="transition hidden">Three common ways for a prospective owner to acquire a dog is from pet shops, private owners, or shelters.</p>
-                      <p class="transition hidden">A pet shop may be the most convenient way to buy a dog. Buying a dog from a private owner allows you to assess the pedigree and upbringing of your dog before choosing to take it home. Lastly, finding your dog from a shelter, helps give a good home to a dog who may not find one so readily.</p>
-                    </div>
-                  </div>
+                <div class="button-container">
+                    <button class="ui right labeled icon button">
+                        <i class="right arrow icon"></i>
+                        Next Step
+                    </button>
+                </div>
             </div>
-
-            <div class="button-container">
-                <button class="ui right labeled icon button">
-                    <i class="right arrow icon"></i>
-                    Next Step
-                </button>
-            </div>
-
         </div>
     </main>
 @endsection

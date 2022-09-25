@@ -403,7 +403,7 @@ MEDIA QUERIES
         flex-direction: column;
     }
     .navbar{
-        padding: 0 2.3rem!important;
+        padding: 0 1.2rem!important;
     }
     .logo{
         height: auto!important;
@@ -801,7 +801,10 @@ MEDIA QUERIES
     height: 300px;
 }
 footer{
-    padding: 2.5rem 0!important;
+    padding: 3.5rem 0 2rem 0!important;
+}
+footer .ui.container .ui.stackable.grid{
+    width: 100%;
 }
 footer p,
 footer h3{
