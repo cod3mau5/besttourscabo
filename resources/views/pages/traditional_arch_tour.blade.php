@@ -16,9 +16,9 @@
             background: rgb(246,246,246);
             background: radial-gradient(circle, rgba(246,246,246,1) 32%, rgba(246,246,246,0.6839110644257703) 63%, rgba(219,219,219,0.40940126050420167) 81%, rgba(68,68,68,0.4234068627450981) 100%);
             padding-top: 100px;
+            padding-bottom: 100px;
         }
-        #traditional_arch_tour .ui.container .relative{
-            position: relative;
+        #traditional_arch_tour .ui.container .father_sticky{
             padding: 0 7px;
         }
         .tour-title {
@@ -260,8 +260,6 @@
             top: 17px;
         }
 
-
-
         .description .title{
             text-align: center;
             padding-left: 10px!important;
@@ -274,6 +272,11 @@
             float: right;
             background-color: var(--secondary_orange)!important;
             color: white !important;
+            margin-top:30px!important;
+        }
+
+        footer {
+            padding: 3.5rem 0!important;
         }
         @media only screen and (min-width:1200px) {}
         @media only screen and (min-width:1100px) {}
@@ -286,14 +289,11 @@
             }
 
             .button-container{
-                position: sticky!important;
-                left: 0px;
+                position: fixed!important;
                 bottom: 7px;
                 z-index: 11;
-                width: 100%;
-                box-shadow: 3px 3px 29px 11px #FFF!important;
-                -webkit-box-shadow: 3px 3px 29px 11px #FFF!important;
-                -moz-box-shadow: 3px 3px 29px 11px #FFF!important;
+                width: 96%;
+                height: 41.3px!important;
                 margin: 0 auto!important;
             }
             #price p:nth-child(2){
@@ -330,7 +330,7 @@
                 </div>
                 <div class="swiper-pagination"></div>
             </div>
-            <div class="relative">
+            <div class="father_sticky">
 
                 <ol class="steps">
                     <li class="current">Details</li>
