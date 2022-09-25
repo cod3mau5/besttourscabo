@@ -9,13 +9,13 @@
     <style>
         :root{
             --main_blue:#023047;
-          --main_orange:#ffb703;
-          --secondary_orange:#ff7e00;
+            --main_orange:#ffb703;
+            --secondary_orange:#ff7e00;
         }
         main{
             margin-top: 100px;
         }
-        #traditional_arch_tour .ui.container > div{
+        #traditional_arch_tour .ui.container .relative{
             position: relative;
         }
         .tour-title {
@@ -228,7 +228,7 @@
         .button-container button{
             float: right;
             margin-top: 1rem!important;
-            background-color: var(--main_blue)!important;
+            background-color: var(--secondary_orange)!important;
             color: white !important;
         }
         @media only screen and (min-width:1200px) {}
@@ -267,32 +267,34 @@
 @section('content')
     <main id="traditional_arch_tour">
         <div class="ui container">
-            <div>
-                <h2 class="tour-title">TRADITIONAL ARCH TOUR</h2>
 
-                <div class="swiper mySwiper">
-                    <div class="grid-gallery swiper-wrapper">
-                        <div class="swiper-slide" style="background-image:url('assets/img/tours/traditional_arch_tour/img_1.webp')">
-                            <div class="shadow-image"></div>
-                        </div>
-                        <div class="swiper-slide" style="background-image:url('assets/img/tours/traditional_arch_tour/img_2.jpg')">
-                            <div class="shadow-image"></div>
-                        </div>
-                        <div class="swiper-slide" style="background-image:url('assets/img/tours/traditional_arch_tour/img_3.jpg')">
-                            <div class="shadow-image"></div>
-                        </div>
-                        <div class="swiper-slide" style="background-image:url('assets/img/tours/traditional_arch_tour/img_4.jpg')">
-                            <div class="shadow-image"></div>
-                        </div>
+            <h2 class="tour-title">TRADITIONAL ARCH TOUR</h2>
+
+            <div class="swiper mySwiper">
+                <div class="grid-gallery swiper-wrapper">
+                    <div class="swiper-slide" style="background-image:url('assets/img/tours/traditional_arch_tour/img_1.webp')">
+                        <div class="shadow-image"></div>
                     </div>
-                    <div class="swiper-pagination"></div>
+                    <div class="swiper-slide" style="background-image:url('assets/img/tours/traditional_arch_tour/img_2.jpg')">
+                        <div class="shadow-image"></div>
+                    </div>
+                    <div class="swiper-slide" style="background-image:url('assets/img/tours/traditional_arch_tour/img_3.jpg')">
+                        <div class="shadow-image"></div>
+                    </div>
+                    <div class="swiper-slide" style="background-image:url('assets/img/tours/traditional_arch_tour/img_4.jpg')">
+                        <div class="shadow-image"></div>
+                    </div>
                 </div>
+                <div class="swiper-pagination"></div>
+            </div>
+            <div class="relative">
 
                 <ol class="steps">
                     <li class="current">Details</li>
                     <li class="">Selection</li>
                     <li class="">Date</li>
                 </ol>
+
                 <div class="ui two column grid" id="amenities_price">
                     <div class="row">
                         <div class="column">
@@ -319,6 +321,7 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="description">
                     {{-- <h1>Descripción</h1>
                     <p class="tour-description">
@@ -331,12 +334,12 @@
 
                     </p>
                     <div class="ui styled fluid accordion">
-                        <div class="title active">
+                        <div class="title">
                         <i class="dropdown icon"></i>
                         Tour description
                         </div>
-                        <div class="content active">
-                        <p class="transition visible">
+                        <div class="content">
+                        <p class="transition hidden">
                             One of the Easiest and Most Pleasant Tours in Cabo!...<br>
                             During this tour we visit the famous rock formation of Cabo San Lucas "El Arco", along with other attractive points in that area such as: the sea lion colony, Pelican Rock, Neptune's Finger, Love Beach and of Divorce and its surroundings. You will have the opportunity to observe some of the marine species that inhabit this little piece of the sea.<br><br>
                             Once the tour ends, you will have the option, if you wish, to stay as long as you like at Playa del Amor, where you can walk, swim or sunbathe. You can return in any of the boats that come back to the marina every hour, the last one being at 5 or 6pm depending on the season.</p>
@@ -365,6 +368,7 @@
                         Next Step
                     </button>
                 </div>
+
             </div>
         </div>
     </main>
