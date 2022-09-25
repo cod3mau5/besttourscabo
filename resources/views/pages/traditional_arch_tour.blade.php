@@ -19,6 +19,7 @@
         }
         #traditional_arch_tour .ui.container .relative{
             position: relative;
+            padding: 0 7px;
         }
         .tour-title {
             text-align: center!important;
@@ -269,7 +270,7 @@
         .description #what_to_know{
             padding-bottom: 1rem;
         }
-        .button-container button{
+        .button-container {
             float: right;
             background-color: var(--secondary_orange)!important;
             color: white !important;
@@ -283,23 +284,17 @@
                 margin-left:0px!important;
                 margin-right:0px!important;
             }
-            .button-container{
-                padding: 0 5px;
-                position: sticky;
-                left: 0px;
-                margin: 0!important;
-                bottom: 50px;
-                width: 100%;
-                height: auto;
-                z-index: 11;
-            }
 
-            .button-container button{
+            .button-container{
+                position: sticky!important;
+                left: 0px;
+                bottom: 7px;
+                z-index: 11;
                 width: 100%;
                 box-shadow: 3px 3px 29px 11px #FFF!important;
                 -webkit-box-shadow: 3px 3px 29px 11px #FFF!important;
                 -moz-box-shadow: 3px 3px 29px 11px #FFF!important;
-                margin: 0!important;
+                margin: 0 auto!important;
             }
             #price p:nth-child(2){
                 position: relative;
@@ -464,12 +459,12 @@
                 </div>
 
 
-                <div class="button-container">
-                    <button class="ui right labeled icon button">
+
+                    <button class="ui right labeled icon button-container button">
                         <i class="right arrow icon"></i>
                         Next Step
                     </button>
-                </div>
+
 
             </div>
         </div>
