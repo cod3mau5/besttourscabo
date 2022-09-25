@@ -266,7 +266,9 @@
             padding-left: 10px!important;
             padding-right: 10px!important;
         }
-
+        .description #what_to_know{
+            padding-bottom: 1rem;
+        }
         .button-container button{
             float: right;
             margin-top: 1rem!important;
@@ -283,11 +285,11 @@
                 margin-right:0px!important;
             }
             .button-container{
-                padding: 3rem 10px 3rem 10px;
+                padding: 0 5px;
                 position: sticky;
                 left: 0px;
                 margin: 0!important;
-                bottom: 11%;
+                bottom: 8%;
                 width: 100%;
                 height: auto;
                 z-index: 11;
@@ -404,7 +406,7 @@
                     </p> --}}
                     <h3 class="title">About this tour</h1>
 
-                    <div class="ui styled fluid accordion">
+                    <div class="ui styled fluid accordion" id="about_tour">
                         <div class="title">
                         <i class="dropdown icon"></i>
                         Tour description
@@ -433,7 +435,7 @@
                     </div>
 
                     <h3 class="title">What to know before buying</h3>
-                    <div class="ui styled fluid accordion">
+                    <div class="ui styled fluid accordion" id="what_to_know">
                         <div class="title">
                         <i class="dropdown icon"></i>
                         Tour description
