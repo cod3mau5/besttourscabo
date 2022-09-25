@@ -271,7 +271,6 @@
         }
         .button-container button{
             float: right;
-            margin-top: 1rem!important;
             background-color: var(--secondary_orange)!important;
             color: white !important;
         }
