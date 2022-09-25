@@ -14,9 +14,8 @@
         }
         main{
             background: rgb(246,246,246);
-background: radial-gradient(circle, rgba(246,246,246,1) 32%, rgba(246,246,246,0.6839110644257703) 63%, rgba(219,219,219,0.40940126050420167) 81%, rgba(68,68,68,0.4234068627450981) 100%);
+            background: radial-gradient(circle, rgba(246,246,246,1) 32%, rgba(246,246,246,0.6839110644257703) 63%, rgba(219,219,219,0.40940126050420167) 81%, rgba(68,68,68,0.4234068627450981) 100%);
             padding-top: 100px;
-            padding-bottom: 100px;
         }
         #traditional_arch_tour .ui.container .relative{
             position: relative;
@@ -284,7 +283,7 @@ background: radial-gradient(circle, rgba(246,246,246,1) 32%, rgba(246,246,246,0.
                 margin-right:0px!important;
             }
             .button-container{
-                padding: 3rem 10px 7px 10px;
+                padding: 3rem 10px 3rem 10px;
                 position: sticky;
                 left: 0px;
                 margin: 0!important;
