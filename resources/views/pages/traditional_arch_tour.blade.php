@@ -13,7 +13,10 @@
             --secondary_orange:#ff7e00;
         }
         main{
-            margin-top: 100px;
+            background: rgb(246,246,246);
+background: radial-gradient(circle, rgba(246,246,246,1) 32%, rgba(246,246,246,0.6839110644257703) 63%, rgba(219,219,219,0.40940126050420167) 81%, rgba(68,68,68,0.4234068627450981) 100%);
+            padding-top: 100px;
+            padding-bottom: 100px;
         }
         #traditional_arch_tour .ui.container .relative{
             position: relative;
@@ -25,7 +28,6 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            text-shadow: -3px 6px 5px rgb(0 0 0 / 13%);
             margin: 0;
             font-size: 42px;
         }
@@ -102,7 +104,6 @@
           STEPS
       ====================================*/
         .steps {
-            background-color: white;
             position: relative;
             overflow: hidden;
             counter-reset: wizard;
@@ -163,10 +164,55 @@
         .current ~ li:after {
             background-color: #555;
         }
-        #amenities_price{
+        #features_price{
+            background: #fff;
             padding: 1rem;
+            margin: 3rem .3rem;
+            border-radius: 0.28571429rem;
+            box-shadow: 1px 1px 48px -6px rgba(0,0,0,0.37);
+            -webkit-box-shadow: 1px 1px 48px -6px rgba(0,0,0,0.37);
+            -moz-box-shadow: 1px 1px 48px -6px rgba(0,0,0,0.37);
+        }
+        #features_price > .column{
+            padding-left: .5rem;
+            padding-right: .5rem;
+        }
+        #features{
+            padding-right: 1.3rem;
+        }
+        #features i{
+            font-size: 1.25rem;
+            margin-top:.5rem
+        }
+        #features .row .column{
+            padding-right: .77rem;
+            padding-left: .77rem;
+            text-align: center;
         }
 
+        #duration .column{
+            text-align: center
+        }
+        #duration .column i{
+            font-size: 1.5rem;
+        }
+        #price .column{
+            text-align: center;
+        }
+        #price .card-price{
+            text-align: center;
+        }
+        #price p:nth-child(2){
+            position: unset;
+            margin-top:10px;
+        }
+        #price small{
+            position: relative;
+            bottom: -1.7rem;
+            color: #6c757d;
+            font-size: 97%;
+            line-height: 0;
+        }
         .card-price {
             display: inline-block;
             width: auto;
@@ -178,7 +224,7 @@
             border-left: 1px solid #6ab070;
 
             /* This makes room for the triangle */
-            margin-left: 19px;
+            margin: 0 auto;
             position: relative;
             color: white;
             font-weight: 300;
@@ -186,6 +232,7 @@
             line-height: 38px;
             padding: 0 10px 0 10px;
         }
+
 
         /* Makes the triangle */
         .card-price:before {
@@ -212,17 +259,13 @@
             left: -9px;
             top: 17px;
         }
-        #price .column{
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        #price .card-price{
-            text-align: right;
-        }
 
-        .description h1{
+
+
+        .description .title{
             text-align: center;
+            padding-left: 10px!important;
+            padding-right: 10px!important;
         }
 
         .button-container button{
@@ -241,12 +284,13 @@
                 margin-right:0px!important;
             }
             .button-container{
-                padding: 10px;
+                padding: 0 10px 7px 10px;
                 position: sticky;
                 left: 0px;
-                bottom: 60px;
                 margin: 0!important;
+                bottom: 11%;
                 width: 100%;
+                height: auto;
                 z-index: 11;
             }
 
@@ -255,8 +299,12 @@
                 box-shadow: 3px 3px 29px 11px #FFF!important;
                 -webkit-box-shadow: 3px 3px 29px 11px #FFF!important;
                 -moz-box-shadow: 3px 3px 29px 11px #FFF!important;
-                margin-left: 0px!important;
-                margin-right: 0px!important;
+                margin: 2rem 0 10px 0!important;
+            }
+            #price p:nth-child(2){
+                position: relative;
+                bottom:20px;
+                margin-top:0;
             }
         }
         @media only screen and (max-width:480px) {}
@@ -295,31 +343,57 @@
                     <li class="">Date</li>
                 </ol>
 
-                <div class="ui two column grid" id="amenities_price">
-                    <div class="row">
-                        <div class="column">
-                            <p>Amenities</p>
+                <div class="ui stackable grid" id="features_price">
+
+                        <div class="six wide column" id="features">
+                            <h5>Features</h5>
+                            <div class="ui divider"></div>
                             <div class="ui two column grid">
                                 <div class="row">
-                                    <div class="column"><i class="fa-solid fa-fish-fins"></i> food & drinks</div>
-                                    <div class="column"><i class="fa-solid fa-fish-fins"></i> food & drinks</div>
-                                    <div class="column"><i class="fa-solid fa-fish-fins"></i> food & drinks</div>
-                                    <div class="column"><i class="fa-solid fa-fish-fins"></i> food & drinks</div>
-                                    <div class="column"><i class="fa-solid fa-fish-fins"></i> food & drinks</div>
-                                    <div class="column"><i class="fa-solid fa-fish-fins"></i> food & drinks</div>
+                                    <div class="column">
+                                        <i class="fa-solid fa-fish-fins"></i> <br> food & drinks
+                                    </div>
+                                    <div class="column">
+                                        <i class="fas fa-ticket"></i> <br> electronic voucher
+                                    </div>
+                                    <div class="column">
+                                        <i class="fa-solid fa-bullhorn"></i> <br> guide
+                                    </div>
+                                    <div class="column">
+                                        <i class="fas fa-head-side-mask"></i> <br> sanisitation & safety
+                                    </div>
+
                                 </div>
                             </div>
                         </div>
-                        <div class="column" id="price">
-                            <p>Price</p>
-                            <div class="ui two column stackable grid">
+
+                        <div class="four wide column" id="duration">
+                            <h5>Duration</h5>
+                            <div class="ui divider"></div>
+
+                            <div class="column">
+                                <i class="fas fa-clock"></i></i><br>
+                                <p>2 Hours</p>
+                            </div>
+
+                        </div>
+
+                        <div class="six wide column" id="price">
+                            <h5>Price</h5>
+                            <div class="ui divider"></div>
+
                                 <div class="row">
-                                    <div class="column">Price per person</div>
-                                    <div class="column"><p class="card-price"><b>$1,250 usd</b></p></div>
+                                    <div class="column">
+                                        <p class="card-price">
+                                            <b>$1,250 usd</b>
+                                        </p>
+                                        <p><small>(per person)</small></p>
+                                    </div>
                                 </div>
-                            </div>
+
                         </div>
-                    </div>
+
+
                 </div>
 
                 <div class="description">
@@ -329,10 +403,37 @@
                         Durante este paseo visitamos la famosa formación rocosa de Cabo San Lucas "El Arco", junto con otros puntos atractivos de esa zona como lo son: la colonia de leones marinos, La Roca del Pelícano, El Dedo de Neptuno, La Playa del Amor y del Divorcio y sus alrededores. Tendrá la oportunidad de observar algunas de las especies marinas que habitan este pedacito de mar.<br><br>
                         Una vez que el paseo finaliza, usted tendrá la opción si lo desea, de quedarse el tiempo que guste en la Playa del Amor, donde podrá caminar, nadar o asolearse. Usted podrá regresar en cualquiera de las lanchas que vienen de regreso a la marina cada hora, la última que es a las 5 o 6pm dependiendo la temporada.
                     </p> --}}
-                    <h1>About this tour</h1>
-                    <p class="tour-description">
+                    <h3 class="title">About this tour</h1>
 
-                    </p>
+                    <div class="ui styled fluid accordion">
+                        <div class="title">
+                        <i class="dropdown icon"></i>
+                        Tour description
+                        </div>
+                        <div class="content">
+                        <p class="transition hidden">
+                            One of the Easiest and Most Pleasant Tours in Cabo!...<br>
+                            During this tour we visit the famous rock formation of Cabo San Lucas "El Arco", along with other attractive points in that area such as: the sea lion colony, Pelican Rock, Neptune's Finger, Love Beach and of Divorce and its surroundings. You will have the opportunity to observe some of the marine species that inhabit this little piece of the sea.<br><br>
+                            Once the tour ends, you will have the option, if you wish, to stay as long as you like at Playa del Amor, where you can walk, swim or sunbathe. You can return in any of the boats that come back to the marina every hour, the last one being at 5 or 6pm depending on the season.</p>
+                        </div>
+                        <div class="title">
+                        <i class="dropdown icon"></i>
+                        What kinds of dogs are there?
+                        </div>
+                        <div class="content">
+                        <p class="transition hidden">There are many breeds of dogs. Each breed varies in size and temperament. Owners often select a breed of dog that they find to be compatible with their own lifestyle and desires from a companion.</p>
+                        </div>
+                        <div class="title">
+                        <i class="dropdown icon"></i>
+                        How do you acquire a dog?
+                        </div>
+                        <div class="content">
+                        <p class="transition hidden">Three common ways for a prospective owner to acquire a dog is from pet shops, private owners, or shelters.</p>
+                        <p class="transition hidden">A pet shop may be the most convenient way to buy a dog. Buying a dog from a private owner allows you to assess the pedigree and upbringing of your dog before choosing to take it home. Lastly, finding your dog from a shelter, helps give a good home to a dog who may not find one so readily.</p>
+                        </div>
+                    </div>
+
+                    <h3 class="title">What to know before buying</h3>
                     <div class="ui styled fluid accordion">
                         <div class="title">
                         <i class="dropdown icon"></i>
@@ -361,6 +462,7 @@
                         </div>
                     </div>
                 </div>
+
 
                 <div class="button-container">
                     <button class="ui right labeled icon button">

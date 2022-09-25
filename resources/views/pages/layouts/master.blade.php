@@ -17,7 +17,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap" rel="stylesheet">
 
         {{-- FONT AWESOME --}}
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"/>
 
         {{-- CUSTOM CSS --}}
         <link rel="stylesheet" href="assets/css/styles.css?{{rand(2,50)}}">
