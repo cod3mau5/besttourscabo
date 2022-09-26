@@ -203,8 +203,8 @@
             text-align: center;
         }
         #price p:nth-child(2){
-            position: unset;
-            margin-top:10px;
+            position: relative;
+            bottom: 1.3em;
         }
         #price small{
             position: relative;
@@ -213,51 +213,8 @@
             font-size: 97%;
             line-height: 0;
         }
-        .card-price {
-            display: inline-block;
-            width: auto;
-            height: 38px;
-            background-color: #6ab070;
-            -webkit-border-radius: 3px 4px 4px 3px;
-            -moz-border-radius: 3px 4px 4px 3px;
-            border-radius: 3px 4px 4px 3px;
-            border-left: 1px solid #6ab070;
-
-            /* This makes room for the triangle */
-            margin: 0 auto;
-            position: relative;
-            color: white;
-            font-weight: 300;
-            font-size: 22px;
-            line-height: 38px;
-            padding: 0 10px 0 10px;
-        }
-
-
-        /* Makes the triangle */
-        .card-price:before {
-            content: "";
-            position: absolute;
-            display: block;
-            left: -19px;
-            width: 0;
-            height: 0;
-            border-top: 19px solid transparent;
-            border-bottom: 19px solid transparent;
-            border-right: 19px solid #6ab070;
-        }
-
-        /* Makes the circle */
-        .card-price:after {
-            content: "";
-            background-color: white;
-            border-radius: 50%;
-            width: 4px;
-            height: 4px;
-            display: block;
-            position: absolute;
-            left: -9px;
-            top: 17px;
+        #price .ui.orange.label{
+            font-size: 21px;
         }
 
         .description .title{
@@ -278,6 +235,26 @@
         footer {
             padding: 3.5rem 0!important;
         }
+        #features_price .up.divider{
+                display:none;
+        }
+        #features_price h5{
+            margin-top:0;
+            text-align: left;
+        }
+        #location p{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #location p small {
+            display: contents;
+        }
+        #location p i{
+            margin:0 1rem;
+            font-size: 3.4rem;
+        }
         @media only screen and (min-width:1200px) {}
         @media only screen and (min-width:1100px) {}
         @media only screen and (max-width:920px) {}
@@ -290,6 +267,7 @@
                 padding-top: 0!important;
                 padding-bottom: 0!important;
             }
+
             main > .ui.container{
                 margin-left:0px!important;
                 margin-right:0px!important;
@@ -299,7 +277,7 @@
                 position: fixed!important;
                 bottom: 7px;
                 z-index: 11;
-                width: 96%;
+                width: calc(100% - 14px);
                 height: 41.3px!important;
                 margin: 0 auto!important;
             }
@@ -309,7 +287,19 @@
                 margin-top:0;
             }
         }
-        @media only screen and (max-width:480px) {}
+        @media only screen and (max-width:480px) {
+            #features_price h5{
+                margin-top:1rem;
+                text-align: center;
+            }
+            #features_price .down.divider{
+                display:none;
+            }
+
+            #features_price .up.divider{
+                display:block;
+            }
+        }
         @media only screen and (max-width:320px) {}
 
     </style>
@@ -348,8 +338,9 @@
                 <div class="ui stackable grid" id="features_price">
 
                         <div class="six wide column" id="features">
+                            <div class="ui up divider"></div>
                             <h5>Features</h5>
-                            <div class="ui divider"></div>
+                            <div class="ui down divider"></div>
                             <div class="ui two column grid">
                                 <div class="row">
                                     <div class="column">
@@ -370,8 +361,9 @@
                         </div>
 
                         <div class="four wide column" id="duration">
+                            <div class="ui up divider"></div>
                             <h5>Duration</h5>
-                            <div class="ui divider"></div>
+                            <div class="ui down divider"></div>
 
                             <div class="column">
                                 <i class="fas fa-clock"></i></i><br>
@@ -381,20 +373,22 @@
                         </div>
 
                         <div class="six wide column" id="price">
+                            <div class="ui up divider"></div>
                             <h5>Price</h5>
-                            <div class="ui divider"></div>
+                            <div class="ui down divider"></div>
 
-                                <div class="row">
-                                    <div class="column">
-                                        <p class="card-price">
-                                            <b>$1,250 usd</b>
-                                        </p>
-                                        <p><small>(per person)</small></p>
+                            <div class="row">
+                                <div class="column">
+                                    <div class="ui tag labels">
+                                        <a class="ui orange label" style="line-height: .5;">
+                                            $21.89 usd<br>
+                                            <span style="font-size: 11px;">(per person)</span>
+                                        </a>
+
                                     </div>
                                 </div>
-
+                            </div>
                         </div>
-
 
                 </div>
 
@@ -465,7 +459,14 @@
                     </div>
                 </div>
 
-
+                <div class="ui segment" id="location">
+                    <div class="ui top attached label text centered">TOUR LOCATION</div>
+                    <p>
+                        <i class="fa-solid fa-map-location-dot"></i>
+                        see the location of the tour on the map <br>
+                        <small>Cabo San Lucas Baja California Sur, México</small>
+                    </p>
+                  </div>
 
                     <button class="ui right labeled icon button-container button">
                         <i class="right arrow icon"></i>
