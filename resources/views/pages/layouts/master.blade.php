@@ -27,6 +27,14 @@
     </head>
     <body>
         <div id="app">
+            <div class="ui segment h-100" v-show="page == 'loading'" style="position:inherit;border-radius:0;">
+                <div class="ui active dimmer">
+                    <div class="ui massive text loader">Loading</div>
+                </div>
+                <p></p>
+                <p></p>
+                <p></p>
+            </div>
 
             @include('pages.sections.header')
 
@@ -45,53 +53,54 @@
         @yield('footer_scripts')
 
 
+
         <script>
-        $(document).ready(()=>{
-            const navbarMenu = document.getElementById("menu");
-            const burgerMenu = document.getElementById("burger");
-            const headerMenu = document.getElementById("header");
-            const overlayMenu = document.querySelector(".overlay");
+            $(document).ready(()=>{
+                const navbarMenu = document.getElementById("menu");
+                const burgerMenu = document.getElementById("burger");
+                const headerMenu = document.getElementById("header");
+                const overlayMenu = document.querySelector(".overlay");
 
-            // Open Close Navbar Menu on Click Burger
-            if (burgerMenu && navbarMenu) {
-            burgerMenu.addEventListener("click", () => {
-                burgerMenu.classList.toggle("is-active");
-                navbarMenu.classList.toggle("is-active");
-            });
-            }
-
-            // Close Navbar Menu on Click Links
-            document.querySelectorAll(".menu-link").forEach((link) => {
-            link.addEventListener("click", () => {
-                burgerMenu.classList.remove("is-active");
-                navbarMenu.classList.remove("is-active");
-            });
-            });
-
-            // Fixed Navbar Menu on Window Resize
-            window.addEventListener("resize", () => {
-            if (window.innerWidth >= 992) {
-                if (navbarMenu.classList.contains("is-active")) {
-                    navbarMenu.classList.remove("is-active");
-                    overlayMenu.classList.remove("is-active");
+                // Open Close Navbar Menu on Click Burger
+                if (burgerMenu && navbarMenu) {
+                burgerMenu.addEventListener("click", () => {
+                    burgerMenu.classList.toggle("is-active");
+                    navbarMenu.classList.toggle("is-active");
+                });
                 }
-            }
-            });
 
-            $('.slider-hero').slick({
-                infinite: true,
-                speed: 500,
-                fade: true,
-                cssEase: 'linear',
-                autoplay: true,
-                autoplaySpeed: 4000,
-                pauseOnHover: false,
-                dots: false,
-                prevArrow: false,
-                nextArrow: false
-            });
+                // Close Navbar Menu on Click Links
+                document.querySelectorAll(".menu-link").forEach((link) => {
+                link.addEventListener("click", () => {
+                    burgerMenu.classList.remove("is-active");
+                    navbarMenu.classList.remove("is-active");
+                });
+                });
 
-        });
+                // Fixed Navbar Menu on Window Resize
+                window.addEventListener("resize", () => {
+                if (window.innerWidth >= 992) {
+                    if (navbarMenu.classList.contains("is-active")) {
+                        navbarMenu.classList.remove("is-active");
+                        overlayMenu.classList.remove("is-active");
+                    }
+                }
+                });
+
+                $('.slider-hero').slick({
+                    infinite: true,
+                    speed: 500,
+                    fade: true,
+                    cssEase: 'linear',
+                    autoplay: true,
+                    autoplaySpeed: 4000,
+                    pauseOnHover: false,
+                    dots: false,
+                    prevArrow: false,
+                    nextArrow: false
+                });
+
+            });
         </script>
     </body>
 </html>

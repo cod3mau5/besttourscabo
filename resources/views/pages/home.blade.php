@@ -165,8 +165,6 @@
 @endsection
 
 @section('footer_scripts')
-
-
     <script>
         function initMap() {
             var uluru = {lat: 22.879869, lng: -109.906256};
@@ -183,4 +181,75 @@
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDl3QdpavEMHbNxiU9AqmO577Hir0EZ_Ho&callback=initMap"
     async defer></script>
+
+    {{-- VueJs 2 --}}
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                page: 'loading',
+                routes:{
+                    // {{-- home:'{{ route("inicio","1") }}', --}}
+                    // {{-- gallery:'{{ route("gallery","1") }}', --}}
+                    // {{-- contact_us:'{{ route("contact-us","1") }}', --}}
+                    // {{-- book_now:'{{ route("book-now","1") }}', --}}
+                },
+                // {{-- text: @json($language) --}}
+            },
+            beforeMount(){
+                this.page='loading';
+            },
+            mounted() {
+                this.page='loaded';
+                const navbarMenu = document.getElementById("menu");
+                const burgerMenu = document.getElementById("burger");
+                const headerMenu = document.getElementById("header");
+                const overlayMenu = document.querySelector(".overlay");
+
+                // Open Close Navbar Menu on Click Burger
+                if (burgerMenu && navbarMenu) {
+                burgerMenu.addEventListener("click", () => {
+                    burgerMenu.classList.toggle("is-active");
+                    navbarMenu.classList.toggle("is-active");
+                });
+                }
+
+                // Close Navbar Menu on Click Links
+                document.querySelectorAll(".menu-link").forEach((link) => {
+                link.addEventListener("click", () => {
+                    burgerMenu.classList.remove("is-active");
+                    navbarMenu.classList.remove("is-active");
+                });
+                });
+
+                // Fixed Navbar Menu on Window Resize
+                window.addEventListener("resize", () => {
+                if (window.innerWidth >= 992) {
+                    if (navbarMenu.classList.contains("is-active")) {
+                        navbarMenu.classList.remove("is-active");
+                        overlayMenu.classList.remove("is-active");
+                    }
+                }
+                });
+
+                $('.slider-hero').slick({
+                    infinite: true,
+                    speed: 500,
+                    fade: true,
+                    cssEase: 'linear',
+                    autoplay: true,
+                    autoplaySpeed: 4000,
+                    pauseOnHover: false,
+                    dots: false,
+                    prevArrow: false,
+                    nextArrow: false
+                });
+            },
+            methods:{
+
+            }
+        })
+    </script>
 @endsection

@@ -91,11 +91,29 @@ html {
 html,body{
     overflow-x: hidden!important;
 }
+body #app {
+    height: 100%;
+}
 @media only screen and (max-width: 767px){
     .no-gutter{
     margin-left: 0px!important;
     margin-right: 0px!important;
     }
+}
+.ui.dimmer{
+    background-color:rgba(255,255,255,0.99)!important;
+}
+.ui.dimmer .ui.loader{
+    color:var(--main_blue) !important;
+    font-weight: bolder!important;
+}
+.ui.dimmer .ui.loader:before{
+    border-color: rgba(0,0,0,.15)!important;
+    border: 0.3em solid rgba(0,0,0,.1)!important;
+}
+.ui.dimmer .ui.loader:after{
+    border-color: var(--main_orange) transparent transparent!important;
+    border-width: 0.3em!important;
 }
 
 /* header */

@@ -13,6 +13,68 @@
             --main_orange:#ffb703;
             --secondary_orange:#ff7e00;
         }
+                /* helpers */
+                .hidden{
+            display: none!important;
+        }
+        .input-error{
+            border-color: #9e1317!important;
+        }
+        .input-success{
+            border-color: #016936!important;
+        }
+        .disabled{
+            color: #7F7F7F!important;
+            font-weight: 100!important;
+        }
+        .p-1 {
+            padding: 1rem !important;
+        }
+        .p-2 {
+            padding: 2rem !important;
+        }
+        .mt-4 {
+            margin-top: 4rem !important;
+        }
+        .mt-3 {
+            margin-top: 3rem !important;
+        }
+        .mt-2 {
+            margin-top: 2rem !important;
+        }
+        .mt-1 {
+            margin-top: 1rem !important;
+        }
+        .ml-2 {
+            margin-left: 2rem !important;
+        }
+        .mb-0 {
+            margin-bottom: 0 !important;
+        }
+        .m-auto {
+            margin: auto !important;
+        }
+        .h-100 {
+            height: 100% !important;
+        }
+        .d-flex {
+            display: flex !important;
+        }
+        .polarized {
+            background-color: rgba(0, 0, 0, 0.65);
+        }
+        .h-fit {
+            height: fit-content;
+        }
+        .w-100 {
+            width: 100%;
+        }
+        .date-input {
+            cursor: pointer;
+        }
+        .float-right{
+            float: right!important;
+        }
         main{
             background: rgb(246,246,246);
             background: radial-gradient(circle, rgba(246,246,246,1) 32%, rgba(246,246,246,0.6839110644257703) 63%, rgba(219,219,219,0.40940126050420167) 81%, rgba(68,68,68,0.4234068627450981) 100%);
@@ -21,6 +83,7 @@
         }
         #traditional_arch_tour .ui.container .father_sticky{
             padding: 0 7px;
+
         }
         .tour-title {
             text-align: center!important;
@@ -313,12 +376,13 @@
     </style>
 @endsection
 @section('content')
+
     <main id="traditional_arch_tour">
         <div class="ui container">
 
-            <h2 class="tour-title">TRADITIONAL ARCH TOUR</h2>
+            <h2 class="tour-title" v-show="step==1">TRADITIONAL ARCH TOUR</h2>
 
-            <div class="swiper mySwiper">
+            <div class="swiper mySwiper" v-show="step==1">
                 <div class="grid-gallery swiper-wrapper pswp-gallery" id="my-gallery">
 
                     <a href="{{url('assets/img/tours/traditional_arch_tour/img_1.webp')}}"
@@ -355,12 +419,12 @@
             <div class="father_sticky">
 
                 <ol class="steps">
-                    <li class="current">Details</li>
-                    <li class="">Selection</li>
-                    <li class="">Date</li>
+                    <li :class="step==1 ? 'current' : ''">Details</li>
+                    <li :class="step==2 ? 'current' : ''">Date</li>
+                    <li :class="step==3 ? 'current' : ''">Payment</li>
                 </ol>
 
-                <div class="ui stackable grid" id="features_price">
+                <div class="ui stackable grid" id="features_price" v-show="step==1">
 
                         <div class="six wide column" id="features">
                             <div class="ui up divider"></div>
@@ -416,8 +480,7 @@
                         </div>
 
                 </div>
-
-                <div class="description">
+                <div class="description" v-show="step==1">
                     {{-- <h1>Descripción</h1>
                     <p class="tour-description">
                         Uno de los Paseos Más Sencillos y Agradables de Cabo!...<br>
@@ -483,20 +546,63 @@
                         </div>
                     </div>
                 </div>
-
-                <div class="ui segment" id="location">
+                <div class="ui segment" id="location" v-show="step==1">
                     <div class="ui top attached label text centered">TOUR LOCATION</div>
                     <p>
                         <i class="fa-solid fa-map-location-dot"></i>
                         see the location of the tour on the map <br>
                         <small>Cabo San Lucas Baja California Sur, México</small>
                     </p>
-                  </div>
+                </div>
 
-                    <button class="ui right labeled icon button-container button">
-                        <i class="right arrow icon"></i>
-                        Next Step
-                    </button>
+
+                <div class="ui stackable grid mt-2" v-show="step==2">
+                    <h3 class="title">Select the date</h1>
+                    <div class="ui calendar w-100" id="inline_calendar">
+                    </div>
+                    <form class="ui form mt-2 w-100">
+
+                        {{-- <div class="field">
+                          <label>Name</label>
+                          <div class="two fields">
+                            <div class="field">
+                              <input type="text" name="shipping[first-name]" placeholder="First Name">
+                            </div>
+                            <div class="field">
+                              <input type="text" name="shipping[last-name]" placeholder="Last Name">
+                            </div>
+                          </div>
+                        </div> --}}
+
+                        <div class="two fields">
+                          <div class="field">
+                            <label>Adults</label>
+                            <select class="ui fluid dropdown">
+                                <option v-for="(item, index) in adults" :value="item">
+                                    @{{ item }}
+                                </option>
+
+                            </select>
+                          </div>
+                          <div class="field">
+                            <label>Kids</label>
+                            <select class="ui fluid dropdown">
+                                <option v-for="(item, index) in adults" :value="item">
+                                    @{{ item }}
+                                </option>
+                            </select>
+                          </div>
+
+                        </div>
+                    </form>
+                </div>
+
+
+
+                <button class="ui right labeled icon button-container button" @click="nextStep" type="button">
+                    <i class="right arrow icon"></i>
+                    Next Step
+                </button>
 
 
             </div>
@@ -507,35 +613,6 @@
 @section('footer_scripts')
     <!-- Swiper JS -->
     <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
-
-    <script type="module">
-        import PhotoSwipeLightbox from 'https://unpkg.com/photoswipe/dist/photoswipe-lightbox.esm.js';
-        const lightbox = new PhotoSwipeLightbox({
-            gallery: '#my-gallery',
-            children: 'a',
-
-            // Adjust thumbnail selector,
-            // (for opening/closing zoom transition)
-            thumbSelector: 'a',
-            pswpModule: () => import('https://unpkg.com/photoswipe')
-        });
-        lightbox.addFilter('domItemData', (itemData, element, linkEl) => {
-        if (linkEl) {
-            console.log(linkEl.dataset.pswpWidth);
-            const sizeAttr = linkEl.dataset.pswpWidth;
-
-            itemData.src = linkEl.href;
-            itemData.w = Number(sizeAttr.split('x')[0]);
-            itemData.h = Number(sizeAttr.split('x')[1]);
-            itemData.msrc = linkEl.dataset.thumbSrc;
-            itemData.thumbCropped = true;
-        }
-
-        return itemData;
-        });
-
-        lightbox.init();
-    </script>
 
     <!-- Initialize Swiper -->
     <script>
@@ -663,4 +740,75 @@
 
 
     </script>
+
+    {{-- PhotoSwipeLightbox --}}
+    <script type="module">
+        import PhotoSwipeLightbox from 'https://unpkg.com/photoswipe/dist/photoswipe-lightbox.esm.js';
+        const lightbox = new PhotoSwipeLightbox({
+            gallery: '#my-gallery',
+            children: 'a',
+
+            // Adjust thumbnail selector,
+            // (for opening/closing zoom transition)
+            thumbSelector: 'a',
+            pswpModule: () => import('https://unpkg.com/photoswipe')
+        });
+        lightbox.addFilter('domItemData', (itemData, element, linkEl) => {
+        if (linkEl) {
+            console.log(linkEl.dataset.pswpWidth);
+            const sizeAttr = linkEl.dataset.pswpWidth;
+
+            itemData.src = linkEl.href;
+            itemData.w = Number(sizeAttr.split('x')[0]);
+            itemData.h = Number(sizeAttr.split('x')[1]);
+            itemData.msrc = linkEl.dataset.thumbSrc;
+            itemData.thumbCropped = true;
+        }
+
+        return itemData;
+        });
+
+        lightbox.init();
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fomantic-ui/2.8.8/semantic.min.js"></script>
+
+    {{-- VueJs 2 --}}
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                page: 'loading',
+                step:1,
+                adults:30,
+                kids:30,
+                routes:{
+                    // {{-- home:'{{ route("inicio","1") }}', --}}
+                    // {{-- gallery:'{{ route("gallery","1") }}', --}}
+                    // {{-- contact_us:'{{ route("contact-us","1") }}', --}}
+                    // {{-- book_now:'{{ route("book-now","1") }}', --}}
+                },
+                // {{-- text: @json($language) --}}
+            },
+            beforeMount(){
+                this.page='loading';
+            },
+            mounted() {
+                this.page='loaded';
+                $('.ui.dropdown').dropdown();
+            },
+            methods:{
+                nextStep: function(e){
+                    e.preventDefault();
+                    this.page='loading';
+                    this.step !== 3 ? this.step=this.step+1 : this.step=this.step;
+                    $('#inline_calendar').calendar();
+                    this.page='loaded';
+                }
+            }
+        })
+    </script>
+
 @endsection
