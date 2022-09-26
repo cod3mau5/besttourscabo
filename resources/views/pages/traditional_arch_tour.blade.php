@@ -6,6 +6,7 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"
     />
+    <link rel="stylesheet" href="https://unpkg.com/photoswipe@5.2.2/dist/photoswipe.css">
     <style>
         :root{
             --main_blue:#023047;
@@ -16,7 +17,7 @@
             background: rgb(246,246,246);
             background: radial-gradient(circle, rgba(246,246,246,1) 32%, rgba(246,246,246,0.6839110644257703) 63%, rgba(219,219,219,0.40940126050420167) 81%, rgba(68,68,68,0.4234068627450981) 100%);
             padding-top: 100px;
-            padding-bottom: 100px;
+            padding-bottom: 80px;
         }
         #traditional_arch_tour .ui.container .father_sticky{
             padding: 0 7px;
@@ -46,9 +47,10 @@
         .grid-gallery > div{
             width: 100%;
             height: 250px;
+            background-size: cover;
         }
 
-        .grid-gallery > div{
+        .grid-gallery > a > div{
             background-size: cover;
         }
 
@@ -71,7 +73,7 @@
             bottom: 1px !important;
         }
         @media(min-width: 920px){
-            .grid-gallery > div{
+            .grid-gallery > a{
                 width: unset;
                 height: unset;
             }
@@ -86,11 +88,11 @@
                 margin-right: auto;
             }
 
-            .grid-gallery > div:nth-child(1){
+            .grid-gallery > a:nth-child(1){
                 grid-row-start: 1;
                 grid-row-end: 3;
             }
-            .grid-gallery > div:nth-child(2){
+            .grid-gallery > a:nth-child(2){
                 grid-column-start: 2;
                 grid-column-end: 4
             }
@@ -255,6 +257,12 @@
             margin:0 1rem;
             font-size: 3.4rem;
         }
+
+        .filler{
+            height: 100%;
+            width: 100%;
+        }
+
         @media only screen and (min-width:1200px) {}
         @media only screen and (min-width:1100px) {}
         @media only screen and (max-width:920px) {}
@@ -311,19 +319,36 @@
             <h2 class="tour-title">TRADITIONAL ARCH TOUR</h2>
 
             <div class="swiper mySwiper">
-                <div class="grid-gallery swiper-wrapper">
-                    <div class="swiper-slide" style="background-image:url('assets/img/tours/traditional_arch_tour/img_1.webp')">
-                        <div class="shadow-image"></div>
-                    </div>
-                    <div class="swiper-slide" style="background-image:url('assets/img/tours/traditional_arch_tour/img_2.jpg')">
-                        <div class="shadow-image"></div>
-                    </div>
-                    <div class="swiper-slide" style="background-image:url('assets/img/tours/traditional_arch_tour/img_3.jpg')">
-                        <div class="shadow-image"></div>
-                    </div>
-                    <div class="swiper-slide" style="background-image:url('assets/img/tours/traditional_arch_tour/img_4.jpg')">
-                        <div class="shadow-image"></div>
-                    </div>
+                <div class="grid-gallery swiper-wrapper pswp-gallery" id="my-gallery">
+
+                    <a href="{{url('assets/img/tours/traditional_arch_tour/img_1.webp')}}"
+                      data-pswp-width="950"
+                      data-pswp-height="683"
+                      target="_blank">
+                        <div class="swiper-slide" style="background-image:url('assets/img/tours/traditional_arch_tour/img_1.webp')"></div>
+                    </a>
+
+                    <a href="{{url('assets/img/tours/traditional_arch_tour/img_2.jpg')}}"
+                      data-pswp-width="669"
+                      data-pswp-height="446"
+                      target="_blank">
+                        <div class="swiper-slide" style="background-image:url('assets/img/tours/traditional_arch_tour/img_2.jpg')"></div>
+                    </a>
+
+                    <a href="{{url('assets/img/tours/traditional_arch_tour/img_3.jpg')}}"
+                        data-pswp-width="669"
+                        data-pswp-height="446"
+                      target="_blank">
+                        <div class="swiper-slide" style="background-image:url('assets/img/tours/traditional_arch_tour/img_3.jpg')"></div>
+                    </a>
+
+                    <a href="{{url('assets/img/tours/traditional_arch_tour/img_4.jpg')}}"
+                        data-pswp-width="669"
+                        data-pswp-height="446"
+                      target="_blank">
+                        <div class="swiper-slide" style="background-image:url('assets/img/tours/traditional_arch_tour/img_4.jpg')"></div>
+                    </a>
+
                 </div>
                 <div class="swiper-pagination"></div>
             </div>
@@ -353,7 +378,7 @@
                                         <i class="fa-solid fa-bullhorn"></i> <br> guide
                                     </div>
                                     <div class="column">
-                                        <i class="fas fa-head-side-mask"></i> <br> sanisitation & safety
+                                        <i class="fas fa-head-side-mask"></i> <br> sanitization & safety
                                     </div>
 
                                 </div>
@@ -409,7 +434,7 @@
                         <div class="content">
                         <p class="transition hidden">
                             One of the Easiest and Most Pleasant Tours in Cabo!...<br>
-                            During this tour we visit the famous rock formation of Cabo San Lucas "El Arco", along with other attractive points in that area such as: the sea lion colony, Pelican Rock, Neptune's Finger, Love Beach and of Divorce and its surroundings. You will have the opportunity to observe some of the marine species that inhabit this little piece of the sea.<br><br>
+                            During this tour we visit the famous rock formation of Cabo San Lucas "El Arco", along with other attractive points in that area such as: the sea lion colony, Pelican Rock, Neptune's Finger, Love Beach and of Divorce and its surroundings. You will have the opportunity to observe some marine species that inhabit this little piece of the sea.<br><br>
                             Once the tour ends, you will have the option, if you wish, to stay as long as you like at Playa del Amor, where you can walk, swim or sunbathe. You can return in any of the boats that come back to the marina every hour, the last one being at 5 or 6pm depending on the season.</p>
                         </div>
                         <div class="title">
@@ -438,7 +463,7 @@
                         <div class="content">
                         <p class="transition hidden">
                             One of the Easiest and Most Pleasant Tours in Cabo!...<br>
-                            During this tour we visit the famous rock formation of Cabo San Lucas "El Arco", along with other attractive points in that area such as: the sea lion colony, Pelican Rock, Neptune's Finger, Love Beach and of Divorce and its surroundings. You will have the opportunity to observe some of the marine species that inhabit this little piece of the sea.<br><br>
+                            During this tour we visit the famous rock formation of Cabo San Lucas "El Arco", along with other attractive points in that area such as: the sea lion colony, Pelican Rock, Neptune's Finger, Love Beach and of Divorce and its surroundings. You will have the opportunity to observe some marine species that inhabit this little piece of the sea.<br><br>
                             Once the tour ends, you will have the option, if you wish, to stay as long as you like at Playa del Amor, where you can walk, swim or sunbathe. You can return in any of the boats that come back to the marina every hour, the last one being at 5 or 6pm depending on the season.</p>
                         </div>
                         <div class="title">
@@ -483,6 +508,35 @@
     <!-- Swiper JS -->
     <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
 
+    <script type="module">
+        import PhotoSwipeLightbox from 'https://unpkg.com/photoswipe/dist/photoswipe-lightbox.esm.js';
+        const lightbox = new PhotoSwipeLightbox({
+            gallery: '#my-gallery',
+            children: 'a',
+
+            // Adjust thumbnail selector,
+            // (for opening/closing zoom transition)
+            thumbSelector: 'a',
+            pswpModule: () => import('https://unpkg.com/photoswipe')
+        });
+        lightbox.addFilter('domItemData', (itemData, element, linkEl) => {
+        if (linkEl) {
+            console.log(linkEl.dataset.pswpWidth);
+            const sizeAttr = linkEl.dataset.pswpWidth;
+
+            itemData.src = linkEl.href;
+            itemData.w = Number(sizeAttr.split('x')[0]);
+            itemData.h = Number(sizeAttr.split('x')[1]);
+            itemData.msrc = linkEl.dataset.thumbSrc;
+            itemData.thumbCropped = true;
+        }
+
+        return itemData;
+        });
+
+        lightbox.init();
+    </script>
+
     <!-- Initialize Swiper -->
     <script>
         var swiper;
@@ -490,16 +544,44 @@
         function mobil() {
             $('.grid-gallery').html(`
                 <div class="swiper-slide" style="background-image:url('assets/img/tours/traditional_arch_tour/img_1.webp')">
-                    <div class="shadow-image"></div>
+                    <a href="{{url('assets/img/tours/traditional_arch_tour/img_1.webp')}}"
+                      data-pswp-width="950"
+                      data-pswp-height="683"
+                      target="_blank"
+                      style="min-width:100%;min-height:100%">
+                        <div class="filler"></div>
+                        <div class="shadow-image"></div>
+                    </a>
                 </div>
                 <div class="swiper-slide" style="background-image:url('assets/img/tours/traditional_arch_tour/img_2.jpg')">
-                    <div class="shadow-image"></div>
+                    <a href="{{url('assets/img/tours/traditional_arch_tour/img_2.jpg')}}"
+                      data-pswp-width="669"
+                      data-pswp-height="446"
+                      target="_blank"
+                      style="min-width:100%;min-height:100%">
+                        <div class="filler"></div>
+                        <div class="shadow-image"></div>
+                    </a>
                 </div>
                 <div class="swiper-slide" style="background-image:url('assets/img/tours/traditional_arch_tour/img_3.jpg')">
-                    <div class="shadow-image"></div>
+                    <a href="{{url('assets/img/tours/traditional_arch_tour/img_3.jpg')}}"
+                        data-pswp-width="669"
+                        data-pswp-height="446"
+                      target="_blank"
+                      style="min-width:100%;min-height:100%">
+                        <div class="filler"></div>
+                        <div class="shadow-image"></div>
+                    </a>
                 </div>
                 <div class="swiper-slide" style="background-image:url('assets/img/tours/traditional_arch_tour/img_4.jpg')">
-                    <div class="shadow-image"></div>
+                    <a href="{{url('assets/img/tours/traditional_arch_tour/img_4.jpg')}}"
+                        data-pswp-width="669"
+                        data-pswp-height="446"
+                      target="_blank"
+                      style="min-width:100%;min-height:100%">
+                        <div class="filler"></div>
+                        <div class="shadow-image"></div>
+                    </a>
                 </div>
             `);
             var swiper = new Swiper(".mySwiper", {
@@ -515,10 +597,35 @@
             var swiper = new Swiper(".mySwiper");
             swiper.destroy();
             $('.grid-gallery').html(`
-                <div style="background-image:url('assets/img/tours/traditional_arch_tour/img_1.webp')"></div>
-                <div style="background-image:url('assets/img/tours/traditional_arch_tour/img_2.jpg')"></div>
-                <div style="background-image:url('assets/img/tours/traditional_arch_tour/img_3.jpg')"></div>
-                <div style="background-image:url('assets/img/tours/traditional_arch_tour/img_4.jpg')"></div>
+
+                    <a href="{{url('assets/img/tours/traditional_arch_tour/img_1.webp')}}"
+                      data-pswp-width="950"
+                      data-pswp-height="683"
+                      target="_blank">
+                        <div class="swiper-slide" style="background-image:url('assets/img/tours/traditional_arch_tour/img_1.webp')"></div>
+                    </a>
+
+                    <a href="{{url('assets/img/tours/traditional_arch_tour/img_2.jpg')}}"
+                      data-pswp-width="669"
+                      data-pswp-height="446"
+                      target="_blank">
+                        <div class="swiper-slide" style="background-image:url('assets/img/tours/traditional_arch_tour/img_2.jpg')"></div>
+                    </a>
+
+                    <a href="{{url('assets/img/tours/traditional_arch_tour/img_3.jpg')}}"
+                        data-pswp-width="669"
+                        data-pswp-height="446"
+                      target="_blank">
+                        <div class="swiper-slide" style="background-image:url('assets/img/tours/traditional_arch_tour/img_3.jpg')"></div>
+                    </a>
+
+                    <a href="{{url('assets/img/tours/traditional_arch_tour/img_4.jpg')}}"
+                        data-pswp-width="669"
+                        data-pswp-height="446"
+                      target="_blank">
+                        <div class="swiper-slide" style="background-image:url('assets/img/tours/traditional_arch_tour/img_4.jpg')"></div>
+                    </a>
+
             `);
         }
 
@@ -527,17 +634,17 @@
             {min:921,max:4400,func:desktop},
         ];
 
-        var resizeFn = function(){
+        let resizeFn = function () {
             var lastBoundry; // cache the last boundry used
-            return function(){
+            return function () {
                 var width = window.innerWidth;
                 var boundry, min, max;
-                for(var i=0; i<bounds.length; i++){
+                for (var i = 0; i < bounds.length; i++) {
                     boundry = bounds[i];
                     min = boundry.min || Number.MIN_VALUE;
                     max = boundry.max || Number.MAX_VALUE;
-                    if(width > min && width < max
-                    && lastBoundry !== boundry){
+                    if (width > min && width < max
+                        && lastBoundry !== boundry) {
                         lastBoundry = boundry;
                         return boundry.func.call(boundry);
                     }
@@ -551,6 +658,7 @@
                 $(window).trigger('resize');
             }
             $('.ui.accordion').accordion();
+
         });
 
 
