@@ -282,7 +282,14 @@
         @media only screen and (min-width:1100px) {}
         @media only screen and (max-width:920px) {}
         @media only screen and (max-width:840px) {}
-        @media only screen and (max-width:720px) {
+        @media only screen and (max-width:767px) {
+            footer {
+                display:none;
+            }
+            #features_price > .column{
+                padding-top: 0!important;
+                padding-bottom: 0!important;
+            }
             main > .ui.container{
                 margin-left:0px!important;
                 margin-right:0px!important;
