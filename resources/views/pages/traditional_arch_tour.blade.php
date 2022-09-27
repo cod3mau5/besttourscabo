@@ -326,6 +326,9 @@
             width: 100%;
         }
 
+        form select.dropdown{
+            background-color: whitesmoke;
+        }
         @media only screen and (min-width:1200px) {}
         @media only screen and (min-width:1100px) {}
         @media only screen and (max-width:920px) {}
@@ -419,9 +422,9 @@
             <div class="father_sticky">
 
                 <ol class="steps">
-                    <li :class="step==1 ? 'current' : ''">Details</li>
-                    <li :class="step==2 ? 'current' : ''">Date</li>
-                    <li :class="step==3 ? 'current' : ''">Payment</li>
+                    <li :class="step==1 ? 'current' : ''" @click="step=1">Details</li>
+                    <li :class="step==2 ? 'current' : ''" @click="step=2">Date</li>
+                    <li :class="step==3 ? 'current' : ''" @click="step=3">Payment</li>
                 </ol>
 
                 <div class="ui stackable grid" id="features_price" v-show="step==1">
@@ -558,33 +561,35 @@
 
 
 
-                <div class="ui grid"  v-show="step==2">
-                    <div class="sixteen wide column">
-                        <h3 class="title">Select the date</h1>
-                        <div class="ui calendar w-100" id="inline_calendar">
+                <form method="post" action="">
+                        <div class="ui grid" v-show="step==2">
+                        <div class="sixteen wide column">
+                            <h3 class="title">Select the date</h1>
+                            <div class="ui calendar w-100" id="inline_calendar">
+                            </div>
+                        </div>
+                        <div class="eight wide column">
+                            <div class="field">
+                                <label>Adults</label>
+                                <select class="ui fluid dropdown">
+                                    <option v-for="(item, index) in adults" :value="item">
+                                        @{{ item }}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="eight wide column">
+                            <div class="field">
+                                <label>Kids</label>
+                                <select class="ui fluid dropdown">
+                                    <option v-for="(item, index) in adults" :value="item">
+                                        @{{ item }}
+                                    </option>
+                                </select>
+                            </div>
                         </div>
                     </div>
-                    <div class="eight wide column">
-                        <div class="field">
-                            <label>Adults</label>
-                            <select class="ui fluid dropdown">
-                                <option v-for="(item, index) in adults" :value="item">
-                                    @{{ item }}
-                                </option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="eight wide column">
-                        <div class="field">
-                            <label>Kids</label>
-                            <select class="ui fluid dropdown">
-                                <option v-for="(item, index) in adults" :value="item">
-                                    @{{ item }}
-                                </option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
+                </form>
 
                 <button class="ui right labeled icon button-container button" @click="nextStep" type="button">
                     <i class="right arrow icon"></i>
@@ -784,7 +789,6 @@
             },
             mounted() {
                 this.page='loaded';
-                $('.ui.dropdown').dropdown();
             },
             methods:{
                 nextStep: function(e){
