@@ -556,48 +556,35 @@
                 </div>
 
 
-                <div class="ui stackable grid mt-2" v-show="step==2">
-                    <h3 class="title">Select the date</h1>
-                    <div class="ui calendar w-100" id="inline_calendar">
+
+
+                <div class="ui grid"  v-show="step==2">
+                    <div class="sixteen wide column">
+                        <h3 class="title">Select the date</h1>
+                        <div class="ui calendar w-100" id="inline_calendar">
+                        </div>
                     </div>
-                    <form class="ui form mt-2 w-100">
-
-                        {{-- <div class="field">
-                          <label>Name</label>
-                          <div class="two fields">
-                            <div class="field">
-                              <input type="text" name="shipping[first-name]" placeholder="First Name">
-                            </div>
-                            <div class="field">
-                              <input type="text" name="shipping[last-name]" placeholder="Last Name">
-                            </div>
-                          </div>
-                        </div> --}}
-
-                        <div class="two fields">
-                          <div class="field">
+                    <div class="eight wide column">
+                        <div class="field">
                             <label>Adults</label>
                             <select class="ui fluid dropdown">
                                 <option v-for="(item, index) in adults" :value="item">
                                     @{{ item }}
                                 </option>
-
                             </select>
-                          </div>
-                          <div class="field">
+                        </div>
+                    </div>
+                    <div class="eight wide column">
+                        <div class="field">
                             <label>Kids</label>
                             <select class="ui fluid dropdown">
                                 <option v-for="(item, index) in adults" :value="item">
                                     @{{ item }}
                                 </option>
                             </select>
-                          </div>
-
                         </div>
-                    </form>
+                    </div>
                 </div>
-
-
 
                 <button class="ui right labeled icon button-container button" @click="nextStep" type="button">
                     <i class="right arrow icon"></i>
