@@ -329,8 +329,29 @@
         form select.dropdown{
             background-color: whitesmoke;
         }
+        #location:hover{
+            cursor: pointer;
+        }
+
+        .image.content{
+            height: 80vh;
+            padding-top: 75px!important;
+        }
+        /*====================================
+            GOOGLE MAP
+        ====================================*/
+        #map {
+            height: 100%;
+            width: 100%;
+        }
+
         @media only screen and (min-width:1200px) {}
-        @media only screen and (min-width:1100px) {}
+        @media only screen and (min-width:1100px) {
+            .image.content{
+                height: 80vh;
+                padding-top:115px!important;
+            }
+        }
         @media only screen and (max-width:920px) {}
         @media only screen and (max-width:840px) {}
         @media only screen and (max-width:767px) {
@@ -372,6 +393,12 @@
 
             #features_price .up.divider{
                 display:block;
+            }
+
+        }
+        @media only screen and (max-width: 767px){
+            .ui.modal .content>.description{
+                padding-top: 75px!important;
             }
         }
         @media only screen and (max-width:320px) {}
@@ -501,22 +528,29 @@
                         <p class="transition hidden">
                             One of the Easiest and Most Pleasant Tours in Cabo!...<br>
                             During this tour we visit the famous rock formation of Cabo San Lucas "El Arco", along with other attractive points in that area such as: the sea lion colony, Pelican Rock, Neptune's Finger, Love Beach and of Divorce and its surroundings. You will have the opportunity to observe some marine species that inhabit this little piece of the sea.<br><br>
-                            Once the tour ends, you will have the option, if you wish, to stay as long as you like at Playa del Amor, where you can walk, swim or sunbathe. You can return in any of the boats that come back to the marina every hour, the last one being at 5 or 6pm depending on the season.</p>
+                            Once the tour ends, you will have the option, if you wish, to stay as long as you like at Playa del Amor, where you can walk, swim or sunbathe. You can return in any of the boats that come back to the marina every hour, the last one being at 5 or 6pm depending on the season.
+                        </p>
                         </div>
                         <div class="title">
                         <i class="dropdown icon"></i>
                         What kinds of dogs are there?
                         </div>
                         <div class="content">
-                        <p class="transition hidden">There are many breeds of dogs. Each breed varies in size and temperament. Owners often select a breed of dog that they find to be compatible with their own lifestyle and desires from a companion.</p>
+                        <p class="transition hidden">
+                            There are many breeds of dogs. Each breed varies in size and temperament. Owners often select a breed of dog that they find to be compatible with their own lifestyle and desires from a companion.
+                        </p>
                         </div>
                         <div class="title">
                         <i class="dropdown icon"></i>
                         How do you acquire a dog?
                         </div>
                         <div class="content">
-                        <p class="transition hidden">Three common ways for a prospective owner to acquire a dog is from pet shops, private owners, or shelters.</p>
-                        <p class="transition hidden">A pet shop may be the most convenient way to buy a dog. Buying a dog from a private owner allows you to assess the pedigree and upbringing of your dog before choosing to take it home. Lastly, finding your dog from a shelter, helps give a good home to a dog who may not find one so readily.</p>
+                        <p class="transition hidden">
+                            Three common ways for a prospective owner to acquire a dog is from pet shops, private owners, or shelters.
+                        </p>
+                        <p class="transition hidden">
+                            A pet shop may be the most convenient way to buy a dog. Buying a dog from a private owner allows you to assess the pedigree and upbringing of your dog before choosing to take it home. Lastly, finding your dog from a shelter, helps give a good home to a dog who may not find one so readily.
+                        </p>
                         </div>
                     </div>
 
@@ -549,7 +583,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="ui segment" id="location" v-show="step==1">
+                <div class="ui segment" id="location" v-show="step==1"  @click="openModal()">
                     <div class="ui top attached label text centered">TOUR LOCATION</div>
                     <p>
                         <i class="fa-solid fa-map-location-dot"></i>
@@ -557,9 +591,6 @@
                         <small>Cabo San Lucas Baja California Sur, México</small>
                     </p>
                 </div>
-
-
-
 
                 <form method="post" action="">
                         <div class="ui grid" v-show="step==2">
@@ -591,6 +622,23 @@
                     </div>
                 </form>
 
+
+                <div class="ui modal">
+                    <i class="close icon"></i>
+                    <div class="header">
+                        Tour location
+                    </div>
+                    <div class="image content" id="map-container">
+                        <div class="description">
+                            <div id="map"></div>
+                        {{-- A description can appear on the right --}}
+                        </div>
+                    </div>
+                    <div class="actions">
+                        <div class="ui button" @click="closeMap">OK</div>
+                    </div>
+                </div>
+
                 <button class="ui right labeled icon button-container button" @click="nextStep" type="button">
                     <i class="right arrow icon"></i>
                     Next Step
@@ -603,6 +651,24 @@
 @endsection
 
 @section('footer_scripts')
+
+    <script>
+        function initMap() {
+            var uluru = {lat: 22.879869, lng: -109.906256};
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 15,
+                center: uluru
+            });
+            var marker = new google.maps.Marker({
+                position: uluru,
+                map: map,
+                title: 'Best Tours'
+            });
+        }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDl3QdpavEMHbNxiU9AqmO577Hir0EZ_Ho&callback=initMap"
+    async defer></script>
+
     <!-- Swiper JS -->
     <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
 
@@ -746,18 +812,18 @@
             pswpModule: () => import('https://unpkg.com/photoswipe')
         });
         lightbox.addFilter('domItemData', (itemData, element, linkEl) => {
-        if (linkEl) {
-            console.log(linkEl.dataset.pswpWidth);
-            const sizeAttr = linkEl.dataset.pswpWidth;
+            if (linkEl) {
+                console.log(linkEl.dataset.pswpWidth);
+                const sizeAttr = linkEl.dataset.pswpWidth;
 
-            itemData.src = linkEl.href;
-            itemData.w = Number(sizeAttr.split('x')[0]);
-            itemData.h = Number(sizeAttr.split('x')[1]);
-            itemData.msrc = linkEl.dataset.thumbSrc;
-            itemData.thumbCropped = true;
-        }
+                itemData.src = linkEl.href;
+                itemData.w = Number(sizeAttr.split('x')[0]);
+                itemData.h = Number(sizeAttr.split('x')[1]);
+                itemData.msrc = linkEl.dataset.thumbSrc;
+                itemData.thumbCropped = true;
+            }
 
-        return itemData;
+            return itemData;
         });
 
         lightbox.init();
@@ -797,6 +863,13 @@
                     this.step !== 3 ? this.step=this.step+1 : this.step=this.step;
                     $('#inline_calendar').calendar();
                     this.page='loaded';
+                },
+                openModal: function(){
+                    $('.ui.modal').modal({centered: false}).modal('show');
+                    return false;
+                },
+                closeMap(){
+                    $('.ui.modal').modal('hide');
                 }
             }
         })
