@@ -80,6 +80,7 @@
             background: radial-gradient(circle, rgba(246,246,246,1) 32%, rgba(246,246,246,0.6839110644257703) 63%, rgba(219,219,219,0.40940126050420167) 81%, rgba(68,68,68,0.4234068627450981) 100%);
             padding-top: 100px;
             padding-bottom: 80px;
+            min-height: 100%;
         }
         #traditional_arch_tour .ui.container .father_sticky{
             padding: 0 7px;
@@ -345,6 +346,30 @@
             width: 100%;
         }
 
+
+        .ui.dropdown{
+            margin: 0;
+            max-width: 100%;
+            -webkit-box-flex: 1;
+            -ms-flex: 1 0 auto;
+            flex: 1 0 auto;
+            outline: 0;
+            -webkit-tap-highlight-color: rgba(255,255,255,0);
+            text-align: left;
+            line-height: 1.21428571em;
+            font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
+            padding: 0.67857143em 1em;
+            background: #fff;
+            border: 1px solid rgba(34,36,38,.15);
+            color: rgba(0,0,0,.87);
+            border-radius: 0.28571429rem;
+            -webkit-transition: border-color .1s ease,-webkit-box-shadow .1s ease;
+            transition: border-color .1s ease,-webkit-box-shadow .1s ease;
+            transition: box-shadow .1s ease,border-color .1s ease;
+            transition: box-shadow .1s ease,border-color .1s ease,-webkit-box-shadow .1s ease;
+            -webkit-box-shadow: none;
+            box-shadow: none;
+        }
         @media only screen and (min-width:1200px) {}
         @media only screen and (min-width:1100px) {
             .image.content{
@@ -593,10 +618,27 @@
                 </div>
 
                 <form method="post" action="">
-                        <div class="ui grid" v-show="step==2">
-                        <div class="sixteen wide column">
-                            <h3 class="title">Select the date</h1>
-                            <div class="ui calendar w-100" id="inline_calendar">
+                    <div class="ui grid" v-show="step==2">
+                        <div class="eight wide column">
+                            <div class="field">
+                                <label>Date</label>
+                                <div class="ui calendar" id="date_calendar">
+                                    <div class="ui input left icon w-100">
+                                      <i class="calendar icon"></i>
+                                      <input type="text" placeholder="Date">
+                                    </div>
+                                  </div>
+                            </div>
+                        </div>
+                        <div class="eight wide column">
+                            <div class="field">
+                                <label>Time</label>
+                                <div class="ui calendar" id="time_calendar">
+                                    <div class="ui input left icon w-100">
+                                      <i class="time icon"></i>
+                                      <input type="text" placeholder="Time">
+                                    </div>
+                                  </div>
                             </div>
                         </div>
                         <div class="eight wide column">
@@ -855,6 +897,8 @@
             },
             mounted() {
                 this.page='loaded';
+                $('#date_calendar').calendar({type: 'date'});
+                $('#time_calendar').calendar({type: 'time'});
             },
             methods:{
                 nextStep: function(e){
