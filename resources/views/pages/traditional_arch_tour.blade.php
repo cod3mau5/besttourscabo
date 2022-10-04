@@ -7,6 +7,10 @@
       href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"
     />
     <link rel="stylesheet" href="https://unpkg.com/photoswipe@5.2.2/dist/photoswipe.css">
+
+    <link href="assets/css/mobiscroll.jquery.min.css" rel="stylesheet" />
+
+
     <style>
         :root{
             --main_blue:#023047;
@@ -347,7 +351,7 @@
         }
 
 
-        .ui.dropdown{
+        .ui.dropdown, input{
             margin: 0;
             max-width: 100%;
             -webkit-box-flex: 1;
@@ -427,7 +431,12 @@
             }
         }
         @media only screen and (max-width:320px) {}
-
+    .mbsc-calendar-cell.mbsc-flex-1-0-0.mbsc-calendar-day.mbsc-ios.mbsc-ltr.mbsc-hb > div:nth-child(1),
+    .mbsc-scroller-wheel-item.mbsc-ios.mbsc-ltr.xxxxmbsc-scroller-wheel-item-2d > div:nth-child(1),
+    .mbsc-scroller-wheel-item.mbsc-ios.mbsc-ltr.mbsc-scroller-wheel-item-2d.mbsc-selected > div:nth-child(1),
+    .mbsc-calendar-cell.mbsc-flex-1-0-0.mbsc-calendar-day.mbsc-ios.mbsc-ltr > div:nth-child(1){
+        display: none !important;
+    }
     </style>
 @endsection
 @section('content')
@@ -621,24 +630,14 @@
                     <div class="ui grid" v-show="step==2">
                         <div class="eight wide column">
                             <div class="field">
-                                <label>Date</label>
-                                <div class="ui calendar" id="date_calendar">
-                                    <div class="ui input left icon w-100">
-                                      <i class="calendar icon"></i>
-                                      <input type="text" placeholder="Date">
-                                    </div>
-                                  </div>
+                                <label>Date</label><br>
+                                <input id="date_calendar" class="w-100" placeholder="Please select date..." />
                             </div>
                         </div>
                         <div class="eight wide column">
                             <div class="field">
-                                <label>Time</label>
-                                <div class="ui calendar" id="time_calendar">
-                                    <div class="ui input left icon w-100">
-                                      <i class="time icon"></i>
-                                      <input type="text" placeholder="Time">
-                                    </div>
-                                  </div>
+                                <label>Time</label><br>
+                                <input class="ui calendar w-100" id="time_calendar"placeholder="Please select time...">
                             </div>
                         </div>
                         <div class="eight wide column">
@@ -713,6 +712,9 @@
 
     <!-- Swiper JS -->
     <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+
+    {{-- mobiscroll datepicker --}}
+    <script src="assets/js/mobiscroll.jquery.min.js"></script>
 
     <!-- Initialize Swiper -->
     <script>
@@ -897,8 +899,34 @@
             },
             mounted() {
                 this.page='loaded';
-                $('#date_calendar').calendar({type: 'date'});
-                $('#time_calendar').calendar({type: 'time'});
+                $('#date_calendar').mobiscroll().datepicker({
+                    controls: ['calendar'],
+                    touchUi: true,
+                    responsive: {
+                        xsmall: {
+                            controls: ['calendar'],
+                            display: 'bottom',
+                            touchUi: true
+                        },
+                        small: {
+                            controls: ['calendar'],
+                            display: 'anchored',
+                            touchUi: true
+                        },
+                        custom: { // Custom breakpoint
+                            breakpoint: 800,
+                            controls: ['calendar'],
+                            display: 'anchored',
+                            touchUi: false
+                        }
+                    }
+                });
+
+                $('#time_calendar').mobiscroll().datepicker({
+                    controls: ['time'],
+                    timeFormat: 'h:mm A',
+                    touchUi: true
+                });
             },
             methods:{
                 nextStep: function(e){
