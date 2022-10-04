@@ -434,7 +434,8 @@
     .mbsc-calendar-cell.mbsc-flex-1-0-0.mbsc-calendar-day.mbsc-ios.mbsc-ltr.mbsc-hb > div:nth-child(1),
     .mbsc-scroller-wheel-item.mbsc-ios.mbsc-ltr.xxxxmbsc-scroller-wheel-item-2d > div:nth-child(1),
     .mbsc-scroller-wheel-item.mbsc-ios.mbsc-ltr.mbsc-scroller-wheel-item-2d.mbsc-selected > div:nth-child(1),
-    .mbsc-calendar-cell.mbsc-flex-1-0-0.mbsc-calendar-day.mbsc-ios.mbsc-ltr > div:nth-child(1){
+    .mbsc-calendar-cell.mbsc-flex-1-0-0.mbsc-calendar-day.mbsc-ios.mbsc-ltr > div:nth-child(1)
+    .mbsc-calendar-cell.mbsc-flex-1-0-0.mbsc-calendar-day.mbsc-material.mbsc-ltr > div:nth-child(1){
         display: none !important;
     }
     </style>
