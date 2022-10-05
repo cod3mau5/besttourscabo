@@ -668,7 +668,7 @@
                     <div id="paypal-button-container"></div>
                 </div>
 
-                <div class="ui modal">
+                <div class="ui modal" v-show="step==1">
                     <i class="close icon"></i>
                     <div class="header">
                         Tour location
