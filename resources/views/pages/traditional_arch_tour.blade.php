@@ -627,8 +627,8 @@
                     </p>
                 </div>
 
-                <form method="post" action="">
-                    <div class="ui grid" v-show="step==2">
+                <form method="post" action="" v-show="step==2">
+                    <div class="ui grid">
                         <div class="eight wide column">
                             <div class="field">
                                 <label>Date</label><br>
@@ -664,6 +664,9 @@
                     </div>
                 </form>
 
+                <div v-show="step==3">
+                    <div id="paypal-button-container"></div>
+                </div>
 
                 <div class="ui modal">
                     <i class="close icon"></i>
@@ -681,7 +684,7 @@
                     </div>
                 </div>
 
-                <button class="ui right labeled icon button-container button" @click="nextStep" type="button">
+                <button class="ui right labeled icon button-container button" V-show="step!==3" @click="nextStep" type="button">
                     <i class="right arrow icon"></i>
                     Next Step
                 </button>
@@ -876,6 +879,12 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fomantic-ui/2.8.8/semantic.min.js"></script>
 
+    {{-- PAYPAL INTEGRATION --}}
+    <script src="https://www.paypal.com/sdk/js?client-id={{ env('PAYPAL_CLIENT_ID') }}&currency=USD"></script>
+    <script>
+
+    </script>
+
     {{-- VueJs 2 --}}
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
@@ -928,6 +937,25 @@
                     timeFormat: 'h:mm A',
                     touchUi: true
                 });
+
+                paypal.Buttons({
+                    fundingSource: paypal.FUNDING.CARD,
+                    createOrder: function(data, actions) {
+                        return actions.order.create({
+                            application_context: {
+                                shipping_preference: "NO_SHIPPING"
+                            },
+                            purchase_units: [{
+                                amount: {
+                                    value: 100
+                                }
+                            }],
+                        });
+                    },
+                    onApprove: function(data, actions) {
+                        alert('pago hecho');
+                    }
+                }).render('#paypal-button-container');
             },
             methods:{
                 nextStep: function(e){
