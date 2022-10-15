@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers;
+use App\Http\Controllers\Controller;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -48,3 +51,10 @@ Route::get('/about_us', function () {
 Route::get('/contact', function () {
     return view('pages.contact');
 })->name('contact');
+
+//  Confirm JavaScript payment PayPal (credit card)
+Route::get('/paypal/process/{orderID}', [Controllers\Payments\PayPalCardController::class, 'process'])->name('paypal.process');
+
+// CreateReservation
+Route::post('/create_reservation',[Controllers\ReservationsController::class, 'create'])->name('createReservation');
+Route::post('/send_mail', [Controllers\ReservationsController::class,'sendMail'])->name('sendMail');

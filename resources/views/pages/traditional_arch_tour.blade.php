@@ -10,7 +10,6 @@
 
     <link href="assets/css/mobiscroll.jquery.min.css" rel="stylesheet" />
 
-
     <style>
         :root{
             --main_blue:#023047;
@@ -30,6 +29,9 @@
         .disabled{
             color: #7F7F7F!important;
             font-weight: 100!important;
+        }
+        .text-center{
+            text-align: center!important;
         }
         .p-1 {
             padding: 1rem !important;
@@ -431,14 +433,18 @@
             }
         }
         @media only screen and (max-width:320px) {}
-    .mbsc-calendar-cell.mbsc-flex-1-0-0.mbsc-calendar-day.mbsc-ios.mbsc-ltr.mbsc-hb > div:nth-child(1),
-    .mbsc-scroller-wheel-item.mbsc-ios.mbsc-ltr.xxxxmbsc-scroller-wheel-item-2d > div:nth-child(1),
-    .mbsc-scroller-wheel-item.mbsc-ios.mbsc-ltr.mbsc-scroller-wheel-item-2d.mbsc-selected > div:nth-child(1),
-    .mbsc-calendar-cell.mbsc-flex-1-0-0.mbsc-calendar-day.mbsc-ios.mbsc-ltr > div:nth-child(1),
-    .mbsc-calendar-cell.mbsc-flex-1-0-0.mbsc-calendar-day.mbsc-material.mbsc-ltr > div:nth-child(1){
-        display: none !important;
-    }
+        .mbsc-calendar-cell.mbsc-flex-1-0-0.mbsc-calendar-day.mbsc-ios.mbsc-ltr.mbsc-hb > div:nth-child(1),
+        .mbsc-scroller-wheel-item.mbsc-ios.mbsc-ltr.xxxxmbsc-scroller-wheel-item-2d > div:nth-child(1),
+        .mbsc-scroller-wheel-item.mbsc-ios.mbsc-ltr.mbsc-scroller-wheel-item-2d.mbsc-selected > div:nth-child(1),
+        .mbsc-calendar-cell.mbsc-flex-1-0-0.mbsc-calendar-day.mbsc-ios.mbsc-ltr > div:nth-child(1),
+        .mbsc-calendar-cell.mbsc-flex-1-0-0.mbsc-calendar-day.mbsc-material.mbsc-ltr > div:nth-child(1){
+            display: none !important;
+        }
+        #trial-message{
+            display: none !important;
+        }
     </style>
+
 @endsection
 @section('content')
 
@@ -665,7 +671,7 @@
                 </form>
 
                 <div v-show="step==3">
-                    <div id="paypal-button-container"></div>
+                    <div id="paypal-button-container" class="text-center"></div>
                 </div>
 
                 <div class="ui modal" v-show="step==1">
@@ -725,6 +731,7 @@
         var swiper;
 
         function mobil() {
+
             $('.grid-gallery').html(`
                 <div class="swiper-slide" style="background-image:url('assets/img/tours/traditional_arch_tour/img_1.webp')">
                     <a href="{{url('assets/img/tours/traditional_arch_tour/img_1.webp')}}"
@@ -767,13 +774,13 @@
                     </a>
                 </div>
             `);
+
             var swiper = new Swiper(".mySwiper", {
                 pagination: {
                 el: ".swiper-pagination",
                 dynamicBullets: true,
                 },
             });
-
         }
 
         function desktop() {
@@ -844,7 +851,6 @@
 
         });
 
-
     </script>
 
     {{-- PhotoSwipeLightbox --}}
@@ -880,7 +886,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fomantic-ui/2.8.8/semantic.min.js"></script>
 
     {{-- PAYPAL INTEGRATION --}}
-    <script src="https://www.paypal.com/sdk/js?client-id={{ env('PAYPAL_CLIENT_ID') }}&currency=USD"></script>
+    <script src="https://www.paypal.com/sdk/js?client-id={{ env('PAYPAL_CLIENT_ID') }}&locale=en_US&currency=USD"></script>
     <script>
 
     </script>
@@ -947,13 +953,50 @@
                             },
                             purchase_units: [{
                                 amount: {
-                                    value: 100
+                                    value: 200
                                 }
                             }],
                         });
                     },
                     onApprove: function(data, actions) {
-                        alert('pago hecho');
+                        // alert('pago hecho');
+                        let formData=
+                        {
+                            fristname: "Juan",
+                            lastname: "Perez",
+                            adults: 3,
+                            kids: 4,
+                            tour_day: '2022-10-14',
+                            tour_time: '15:43:00',
+                            phone: '6241556455',
+                            tour_name: 'Traditional Arch Tour',
+
+                        }
+                        return fetch('/paypal/process/'+data.orderID, { method:'GET' }
+                        )
+                        .then(res => res.json())
+                        .then(function(orderData){
+                            console.log(orderData);
+                        })
+
+                        // .then(res => res.json())
+                        // .then(function(orderData){
+                        //     var errorDetail= Array.isArray(orderData.details) && orderData.details[0];
+                        //     if (errorDetail && errorDetail.issue === 'INSTRUMENT_DECLINED'){
+                        //         return actions.restart();
+                        //     }
+
+                        //     if(errorDetail){
+                        //         var msg = 'Sorry, your transaction could not be processed.';
+                        //         if(errorDetail.description) msg+= ' ('+orderData.debug_id+')';
+                        //         return alert(msg);
+                        //     }
+                        //     console.log(orderData);
+                        //     alert('Transaction completed by '+orderData.payer.name.given_name);
+                        // });
+                    },
+                    onError: function(err){
+                        console.log('hubo un error:  '+err);
                     }
                 }).render('#paypal-button-container');
             },
