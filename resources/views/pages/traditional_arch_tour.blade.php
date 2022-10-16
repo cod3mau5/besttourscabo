@@ -10,6 +10,12 @@
 
     {{-- <link href="assets/css/mobiscroll.jquery.min.css" rel="stylesheet" /> --}}
 
+    <!-- send referral link modal -->
+    <link rel="stylesheet" href="css/intlTelInput.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+    <!-- send referral link modal -->
+
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
     <link href="https://cdn.jsdelivr.net/npm/mc-datepicker/dist/mc-calendar.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/mc-datepicker/dist/mc-calendar.min.js"></script>
@@ -464,6 +470,9 @@
         #paypal-button-container{
             margin: 1.3rem;
         }
+        .field .iti{
+            width: 100%!important;
+        }
     </style>
 
 @endsection
@@ -665,7 +674,8 @@
                                         type="none"
                                         inputmode="none"
                                         placeholder="Please select the date..."
-                                        v-model="tour.date"
+                                        v-model="client.date"
+
                                 >
                             </div>
                             {{-- <input id="date_calendar" class="w-100" placeholder="Please select date..." /> --}}
@@ -676,37 +686,44 @@
                                 <input class="ui calendar w-100 timepicker"
                                         type="none"
                                         inputmode="none"
-                                        id="time_calendar"
+                                        id="timepicker"
                                         placeholder="Please select time..."
-                                        v-model="tour.time"
+                                        v-model="client.time"
+
                                 >
                             </div>
                         </div>
-                        <div class="five wide column">
+                        <div class="eight wide column">
                             <div class="field">
                                 <label>Adults</label>
-                                <select class="ui fluid dropdown">
-                                    <option v-for="(item, index) in client.adults" :value="item">
+                                <select class="ui fluid dropdown" v-model="client.adults">
+                                    <option v-for="(item, index) in tour.adults" :value="item">
                                         @{{ item }}
                                     </option>
                                 </select>
                             </div>
                         </div>
-                        <div class="five wide column">
+                        <div class="eight wide column">
                             <div class="field">
                                 <label>Kids</label>
-                                <select class="ui fluid dropdown">
+                                <select class="ui fluid dropdown" v-model="client.kids">
                                     <option value="0" selected="selected">0</option>
-                                    <option v-for="(item, index) in client.kids" :value="item">
+                                    <option v-for="(item, index) in tour.kids" :value="item">
                                         @{{ item }}
                                     </option>
                                 </select>
                             </div>
                         </div>
-                        <div class="five wide column">
+                        <div class="eight wide column">
                             <div class="field">
-                                <label>Phone number</label>
-                                <input class="w-100" type="tel" name="phone" id="pone" v-model="client.phone">
+                                <label>Phone number</label><br>
+                                <input class="w-100"
+                                        type="tel"
+                                        name="phone"
+                                        id="phone"
+                                        v-model="client.phone"
+                                        @keyup="checkPhoneLength"
+                                >
                             </div>
                         </div>
                     </div>
@@ -969,14 +986,16 @@
                 step:1,
                 tour:{
                     name: 'TRADITIONAL ARCH TOUR',
-                    date:'',
-                    time:'',
                     price:250,
-                    total:''
-                },
-                client: {
+                    total:'',
                     adults:30,
                     kids:30,
+                },
+                client: {
+                    date:'',
+                    time:'',
+                    adults:'',
+                    kids:'',
                     phone:'',
                 },
                 routes:{
@@ -997,11 +1016,14 @@
                     el: '#datepicker',
                     minDate: new Date(),
                     bodyType: 'modal',
+                    dateFormat: 'yyyy-mm-dd',
                     theme: {
                         theme_color: '#023047'
                     }
                 });
+                datePicker.onSelect((date, formatedDate) => this.client.date=$('#datepicker').val() );
 
+                var vm= this;
                 $('input.timepicker').timepicker({
                     timeFormat: 'h:mm p',
                     interval: 60,
@@ -1010,8 +1032,18 @@
                     startTime: '10:00',
                     dynamic: false,
                     dropdown: true,
-                    scrollbar: true
+                    scrollbar: true,
+                    change: function(time) { vm.client.time=$('#timepicker').val() }
                 });
+
+                const phoneInputField = document.querySelector("#phone");
+                const phone_number = window.intlTelInput(phoneInputField, {
+                    separateDialCode: true,
+                    hiddenInput: "full",
+                    utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+                    preferredCountries:["us", "mx"]
+                });
+
 
                 // $('#date_calendar').mobiscroll().datepicker({
                 //     controls: ['calendar'],
@@ -1113,7 +1145,38 @@
                 },
                 closeMap(){
                     $('.ui.modal').modal('hide');
-                }
+                },
+                checkPhoneLength(){
+                    let number=this.client.phone;
+                    let length=number.length;
+                    this.client.phone=number.replace(/\D/g, '');
+
+                    if(length < 8){
+                        $('#phone').removeClass('input-success');
+                        $('#phone').addClass('input-error');
+                        $('#phone').attr('placeholder','You need to type at least 8 numbers');
+                        return 'error';
+                    }else{
+                        $('#phone').removeClass('input-error');
+                        $('#phone').addClass('input-success');
+                        $('#phone').attr('placeholder','e.g. 7021234567');
+                        return 'ok';
+                    }
+                },
+                // updateintput(input){
+                //     var vm=this;
+                //     if(input==='date'){
+
+                //         vm.client.date=$('#datepicker').val();
+                //         vm.client.date=$('#timepicker').val();
+
+                //     }else{
+
+                //         vm.client.date=$('#timepicker').val();
+                //         vm.client.date=$('#datepicker').val();
+
+                //     }
+                // }
             }
         })
     </script>
