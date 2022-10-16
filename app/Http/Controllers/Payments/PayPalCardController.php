@@ -83,24 +83,27 @@ class PayPalCardController extends Controller
         $data['revenue']=$revenue;
         $data['currency']=$currency;
 
-        $reservation=Reservation::create([
-            'fullname'  => $data['fullname'],
-            'email'     => $data['email'],
-            // 'phone'     => $data['phone'],
-            'voucher'   => $data['voucher'],
-            'order_id' => $order_id,
-            'payer_id'  => $data['payer_id'],
-            'account_id' => $data['account_id'],
-            'subtotal'  => $data['total'],
-            'total'     => $data['total'],
-            'paypal_fee'  => $data['paypal_fee'],
-            'revenue'  => $data['revenue'],
-            'currency'  => $data['currency'],
-        ]);
-        if(!$reservation){
-            throw new Exception("An error occurred while saving the reservation.");
-        }else{
-            return $reservation;
+        try{
+
+            $reservation=Reservation::create([
+                'status'        => $data['status'],
+                'fullname'      => $data['fullname'],
+                'email'         => $data['email'],
+                // 'phone'      => $data['phone'],
+                'voucher'       => $data['voucher'],
+                'order_id'      => $data['order_id'],
+                'payer_id'      => $data['payer_id'],
+                'account_id'    => $data['account_id'],
+                'subtotal'      => $data['total'],
+                'total'         => $data['total'],
+                'paypal_fee'    => $data['paypal_fee'],
+                'revenue'       => $data['revenue'],
+                'currency'      => $data['currency'],
+            ]);
+            return [ 'success' => true, 'reservation' => $reservation, 'data' => $data ];
+
+        }catch(\Illuminate\Database\QueryException $exception){
+            return [ 'success' => false, 'exeption' => $exception->errorInfo, 'data' => $data ];
         }
 
     }
@@ -119,27 +122,9 @@ class PayPalCardController extends Controller
 
         $data = json_decode($response->getBody(), true);
 
-        if ($data['status']=='COMPLETED'){
-
-            try{
-                $reservation=$this->registerReservation($data);
-                if ($reservation)
-                    return [ 'success' => true, 'reservation' => $reservation ];
-            }catch(Exception $e){
-                return [ 'success' => false ];
-            }
-
-
-        }
-
-        return [ 'success' => false ];
+        return $this->registerReservation($data);
+        // return [ 'success' => false ];
 
     }
-
-
-
-    // private function createReservation(){
-
-    // }
 
 }

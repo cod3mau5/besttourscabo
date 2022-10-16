@@ -8,7 +8,11 @@
     />
     <link rel="stylesheet" href="https://unpkg.com/photoswipe@5.2.2/dist/photoswipe.css">
 
-    <link href="assets/css/mobiscroll.jquery.min.css" rel="stylesheet" />
+    {{-- <link href="assets/css/mobiscroll.jquery.min.css" rel="stylesheet" /> --}}
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/mc-datepicker/dist/mc-calendar.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/mc-datepicker/dist/mc-calendar.min.js"></script>
 
     <style>
         :root{
@@ -190,6 +194,7 @@
             text-align: center;
             color: var(--main_blue);
             font-weight: bolder;
+            cursor: pointer!important;
         }
 
         .current ~ li {
@@ -431,6 +436,10 @@
             .ui.modal .content>.description{
                 padding-top: 75px!important;
             }
+            .ui.grid>.column:not(.row), .ui.grid>.row>.column{
+                padding-left: .8rem!important;
+                padding-right: .8rem!important;
+            }
         }
         @media only screen and (max-width:320px) {}
         .mbsc-calendar-cell.mbsc-flex-1-0-0.mbsc-calendar-day.mbsc-ios.mbsc-ltr.mbsc-hb > div:nth-child(1),
@@ -634,20 +643,22 @@
                 </div>
 
                 <form method="post" action="" v-show="step==2">
-                    <div class="ui grid">
+                    <div class="ui grid" style="justify-content: center">
+
                         <div class="eight wide column">
                             <div class="field">
-                                <label>Date</label><br>
-                                <input id="date_calendar" class="w-100" placeholder="Please select date..." />
+                                <label>Tour date</label><br>
+                                <input class="w-100" id="datepicker" type="text" placeholder="Please select the date...">
                             </div>
+                            {{-- <input id="date_calendar" class="w-100" placeholder="Please select date..." /> --}}
                         </div>
                         <div class="eight wide column">
                             <div class="field">
-                                <label>Time</label><br>
-                                <input class="ui calendar w-100" id="time_calendar"placeholder="Please select time...">
+                                <label>Tour time</label><br>
+                                <input class="ui calendar w-100 timepicker" id="time_calendar"placeholder="Please select time...">
                             </div>
                         </div>
-                        <div class="eight wide column">
+                        <div class="five wide column">
                             <div class="field">
                                 <label>Adults</label>
                                 <select class="ui fluid dropdown">
@@ -657,7 +668,7 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="eight wide column">
+                        <div class="five wide column">
                             <div class="field">
                                 <label>Kids</label>
                                 <select class="ui fluid dropdown">
@@ -665,6 +676,12 @@
                                         @{{ item }}
                                     </option>
                                 </select>
+                            </div>
+                        </div>
+                        <div class="five wide column">
+                            <div class="field">
+                                <label>Phone number</label>
+                                <input class="w-100" type="tel" name="phone" id="pone" v-model="phone">
                             </div>
                         </div>
                     </div>
@@ -724,7 +741,10 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
 
     {{-- mobiscroll datepicker --}}
-    <script src="assets/js/mobiscroll.jquery.min.js"></script>
+    {{-- <script src="assets/js/mobiscroll.jquery.min.js"></script> --}}
+
+    {{-- timepicker --}}
+    <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
 
     <!-- Initialize Swiper -->
     <script>
@@ -902,6 +922,7 @@
                 step:1,
                 adults:30,
                 kids:30,
+                phone:'',
                 routes:{
                     // {{-- home:'{{ route("inicio","1") }}', --}}
                     // {{-- gallery:'{{ route("gallery","1") }}', --}}
@@ -915,34 +936,56 @@
             },
             mounted() {
                 this.page='loaded';
-                $('#date_calendar').mobiscroll().datepicker({
-                    controls: ['calendar'],
-                    touchUi: true,
-                    responsive: {
-                        xsmall: {
-                            controls: ['calendar'],
-                            display: 'bottom',
-                            touchUi: true
-                        },
-                        small: {
-                            controls: ['calendar'],
-                            display: 'anchored',
-                            touchUi: true
-                        },
-                        custom: { // Custom breakpoint
-                            breakpoint: 800,
-                            controls: ['calendar'],
-                            display: 'anchored',
-                            touchUi: false
-                        }
+
+                const datePicker = MCDatepicker.create({
+                    el: '#datepicker',
+                    minDate: new Date(),
+                    bodyType: 'modal',
+                    theme: {
+                        theme_color: '#023047'
                     }
                 });
 
-                $('#time_calendar').mobiscroll().datepicker({
-                    controls: ['time'],
-                    timeFormat: 'h:mm A',
-                    touchUi: true
+                $('input.timepicker').timepicker({
+                    timeFormat: 'h:mm p',
+                    interval: 60,
+                    minTime: '10',
+                    maxTime: '6:00pm',
+                    defaultTime: '11mjgk,mjhgkg',
+                    startTime: '10:00',
+                    dynamic: false,
+                    dropdown: true,
+                    scrollbar: true
                 });
+
+                // $('#date_calendar').mobiscroll().datepicker({
+                //     controls: ['calendar'],
+                //     touchUi: true,
+                //     responsive: {
+                //         xsmall: {
+                //             controls: ['calendar'],
+                //             display: 'bottom',
+                //             touchUi: true
+                //         },
+                //         small: {
+                //             controls: ['calendar'],
+                //             display: 'anchored',
+                //             touchUi: true
+                //         },
+                //         custom: { // Custom breakpoint
+                //             breakpoint: 800,
+                //             controls: ['calendar'],
+                //             display: 'anchored',
+                //             touchUi: false
+                //         }
+                //     }
+                // });
+
+                // $('#time_calendar').mobiscroll().datepicker({
+                //     controls: ['time'],
+                //     timeFormat: 'h:mm A',
+                //     touchUi: true
+                // });
 
                 paypal.Buttons({
                     fundingSource: paypal.FUNDING.CARD,
@@ -950,6 +993,12 @@
                         return actions.order.create({
                             application_context: {
                                 shipping_preference: "NO_SHIPPING"
+                            },
+                            payer: {
+                                phone: {
+                                    phone_type: "MOBILE",
+                                    phone_number: { national_number: "526242640804" }
+                                }
                             },
                             purchase_units: [{
                                 amount: {
@@ -972,28 +1021,23 @@
                             tour_name: 'Traditional Arch Tour',
 
                         }
-                        return fetch('/paypal/process/'+data.orderID, { method:'GET' }
+                        return fetch('/paypal/process/'+data.orderID+'?', { method:'GET' }
                         )
                         .then(res => res.json())
                         .then(function(orderData){
+                            var errorDetail= Array.isArray(orderData.details) && orderData.details[0];
+                            if (errorDetail && errorDetail.issue === 'INSTRUMENT_DECLINED'){
+                                return actions.restart();
+                            }
+
+                            if(errorDetail){
+                                var msg = 'Sorry, your transaction could not be processed.';
+                                if(errorDetail.description) msg+= ' ('+orderData.debug_id+')';
+                                return alert(msg);
+                            }
                             console.log(orderData);
-                        })
-
-                        // .then(res => res.json())
-                        // .then(function(orderData){
-                        //     var errorDetail= Array.isArray(orderData.details) && orderData.details[0];
-                        //     if (errorDetail && errorDetail.issue === 'INSTRUMENT_DECLINED'){
-                        //         return actions.restart();
-                        //     }
-
-                        //     if(errorDetail){
-                        //         var msg = 'Sorry, your transaction could not be processed.';
-                        //         if(errorDetail.description) msg+= ' ('+orderData.debug_id+')';
-                        //         return alert(msg);
-                        //     }
-                        //     console.log(orderData);
-                        //     alert('Transaction completed by '+orderData.payer.name.given_name);
-                        // });
+                            alert('Transaction completed by '+orderData.payer.name.given_name);
+                        });
                     },
                     onError: function(err){
                         console.log('hubo un error:  '+err);
