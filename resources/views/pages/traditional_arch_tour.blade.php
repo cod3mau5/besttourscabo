@@ -648,14 +648,14 @@
                         <div class="eight wide column">
                             <div class="field">
                                 <label>Tour date</label><br>
-                                <input class="w-100" id="datepicker" type="text" placeholder="Please select the date...">
+                                <input class="w-100" id="datepicker" type="none" inputmode="none"  placeholder="Please select the date...">
                             </div>
                             {{-- <input id="date_calendar" class="w-100" placeholder="Please select date..." /> --}}
                         </div>
                         <div class="eight wide column">
                             <div class="field">
                                 <label>Tour time</label><br>
-                                <input class="ui calendar w-100 timepicker" id="time_calendar"placeholder="Please select time...">
+                                <input class="ui calendar w-100 timepicker" type="none" inputmode="none" id="time_calendar" placeholder="Please select time...">
                             </div>
                         </div>
                         <div class="five wide column">
@@ -951,7 +951,6 @@
                     interval: 60,
                     minTime: '10',
                     maxTime: '6:00pm',
-                    defaultTime: '11mjgk,mjhgkg',
                     startTime: '10:00',
                     dynamic: false,
                     dropdown: true,
