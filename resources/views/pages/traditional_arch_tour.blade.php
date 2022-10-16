@@ -460,6 +460,10 @@
         #trial-message{
             display: none !important;
         }
+
+        #paypal-button-container{
+            margin: 1.3rem;
+        }
     </style>
 
 @endsection
@@ -468,7 +472,7 @@
     <main id="traditional_arch_tour">
         <div class="ui container">
 
-            <h2 class="tour-title" v-show="step==1">TRADITIONAL ARCH TOUR</h2>
+            <h2 class="tour-title" v-show="step==1">@{{tour.name}}</h2>
 
             <div class="swiper mySwiper" v-show="step==1">
                 <div class="grid-gallery swiper-wrapper pswp-gallery" id="my-gallery">
@@ -709,6 +713,28 @@
                 </form>
 
                 <div v-show="step==3">
+                        <div  class="ui cards" style="justify-content: center">
+                            <div class="card">
+                              <div class="content">
+                                <img class="right floated mini ui image" src="/images/avatar/large/elliot.jpg">
+                                <div class="">
+                                  @{{tour.name}}
+                                </div>
+                                <div class="meta">
+                                  Friends of Veronika
+                                </div>
+                                <div class="description">
+                                  Elliot requested permission to view your contact details
+                                </div>
+                              </div>
+                              <div class="extra content">
+                                <div class="ui two buttons">
+                                  <h2 class="text-center">$ @{{tour.price}} USD</h2>
+                                </div>
+                              </div>
+                            </div>
+                        </div>
+
                     <div id="paypal-button-container" class="text-center"></div>
                 </div>
 
@@ -942,8 +968,11 @@
                 page: 'loading',
                 step:1,
                 tour:{
+                    name: 'TRADITIONAL ARCH TOUR',
                     date:'',
                     time:'',
+                    price:250,
+                    total:''
                 },
                 client: {
                     adults:30,
