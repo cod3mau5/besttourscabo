@@ -92,10 +92,14 @@
             padding-bottom: 80px;
             min-height: 100%;
         }
+        #traditional_arch_tour .ui.container {
+            padding: 1rem 0;
+        }
         #traditional_arch_tour .ui.container .father_sticky{
             padding: 0 7px;
 
         }
+
         .tour-title {
             text-align: center!important;
             font-family: 'Work Sans', sans-serif;
@@ -652,21 +656,33 @@
                         <div class="eight wide column">
                             <div class="field">
                                 <label>Tour date</label><br>
-                                <input class="w-100" id="datepicker" type="none" inputmode="none"  placeholder="Please select the date...">
+                                <input class="w-100"
+                                        id="datepicker"
+                                        type="none"
+                                        inputmode="none"
+                                        placeholder="Please select the date..."
+                                        v-model="tour.date"
+                                >
                             </div>
                             {{-- <input id="date_calendar" class="w-100" placeholder="Please select date..." /> --}}
                         </div>
                         <div class="eight wide column">
                             <div class="field">
                                 <label>Tour time</label><br>
-                                <input class="ui calendar w-100 timepicker" type="none" inputmode="none" id="time_calendar" placeholder="Please select time...">
+                                <input class="ui calendar w-100 timepicker"
+                                        type="none"
+                                        inputmode="none"
+                                        id="time_calendar"
+                                        placeholder="Please select time..."
+                                        v-model="tour.time"
+                                >
                             </div>
                         </div>
                         <div class="five wide column">
                             <div class="field">
                                 <label>Adults</label>
                                 <select class="ui fluid dropdown">
-                                    <option v-for="(item, index) in adults" :value="item">
+                                    <option v-for="(item, index) in client.adults" :value="item">
                                         @{{ item }}
                                     </option>
                                 </select>
@@ -676,7 +692,8 @@
                             <div class="field">
                                 <label>Kids</label>
                                 <select class="ui fluid dropdown">
-                                    <option v-for="(item, index) in adults" :value="item">
+                                    <option value="0" selected="selected">0</option>
+                                    <option v-for="(item, index) in client.kids" :value="item">
                                         @{{ item }}
                                     </option>
                                 </select>
@@ -685,7 +702,7 @@
                         <div class="five wide column">
                             <div class="field">
                                 <label>Phone number</label>
-                                <input class="w-100" type="tel" name="phone" id="pone" v-model="phone">
+                                <input class="w-100" type="tel" name="phone" id="pone" v-model="client.phone">
                             </div>
                         </div>
                     </div>
@@ -924,9 +941,15 @@
             data: {
                 page: 'loading',
                 step:1,
-                adults:30,
-                kids:30,
-                phone:'',
+                tour:{
+                    date:'',
+                    time:'',
+                },
+                client: {
+                    adults:30,
+                    kids:30,
+                    phone:'',
+                },
                 routes:{
                     // {{-- home:'{{ route("inicio","1") }}', --}}
                     // {{-- gallery:'{{ route("gallery","1") }}', --}}
