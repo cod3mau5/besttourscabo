@@ -436,9 +436,13 @@
             .ui.modal .content>.description{
                 padding-top: 75px!important;
             }
+            form .ui.grid{
+                padding-left: 0.6rem!important;
+                padding-right: 0.6rem!important;
+            }
             .ui.grid>.column:not(.row), .ui.grid>.row>.column{
-                padding-left: .8rem!important;
-                padding-right: .8rem!important;
+                padding-left: .25rem!important;
+                padding-right: .25rem!important;
             }
         }
         @media only screen and (max-width:320px) {}
