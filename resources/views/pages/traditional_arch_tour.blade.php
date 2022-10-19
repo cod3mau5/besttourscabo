@@ -468,6 +468,9 @@
         }
 
         #paypal-button-container{
+            text-align: center;
+        }
+        #paypal-button{
             margin: 1.3rem;
         }
         .field .iti{
@@ -571,7 +574,7 @@
                                 <div class="column">
                                     <div class="ui tag labels">
                                         <a class="ui orange label" style="line-height: .5;">
-                                            $21.89 usd<br>
+                                            $@{{tour.price}} usd<br>
                                             <span style="font-size: 11px;">(per person)</span>
                                         </a>
 
@@ -746,13 +749,14 @@
                               </div>
                               <div class="extra content">
                                 <div class="ui two buttons">
-                                  <h2 class="text-center">$ @{{tour.price}} USD</h2>
+                                  <h2 class="text-center">$ @{{tour.total}} USD</h2>
                                 </div>
                               </div>
                             </div>
                         </div>
-
-                    <div id="paypal-button-container" class="text-center"></div>
+                        <div id="paypal-button-container">
+                            <div id="paypal-button" class="text-center"></div>
+                        </div>
                 </div>
 
                 <div class="ui modal" v-show="step==1">
@@ -986,7 +990,7 @@
                 step:1,
                 tour:{
                     name: 'TRADITIONAL ARCH TOUR',
-                    price:250,
+                    price:29.97,
                     total:'',
                     adults:30,
                     kids:30,
@@ -1074,67 +1078,22 @@
                 //     touchUi: true
                 // });
 
-                paypal.Buttons({
-                    fundingSource: paypal.FUNDING.CARD,
-                    createOrder: function(data, actions) {
-                        return actions.order.create({
-                            application_context: {
-                                shipping_preference: "NO_SHIPPING"
-                            },
-                            payer: {
-                                phone: {
-                                    phone_type: "MOBILE",
-                                    phone_number: { national_number: "526242640804" }
-                                }
-                            },
-                            purchase_units: [{
-                                amount: {
-                                    value: 200
-                                }
-                            }],
-                        });
-                    },
-                    onApprove: function(data, actions) {
-                        // alert('pago hecho');
-                        let formData=
-                        {
-                            fristname: "Juan",
-                            lastname: "Perez",
-                            adults: 3,
-                            kids: 4,
-                            tour_day: '2022-10-14',
-                            tour_time: '15:43:00',
-                            phone: '6241556455',
-                            tour_name: 'Traditional Arch Tour',
 
-                        }
-                        return fetch('/paypal/process/'+data.orderID+'?', { method:'GET' }
-                        )
-                        .then(res => res.json())
-                        .then(function(orderData){
-                            var errorDetail= Array.isArray(orderData.details) && orderData.details[0];
-                            if (errorDetail && errorDetail.issue === 'INSTRUMENT_DECLINED'){
-                                return actions.restart();
-                            }
-
-                            if(errorDetail){
-                                var msg = 'Sorry, your transaction could not be processed.';
-                                if(errorDetail.description) msg+= ' ('+orderData.debug_id+')';
-                                return alert(msg);
-                            }
-                            console.log(orderData);
-                            alert('Transaction completed by '+orderData.payer.name.given_name);
-                        });
-                    },
-                    onError: function(err){
-                        console.log('hubo un error:  '+err);
-                    }
-                }).render('#paypal-button-container');
             },
             methods:{
                 nextStep: function(e){
                     e.preventDefault();
+                    let total= this.tour.price * this.client.adults;
+                    this.client.kids > 0 ? total=total * this.client.kids : '';
+                    // this.client.kids===1 ? total+=total + total : '';
+                    this.tour.total = total;
                     this.page='loading';
+                    if(this.step == 2){
+                        const paypalBtn = document.getElementById('paypal-button');
+                        paypalBtn.remove();
+                        $('#paypal-button-container').html('<div id="paypal-button"></div>');
+                        this.renderPaypal(total);
+                    }
                     this.step !== 3 ? this.step=this.step+1 : this.step=this.step;
                     $('#inline_calendar').calendar();
                     this.page='loaded';
@@ -1163,6 +1122,64 @@
                         return 'ok';
                     }
                 },
+                renderPaypal(total){
+                    paypal.Buttons({
+                        fundingSource: paypal.FUNDING.CARD,
+                        createOrder: function(data, actions) {
+                            return actions.order.create({
+                                application_context: {
+                                    shipping_preference: "NO_SHIPPING"
+                                },
+                                payer: {
+                                    phone: {
+                                        phone_type: "MOBILE",
+                                        phone_number: { national_number: "526242640804" }
+                                    }
+                                },
+                                purchase_units: [{
+                                    amount: {
+                                        value: 200
+                                    }
+                                }],
+                            });
+                        },
+                        onApprove: function(data, actions) {
+                            // alert('pago hecho');
+                            let formData=
+                            {
+                                fristname: "Juan",
+                                lastname: "Perez",
+                                adults: 3,
+                                kids: 4,
+                                tour_day: '2022-10-14',
+                                tour_time: '15:43:00',
+                                phone: '6241556455',
+                                tour_name: 'Traditional Arch Tour',
+
+                            }
+                            return fetch('/paypal/process/'+data.orderID+'?', { method:'GET' }
+                            )
+                            .then(res => res.json())
+                            .then(function(orderData){
+                                var errorDetail= Array.isArray(orderData.details) && orderData.details[0];
+                                if (errorDetail && errorDetail.issue === 'INSTRUMENT_DECLINED'){
+                                    return actions.restart();
+                                }
+
+                                if(errorDetail){
+                                    var msg = 'Sorry, your transaction could not be processed.';
+                                    if(errorDetail.description) msg+= ' ('+orderData.debug_id+')';
+                                    return alert(msg);
+                                }
+                                console.log(orderData);
+                                alert('Transaction completed by '+orderData.payer.name.given_name);
+                            });
+                        },
+                        onError: function(err){
+                            console.log('hubo un error:  '+err);
+                        }
+                    }).render('#paypal-button');
+                }
                 // updateintput(input){
                 //     var vm=this;
                 //     if(input==='date'){
