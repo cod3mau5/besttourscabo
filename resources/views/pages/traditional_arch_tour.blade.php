@@ -523,9 +523,9 @@
             <div class="father_sticky">
 
                 <ol class="steps">
-                    <li :class="step==1 ? 'current' : ''" @click="step=1">Details</li>
-                    <li :class="step==2 ? 'current' : ''" @click="step=2">Date</li>
-                    <li :class="step==3 ? 'current' : ''" @click="step=3">Payment</li>
+                    <li :class="step==1 ? 'current' : ''" @click="changeStep(1)">Details</li>
+                    <li :class="step==2 ? 'current' : ''" @click="changeStep(2)">Date</li>
+                    <li :class="step==3 ? 'current' : ''" @click="changeStep(3)">Payment</li>
                 </ol>
 
                 <div class="ui stackable grid" id="features_price" v-show="step==1">
@@ -1083,20 +1083,38 @@
             methods:{
                 nextStep: function(e){
                     e.preventDefault();
-                    let total= this.tour.price * this.client.adults;
-                    this.client.kids > 0 ? total=total * this.client.kids : '';
-                    // this.client.kids===1 ? total+=total + total : '';
-                    this.tour.total = total;
+                    let total= this.calcTotal();
+                    let step = this.step;
                     this.page='loading';
-                    if(this.step == 2){
-                        const paypalBtn = document.getElementById('paypal-button');
-                        paypalBtn.remove();
-                        $('#paypal-button-container').html('<div id="paypal-button"></div>');
-                        this.renderPaypal(total);
-                    }
+                    this.checkIfRenderPaypal(step,total);
                     this.step !== 3 ? this.step=this.step+1 : this.step=this.step;
                     $('#inline_calendar').calendar();
                     this.page='loaded';
+                },
+                changeStep(step){
+                    this.checkIfRenderPaypal(step);
+                },
+                calcTotal(){
+                    let total,totalAdults,totalKids=0;
+                    totalAdults= this.tour.price * this.client.adults;
+                    if(this.client.kids > 0 ){
+                        totalKids= this.tour.price * this.client.kids;
+                    }
+                    total= totalAdults + totalKids;
+                    this.tour.total = total.toFixed(2);
+                    return total;
+                },
+                checkIfRenderPaypal(step){
+                    let total= this.calcTotal();
+                    if(step == 2){
+                        if ($('#paypal-button-container').length) {
+                            const paypalBtn = document.getElementById('paypal-button');
+                            paypalBtn.remove();
+                            $('#paypal-button-container').html('<div id="paypal-button"></div>');
+                            this.renderPaypal(total);
+                        }
+                    }
+                    this.step = step;
                 },
                 openModal: function(){
                     $('.ui.modal').modal({centered: false}).modal('show');
@@ -1180,20 +1198,6 @@
                         }
                     }).render('#paypal-button');
                 }
-                // updateintput(input){
-                //     var vm=this;
-                //     if(input==='date'){
-
-                //         vm.client.date=$('#datepicker').val();
-                //         vm.client.date=$('#timepicker').val();
-
-                //     }else{
-
-                //         vm.client.date=$('#timepicker').val();
-                //         vm.client.date=$('#datepicker').val();
-
-                //     }
-                // }
             }
         })
     </script>
