@@ -43,11 +43,27 @@
         .text-center{
             text-align: center!important;
         }
+        .px-0{
+            padding-left: 0!important;
+            padding-right: 0!important
+        }
+        .py-0{
+            padding-top: 0!important;
+            padding-bottom: 0!important;
+        }
         .p-1 {
             padding: 1rem !important;
         }
         .p-2 {
             padding: 2rem !important;
+        }
+        .my-0{
+            margin-top: 0!important;
+            margin-bottom: 0!important;
+        }
+        .mx-0{
+            margin-left: 0!important;
+            margin-right: 0!important;
         }
         .mt-4 {
             margin-top: 4rem !important;
@@ -312,6 +328,15 @@
         .description #what_to_know{
             padding-bottom: 1rem;
         }
+        #back-button-container{
+            float: left;
+            background-color: var(--main_blue)!important;
+            color: white !important;
+            padding-left: 2.7rem!important;
+            padding-top: 0.6rem;
+            padding-bottom: 0.6rem;
+            margin-bottom: 1.5rem;
+        }
         .button-container {
             float: right;
             background-color: var(--secondary_orange)!important;
@@ -484,6 +509,7 @@
     <main id="traditional_arch_tour">
         <div class="ui container">
 
+
             <h2 class="tour-title" v-show="step==1">@{{tour.name}}</h2>
 
             <div class="swiper mySwiper" v-show="step==1">
@@ -520,13 +546,22 @@
                 </div>
                 <div class="swiper-pagination"></div>
             </div>
-            <div class="father_sticky">
 
+            <div class="father_sticky">
                 <ol class="steps">
                     <li :class="step==1 ? 'current' : ''" @click="changeStep(1)">Details</li>
                     <li :class="step==2 ? 'current' : ''" @click="changeStep(2)">Date</li>
                     <li :class="step==3 ? 'current' : ''" @click="changeStep(3)">Payment</li>
                 </ol>
+
+                <div class="ui sixteen column grid">
+                    <div class="row">
+                        <button class="ui left labeled icon button" id="back-button-container" V-show="step!==1" @click="backStep" type="button">
+                            <i class="left arrow icon"></i>
+                            Back
+                        </button>
+                    </div>
+                </div>
 
                 <div class="ui stackable grid" id="features_price" v-show="step==1">
 
@@ -1088,7 +1123,17 @@
                     this.page='loading';
                     this.checkIfRenderPaypal(step,total);
                     this.step !== 3 ? this.step=this.step+1 : this.step=this.step;
-                    $('#inline_calendar').calendar();
+                    // $('#inline_calendar').calendar();
+                    this.page='loaded';
+                },
+                backStep: function(e){
+                    e.preventDefault();
+                    let total= this.calcTotal();
+                    let step = this.step;
+                    this.page='loading';
+                    this.checkIfRenderPaypal(step,total);
+                    this.step !== 1 ? this.step=this.step-1 : this.step=this.step;
+                    // $('#inline_calendar').calendar();
                     this.page='loaded';
                 },
                 changeStep(step){
