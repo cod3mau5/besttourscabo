@@ -744,7 +744,7 @@
                         <div class="eight wide column">
                             <div class="field">
                                 <label>Kids</label>
-                                <select class="ui fluid dropdown" v-model="client.kids">
+                                <select class="ui fluid dropdown" v-model="client.kids" @change="addKidAge">
                                     <option value="0" selected="selected">0</option>
                                     <option v-for="(item, index) in tour.kids" :value="item">
                                         @{{ item }}
@@ -752,6 +752,22 @@
                                 </select>
                             </div>
                         </div>
+                        <div class="two wide column" v-for="(item, index) in kidsAges" v-if="client.kids > 0">
+                            <div class="field">
+                                <label>Age of kid @{{ index +1 }}</label>
+                                <select class="ui fluid dropdown" v-model="item.age">
+                                    <option value="0" selected="selected">0</option>
+                                    <option v-for="(item, index) in tour.maxAge" :value="item">
+                                        @{{ item }}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    {{-- <div class="ui grid" style="justify-content: center">
+                        <pre>@{{ $data.kidsAges }}</pre>
+                    </div> --}}
+                    <div class="ui grid" style="justify-content: center">
                         <div class="eight wide column">
                             <div class="field">
                                 <label>Phone number</label><br>
@@ -1029,6 +1045,7 @@
                     total:'',
                     adults:30,
                     kids:30,
+                    maxAge:18
                 },
                 client: {
                     date:'',
@@ -1037,6 +1054,7 @@
                     kids:'',
                     phone:'',
                 },
+                kidsAges:[],
                 routes:{
                     // {{-- home:'{{ route("inicio","1") }}', --}}
                     // {{-- gallery:'{{ route("gallery","1") }}', --}}
@@ -1242,6 +1260,14 @@
                             console.log('hubo un error:  '+err);
                         }
                     }).render('#paypal-button');
+                },
+                addKidAge(){
+                    this.kidsAges=[];
+                    var vm=this;
+                    let kids= this.client.kids;
+                    for (let i = 0; i < kids; i++) {
+                        vm.kidsAges.push({ age: '' })
+                    }
                 }
             }
         })
