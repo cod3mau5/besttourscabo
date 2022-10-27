@@ -701,7 +701,7 @@
                     </p>
                 </div>
 
-                <form method="post" action="" v-show="step==2">
+                <form method="post" action="" v-show="step==2" id="clientInfo">
                     <div class="ui grid" style="justify-content: center">
 
                         <div class="eight wide column">
@@ -709,6 +709,7 @@
                                 <label>Tour date</label><br>
                                 <input class="w-100"
                                         id="datepicker"
+                                        name="datepicker"
                                         type="none"
                                         inputmode="none"
                                         placeholder="Please select the date..."
@@ -734,7 +735,7 @@
                         <div class="eight wide column">
                             <div class="field">
                                 <label>Adults</label>
-                                <select class="ui fluid dropdown" v-model="client.adults">
+                                <select class="ui fluid dropdown" v-model="client.adults" name="adults">
                                     <option v-for="(item, index) in tour.adults" :value="item">
                                         @{{ item }}
                                     </option>
@@ -744,7 +745,7 @@
                         <div class="eight wide column">
                             <div class="field">
                                 <label>Kids</label>
-                                <select class="ui fluid dropdown" v-model="client.kids" @change="addKidAge">
+                                <select class="ui fluid dropdown" v-model="client.kids" @change="addKidAge" name="kids">
                                     <option value="0" selected="selected">0</option>
                                     <option v-for="(item, index) in tour.kids" :value="item">
                                         @{{ item }}
@@ -752,17 +753,17 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="ui stackable grid" style="justify-content: center">
-                            <div class="two wide column" v-for="(item, index) in kidsAges" v-if="client.kids > 0">
-                                <div class="field">
-                                    <label>Age of kid @{{ index +1 }}</label>
-                                    <select class="ui fluid dropdown" v-model="item.age">
-                                        <option value="0" selected="selected">0</option>
-                                        <option v-for="(item, index) in tour.maxAge" :value="item">
-                                            @{{ item }}
-                                        </option>
-                                    </select>
-                                </div>
+                    </div>
+                    <div class="ui stackable grid" style="justify-content: center">
+                        <div class="three wide column" v-for="(item, index) in kidsAges" v-if="client.kids > 0">
+                            <div class="field">
+                                <label>Age of kid @{{ index +1 }}</label>
+                                <select class="ui fluid dropdown" v-model="item.age" name="kid">
+                                    <option value="0" selected="selected">0</option>
+                                    <option v-for="(item, index) in tour.maxAge" :value="item">
+                                        @{{ item }}
+                                    </option>
+                                </select>
                             </div>
                         </div>
                     </div>
@@ -828,7 +829,12 @@
                     </div>
                 </div>
 
-                <button class="ui right labeled icon button-container button" V-show="step!==3" @click="nextStep" type="button">
+                <button class="ui right labeled icon button-container button"
+                        V-show="step!==3"
+                        @click="nextStep"
+                        type="button"
+                        id="submitButton"
+                >
                     <i class="right arrow icon"></i>
                     Next Step
                 </button>
@@ -1103,6 +1109,60 @@
                     preferredCountries:["us", "mx"]
                 });
 
+                let validationRules=
+                {
+                    datepicker: {
+                        identifier: 'datepicker',
+                        rules: [
+                            {
+                                type: 'empty',
+                                prompt: 'You must add a date'
+                            }
+                        ]
+                    },
+                    timepicker: {
+                        identifier: 'timepicker',
+                        rules: [
+                            {
+                                type: 'empty',
+                                prompt: 'You must add a time'
+                            }
+                        ]
+                    },
+                    adults: {
+                        identifier: 'adults',
+                        rules: [
+                            {
+                                type: 'empty',
+                                prompt: 'field adults cannot be empty'
+                            }
+                        ]
+                    },
+                    kid: {
+                        identifier: 'kid',
+                        rules: [
+                            {
+                                type: 'empty',
+                                prompt: 'kid age cannot be empty'
+                            }
+                        ]
+                    },
+                    phone: {
+                        identifier: 'phone',
+                        rules: [
+                            {
+                                type: 'empty',
+                                prompt: 'phone number cannot be empty'
+                            }
+                        ]
+                    },
+                }
+
+                $('#clientInfo').form({
+                    fields : validationRules,
+                    inline : true,
+                    on     : 'click'
+                });
 
                 // $('#date_calendar').mobiscroll().datepicker({
                 //     controls: ['calendar'],
@@ -1126,14 +1186,11 @@
                 //         }
                 //     }
                 // });
-
                 // $('#time_calendar').mobiscroll().datepicker({
                 //     controls: ['time'],
                 //     timeFormat: 'h:mm A',
                 //     touchUi: true
                 // });
-
-
             },
             methods:{
                 nextStep: function(e){
@@ -1141,8 +1198,17 @@
                     let total= this.calcTotal();
                     let step = this.step;
                     this.page='loading';
+                    console.log(step);
                     this.checkIfRenderPaypal(step,total);
-                    this.step !== 3 ? this.step=this.step+1 : this.step=this.step;
+                    if(step==2 && $('#clientInfo').form('is valid')){
+                        this.step !== 3 ? this.step=this.step+1 : this.step=this.step;
+                    }
+                    else if(step==1){
+                        this.step !== 3 ? this.step=this.step+1 : this.step=this.step;
+                    }else{
+                        $('#clientInfo').form('submit');
+                    }
+
                     // $('#inline_calendar').calendar();
                     this.page='loaded';
                 },
@@ -1270,7 +1336,8 @@
                     for (let i = 0; i < kids; i++) {
                         vm.kidsAges.push({ age: '' })
                     }
-                }
+                },
+
             }
         })
     </script>
