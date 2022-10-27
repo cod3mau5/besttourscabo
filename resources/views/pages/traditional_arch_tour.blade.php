@@ -1153,6 +1153,14 @@
                             {
                                 type: 'empty',
                                 prompt: 'phone number cannot be empty'
+                            },
+                            {
+                                type   : 'number',
+                                prompt : 'Please enter a valid phone number'
+                            },
+                            {
+                                type   : 'minLength[8]',
+                                prompt : 'The phone number must contain at least 8 characters'
                             }
                         ]
                     },
@@ -1161,7 +1169,7 @@
                 $('#clientInfo').form({
                     fields : validationRules,
                     inline : true,
-                    on     : 'click'
+                    on     : 'change'
                 });
 
                 // $('#date_calendar').mobiscroll().datepicker({
@@ -1198,7 +1206,6 @@
                     let total= this.calcTotal();
                     let step = this.step;
                     this.page='loading';
-                    console.log(step);
                     this.checkIfRenderPaypal(step,total);
                     if(step==2 && $('#clientInfo').form('is valid')){
                         this.step !== 3 ? this.step=this.step+1 : this.step=this.step;
