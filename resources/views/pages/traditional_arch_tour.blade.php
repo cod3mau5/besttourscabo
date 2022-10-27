@@ -771,7 +771,7 @@
                         <pre>@{{ $data.kidsAges }}</pre>
                     </div> --}}
                     <div class="ui grid" style="justify-content: center">
-                        <div class="eight wide column">
+                        <div class="ten wide column">
                             <div class="field">
                                 <label>Phone number</label><br>
                                 <input class="w-100"
