@@ -752,15 +752,17 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="two wide column" v-for="(item, index) in kidsAges" v-if="client.kids > 0">
-                            <div class="field">
-                                <label>Age of kid @{{ index +1 }}</label>
-                                <select class="ui fluid dropdown" v-model="item.age">
-                                    <option value="0" selected="selected">0</option>
-                                    <option v-for="(item, index) in tour.maxAge" :value="item">
-                                        @{{ item }}
-                                    </option>
-                                </select>
+                        <div class="ui stackable grid" style="justify-content: center">
+                            <div class="two wide column" v-for="(item, index) in kidsAges" v-if="client.kids > 0">
+                                <div class="field">
+                                    <label>Age of kid @{{ index +1 }}</label>
+                                    <select class="ui fluid dropdown" v-model="item.age">
+                                        <option value="0" selected="selected">0</option>
+                                        <option v-for="(item, index) in tour.maxAge" :value="item">
+                                            @{{ item }}
+                                        </option>
+                                    </select>
+                                </div>
                             </div>
                         </div>
                     </div>
