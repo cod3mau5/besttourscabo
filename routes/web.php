@@ -23,8 +23,11 @@ Route::get('/', function () {
 
 // TOURS
 Route::get('/traditional_arch_tour', function () {
-    return view('pages.traditional_arch_tour');
+    $tour_name="TRADITIONAL ARCH TOUR";
+    $tour_price=19.96;
+    return view('pages.traditional_arch_tour',compact('tour_name','tour_price'));
 })->name('traditional_arch_tour');
+
 Route::get('/whale_watching', function () {
     return view('pages.whale_watching');
 })->name('whale_watching');

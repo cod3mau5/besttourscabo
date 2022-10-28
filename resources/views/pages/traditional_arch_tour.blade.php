@@ -1014,16 +1014,14 @@
         });
         lightbox.addFilter('domItemData', (itemData, element, linkEl) => {
             if (linkEl) {
-                console.log(linkEl.dataset.pswpWidth);
+                // console.log(linkEl.dataset.pswpWidth);
                 const sizeAttr = linkEl.dataset.pswpWidth;
-
                 itemData.src = linkEl.href;
                 itemData.w = Number(sizeAttr.split('x')[0]);
                 itemData.h = Number(sizeAttr.split('x')[1]);
                 itemData.msrc = linkEl.dataset.thumbSrc;
                 itemData.thumbCropped = true;
             }
-
             return itemData;
         });
 
@@ -1048,12 +1046,13 @@
                 page: 'loading',
                 step:1,
                 tour:{
-                    name: 'TRADITIONAL ARCH TOUR',
-                    price:29.97,
+                    name: '{{ $tour_name }}',
+                    price:'{{ $tour_price }}',
                     total:'',
                     adults:30,
                     kids:30,
-                    maxAge:18
+                    maxAge:18,
+                    minAge:3
                 },
                 client: {
                     date:'',
@@ -1233,14 +1232,25 @@
                     this.checkIfRenderPaypal(step);
                 },
                 calcTotal(){
+                    var vm= this;
+                    let minAge= this.tour.minAge;
                     let total,totalAdults,totalKids=0;
-                    totalAdults= this.tour.price * this.client.adults;
-                    if(this.client.kids > 0 ){
-                        totalKids= this.tour.price * this.client.kids;
-                    }
+                    totalAdults= parseFloat(this.tour.price).toFixed(2) * parseFloat(this.client.adults).toFixed(2);
+                    totalKids=this.calcTotalKids(totalKids,minAge);
                     total= totalAdults + totalKids;
                     this.tour.total = total.toFixed(2);
                     return total;
+                },
+                calcTotalKids(totalKids,minAge){
+                    if(this.client.kids > 0 ){
+                        kids=this.client.kids;
+                        let kidsAges= this.kidsAges;
+                        for (let i = 0; i < kidsAges.length; i++){
+                            kidsAges[i].age > minAge ? totalKids++ : '';
+                        }
+                        totalKids= this.tour.price * totalKids;
+                        return totalKids;
+                    }
                 },
                 checkIfRenderPaypal(step){
                     let total= this.calcTotal();
