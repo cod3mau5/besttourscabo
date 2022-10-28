@@ -790,20 +790,30 @@
                         <div  class="ui cards" style="justify-content: center">
                             <div class="card">
                               <div class="content">
-                                <img class="right floated mini ui image" src="/images/avatar/large/elliot.jpg">
+                                <i class="fa-solid fa-ticket" style="float: right;font-size: 2.3rem;"></i>
                                 <div class="">
                                   @{{tour.name}}
                                 </div>
                                 <div class="meta">
-                                  Friends of Veronika
                                 </div>
                                 <div class="description">
-                                  Elliot requested permission to view your contact details
+                                    Tour Date: <br>
+                                    @{{client.date}} <br/>
+                                    Tour Time: <br/>
+                                    @{{client.time}} <br/>
+                                    Adults: <br/>
+                                    @{{client.adults}} <br/>
+                                    Kids: <br/>
+                                    @{{client.kids}}
                                 </div>
                               </div>
                               <div class="extra content">
                                 <div class="ui two buttons">
-                                  <h2 class="text-center">$ @{{tour.total}} USD</h2>
+                                    <h2 class="text-center w-100"
+                                    style="display:flex;justify-content:space-between;"
+                                    >
+                                        <span>TOTAL:</span><span>$@{{tour.total}} USD</span>
+                                    </h2>
                                 </div>
                               </div>
                             </div>
@@ -1250,6 +1260,8 @@
                         }
                         totalKids= this.tour.price * totalKids;
                         return totalKids;
+                    }else{
+                        return 0;
                     }
                 },
                 checkIfRenderPaypal(step){
