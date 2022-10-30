@@ -87,18 +87,7 @@
                 }
                 });
 
-                $('.slider-hero').slick({
-                    infinite: true,
-                    speed: 500,
-                    fade: true,
-                    cssEase: 'linear',
-                    autoplay: true,
-                    autoplaySpeed: 4000,
-                    pauseOnHover: false,
-                    dots: false,
-                    prevArrow: false,
-                    nextArrow: false
-                });
+
 
             });
         </script>

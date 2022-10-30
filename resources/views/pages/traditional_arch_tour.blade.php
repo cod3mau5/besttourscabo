@@ -701,7 +701,7 @@
                     </p>
                 </div>
 
-                <form method="post" action="" v-show="step==2" id="clientInfo">
+                <form method="post" action="{{ route('buyTour') }}" v-show="step==2" id="clientInfo">
                     <div class="ui grid" style="justify-content: center">
 
                         <div class="eight wide column">
@@ -709,7 +709,7 @@
                                 <label>Tour date</label><br>
                                 <input class="w-100"
                                         id="datepicker"
-                                        name="datepicker"
+                                        name="date"
                                         type="none"
                                         inputmode="none"
                                         placeholder="Please select the date..."
@@ -784,7 +784,32 @@
                             </div>
                         </div>
                     </div>
+                    <input type="hidden" name="name" v-model="tour.name">
+                    <input type="hidden" name="time" v-model="client.time">
+                    {{-- el id en este si es necesario en vez de el v-model
+                         porque vue no es tan rapido como para actualizar su valor
+                         cuando el formulario hace su post xD
+                    --}}
+                    <input type="hidden" name="total" id="total">
+                    {{-- <input type="hidden" name="name"> --}}
+                    @csrf
                 </form>
+                {{-- tour:{
+                    name: '{{ $tour_name }}',
+                    price:'{{ $tour_price }}',
+                    total:'',
+                    adults:30,
+                    kids:30,
+                    maxAge:18,
+                    minAge:3
+                },
+                client: {
+                    date:'',
+                    time:'',
+                    adults:'',
+                    kids:'',
+                    phone:'',
+                }, --}}
 
                 <div v-show="step==3">
                         <div  class="ui cards" style="justify-content: center">
@@ -840,7 +865,7 @@
                 </div>
 
                 <button class="ui right labeled icon button-container button"
-                        V-show="step!==3"
+                        V-show="step!==3 || step!==2"
                         @click="nextStep"
                         type="button"
                         id="submitButton"
@@ -849,10 +874,10 @@
                     Next Step
                 </button>
 
-
             </div>
         </div>
     </main>
+
 @endsection
 
 @section('footer_scripts')
@@ -1113,7 +1138,7 @@
                 const phoneInputField = document.querySelector("#phone");
                 const phone_number = window.intlTelInput(phoneInputField, {
                     separateDialCode: true,
-                    hiddenInput: "full",
+                    // hiddenInput: "full",
                     utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
                     preferredCountries:["us", "mx"]
                 });
@@ -1215,9 +1240,10 @@
                     let total= this.calcTotal();
                     let step = this.step;
                     this.page='loading';
-                    this.checkIfRenderPaypal(step,total);
+                    $('#total').val(total);
+                    // this.checkIfRenderPaypal(step,total);
                     if(step==2 && $('#clientInfo').form('is valid')){
-                        this.step !== 3 ? this.step=this.step+1 : this.step=this.step;
+                        this.step !== 3 ? $('#clientInfo').form('submit') : this.step=this.step;
                     }
                     else if(step==1){
                         this.step !== 3 ? this.step=this.step+1 : this.step=this.step;
@@ -1265,13 +1291,14 @@
                     }
                 },
                 checkIfRenderPaypal(step){
-                    let total= this.calcTotal();
+                    var vm= this;
+                    let total= vm.calcTotal();
                     if(step == 2){
                         if ($('#paypal-button-container').length) {
                             const paypalBtn = document.getElementById('paypal-button');
                             paypalBtn.remove();
                             $('#paypal-button-container').html('<div id="paypal-button"></div>');
-                            this.renderPaypal(total);
+                            this.renderPaypal(total,vm.client,vm.tour);
                         }
                     }
                     this.step = step;
@@ -1300,64 +1327,7 @@
                         return 'ok';
                     }
                 },
-                renderPaypal(total){
-                    paypal.Buttons({
-                        fundingSource: paypal.FUNDING.CARD,
-                        createOrder: function(data, actions) {
-                            return actions.order.create({
-                                application_context: {
-                                    shipping_preference: "NO_SHIPPING"
-                                },
-                                payer: {
-                                    phone: {
-                                        phone_type: "MOBILE",
-                                        phone_number: { national_number: "526242640804" }
-                                    }
-                                },
-                                purchase_units: [{
-                                    amount: {
-                                        value: 200
-                                    }
-                                }],
-                            });
-                        },
-                        onApprove: function(data, actions) {
-                            // alert('pago hecho');
-                            let formData=
-                            {
-                                fristname: "Juan",
-                                lastname: "Perez",
-                                adults: 3,
-                                kids: 4,
-                                tour_day: '2022-10-14',
-                                tour_time: '15:43:00',
-                                phone: '6241556455',
-                                tour_name: 'Traditional Arch Tour',
-
-                            }
-                            return fetch('/paypal/process/'+data.orderID+'?', { method:'GET' }
-                            )
-                            .then(res => res.json())
-                            .then(function(orderData){
-                                var errorDetail= Array.isArray(orderData.details) && orderData.details[0];
-                                if (errorDetail && errorDetail.issue === 'INSTRUMENT_DECLINED'){
-                                    return actions.restart();
-                                }
-
-                                if(errorDetail){
-                                    var msg = 'Sorry, your transaction could not be processed.';
-                                    if(errorDetail.description) msg+= ' ('+orderData.debug_id+')';
-                                    return alert(msg);
-                                }
-                                console.log(orderData);
-                                alert('Transaction completed by '+orderData.payer.name.given_name);
-                            });
-                        },
-                        onError: function(err){
-                            console.log('hubo un error:  '+err);
-                        }
-                    }).render('#paypal-button');
-                },
+                renderPaypal(total,tourInfo,clientInfo){},
                 addKidAge(){
                     this.kidsAges=[];
                     var vm=this;
@@ -1366,7 +1336,23 @@
                         vm.kidsAges.push({ age: '' })
                     }
                 },
-
+                submitForm(){
+                    $.ajax({
+                        type: "POST",
+                        url: "{{ route('buyTour') }}",
+                        data: {
+                            "client_info": this.client,
+                            "tour_info": this.tour,
+                            "_token": '{{ csrf_token() }}',
+                        },
+                        success: function (tekst) {
+                            $("body").html(tekst);
+                        },
+                        error: function (request, error) {
+                            console.log ("ERROR:" + error);
+                        }
+                    });
+                }
             }
         })
     </script>

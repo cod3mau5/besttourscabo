@@ -1,8 +1,9 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Route;
 
 
 /*
@@ -27,6 +28,13 @@ Route::get('/traditional_arch_tour', function () {
     $tour_price=19.96;
     return view('pages.traditional_arch_tour',compact('tour_name','tour_price'));
 })->name('traditional_arch_tour');
+
+Route::post('/buy-tour', function (Request $request) {
+    dd($request->all());
+    // $client_info= $request->get('client_info');
+    // $tour_info= $request->get('tour_info');
+    return view('pages.buy_tour',compact('client_info','tour_info'));
+})->name('buyTour');
 
 Route::get('/whale_watching', function () {
     return view('pages.whale_watching');
