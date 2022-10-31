@@ -6,10 +6,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>{{ config('app.name') }}</title>
-        <link rel="stylesheet" type="text/css" href="semantic/components/reset.min.css">
-        <link rel="stylesheet" type="text/css" href="semantic/semantic.min.css">
-        <link rel="stylesheet" type="text/css" href="slick/slick.css"/>
-        <link rel="stylesheet" type="text/css" href="slick/slick-theme.css"/>
+        <link rel="stylesheet" type="text/css" href="/semantic/components/reset.min.css">
+        <link rel="stylesheet" type="text/css" href="/semantic/semantic.min.css">
+        <link rel="stylesheet" type="text/css" href="/slick/slick.css"/>
+        <link rel="stylesheet" type="text/css" href="/slick/slick-theme.css"/>
 
         {{-- GOOGLE FONTS --}}
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,7 +20,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"/>
 
         {{-- CUSTOM CSS --}}
-        <link rel="stylesheet" href="assets/css/styles.css?{{rand(2,50)}}">
+        <link rel="stylesheet" href="/assets/css/styles.css?{{rand(2,50)}}">
 
         @yield('header_scripts')
 

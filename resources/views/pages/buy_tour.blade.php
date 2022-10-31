@@ -485,15 +485,18 @@
 
             <div class="ui sixteen column grid">
                 <div class="row">
-                    <button class="ui left labeled icon button"
+                    <a class="ui left labeled icon button"
                         id="back-button-container"
-                        v-show="step!==1"
-                        @click="backStep"
+                        @if (!empty($voucher))
+                            href="{{ route('traditional_arch_tour',$voucher) }}"
+                            @else
+                            href="#"
+                        @endif
                         type="button"
                     >
                         <i class="left arrow icon"></i>
                         Back
-                    </button>
+                    </a>
                 </div>
             </div>
 
@@ -504,19 +507,21 @@
                           <div class="content">
                             <i class="fa-solid fa-ticket" style="float: right;font-size: 2.3rem;"></i>
                             <div class="">
-                              {{ $tour_info['name'] }}
+                              {{ $data['name'] }}
                             </div>
                             <div class="meta">
                             </div>
                             <div class="description">
                                 Tour Date: <br>
-                                {{$client_info['date']}} <br/>
+                                {{$data['date']}} <br/>
                                 Tour Time: <br/>
-                                {{$client_info['time']}} <br/>
+                                {{$data['time']}} <br/>
                                 Adults: <br/>
-                                {{$client_info['adults']}} <br/>
-                                Kids: <br/>
-                                {{$client_info['kids']}}
+                                {{$data['adults']}} <br/>
+                                @if(!empty($data['kids']))
+                                    Kids: <br/>
+                                    {{ $data['kids'] }}
+                                @endif
                             </div>
                           </div>
                           <div class="extra content">
@@ -524,7 +529,7 @@
                                 <h2 class="text-center w-100"
                                 style="display:flex;justify-content:space-between;"
                                 >
-                                    <span>TOTAL:</span><span>${{$tour_info['total']}} USD</span>
+                                    <span>TOTAL:</span><span>${{$data['total']}} USD</span>
                                 </h2>
                             </div>
                           </div>
@@ -577,6 +582,7 @@
                                     shipping_preference: "NO_SHIPPING"
                                 },
                                 payer: {
+                                    email_address: '{{ $data["email"] }}',
                                     phone: {
                                         phone_type: "MOBILE",
                                         phone_number: { national_number: "526242640804" }
@@ -584,7 +590,7 @@
                                 },
                                 purchase_units: [{
                                     amount: {
-                                        value: '{{ $tour_info["total"] }}'
+                                        value: '{{ $data["total"] }}'
                                     }
                                 }],
                             });

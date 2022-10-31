@@ -11,9 +11,9 @@ class Reservation extends Model
     protected $fillable=[
         'status',
         'fullname',
-        'email'   ,
-        'phone'   ,
-        'voucher' ,
+        'email'   , //
+        'phone'   , //
+        'voucher' , //
         'order_id',
         'payer_id',
         'account_id',

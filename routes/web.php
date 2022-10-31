@@ -1,40 +1,30 @@
 <?php
 
 use App\Http\Controllers;
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use App\Models\Reservation;
 use Illuminate\Support\Facades\Route;
 
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
 // HOMEPAGE
 Route::get('/', function () {
     return view('pages.home');
 })->name('home');
 
-// TOURS
-Route::get('/traditional_arch_tour', function () {
+// TOURS_CONTROLLER
+Route::get('/traditional_arch_tour/{voucher?}', function ($voucher=null) {
+
+    if($voucher){
+        $data=Reservation::where('voucher',$voucher);
+    }
+
     $tour_name="TRADITIONAL ARCH TOUR";
     $tour_price=19.96;
-    return view('pages.traditional_arch_tour',compact('tour_name','tour_price'));
+    return view('pages.traditional_arch_tour',compact('tour_name','tour_price','voucher'));
+
 })->name('traditional_arch_tour');
 
-Route::post('/buy-tour', function (Request $request) {
-    dd($request->all());
-    // $client_info= $request->get('client_info');
-    // $tour_info= $request->get('tour_info');
-    return view('pages.buy_tour',compact('client_info','tour_info'));
-})->name('buyTour');
+// TOUR PAYMENT PROCESS
+Route::post('/checkout/{voucher}/tour',[Controllers\ReservationsController::class, 'create'])->name('buyTour');
 
 Route::get('/whale_watching', function () {
     return view('pages.whale_watching');
@@ -67,5 +57,5 @@ Route::get('/contact', function () {
 Route::get('/paypal/process/{orderID}', [Controllers\Payments\PayPalCardController::class, 'process'])->name('paypal.process');
 
 // CreateReservation
-Route::post('/create_reservation',[Controllers\ReservationsController::class, 'create'])->name('createReservation');
+// Route::post('/create_reservation',[Controllers\ReservationsController::class, 'create'])->name('createReservation');
 Route::post('/send_mail', [Controllers\ReservationsController::class,'sendMail'])->name('sendMail');

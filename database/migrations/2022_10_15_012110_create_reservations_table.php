@@ -17,11 +17,11 @@ class CreateReservationsTable extends Migration
             $table->id();
 
             //status
-            $table->string('status',255);
+            $table->string('status',255)->nullable();
 
             //personal info
-            $table->string('fullname',255);
-            $table->string('email',255);
+            $table->string('fullname',255)->nullable();
+            $table->string('email',255)->nullable();
             $table->string('phone', 30)->nullable();
 
             // pax
@@ -34,7 +34,7 @@ class CreateReservationsTable extends Migration
             $table->time('tour_time')->nullable();
 
             // control
-            $table->string('voucher',255);
+            $table->string('voucher',255)->unique();;
 
             //paypal
             $table->string('order_id',255)->nullable();
@@ -43,10 +43,10 @@ class CreateReservationsTable extends Migration
 
             // amount
             $table->decimal('subtotal',10,2)->nullable();
-            $table->decimal('total',10,2);
+            $table->decimal('total',10,2)->nullable();
             $table->decimal('paypal_fee',10,2)->nullable();
             $table->decimal('revenue',10,2)->nullable();
-            $table->string('currency');
+            $table->string('currency')->nullable();
 
             $table->timestamps();
         });

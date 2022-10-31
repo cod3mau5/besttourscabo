@@ -11,7 +11,7 @@
     {{-- <link href="assets/css/mobiscroll.jquery.min.css" rel="stylesheet" /> --}}
 
     <!-- send referral link modal -->
-    <link rel="stylesheet" href="css/intlTelInput.min.css">
+    <link rel="stylesheet" href="/css/intlTelInput.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
     <!-- send referral link modal -->
@@ -556,7 +556,9 @@
 
                 <div class="ui sixteen column grid">
                     <div class="row">
-                        <button class="ui left labeled icon button" id="back-button-container" V-show="step!==1" @click="backStep" type="button">
+                        <button class="ui left labeled icon button"
+                                id="back-button-container"
+                                v-show="step!==1" @click="backStep" type="button">
                             <i class="left arrow icon"></i>
                             Back
                         </button>
@@ -700,8 +702,11 @@
                         <small>Cabo San Lucas Baja California Sur, México</small>
                     </p>
                 </div>
-
-                <form method="post" action="{{ route('buyTour') }}" v-show="step==2" id="clientInfo">
+                @php
+                    $voucher="BT-100";
+                    // $voucher="BT-".mt_rand();
+                @endphp
+                <form method="post" action="{{ route('buyTour', $voucher) }}" v-show="step==2" id="clientInfo">
                     <div class="ui grid" style="justify-content: center">
 
                         <div class="eight wide column">
@@ -714,7 +719,6 @@
                                         inputmode="none"
                                         placeholder="Please select the date..."
                                         v-model="client.date"
-
                                 >
                             </div>
                             {{-- <input id="date_calendar" class="w-100" placeholder="Please select date..." /> --}}
@@ -771,7 +775,7 @@
                         <pre>@{{ $data.kidsAges }}</pre>
                     </div> --}}
                     <div class="ui grid" style="justify-content: center">
-                        <div class="ten wide column">
+                        <div class="eight wide column">
                             <div class="field">
                                 <label>Phone number</label><br>
                                 <input class="w-100"
@@ -783,35 +787,35 @@
                                 >
                             </div>
                         </div>
+                        <div class="eight wide column">
+                            <div class="field">
+                                <label>Email address</label><br>
+                                <input class="w-100"
+                                        type="email"
+                                        name="email"
+                                        id="email"
+                                        v-model="client.email"
+                                >
+                            </div>
+                        </div>
                     </div>
                     <input type="hidden" name="name" v-model="tour.name">
                     <input type="hidden" name="time" v-model="client.time">
+                    <div v-for="(item, index) in kidsAges" >
+                        <input type="hidden" name="kids_ages[]" v-model="item.age">
+                    </div>
+
                     {{-- el id en este si es necesario en vez de el v-model
                          porque vue no es tan rapido como para actualizar su valor
                          cuando el formulario hace su post xD
                     --}}
                     <input type="hidden" name="total" id="total">
-                    {{-- <input type="hidden" name="name"> --}}
+                    <input type="hidden" name="voucher" value="{{$voucher}}">
                     @csrf
                 </form>
-                {{-- tour:{
-                    name: '{{ $tour_name }}',
-                    price:'{{ $tour_price }}',
-                    total:'',
-                    adults:30,
-                    kids:30,
-                    maxAge:18,
-                    minAge:3
-                },
-                client: {
-                    date:'',
-                    time:'',
-                    adults:'',
-                    kids:'',
-                    phone:'',
-                }, --}}
 
-                <div v-show="step==3">
+
+                {{-- <div v-show="step==3">
                         <div  class="ui cards" style="justify-content: center">
                             <div class="card">
                               <div class="content">
@@ -846,7 +850,7 @@
                         <div id="paypal-button-container">
                             <div id="paypal-button" class="text-center"></div>
                         </div>
-                </div>
+                </div> --}}
 
                 <div class="ui modal" v-show="step==1">
                     <i class="close icon"></i>
@@ -1198,6 +1202,15 @@
                             }
                         ]
                     },
+                    email: {
+                        identifier  : 'email',
+                        rules: [
+                            {
+                                type   : 'email',
+                                prompt : 'Please enter a valid e-mail'
+                            }
+                        ]
+                    },
                 }
 
                 $('#clientInfo').form({
@@ -1336,23 +1349,7 @@
                         vm.kidsAges.push({ age: '' })
                     }
                 },
-                submitForm(){
-                    $.ajax({
-                        type: "POST",
-                        url: "{{ route('buyTour') }}",
-                        data: {
-                            "client_info": this.client,
-                            "tour_info": this.tour,
-                            "_token": '{{ csrf_token() }}',
-                        },
-                        success: function (tekst) {
-                            $("body").html(tekst);
-                        },
-                        error: function (request, error) {
-                            console.log ("ERROR:" + error);
-                        }
-                    });
-                }
+
             }
         })
     </script>
