@@ -11,10 +11,10 @@ Route::get('/', function () {
 })->name('home');
 
 // TOURS_CONTROLLER
-Route::get('/traditional_arch_tour/{voucher?}', function ($voucher=null) {
+Route::get('/traditional_arch_tour/{voucher?}/{token?}', function ($voucher=null,$token=null) {
 
-    if($voucher){
-        $data=Reservation::where('voucher',$voucher);
+    if($voucher && $token){
+        $data=Reservation::where('voucher',$voucher)->where('token',$token)->firstOrFail();
     }
 
     $tour_name="TRADITIONAL ARCH TOUR";
@@ -25,6 +25,7 @@ Route::get('/traditional_arch_tour/{voucher?}', function ($voucher=null) {
 
 // TOUR PAYMENT PROCESS
 Route::post('/checkout/{voucher}/tour',[Controllers\ReservationsController::class, 'create'])->name('buyTour');
+Route::get('/checkout/{voucher}/{token}/tour',[Controllers\ReservationsController::class, 'update'])->name('updateTour');
 
 Route::get('/whale_watching', function () {
     return view('pages.whale_watching');

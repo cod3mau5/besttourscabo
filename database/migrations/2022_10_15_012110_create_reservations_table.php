@@ -31,7 +31,7 @@ class CreateReservationsTable extends Migration
             //tour
             $table->string('tour_name',255)->nullable();
             $table->date('tour_day')->nullable();
-            $table->time('tour_time')->nullable();
+            $table->string('tour_time')->nullable();
 
             // control
             $table->string('voucher',255)->unique();;
@@ -47,6 +47,9 @@ class CreateReservationsTable extends Migration
             $table->decimal('paypal_fee',10,2)->nullable();
             $table->decimal('revenue',10,2)->nullable();
             $table->string('currency')->nullable();
+
+            //token
+            $table->string('token',255)->nullable();
 
             $table->timestamps();
         });

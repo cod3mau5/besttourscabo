@@ -16,8 +16,9 @@ class ReservationsController extends Controller
 
 
         try{
-
+            return $data;
             $reservation=Reservation::create($data);
+            $data= (object) $reservation;
             return view('pages.buy_tour',compact('data','voucher'));
 
         }catch(\Illuminate\Database\QueryException $exception){
@@ -27,9 +28,23 @@ class ReservationsController extends Controller
             ## TODO ##
             // here we can send an error email message!!!
             // also we can make a prety page to show this info
-            return 'An error was ocurred with your voucher, please contact us to help you.';
+            return [
+                'Error:'=>'An error was ocurred with your voucher, please contact us to help you.',
+                'Exeption'=> $exception
+            ];
         }
 
+    }
+
+    public function update($voucher=null,$token=null){
+        if($voucher){
+            $data=Reservation::where('voucher',$voucher)->where('token',$token)->firstOrFail();
+            // dd($data->get()->all());
+            $data=$data->get()->all();
+            $data=$data[0];
+        }
+
+        return view('pages.buy_tour',compact('data','voucher'));
     }
 
     public function sendMail(){

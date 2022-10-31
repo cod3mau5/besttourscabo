@@ -13,6 +13,12 @@ class Reservation extends Model
         'fullname',
         'email'   , //
         'phone'   , //
+        'tour_name',
+        'tour_day',
+        'tour_time',
+        'adults',
+        'kids',
+        'kids_ages',
         'voucher' , //
         'order_id',
         'payer_id',

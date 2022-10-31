@@ -551,7 +551,7 @@
                 <ol class="steps">
                     <li :class="step==1 ? 'current' : ''" @click="changeStep(1)">Details</li>
                     <li :class="step==2 ? 'current' : ''" @click="changeStep(2)">Date</li>
-                    <li :class="step==3 ? 'current' : ''" @click="changeStep(3)">Payment</li>
+                    <li :class="step==3 ? 'current' : ''"  style="cursor:not-allowed!important">Payment</li>
                 </ol>
 
                 <div class="ui sixteen column grid">
@@ -703,10 +703,11 @@
                     </p>
                 </div>
                 @php
-                    $voucher="BT-100";
-                    // $voucher="BT-".mt_rand();
+                    // $voucher="BT-100";
+                    $voucher="BT-".mt_rand();
                 @endphp
-                <form method="post" action="{{ route('buyTour', $voucher) }}" v-show="step==2" id="clientInfo">
+
+                <form method="POST" action="{{ route('buyTour', $voucher) }}" v-show="step==2" id="clientInfo">
                     <div class="ui grid" style="justify-content: center">
 
                         <div class="eight wide column">
@@ -714,7 +715,7 @@
                                 <label>Tour date</label><br>
                                 <input class="w-100"
                                         id="datepicker"
-                                        name="date"
+                                        name="tour_day"
                                         type="none"
                                         inputmode="none"
                                         placeholder="Please select the date..."
@@ -799,8 +800,8 @@
                             </div>
                         </div>
                     </div>
-                    <input type="hidden" name="name" v-model="tour.name">
-                    <input type="hidden" name="time" v-model="client.time">
+                    <input type="hidden" name="tour_name" v-model="tour.name">
+                    <input type="hidden" name="tour_time" v-model="client.time">
                     <div v-for="(item, index) in kidsAges" >
                         <input type="hidden" name="kids_ages[]" v-model="item.age">
                     </div>
@@ -809,48 +810,10 @@
                          porque vue no es tan rapido como para actualizar su valor
                          cuando el formulario hace su post xD
                     --}}
-                    <input type="hidden" name="total" id="total">
+                    <input type="hidden" name="subtotal" id="total">
                     <input type="hidden" name="voucher" value="{{$voucher}}">
                     @csrf
                 </form>
-
-
-                {{-- <div v-show="step==3">
-                        <div  class="ui cards" style="justify-content: center">
-                            <div class="card">
-                              <div class="content">
-                                <i class="fa-solid fa-ticket" style="float: right;font-size: 2.3rem;"></i>
-                                <div class="">
-                                  @{{tour.name}}
-                                </div>
-                                <div class="meta">
-                                </div>
-                                <div class="description">
-                                    Tour Date: <br>
-                                    @{{client.date}} <br/>
-                                    Tour Time: <br/>
-                                    @{{client.time}} <br/>
-                                    Adults: <br/>
-                                    @{{client.adults}} <br/>
-                                    Kids: <br/>
-                                    @{{client.kids}}
-                                </div>
-                              </div>
-                              <div class="extra content">
-                                <div class="ui two buttons">
-                                    <h2 class="text-center w-100"
-                                    style="display:flex;justify-content:space-between;"
-                                    >
-                                        <span>TOTAL:</span><span>$@{{tour.total}} USD</span>
-                                    </h2>
-                                </div>
-                              </div>
-                            </div>
-                        </div>
-                        <div id="paypal-button-container">
-                            <div id="paypal-button" class="text-center"></div>
-                        </div>
-                </div> --}}
 
                 <div class="ui modal" v-show="step==1">
                     <i class="close icon"></i>

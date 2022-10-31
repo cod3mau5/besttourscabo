@@ -507,20 +507,20 @@
                           <div class="content">
                             <i class="fa-solid fa-ticket" style="float: right;font-size: 2.3rem;"></i>
                             <div class="">
-                              {{ $data['name'] }}
+                              {{ $data->tour_name }}
                             </div>
                             <div class="meta">
                             </div>
                             <div class="description">
                                 Tour Date: <br>
-                                {{$data['date']}} <br/>
+                                {{$data->tour_day}} <br/>
                                 Tour Time: <br/>
-                                {{$data['time']}} <br/>
+                                {{$data->tour_time}} <br/>
                                 Adults: <br/>
-                                {{$data['adults']}} <br/>
-                                @if(!empty($data['kids']))
+                                {{$data->adults}} <br/>
+                                @if(!empty($data->kids))
                                     Kids: <br/>
-                                    {{ $data['kids'] }}
+                                    {{ $data->kids }}
                                 @endif
                             </div>
                           </div>
@@ -529,7 +529,7 @@
                                 <h2 class="text-center w-100"
                                 style="display:flex;justify-content:space-between;"
                                 >
-                                    <span>TOTAL:</span><span>${{$data['total']}} USD</span>
+                                    <span>TOTAL:</span><span>${{$data->subtotal}} USD</span>
                                 </h2>
                             </div>
                           </div>
@@ -582,7 +582,7 @@
                                     shipping_preference: "NO_SHIPPING"
                                 },
                                 payer: {
-                                    email_address: '{{ $data["email"] }}',
+                                    email_address: '{{ $data->email }}',
                                     phone: {
                                         phone_type: "MOBILE",
                                         phone_number: { national_number: "526242640804" }
@@ -590,7 +590,7 @@
                                 },
                                 purchase_units: [{
                                     amount: {
-                                        value: '{{ $data["total"] }}'
+                                        value: '{{ $data->subtotal }}'
                                     }
                                 }],
                             });
