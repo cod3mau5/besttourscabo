@@ -13,19 +13,20 @@ Route::get('/', function () {
 // TOURS_CONTROLLER
 Route::get('/traditional_arch_tour/{voucher?}/{token?}', function ($voucher=null,$token=null) {
 
+    $reservation= new Reservation;
     if($voucher && $token){
-        $data=Reservation::where('voucher',$voucher)->where('token',$token)->firstOrFail();
+        $reservation=Reservation::where('voucher',$voucher)->where('token',$token)->firstOrFail();
+        $reservation=(object)$reservation;
     }
 
     $tour_name="TRADITIONAL ARCH TOUR";
     $tour_price=19.96;
-    return view('pages.traditional_arch_tour',compact('tour_name','tour_price','voucher'));
+
+    return view('pages.traditional_arch_tour',compact('tour_name','tour_price','voucher','token','reservation'));
 
 })->name('traditional_arch_tour');
 
-// TOUR PAYMENT PROCESS
-Route::post('/checkout/{voucher}/tour',[Controllers\ReservationsController::class, 'create'])->name('buyTour');
-Route::get('/checkout/{voucher}/{token}/tour',[Controllers\ReservationsController::class, 'update'])->name('updateTour');
+
 
 Route::get('/whale_watching', function () {
     return view('pages.whale_watching');
@@ -53,6 +54,11 @@ Route::get('/about_us', function () {
 Route::get('/contact', function () {
     return view('pages.contact');
 })->name('contact');
+
+// TOUR PAYMENT PROCESS
+Route::get('/checkout/{voucher}/{token}/tour',[Controllers\ReservationsController::class, 'edit'])->name('editTour');
+Route::post('/checkout/{voucher}/create_tour',[Controllers\ReservationsController::class, 'create'])->name('createTour');
+Route::post('/checkout/{voucher}/update_tour',[Controllers\ReservationsController::class, 'update'])->name('updateTour');
 
 //  Confirm JavaScript payment PayPal (credit card)
 Route::get('/paypal/process/{orderID}', [Controllers\Payments\PayPalCardController::class, 'process'])->name('paypal.process');

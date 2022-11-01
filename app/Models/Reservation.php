@@ -11,15 +11,16 @@ class Reservation extends Model
     protected $fillable=[
         'status',
         'fullname',
-        'email'   , //
-        'phone'   , //
+        'token',
+        'voucher' ,
+        'email'   ,
+        'phone'   ,
         'tour_name',
         'tour_day',
         'tour_time',
         'adults',
         'kids',
         'kids_ages',
-        'voucher' , //
         'order_id',
         'payer_id',
         'account_id',
@@ -28,5 +29,6 @@ class Reservation extends Model
         'paypal_fee',
         'revenue',
         'currency'
+
     ];
 }

@@ -1,0 +1,93 @@
+ [
+  "id" => "65Y258080W384560E"
+  "status" => "COMPLETED"
+  "payment_source" =>  [
+    "paypal" =>  [
+      "email_address" => "johndoe@sandboxpaypal.com"
+      "account_id" => "K65LBMWKSA65W"
+      "name" =>  [
+        "given_name" => "John"
+        "surname" => "Doe"
+      ]
+      "address" =>  [
+        "country_code" => "US"
+      ]
+    ]
+  ]
+  "purchase_units" =>  [
+    0 =>  [
+      "reference_id" => "default"
+      "payments" =>  [
+        "captures" =>  [
+          0 =>  [
+            "id" => "31372409A0411104G"
+            "status" => "COMPLETED"
+            "amount" =>  [
+              "currency_code" => "USD"
+              "value" => "200.00"
+            ]
+            "final_capture" => true
+            "seller_protection" =>  [
+              "status" => "ELIGIBLE"
+              "dispute_categories" =>  [
+                0 => "ITEM_NOT_RECEIVED"
+                1 => "UNAUTHORIZED_TRANSACTION"
+              ]
+            ]
+            "seller_receivable_breakdown" =>  [
+              "gross_amount" =>  [
+                "currency_code" => "USD"
+                "value" => "200.00"
+              ]
+              "paypal_fee" =>  [
+                "currency_code" => "USD"
+                "value" => "10.67"
+              ]
+              "net_amount" =>  [
+                "currency_code" => "USD"
+                "value" => "189.33"
+              ]
+            ]
+            "links" =>  [
+              0 =>  [
+                "href" => "https://api.sandbox.paypal.com/v2/payments/captures/31372409A0411104G"
+                "rel" => "self"
+                "method" => "GET"
+              ]
+              1 =>  [
+                "href" => "https://api.sandbox.paypal.com/v2/payments/captures/31372409A0411104G/refund"
+                "rel" => "refund"
+                "method" => "POST"
+              ]
+              2 =>  [
+                "href" => "https://api.sandbox.paypal.com/v2/checkout/orders/65Y258080W384560E"
+                "rel" => "up"
+                "method" => "GET"
+              ]
+            ]
+            "create_time" => "2022-10-15T04:06:58Z"
+            "update_time" => "2022-10-15T04:06:58Z"
+          ]
+        ]
+      ]
+    ]
+  ]
+  "payer" =>  [
+    "name" =>  [
+      "given_name" => "John"
+      "surname" => "Doe"
+    ]
+    "email_address" => "johndoe@sandboxpaypal.com"
+    "payer_id" => "K65LBMWKSA65W"
+    "address" =>  [
+      "country_code" => "US"
+    ]
+  ]
+  "links" =>  [
+    0 =>  [
+      "href" => "https://api.sandbox.paypal.com/v2/checkout/orders/65Y258080W384560E"
+      "rel" => "self"
+      "method" => "GET"
+    ]
+  ]
+]

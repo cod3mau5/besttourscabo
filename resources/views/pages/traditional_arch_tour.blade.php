@@ -509,38 +509,55 @@
     <main id="traditional_arch_tour">
         <div class="ui container">
 
+            @if ($errors->any())
+                <div class="ui negative message mt-2" >
+                    <i class="close icon" @click="closeErrorMessage"></i>
+                    @foreach ($errors->all() as $error)
+                        <div style="font-weight:bolder">
+                            <li>{{ $error }}</li>
+                        </div>
+                    @endforeach
+                </div>
+            @endif
+
+            <div class="ui negative message mt-2" >
+                <i class="close icon" @click="closeErrorMessage"></i>
+                <div style="font-weight:bolder">
+                    <li>{{ !empty($reservation) ? $reservation : '' }}</p>
+                </div>
+            </div>
 
             <h2 class="tour-title" v-show="step==1">@{{tour.name}}</h2>
 
             <div class="swiper mySwiper" v-show="step==1">
                 <div class="grid-gallery swiper-wrapper pswp-gallery" id="my-gallery">
 
-                    <a href="{{url('assets/img/tours/traditional_arch_tour/img_1.webp')}}"
+                    <a href="{{url('/assets/img/tours/traditional_arch_tour/img_1.webp')}}"
                       data-pswp-width="950"
                       data-pswp-height="683"
                       target="_blank">
-                        <div class="swiper-slide" style="background-image:url('assets/img/tours/traditional_arch_tour/img_1.webp')"></div>
+                        <div class="swiper-slide" style="background-image:url('/assets/img/tours/traditional_arch_tour/img_1.webp')"></div>
                     </a>
 
-                    <a href="{{url('assets/img/tours/traditional_arch_tour/img_2.jpg')}}"
+                    <a href="{{url('/assets/img/tours/traditional_arch_tour/img_2.jpg')}}"
                       data-pswp-width="669"
                       data-pswp-height="446"
                       target="_blank">
-                        <div class="swiper-slide" style="background-image:url('assets/img/tours/traditional_arch_tour/img_2.jpg')"></div>
+                        <div class="swiper-slide" style="background-image:url('/assets/img/tours/traditional_arch_tour/img_2.jpg')"></div>
                     </a>
 
-                    <a href="{{url('assets/img/tours/traditional_arch_tour/img_3.jpg')}}"
+                    <a href="{{url('/assets/img/tours/traditional_arch_tour/img_3.jpg')}}"
                         data-pswp-width="669"
                         data-pswp-height="446"
                       target="_blank">
-                        <div class="swiper-slide" style="background-image:url('assets/img/tours/traditional_arch_tour/img_3.jpg')"></div>
+                        <div class="swiper-slide" style="background-image:url('/assets/img/tours/traditional_arch_tour/img_3.jpg')"></div>
                     </a>
 
-                    <a href="{{url('assets/img/tours/traditional_arch_tour/img_4.jpg')}}"
+                    <a href="{{url('/assets/img/tours/traditional_arch_tour/img_4.jpg')}}"
                         data-pswp-width="669"
                         data-pswp-height="446"
                       target="_blank">
-                        <div class="swiper-slide" style="background-image:url('assets/img/tours/traditional_arch_tour/img_4.jpg')"></div>
+                        <div class="swiper-slide" style="background-image:url('/assets/img/tours/traditional_arch_tour/img_4.jpg')"></div>
                     </a>
 
                 </div>
@@ -702,12 +719,23 @@
                         <small>Cabo San Lucas Baja California Sur, México</small>
                     </p>
                 </div>
+
                 @php
-                    // $voucher="BT-100";
-                    $voucher="BT-".mt_rand();
+                    if(empty($voucher)){ $voucher="BT-".mt_rand(); }
                 @endphp
 
-                <form method="POST" action="{{ route('buyTour', $voucher) }}" v-show="step==2" id="clientInfo">
+                <form
+                    method="POST"
+                    @if (!empty($token))
+                    {{-- we check if the token exists so we can asume the client is trying to update his reservation --}}
+                        action="{{ route('updateTour', $voucher) }}"
+                    @else
+                    {{-- otherwise the client only want to create a reservation --}}
+                        action="{{ route('createTour', $voucher) }}"
+                    @endif
+                    v-show="step==2"
+                    id="clientInfo"
+                >
                     <div class="ui grid" style="justify-content: center">
 
                         <div class="eight wide column">
@@ -810,8 +838,12 @@
                          porque vue no es tan rapido como para actualizar su valor
                          cuando el formulario hace su post xD
                     --}}
-                    <input type="hidden" name="subtotal" id="total">
-                    <input type="hidden" name="voucher" value="{{$voucher}}">
+                    <input type="hidden" name="subtotal" id="subtotal">
+
+                    @if (empty($token))
+                        <input type="hidden" name="voucher" value="{{$voucher}}">
+                    @endif
+
                     @csrf
                 </form>
 
@@ -882,8 +914,8 @@
         function mobil() {
 
             $('.grid-gallery').html(`
-                <div class="swiper-slide" style="background-image:url('assets/img/tours/traditional_arch_tour/img_1.webp')">
-                    <a href="{{url('assets/img/tours/traditional_arch_tour/img_1.webp')}}"
+                <div class="swiper-slide" style="background-image:url('/assets/img/tours/traditional_arch_tour/img_1.webp')">
+                    <a href="{{url('/assets/img/tours/traditional_arch_tour/img_1.webp')}}"
                       data-pswp-width="950"
                       data-pswp-height="683"
                       target="_blank"
@@ -892,8 +924,8 @@
                         <div class="shadow-image"></div>
                     </a>
                 </div>
-                <div class="swiper-slide" style="background-image:url('assets/img/tours/traditional_arch_tour/img_2.jpg')">
-                    <a href="{{url('assets/img/tours/traditional_arch_tour/img_2.jpg')}}"
+                <div class="swiper-slide" style="background-image:url('/assets/img/tours/traditional_arch_tour/img_2.jpg')">
+                    <a href="{{url('/assets/img/tours/traditional_arch_tour/img_2.jpg')}}"
                       data-pswp-width="669"
                       data-pswp-height="446"
                       target="_blank"
@@ -902,8 +934,8 @@
                         <div class="shadow-image"></div>
                     </a>
                 </div>
-                <div class="swiper-slide" style="background-image:url('assets/img/tours/traditional_arch_tour/img_3.jpg')">
-                    <a href="{{url('assets/img/tours/traditional_arch_tour/img_3.jpg')}}"
+                <div class="swiper-slide" style="background-image:url('/assets/img/tours/traditional_arch_tour/img_3.jpg')">
+                    <a href="{{url('/assets/img/tours/traditional_arch_tour/img_3.jpg')}}"
                         data-pswp-width="669"
                         data-pswp-height="446"
                       target="_blank"
@@ -912,8 +944,8 @@
                         <div class="shadow-image"></div>
                     </a>
                 </div>
-                <div class="swiper-slide" style="background-image:url('assets/img/tours/traditional_arch_tour/img_4.jpg')">
-                    <a href="{{url('assets/img/tours/traditional_arch_tour/img_4.jpg')}}"
+                <div class="swiper-slide" style="background-image:url('/assets/img/tours/traditional_arch_tour/img_4.jpg')">
+                    <a href="{{url('/assets/img/tours/traditional_arch_tour/img_4.jpg')}}"
                         data-pswp-width="669"
                         data-pswp-height="446"
                       target="_blank"
@@ -937,32 +969,32 @@
             swiper.destroy();
             $('.grid-gallery').html(`
 
-                    <a href="{{url('assets/img/tours/traditional_arch_tour/img_1.webp')}}"
+                    <a href="{{url('/assets/img/tours/traditional_arch_tour/img_1.webp')}}"
                       data-pswp-width="950"
                       data-pswp-height="683"
                       target="_blank">
-                        <div class="swiper-slide" style="background-image:url('assets/img/tours/traditional_arch_tour/img_1.webp')"></div>
+                        <div class="swiper-slide" style="background-image:url('/assets/img/tours/traditional_arch_tour/img_1.webp')"></div>
                     </a>
 
-                    <a href="{{url('assets/img/tours/traditional_arch_tour/img_2.jpg')}}"
+                    <a href="{{url('/assets/img/tours/traditional_arch_tour/img_2.jpg')}}"
                       data-pswp-width="669"
                       data-pswp-height="446"
                       target="_blank">
-                        <div class="swiper-slide" style="background-image:url('assets/img/tours/traditional_arch_tour/img_2.jpg')"></div>
+                        <div class="swiper-slide" style="background-image:url('/assets/img/tours/traditional_arch_tour/img_2.jpg')"></div>
                     </a>
 
-                    <a href="{{url('assets/img/tours/traditional_arch_tour/img_3.jpg')}}"
+                    <a href="{{url('/assets/img/tours/traditional_arch_tour/img_3.jpg')}}"
                         data-pswp-width="669"
                         data-pswp-height="446"
                       target="_blank">
-                        <div class="swiper-slide" style="background-image:url('assets/img/tours/traditional_arch_tour/img_3.jpg')"></div>
+                        <div class="swiper-slide" style="background-image:url('/assets/img/tours/traditional_arch_tour/img_3.jpg')"></div>
                     </a>
 
-                    <a href="{{url('assets/img/tours/traditional_arch_tour/img_4.jpg')}}"
+                    <a href="{{url('/assets/img/tours/traditional_arch_tour/img_4.jpg')}}"
                         data-pswp-width="669"
                         data-pswp-height="446"
                       target="_blank">
-                        <div class="swiper-slide" style="background-image:url('assets/img/tours/traditional_arch_tour/img_4.jpg')"></div>
+                        <div class="swiper-slide" style="background-image:url('/assets/img/tours/traditional_arch_tour/img_4.jpg')"></div>
                     </a>
 
             `);
@@ -1046,10 +1078,11 @@
             el: '#app',
             data: {
                 page: 'loading',
-                step:1,
+                step:'{{ ( !empty($voucher) && !empty($token) ) ? 2 : 1 }}',
                 tour:{
                     name: '{{ $tour_name }}',
                     price:'{{ $tour_price }}',
+
                     total:'',
                     adults:30,
                     kids:30,
@@ -1057,11 +1090,12 @@
                     minAge:3
                 },
                 client: {
-                    date:'',
-                    time:'',
-                    adults:'',
-                    kids:'',
-                    phone:'',
+                    date:'{{ !empty($reservation->tour_day) ? $reservation->tour_day : '' }}',
+                    time:'{{ !empty($reservation->tour_time) ? $reservation->tour_time : '' }}',
+                    adults:'{{ !empty($reservation->adults) ? (int)$reservation->adults : '' }}',
+                    kids:'{{ !empty($reservation->kids) ? (int)$reservation->kids : '' }}',
+                    phone:'{{ !empty($reservation->phone) ? $reservation->phone : '' }}',
+                    email:'{{ !empty($reservation->email) ? $reservation->email : '' }}',
                 },
                 kidsAges:[],
                 routes:{
@@ -1073,11 +1107,12 @@
                 // {{-- text: @json($language) --}}
             },
             beforeMount(){
+                this.step= parseInt(this.step);
                 this.page='loading';
             },
             mounted() {
                 this.page='loaded';
-
+                var vm= this;
                 const datePicker = MCDatepicker.create({
                     el: '#datepicker',
                     minDate: new Date(),
@@ -1089,7 +1124,6 @@
                 });
                 datePicker.onSelect((date, formatedDate) => this.client.date=$('#datepicker').val() );
 
-                var vm= this;
                 $('input.timepicker').timepicker({
                     timeFormat: 'h:mm p',
                     interval: 60,
@@ -1216,9 +1250,9 @@
                     let total= this.calcTotal();
                     let step = this.step;
                     this.page='loading';
-                    $('#total').val(total);
+                    $('#subtotal').val((total));
                     // this.checkIfRenderPaypal(step,total);
-                    if(step==2 && $('#clientInfo').form('is valid')){
+                    if(step==2 && $('#clientInfo').form('is valid') && $('#subtotal').val() > 0){
                         this.step !== 3 ? $('#clientInfo').form('submit') : this.step=this.step;
                     }
                     else if(step==1){
@@ -1312,6 +1346,9 @@
                         vm.kidsAges.push({ age: '' })
                     }
                 },
+                closeErrorMessage(){
+                    $('.ui.negative.message').hide();
+                }
 
             }
         })

@@ -487,8 +487,8 @@
                 <div class="row">
                     <a class="ui left labeled icon button"
                         id="back-button-container"
-                        @if (!empty($voucher))
-                            href="{{ route('traditional_arch_tour',$voucher) }}"
+                        @if (!empty($voucher) && !empty($token))
+                            href="{{ route('traditional_arch_tour',[$voucher,$token]) }}"
                             @else
                             href="#"
                         @endif
@@ -507,20 +507,20 @@
                           <div class="content">
                             <i class="fa-solid fa-ticket" style="float: right;font-size: 2.3rem;"></i>
                             <div class="">
-                              {{ $data->tour_name }}
+                              {{ $reservation->tour_name }}
                             </div>
                             <div class="meta">
                             </div>
                             <div class="description">
                                 Tour Date: <br>
-                                {{$data->tour_day}} <br/>
+                                {{$reservation->tour_day}} <br/>
                                 Tour Time: <br/>
-                                {{$data->tour_time}} <br/>
+                                {{$reservation->tour_time}} <br/>
                                 Adults: <br/>
-                                {{$data->adults}} <br/>
-                                @if(!empty($data->kids))
+                                {{$reservation->adults}} <br/>
+                                @if(!empty($reservation->kids))
                                     Kids: <br/>
-                                    {{ $data->kids }}
+                                    {{ $reservation->kids }}
                                 @endif
                             </div>
                           </div>
@@ -529,7 +529,8 @@
                                 <h2 class="text-center w-100"
                                 style="display:flex;justify-content:space-between;"
                                 >
-                                    <span>TOTAL:</span><span>${{$data->subtotal}} USD</span>
+                                    @php $total= (float)$reservation->subtotal @endphp
+                                    <span>TOTAL:</span><span>${{ number_format($total,2) }} USD</span>
                                 </h2>
                             </div>
                           </div>
@@ -582,7 +583,7 @@
                                     shipping_preference: "NO_SHIPPING"
                                 },
                                 payer: {
-                                    email_address: '{{ $data->email }}',
+                                    email_address: '{{ $reservation->email }}',
                                     phone: {
                                         phone_type: "MOBILE",
                                         phone_number: { national_number: "526242640804" }
@@ -590,7 +591,7 @@
                                 },
                                 purchase_units: [{
                                     amount: {
-                                        value: '{{ $data->subtotal }}'
+                                        value: parseFloat('{{ $reservation->subtotal }}').toFixed(2)
                                     }
                                 }],
                             });
