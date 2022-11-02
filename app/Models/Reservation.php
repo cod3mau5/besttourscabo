@@ -18,6 +18,7 @@ class Reservation extends Model
         'tour_name',
         'tour_day',
         'tour_time',
+        'tour_min_age',
         'adults',
         'kids',
         'kids_ages',

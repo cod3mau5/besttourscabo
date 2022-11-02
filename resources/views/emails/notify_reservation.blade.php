@@ -1,9 +1,20 @@
 @component('mail::message')
 
-# Alguien acaba de llenar el primer formulario:
+# Alguien acaba de llenar el paso uno del formulario:
 
 {{ $reservation->tour_name }}
 
+@php
+    $minor=0;
+    if($reservation->kids > 0 && $reservation->kids_ages !== ''){
+        $minors= explode(",",$reservation->kids_ages);
+        foreach($minors as $min) {
+            if($min < $reservation->tour_min_age){
+                $minor++;
+            }
+        }
+    }
+@endphp
 @component('mail::table')
 |                       |                                                                                                     |
 | --------------------- |:---------------------------------------------------------------------------------------------------:|
@@ -12,13 +23,14 @@
 | <b>Phone Number:</b>  | {{$reservation->phone}}                                                                             |
 | <b>E-mail:</b>        | {{$reservation->email}}                                                                             |
 | <b>Passengers: </b>   | {{ !empty($reservation->kids) ? $reservation->adults + $reservation->kids : $reservation->adults }} |
+@if ($minor > 0)
+| <b>Minors: </b>       | {{ $minor }}                                                                                        |
+@endif
 | <b>E-TICKET: </b>     | <b>{{$reservation->voucher}}</b>                                                                    |
 | <b>Subtotal: </b>     | <b style="color:#008641">${{number_format($reservation->subtotal,2)}} USD</b>                     |
 @endcomponent
 
-@component('mail::button', ['url' => route('editTour', [$reservation->voucher,$reservation->token])])
-Finish my reservation
-@endcomponent
+
 
 Thanks,
 {{ config('app.name') }}

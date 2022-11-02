@@ -750,7 +750,6 @@
                                         v-model="client.date"
                                 >
                             </div>
-                            {{-- <input id="date_calendar" class="w-100" placeholder="Please select date..." /> --}}
                         </div>
                         <div class="eight wide column">
                             <div class="field">
@@ -768,7 +767,7 @@
                         <div class="eight wide column">
                             <div class="field">
                                 <label>Adults</label>
-                                <select class="ui fluid dropdown" v-model="client.adults" name="adults">
+                                <select class="ui fluid dropdown" v-model="client.adults" name="adults" @change="calcTotal">
                                     <option v-for="(item, index) in tour.adults" :value="item">
                                         @{{ item }}
                                     </option>
@@ -829,7 +828,9 @@
                         </div>
                     </div>
                     <input type="hidden" name="tour_name" v-model="tour.name">
+                    <input type="hidden" id="newPhone" name="newPhone">
                     <input type="hidden" name="tour_time" v-model="client.time">
+                    <input type="hidden" name="tour_min_age" v-model="tour.minAge">
                     <div v-for="(item, index) in kidsAges" >
                         <input type="hidden" name="kids_ages[]" v-model="item.age">
                     </div>
@@ -838,7 +839,7 @@
                          porque vue no es tan rapido como para actualizar su valor
                          cuando el formulario hace su post xD
                     --}}
-                    <input type="hidden" name="subtotal" id="subtotal">
+                    <input type="hidden" name="subtotal" id="subtotal" v-model="tour.subtotal">
 
                     @if (empty($token))
                         <input type="hidden" name="voucher" value="{{$voucher}}">
@@ -1072,6 +1073,7 @@
 
     {{-- VueJs 2 --}}
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    {{-- <script src="https://cdn.jsdelivr.net/npm/vue@2.7.13"></script> --}}
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script>
         var app = new Vue({
@@ -1082,12 +1084,12 @@
                 tour:{
                     name: '{{ $tour_name }}',
                     price:'{{ $tour_price }}',
-
+                    subtotal:0,
                     total:'',
                     adults:30,
                     kids:30,
                     maxAge:18,
-                    minAge:3
+                    minAge:'{{ $tour_min_age }}'
                 },
                 client: {
                     date:'{{ !empty($reservation->tour_day) ? $reservation->tour_day : '' }}',
@@ -1136,13 +1138,38 @@
                     change: function(time) { vm.client.time=$('#timepicker').val() }
                 });
 
-                const phoneInputField = document.querySelector("#phone");
+                const phoneInputField = document.getElementById("phone");
                 const phone_number = window.intlTelInput(phoneInputField, {
                     separateDialCode: true,
                     // hiddenInput: "full",
                     utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
-                    preferredCountries:["us", "mx"]
+                    preferredCountries:["us", "mx"],
+                    initialCountry: "auto",
+                    geoIpLookup: function(callback) {
+                            $.get('https://ipinfo.io', function() {}, "jsonp").always(function(resp) {
+                            var countryCode = (resp && resp.country) ? resp.country : "us";
+                            callback(countryCode);
+                        });
+                    },
                 });
+
+                // const phoneInputField = document.getElementById("newPhone");
+                // const phone_number = window.intlTelInput(phoneInputField, {
+                //     separateDialCode: true,
+                //     // hiddenInput: "full",
+                //     utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+                //     preferredCountries:["us", "mx"]
+                // });
+
+
+                $('#phone').on("keyup change", function(e) {
+                    let newPhone= phone_number.getNumber();
+                    document.getElementById("newPhone").value=newPhone;
+                });
+
+                if(vm.client.kids > 0){
+                    vm.addKidAge();
+                }
 
                 let validationRules=
                 {
@@ -1194,8 +1221,8 @@
                                 prompt : 'Please enter a valid phone number'
                             },
                             {
-                                type   : 'minLength[8]',
-                                prompt : 'The phone number must contain at least 8 characters'
+                                type   : 'minLength[10]',
+                                prompt : 'The phone number must contain at least 10 digits'
                             }
                         ]
                     },
@@ -1218,53 +1245,29 @@
 
                 $(window).keydown(function(event){
                     if(event.keyCode == 13) {
-                        event.preventDefault();
-                        vm.nextStep();
-                    return false;
+                        if(typeof event.preventDefault() !== "undefined"){
+                            event.preventDefault();
+                            vm.nextStep(event);
+                        }else{
+                            console.log('es indefinido');
+                            vm.nextStep(event);
+                            return false;
+                        }
                     }
                 });
 
-                // $('#date_calendar').mobiscroll().datepicker({
-                //     controls: ['calendar'],
-                //     touchUi: true,
-                //     responsive: {
-                //         xsmall: {
-                //             controls: ['calendar'],
-                //             display: 'bottom',
-                //             touchUi: true
-                //         },
-                //         small: {
-                //             controls: ['calendar'],
-                //             display: 'anchored',
-                //             touchUi: true
-                //         },
-                //         custom: { // Custom breakpoint
-                //             breakpoint: 800,
-                //             controls: ['calendar'],
-                //             display: 'anchored',
-                //             touchUi: false
-                //         }
-                //     }
-                // });
-                // $('#time_calendar').mobiscroll().datepicker({
-                //     controls: ['time'],
-                //     timeFormat: 'h:mm A',
-                //     touchUi: true
-                // });
+
             },
             methods:{
                 nextStep: function(e){
-                    e.preventDefault();
+                    if(e !== null || e !== undefined){
+                        if(typeof e.preventDefault() !== "undefined"){e.preventDefault()}
+                    }
                     let step = this.step;
                     this.page='loading';
-
-                    // this.checkIfRenderPaypal(step,total);
-                    if(step==2 && $('#clientInfo').form('is valid') ){
-                        let total= this.calcTotal();
-                        $('#subtotal').val(total);
-                        alert($('#subtotal').val());
-
-                        if( !isNaN(total) && $('#subtotal').val() > 0 ){
+                    if( step==2 && $('#clientInfo').form('is valid') ){
+                        this.calcTotal();
+                        if( this.tour.subtotal > 0 ){
                             this.step !== 3 ? $('#clientInfo').form('submit') : this.step=this.step;
                         }else{
                             alert('Error calculating total, please try again.')
@@ -1284,7 +1287,6 @@
                     let total= this.calcTotal();
                     let step = this.step;
                     this.page='loading';
-                    this.checkIfRenderPaypal(step,total);
                     this.step !== 1 ? this.step=this.step-1 : this.step=this.step;
                     // $('#inline_calendar').calendar();
                     this.page='loaded';
@@ -1293,14 +1295,20 @@
                     this.step = step;
                 },
                 calcTotal(){
-                    var vm= this;
-                    let minAge= this.tour.minAge;
-                    let total,totalAdults,totalKids=0;
-                    totalAdults= parseFloat(this.tour.price).toFixed(2) * parseFloat(this.client.adults).toFixed(2);
-                    totalKids=this.calcTotalKids(totalKids,minAge);
-                    total= totalAdults + totalKids;
-                    this.tour.total = parseFloat(total).toFixed(2);
-                    return total;
+                    if(this.client.adults==0){
+                        alert('adults must be greater than 0');
+                        return 0;
+                    }else{
+                        var vm= this;
+                        let minAge= this.tour.minAge;
+                        let total,totalAdults,totalKids=0;
+                        totalAdults= parseFloat(this.tour.price).toFixed(2) * parseInt(this.client.adults);
+                        totalKids=this.calcTotalKids(totalKids,minAge);
+                        total= totalAdults + totalKids;
+                        this.tour.subtotal= parseFloat(total).toFixed(2);
+                        document.getElementById('subtotal').value=this.tour.subtotal;
+                        return total;
+                    }
                 },
                 calcTotalKids(totalKids,minAge){
                     if(this.client.kids > 0 ){
@@ -1309,25 +1317,13 @@
                         for (let i = 0; i < kidsAges.length; i++){
                             kidsAges[i].age > minAge ? totalKids++ : '';
                         }
-                        totalKids= this.tour.price * totalKids;
+                        totalKids= parseFloat(this.tour.price).toFixed(2) * parseInt(totalKids);
                         return totalKids;
                     }else{
                         return 0;
                     }
                 },
-                // checkIfRenderPaypal(step){
-                //     var vm= this;
-                //     let total= vm.calcTotal();
-                //     if(step == 2){
-                //         if ($('#paypal-button-container').length) {
-                //             const paypalBtn = document.getElementById('paypal-button');
-                //             paypalBtn.remove();
-                //             $('#paypal-button-container').html('<div id="paypal-button"></div>');
-                //             this.renderPaypal(total,vm.client,vm.tour);
-                //         }
-                //     }
-                //     this.step = step;
-                // },
+
                 openModal: function(){
                     $('.ui.modal').modal({centered: false}).modal('show');
                     return false;
@@ -1340,7 +1336,7 @@
                     let length=number.length;
                     this.client.phone=number.replace(/\D/g, '');
 
-                    if(length < 8){
+                    if(length < 10){
                         $('#phone').removeClass('input-success');
                         $('#phone').addClass('input-error');
                         $('#phone').attr('placeholder','You need to type at least 8 numbers');
@@ -1356,9 +1352,18 @@
                 addKidAge(){
                     this.kidsAges=[];
                     var vm=this;
-                    let kids= this.client.kids;
-                    for (let i = 0; i < kids; i++) {
-                        vm.kidsAges.push({ age: '' })
+                    var kids= this.client.kids;
+                    let isKidAges= '{{ ($reservation->kids_ages == []) ? "no" : "yes" }}';
+                    if (isKidAges== 'yes'){
+                        let kidsAges= '{{$reservation->kids_ages}}';
+                        kidsAges= kidsAges.split(',');
+                        for (let i = 0; i < kidsAges.length; i++) {
+                            vm.kidsAges.push({ age: kidsAges[i] })
+                        }
+                    }else{
+                        for (let i = 0; i < kids; i++) {
+                            vm.kidsAges.push({ age: '' })
+                        }
                     }
                 },
                 closeErrorMessage(){
@@ -1367,6 +1372,9 @@
 
             }
         })
+        // Vue.config.devtools = false;
+        // Vue.config.debug = false;
+        // Vue.config.silent = true;
     </script>
 
 @endsection

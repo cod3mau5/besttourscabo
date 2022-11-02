@@ -14,6 +14,10 @@ class ReservationsController extends Controller
 
         $request->request->add(['token' => 'TK_'.mt_rand()]);
         $request->request->add(['status' => 'BOUND_TO_RESERVE']);
+        $request->merge([
+            'phone' =>  $request->get('newPhone'),
+        ]);
+        // return (object)$request->all();
 
         if($request->get('kids')){
             $request->merge([
@@ -21,7 +25,6 @@ class ReservationsController extends Controller
             ]);
         }
 
-        // return (object)$request->all();
 
         $rules= [
             'phone'=>'required|min:8',
@@ -81,6 +84,14 @@ class ReservationsController extends Controller
                 $request->request->add(['token' => 'TK_'.mt_rand()]);
                 $request->request->add(['status' => 'BOUND_TO_RESERVE']);
 
+                if( $request->get('kids') ){
+                    $request->merge([
+                        'kids_ages' =>  implode(",", $request->get('kids_ages')),
+                    ]);
+                }else{
+                    $request->request->add(['kids_ages' => '']);
+                }
+
                 $rules= [
                     'phone'=>'required|min:8',
                     'email'=>'required|email',
@@ -88,7 +99,7 @@ class ReservationsController extends Controller
                     'tour_name'=>'required',
                     'tour_day'=>'required',
                     'tour_time'=>'required',
-                    'subtotal'=>'required|number|between:2,9999999',
+                    'subtotal'=>'required|between:2,9999999',
                     'token'=>'required|min:4'
                 ];
                 $request->validate($rules);
@@ -100,6 +111,7 @@ class ReservationsController extends Controller
 
                     $reservation= (object) $reservation;
                     $token= $reservation->token;
+
                     return view('pages.buy_tour',compact('reservation','voucher','token'));
 
                 }catch(\Illuminate\Database\QueryException $exception){

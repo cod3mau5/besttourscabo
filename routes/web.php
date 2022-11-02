@@ -21,8 +21,9 @@ Route::get('/traditional_arch_tour/{voucher?}/{token?}', function ($voucher=null
 
     $tour_name="TRADITIONAL ARCH TOUR";
     $tour_price=19.96;
-
-    return view('pages.traditional_arch_tour',compact('tour_name','tour_price','voucher','token','reservation'));
+    $tour_min_age=3;
+    // return  $reservation->kids_ages;
+    return view('pages.traditional_arch_tour',compact('tour_name','tour_price','tour_min_age','voucher','token','reservation'));
 
 })->name('traditional_arch_tour');
 
