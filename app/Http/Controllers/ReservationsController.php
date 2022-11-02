@@ -139,10 +139,10 @@ class ReservationsController extends Controller
             ])
         ->send(new NotifyBoundReservation($reservation));
 
-        $reservation= (object) $reservation;
-        $myfile = fopen("/var/www/html/besttourscabo/public_html/text/newfile".mt_rand().".txt", "w") or die("Unable to open file!");
-        // $txt = "John Doe\n";
-        fwrite($myfile, $reservation->toJson());
-        fclose($myfile);
+        // $reservation= (object) $reservation;
+        // $myfile = fopen("/var/www/html/besttourscabo/public_html/text/newfile".mt_rand().".txt", "w") or die("Unable to open file!");
+        // // $txt = "John Doe\n";
+        // fwrite($myfile, $reservation->toJson());
+        // fclose($myfile);
     }
 }
