@@ -1216,6 +1216,14 @@
                     on     : 'change'
                 });
 
+                $(window).keydown(function(event){
+                    if(event.keyCode == 13) {
+                        event.preventDefault();
+                        vm.nextStep();
+                    return false;
+                    }
+                });
+
                 // $('#date_calendar').mobiscroll().datepicker({
                 //     controls: ['calendar'],
                 //     touchUi: true,
@@ -1247,13 +1255,20 @@
             methods:{
                 nextStep: function(e){
                     e.preventDefault();
-                    let total= this.calcTotal();
                     let step = this.step;
                     this.page='loading';
-                    $('#subtotal').val((total));
+
                     // this.checkIfRenderPaypal(step,total);
-                    if(step==2 && $('#clientInfo').form('is valid') && $('#subtotal').val() > 0){
-                        this.step !== 3 ? $('#clientInfo').form('submit') : this.step=this.step;
+                    if(step==2 && $('#clientInfo').form('is valid') ){
+                        let total= this.calcTotal();
+                        $('#subtotal').val(total);
+                        alert($('#subtotal').val());
+
+                        if( !isNaN(total) && $('#subtotal').val() > 0 ){
+                            this.step !== 3 ? $('#clientInfo').form('submit') : this.step=this.step;
+                        }else{
+                            alert('Error calculating total, please try again.')
+                        }
                     }
                     else if(step==1){
                         this.step !== 3 ? this.step=this.step+1 : this.step=this.step;
@@ -1275,7 +1290,7 @@
                     this.page='loaded';
                 },
                 changeStep(step){
-                    this.checkIfRenderPaypal(step);
+                    this.step = step;
                 },
                 calcTotal(){
                     var vm= this;
@@ -1284,7 +1299,7 @@
                     totalAdults= parseFloat(this.tour.price).toFixed(2) * parseFloat(this.client.adults).toFixed(2);
                     totalKids=this.calcTotalKids(totalKids,minAge);
                     total= totalAdults + totalKids;
-                    this.tour.total = total.toFixed(2);
+                    this.tour.total = parseFloat(total).toFixed(2);
                     return total;
                 },
                 calcTotalKids(totalKids,minAge){
@@ -1300,19 +1315,19 @@
                         return 0;
                     }
                 },
-                checkIfRenderPaypal(step){
-                    var vm= this;
-                    let total= vm.calcTotal();
-                    if(step == 2){
-                        if ($('#paypal-button-container').length) {
-                            const paypalBtn = document.getElementById('paypal-button');
-                            paypalBtn.remove();
-                            $('#paypal-button-container').html('<div id="paypal-button"></div>');
-                            this.renderPaypal(total,vm.client,vm.tour);
-                        }
-                    }
-                    this.step = step;
-                },
+                // checkIfRenderPaypal(step){
+                //     var vm= this;
+                //     let total= vm.calcTotal();
+                //     if(step == 2){
+                //         if ($('#paypal-button-container').length) {
+                //             const paypalBtn = document.getElementById('paypal-button');
+                //             paypalBtn.remove();
+                //             $('#paypal-button-container').html('<div id="paypal-button"></div>');
+                //             this.renderPaypal(total,vm.client,vm.tour);
+                //         }
+                //     }
+                //     this.step = step;
+                // },
                 openModal: function(){
                     $('.ui.modal').modal({centered: false}).modal('show');
                     return false;

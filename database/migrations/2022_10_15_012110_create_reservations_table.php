@@ -27,6 +27,7 @@ class CreateReservationsTable extends Migration
             // pax
             $table->unsignedTinyInteger('adults')->nullable();
             $table->unsignedTinyInteger('kids')->nullable();
+            $table->string('kids_ages')->nullable();
 
             //tour
             $table->string('tour_name',255)->nullable();

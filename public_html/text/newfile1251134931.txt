@@ -1,0 +1,1 @@
+{"tour_day":"2022-11-01","adults":"2","phone":"123456789","email":"ok@ok","tour_name":"TRADITIONAL ARCH TOUR","tour_time":"10:00 AM","subtotal":"39.92","voucher":"BT-2118288962","token":"TK_732624326","status":"BOUND_TO_RESERVE","updated_at":"2022-11-02T06:06:00.000000Z","created_at":"2022-11-02T06:06:00.000000Z","id":36}

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Reservation;
 use Illuminate\Http\Request;
+use App\Mail\NotifyBoundReservation;
+use Illuminate\Support\Facades\Mail;
 
 class ReservationsController extends Controller
 {
@@ -11,6 +13,14 @@ class ReservationsController extends Controller
     {
 
         $request->request->add(['token' => 'TK_'.mt_rand()]);
+        $request->request->add(['status' => 'BOUND_TO_RESERVE']);
+
+        if($request->get('kids')){
+            $request->merge([
+                'kids_ages' =>  implode(",", $request->get('kids_ages')),
+            ]);
+        }
+
         // return (object)$request->all();
 
         $rules= [
@@ -56,11 +66,11 @@ class ReservationsController extends Controller
     public function edit($voucher,$token)
     {
         if($voucher){
-            $data=Reservation::where('voucher',$voucher)->where('token',$token)->firstOrFail();
-            $data= (object) $data;
+            $reservation=Reservation::where('voucher',$voucher)->where('token',$token)->firstOrFail();
+            $reservation= (object) $reservation;
         }
 
-        return view('pages.buy_tour',compact('data','voucher','token'));
+        return view('pages.buy_tour',compact('reservation','voucher','token'));
     }
 
     public function update(Request $request, $voucher)
@@ -69,6 +79,8 @@ class ReservationsController extends Controller
         if($voucher){
 
                 $request->request->add(['token' => 'TK_'.mt_rand()]);
+                $request->request->add(['status' => 'BOUND_TO_RESERVE']);
+
                 $rules= [
                     'phone'=>'required|min:8',
                     'email'=>'required|email',
@@ -76,7 +88,7 @@ class ReservationsController extends Controller
                     'tour_name'=>'required',
                     'tour_day'=>'required',
                     'tour_time'=>'required',
-                    'subtotal'=>'required|between:2,9999999',
+                    'subtotal'=>'required|number|between:2,9999999',
                     'token'=>'required|min:4'
                 ];
                 $request->validate($rules);
@@ -108,9 +120,17 @@ class ReservationsController extends Controller
 
     private function sendMail($reservation)
     {
+
+        Mail::to($reservation->email)
+        ->cc([
+            'code.bit.mau@gmail.com',
+            ])
+        ->send(new NotifyBoundReservation($reservation));
+
+        $reservation= (object) $reservation;
         $myfile = fopen("/var/www/html/besttourscabo/public_html/text/newfile".mt_rand().".txt", "w") or die("Unable to open file!");
-        $txt = "John Doe\n";
-        fwrite($myfile, $txt);
+        // $txt = "John Doe\n";
+        fwrite($myfile, $reservation->toJson());
         fclose($myfile);
     }
 }
