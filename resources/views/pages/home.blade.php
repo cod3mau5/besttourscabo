@@ -9,6 +9,19 @@
             <div class="ui container fluid" style="margin:0px!important">
                 <div class="slider-hero">
                     <div>
+                        <img src="{{ asset('assets/img/tours/cabo_escape/ea040fcf-84c6-491d-b62c-216d8e8a7e46.jpg') }}" alt="">
+                        <div class="slider-box">
+                            <p>
+                                Cabo <br>
+                                Escape
+                            </p>
+                            <a href="{{ route('cabo_escape')}}">
+                            <button>Book Now</button>
+                            </a>
+                        </div>
+                    </div>
+                    {{--
+                    <div>
                         <img src="{{ asset('assets/img/slider/slide_fishing.jpg') }}" alt="">
                         <div class="slider-box">
                             <p>
@@ -45,6 +58,7 @@
                             <button>Book Now</button>
                         </div>
                     </div>
+                    --}}
                 </div>
             </div>
         </section>

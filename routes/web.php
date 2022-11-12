@@ -23,7 +23,7 @@ Route::get('/cabo_escape/{voucher?}/{token?}', function ($voucher=null,$token=nu
 
     $tour= [
         'name' => "CABO ESCAPE",
-        'price' => 1,
+        'price' => 80,
         'duration'=> '2 hours',
         'min_age' => 5,
         'description'=>'it is a unique experience to tour the bay of los cabos and witness the beautiful sunset

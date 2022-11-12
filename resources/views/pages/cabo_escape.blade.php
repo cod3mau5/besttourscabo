@@ -566,7 +566,7 @@
 
             <div class="father_sticky">
                 <ol class="steps">
-                    <li :class="step==1 ? 'current' : ''" @click="changeStep(1)">Details</li>
+                    <li :class="step==1 ? 'current' : ''" style="cursor:not-allowed!important">Details</li>
                     <li :class="step==2 ? 'current' : ''" @click="changeStep(2)">Date</li>
                     <li :class="step==3 ? 'current' : ''"  style="cursor:not-allowed!important">Payment</li>
                 </ol>
@@ -1306,7 +1306,7 @@
                 },
                 calcTotal(){
                     if(this.client.adults==0){
-                        alert('adults must be greater than 0');
+                        // alert('adults must be greater than 0');
                         return 0;
                     }else{
                         var vm= this;

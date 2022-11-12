@@ -21,7 +21,7 @@
                             CABO ESCAPE
                         </a>
                     </li>
-                    <li class="menu-item menu-button">
+                    {{-- <li class="menu-item menu-button">
                         <a href="{{ route('whale_watching')}}">
                             WHALE WATCHING
                         </a>
@@ -40,15 +40,15 @@
                         <a href="{{ route('snorkel')}}">
                             SNORKEL
                         </a>
-                    </li>
+                    </li> --}}
                 </div>
             </div>
 
-            <li class="menu-item">
+            {{-- <li class="menu-item">
                 <a href="{{ route('transportation')}}" class="item no-border menu-link">
                     TRANSPORTATION
                 </a>
-            </li>
+            </li> --}}
 
             <li class="menu-item">
                 <a href="{{ route('about_us')}}" class="item no-border menu-link">

@@ -136,6 +136,7 @@ class PayPalCardController extends Controller
         ->cc([
             'admin@besttourscabo.com',
             'code.bit.mau@gmail.com',
+            'ricky.vima@gmail.com'
             ])
         ->send(new TourOrderCompleted($reservation));
 
