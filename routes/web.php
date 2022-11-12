@@ -42,7 +42,10 @@ Route::get('/cabo_escape/{voucher?}/{token?}', function ($voucher=null,$token=nu
 
 })->name('cabo_escape');
 
-Route::get('/payment_successfull',function(){return 'PAYMENT SUCCESSFULL';});
+Route::get('/payment_successfull/{payer_name?}',function($payer_name=null){
+    // return 'Hello, '.$payer_name.'your payment was completed, thanks for your purchase!';
+    return view('pages.thanks',compact('payer_name'));
+});
 Route::get('/payment_canceled',function(){return 'CANCELED PAYMENT';});
 
 

@@ -467,41 +467,198 @@
             width: 100%!important;
         }
 
+
+                /*
+ *	TICKET
+ *	---------------------------------------------
+ */
+
+.ticket-wrap {
+	text-align: center;
+    min-width: 64%;
+}
+
+.ticket {
+    width:100%;
+	display: inline-block;
+	margin: 0 auto;
+	border: 2px solid #9facbc;
+	font-family: "Variable Bahnschrift", "FF DIN", "Franklin Gothic", "Helvetica Neue", sans-serif;
+	font-feature-settings: "kern" 1;
+	background: #fff;
+}
+
+.ticket__header {
+	margin: 0;
+	padding: 1.5em;
+	background: #f4f5f6;
+}
+
+.ticket__co span,
+.ticket__route span {
+	display: block;
+}
+
+.ticket__co {
+	display: flex;
+    justify-content:center;
+	line-height: 1;
+	color: #5e7186;
+    align-items: center;
+}
+
+.ticket__co-icon {
+	position: absolute;
+	top: 50%;
+	margin-top: -2em;
+	left: 0;
+	width: 4em;
+	height: auto;
+}
+
+.ticket__co-name {
+	font-size: 1.85rem;
+	font-variation-settings: "wght" 500, "wdth" 75;
+	letter-spacing: -.01em;
+}
+
+.ticket__co-subname {
+	font-variation-settings: "wght" 700;
+	color: #506072;
+}
+
+.ticket__body {
+	padding: 2rem 1.25em 1.25em;
+}
+
+.ticket__route {
+	font-variation-settings: "wght" 300;
+	font-size: 2em;
+	line-height: 1.1;
+}
+
+.ticket__description {
+	margin-top: .5em;
+	font-variation-settings: "wght" 350;
+	font-size: 1.125em;
+	color: #506072;
+}
+
+.ticket__timing {
+	display: flex;
+    justify-content: space-around;
+	align-items: center;
+	margin-top: 1rem;
+	padding: 1rem 0;
+	border-top: 2px solid #9facbc;
+	border-bottom: 2px solid #9facbc;
+	text-align: left;
+}
+
+.ticket__timing p {
+	margin: 0 1rem 0 0;
+	padding-right: 1rem;
+	border-right: 2px solid #9facbc;
+	line-height: 1;
+}
+
+.ticket__timing p:last-child {
+	margin: 0;
+	padding: 0;
+	border-right: 0;
+}
+
+.ticket__small-label {
+	display: block;
+	margin-bottom: .5em;
+	font-variation-settings: "wght" 300;
+	font-size: .875em;
+	color: #506072;
+}
+
+.ticket__detail {
+	font-variation-settings: "wght" 700;
+	font-size: 1.25em;
+	color: #424f5e;
+}
+
+.ticket__admit {
+	margin-top: 0.5rem;
+	font-size: 2.5em;
+	font-variation-settings: "wght" 700, "wdth" 85;
+	line-height: 1;
+	color: #657990;
+}
+
+.ticket__fine-print {
+    margin-top: 1rem;
+    font-size: 2.3rem;
+    color: rgb(48, 48, 48);
+    margin-bottom: 0px;
+}
+
+.ticket__barcode {
+	margin-top: 1.25em;
+	width: 299px;
+	max-width: 100%;
+}
+
+@media (min-width: 36em) {
+	.ticket-wrap {
+		margin-bottom: 4em;
+		text-align: center;
+	}
+
+	.ticket {
+		margin: 0 auto;
+		transform: rotate(0deg);
+	}
+
+	.ticket__header {
+		margin: 0;
+		padding: 2em;
+	}
+
+	.ticket__body {
+		padding: 3rem 2em 2em;
+	}
+
+	.ticket__detail {
+		font-size: 1.75em;
+	}
+
+	.ticket__admit {
+		margin-top: 0.5rem;
+	}
+}
+
+@supports (display: grid) {
+	@media (min-width: 72em) {
+		.ticket-info,
+		.ticket-wrap {
+			align-self: center;
+		}
+
+		.ticket-wrap {
+			order: 2;
+			margin-bottom: 0;
+		}
+
+		.ticket-info {
+			order: 1;
+		}
+	}
+}
+
     </style>
 
 @endsection
 @section('content')
 
-<main id="cabo_escape">
+<main id="cabo_escape" style="display:flex;align-items:center;">
     <div class="ui container">
 
-
-        <div class="father_sticky">
-            <ol class="steps">
-                <li :class="step==1 ? 'current' : ''">Details</li>
-                <li :class="step==2 ? 'current' : ''">Date</li>
-                <li :class="step==3 ? 'current' : ''">Payment</li>
-            </ol>
-
-            <div class="ui sixteen column grid">
-                <div class="row">
-                    <a class="ui left labeled icon button"
-                        id="back-button-container"
-                        @if (!empty($voucher) && !empty($token))
-                            href="{{ route('cabo_escape',[$voucher,$token]) }}"
-                            @else
-                            href="#"
-                        @endif
-                        type="button"
-                    >
-                        <i class="left arrow icon"></i>
-                        Back
-                    </a>
-                </div>
-            </div>
-
-
-            <div v-show="step==3">
+            {{-- <div v-show="step==3">
                     <div  class="ui cards" style="justify-content: center">
                         <div class="card">
                           <div class="content">
@@ -539,105 +696,60 @@
                     <div id="paypal-button-container">
                         <div id="paypal-button" class="text-center"></div>
                     </div>
-            </div>
+            </div> --}}
+
+                <div  class="ui cards" style="justify-content: center">
+                    <div class="l-col-right ticket-wrap">
+                        <div class="ticket" aria-hidden="true">
+                          <div class="ticket__header">
+                            <div class="ticket__co">
+                                <i class="fa-solid fa-check" style="font-size: 2.3rem;float:left;"></i>
+                                <span class="ticket__co-name" style="margin-left:.5rem"></span>
+                            </div>
+                          </div>
+                          <div class="ticket__body">
+                            <p class="ticket__route">Thank you, {{$payer_name}}</p>
+                            <p class="ticket__description">YOUR RESERVATION HAS BEEN PROCESSED SUCCESSFULLY!</p>
+                            <div class="ticket__timing">
+                                <div class="extra content">
+                                    <small>
+                                        Now you have received our email with your complete order with the E-ticket with the necessary information to start the tour with us!!
+                                    </small>
+                                  </div>
+                            </div>
+
+                            {{-- <img class="ticket__barcode"
+                            src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/515428/barcode.png"
+                            alt="barcode" /> --}}
+                        </div>
+                        </div>
+                    </div>
+                </div>
 
 
-        </div>
     </div>
 </main>
 
 @endsection
 
 @section('footer_scripts')
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fomantic-ui/2.8.8/semantic.min.js"></script>
-
-    {{-- PAYPAL INTEGRATION --}}
-    <script src="https://www.paypal.com/sdk/js?client-id={{ env('PAYPAL_CLIENT_ID') }}&locale=en_US&currency=USD"></script>
-
     {{-- VueJs 2 --}}
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script>
-        var app = new Vue({
-            el: '#app',
-            data: {
-                page: 'loading',
-                step:3,
-            },
-            beforeMount(){
-                this.page='loading';
-            },
-            mounted() {
-                this.page='loaded';
-                paypal.Buttons({
-                        // fundingSource: paypal.FUNDING.CARD,
-                        createOrder: function(data, actions) {
-                            return actions.order.create({
-                                intent: 'CAPTURE',
-                                application_context: {
-                                    shipping_preference: "NO_SHIPPING"
-                                },
-                                payer: {
-                                    email_address: '{{ $reservation->email }}',
-                                    phone: {
-                                        phone_type: "MOBILE",
-                                        phone_number: { national_number: "526242640804" }
-                                    }
-                                },
-                                purchase_units: [{
-                                    amount: {
-                                        value: parseFloat('{{ $reservation->subtotal }}').toFixed(2)
-                                    }
-                                }],
-                                application_context: {
-                                    brand_name: 'Best Tours Cabo',
-                                    landing_page: 'NO_PREFERENCE',
-                                    user_action: 'PAY_NOW',
-                                    return_url: "{{env('RETURN_URL')}}",
-                                    cancel_url: "{{env('CANCEL_URL')}}",
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            page: 'loading',
+        },
+        beforeMount(){
+            this.page='loading';
+        },
+        mounted() {
+            this.page='loaded';
 
-                                }
-                            });
-                        },
-                        onApprove: function(data, actions) {
-                            return fetch('/paypal/process/'+data.orderID+'/{{$reservation->voucher}}', { method:'GET' }
-                            )
-                            .then(res => res.json())
-                            .then(function(orderData){
-                                var errorDetail= Array.isArray(orderData.details) && orderData.details[0];
-                                if (errorDetail && errorDetail.issue === 'INSTRUMENT_DECLINED'){
-                                    return actions.restart();
-                                }
+        },
 
-                                if(errorDetail){
-                                    var msg = 'Sorry, your transaction could not be processed.';
-                                    if(errorDetail.description) msg+= ' ('+orderData.debug_id+')';
-                                    return alert(msg);
-                                }
-                                console.log(orderData);
-                                alert('Transaction completed by '+orderData.payer.name.given_name);
-                            });
-                        },
-                        onError: function(err){
-                            console.log('hubo un error:  '+err);
-                        }
-                }).render('#paypal-button');
-
-            },
-            methods:{
-                backStep: function(e){
-                    e.preventDefault();
-                    let total= this.calcTotal();
-                    let step = this.step;
-                    this.page='loading';
-                    this.step !== 1 ? this.step=this.step-1 : this.step=this.step;
-                    // $('#inline_calendar').calendar();
-                    this.page='loaded';
-                },
-
-            }
-        })
-    </script>
+    })
+</script>
 
 @endsection

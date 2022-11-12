@@ -789,15 +789,7 @@
                                     amount: {
                                         value: parseFloat('{{ $reservation->subtotal }}').toFixed(2)
                                     }
-                                }],
-                                application_context: {
-                                    brand_name: 'Best Tours Cabo',
-                                    landing_page: 'NO_PREFERENCE',
-                                    user_action: 'PAY_NOW',
-                                    return_url: "{{env('RETURN_URL')}}",
-                                    cancel_url: "{{env('CANCEL_URL')}}",
-
-                                }
+                                }]
                             });
                         },
                         onApprove: function(data, actions) {
@@ -816,7 +808,8 @@
                                     return alert(msg);
                                 }
                                 console.log(orderData);
-                                alert('Transaction completed by '+orderData.payer.name.given_name);
+                                location.href= '{{url("/payment_successfull/")}}'+'/'+orderData.data.payer.name.given_name;
+                                alert('Transaction completed by '+orderData.data.payer.name.given_name);
                             });
                         },
                         onError: function(err){
