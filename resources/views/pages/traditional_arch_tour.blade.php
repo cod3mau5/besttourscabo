@@ -1077,14 +1077,14 @@
                 page: 'loading',
                 step:'{{ ( !empty($voucher) && !empty($token) ) ? 2 : 1 }}',
                 tour:{
-                    name: '{{ $tour_name }}',
-                    price:'{{ $tour_price }}',
+                    name: '{{ $tour->name }}',
+                    price:'{{ $tour->price }}',
                     subtotal:0,
                     total:'',
                     adults:30,
                     kids:30,
                     maxAge:18,
-                    minAge:'{{ $tour_min_age }}'
+                    minAge:'{{ $tour->min_age }}'
                 },
                 client: {
                     date:'{{ !empty($reservation->tour_day) ? $reservation->tour_day : '' }}',

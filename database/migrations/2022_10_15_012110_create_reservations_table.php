@@ -23,6 +23,7 @@ class CreateReservationsTable extends Migration
             $table->string('fullname',255)->nullable();
             $table->string('email',255)->nullable();
             $table->string('phone', 30)->nullable();
+            $table->string('raw_phone', 30)->nullable();
 
             // pax
             $table->unsignedTinyInteger('adults')->nullable();

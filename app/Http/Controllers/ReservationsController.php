@@ -14,8 +14,10 @@ class ReservationsController extends Controller
 
         $request->request->add(['token' => 'TK_'.mt_rand()]);
         $request->request->add(['status' => 'BOUND_TO_RESERVE']);
+        $raw_phone=$request->get('phone');
         $request->merge([
             'phone' =>  $request->get('newPhone'),
+            'raw_phone' => $raw_phone
         ]);
         // return (object)$request->all();
 
@@ -83,6 +85,11 @@ class ReservationsController extends Controller
 
                 $request->request->add(['token' => 'TK_'.mt_rand()]);
                 $request->request->add(['status' => 'BOUND_TO_RESERVE']);
+                $raw_phone=$request->get('phone');
+                $request->merge([
+                    'phone' =>  $request->get('newPhone'),
+                    'raw_phone' => $raw_phone
+                ]);
 
                 if( $request->get('kids') ){
                     $request->merge([

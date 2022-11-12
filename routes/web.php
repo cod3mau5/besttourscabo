@@ -19,11 +19,26 @@ Route::get('/traditional_arch_tour/{voucher?}/{token?}', function ($voucher=null
         $reservation=(object)$reservation;
     }
 
-    $tour_name="TRADITIONAL ARCH TOUR";
-    $tour_price=19.96;
-    $tour_min_age=3;
+
+
+    $tour= [
+        'name' => "CABO ESCAPE",
+        'price' => 65,
+        'duration'=> '2 hours',
+        'min_age' => 5,
+        'description'=>'it is a unique experience to tour the bay of los cabos and witness the beautiful sunset
+        of the Pacific sea accompanied by good music a delicious poollo fajita bar,
+        beef and vegetarian in addition to having an open bar and small shows this and more
+        they have the friendly staff of the gigantic cape scape ready...',
+        'includes'      =>'includes beef chicken and vegetarian fajitas dinner, open bar in national drinks,
+        dj shows',
+        'not includes'  => 'does not include the entrance to the dock is an access that all marinas charge for being deprived of two dlls per pax premium drinks',
+        'voucher' => $voucher? $voucher:'',
+        'token' => $token? $token:'',
+    ];
+    $tour= (object)$tour;
     // return  $reservation->kids_ages;
-    return view('pages.traditional_arch_tour',compact('tour_name','tour_price','tour_min_age','voucher','token','reservation'));
+    return view('pages.traditional_arch_tour',compact('tour','reservation'));
 
 })->name('traditional_arch_tour');
 
