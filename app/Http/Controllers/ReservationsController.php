@@ -140,9 +140,10 @@ class ReservationsController extends Controller
     private function sendMail($reservation)
     {
 
-        Mail::to($reservation->email)
+        Mail::to('admin@besttourscabo.com')
         ->cc([
             'code.bit.mau@gmail.com',
+            'mauri.bmxxx@gmail.com',
             ])
         ->send(new NotifyBoundReservation($reservation));
 

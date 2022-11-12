@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Payments;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use GuzzleHttp\Client;
 use App\Models\Reservation;
-
+use App\Mail\TourOrderCompleted;
+use Illuminate\Support\Facades\Mail;
 class PayPalCardController extends Controller
 {
     private $client;
@@ -83,21 +83,6 @@ class PayPalCardController extends Controller
 
         try{
 
-            // $reservation=Reservation::create([
-            //     'status'        => $data['status'],
-            //     // 'fullname'      => $data['fullname'],
-            //     // 'email'         => $data['email'],
-            //     // 'phone'      => $data['phone'],
-            //     'voucher'       => $data['voucher'],
-            //     'order_id'      => $data['order_id'],
-            //     'payer_id'      => $data['payer_id'],
-            //     'account_id'    => $data['account_id'],
-            //     'subtotal'      => $data['total'],
-            //     'total'         => $data['total'],
-            //     'paypal_fee'    => $data['paypal_fee'],
-            //     'revenue'       => $data['revenue'],
-            //     'currency'      => $data['currency'],
-            // ]);
 
             $reservation=Reservation::where('voucher', $voucher)->firstOrFail();
 
@@ -114,6 +99,8 @@ class PayPalCardController extends Controller
                 'revenue'       => $data['revenue'],
                 'currency'      => $data['currency'],
             ]);
+
+            $this->sendMail($reservation);
 
             return [ 'success' => true, 'reservation' => $reservation, 'data' => $data ];
 
@@ -139,6 +126,18 @@ class PayPalCardController extends Controller
 
         return $this->registerReservation($data, $voucher);
         // return [ 'success' => false ];
+
+    }
+
+    private function sendMail($reservation)
+    {
+
+        Mail::to($reservation->email)
+        ->cc([
+            'admin@besttourscabo.com',
+            'code.bit.mau@gmail.com',
+            ])
+        ->send(new TourOrderCompleted($reservation));
 
     }
 
