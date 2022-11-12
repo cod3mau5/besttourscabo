@@ -97,10 +97,10 @@
             padding-bottom: 80px;
             min-height: 100%;
         }
-        #traditional_arch_tour .ui.container {
+        #cabo_escape .ui.container {
             padding: 1rem 0;
         }
-        #traditional_arch_tour .ui.container .father_sticky{
+        #cabo_escape .ui.container .father_sticky{
             padding: 0 7px;
 
         }
@@ -472,7 +472,7 @@
 @endsection
 @section('content')
 
-<main id="traditional_arch_tour">
+<main id="cabo_escape">
     <div class="ui container">
 
 
@@ -488,7 +488,7 @@
                     <a class="ui left labeled icon button"
                         id="back-button-container"
                         @if (!empty($voucher) && !empty($token))
-                            href="{{ route('traditional_arch_tour',[$voucher,$token]) }}"
+                            href="{{ route('cabo_escape',[$voucher,$token]) }}"
                             @else
                             href="#"
                         @endif
@@ -571,9 +571,10 @@
             mounted() {
                 this.page='loaded';
                 paypal.Buttons({
-                        fundingSource: paypal.FUNDING.CARD,
-                        createOrder: function(data, actions,total,tourInfo,clientInfo) {
+                        // fundingSource: paypal.FUNDING.CARD,
+                        createOrder: function(data, actions) {
                             return actions.order.create({
+                                intent: 'CAPTURE',
                                 application_context: {
                                     shipping_preference: "NO_SHIPPING"
                                 },
@@ -589,10 +590,18 @@
                                         value: parseFloat('{{ $reservation->subtotal }}').toFixed(2)
                                     }
                                 }],
+                                application_context: {
+                                    brand_name: 'Best Tours Cabo',
+                                    landing_page: 'NO_PREFERENCE',
+                                    user_action: 'PAY_NOW',
+                                    return_url: "{{env('RETURN_URL')}}",
+                                    cancel_url: "{{env('CANCEL_URL')}}",
+
+                                }
                             });
                         },
-                        onApprove: function(data, actions,total,tourInfo,clientInfo) {
-                            return fetch('/paypal/process/'+data.orderID+'?phone_number='+clientInfo.phone, { method:'GET' }
+                        onApprove: function(data, actions) {
+                            return fetch('/paypal/process/'+data.orderID+'/{{$reservation->voucher}}', { method:'GET' }
                             )
                             .then(res => res.json())
                             .then(function(orderData){

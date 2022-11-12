@@ -56,6 +56,7 @@
 
         <script>
             $(document).ready(()=>{
+                alert("{{env('PAYPAL_MODE') == 'sandbox' ? 'https://api-m.sandbox.paypal.com' : 'https://api-m.paypal.com'}}")
                 const navbarMenu = document.getElementById("menu");
                 const burgerMenu = document.getElementById("burger");
                 const headerMenu = document.getElementById("header");

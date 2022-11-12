@@ -520,12 +520,12 @@
                 </div>
             @endif
 
-            <div class="ui negative message mt-2" >
+            {{-- <div class="ui negative message mt-2" >
                 <i class="close icon" @click="closeErrorMessage"></i>
                 <div style="font-weight:bolder">
                     <li>{{ !empty($reservation) ? $reservation : '' }}</p>
                 </div>
-            </div>
+            </div> --}}
 
             <h2 class="tour-title" v-show="step==1">@{{tour.name}}</h2>
 
@@ -1120,6 +1120,10 @@
             },
             mounted() {
                 this.page='loaded';
+                console.log("{{ '######!!! estamos en modo: '. env('PAYPAL_MODE') .'!!!######'}}");
+                console.log("{{ 'CLIENT ID: '. env('PAYPAL_CLIENT_ID') }}");
+                console.log("{{ 'CLIENT SECRET: '. env('PAYPAL_SECRET') }}");
+
                 var vm= this;
                 const datePicker = MCDatepicker.create({
                     el: '#datepicker',

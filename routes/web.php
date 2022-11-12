@@ -23,7 +23,7 @@ Route::get('/cabo_escape/{voucher?}/{token?}', function ($voucher=null,$token=nu
 
     $tour= [
         'name' => "CABO ESCAPE",
-        'price' => 65,
+        'price' => 1,
         'duration'=> '2 hours',
         'min_age' => 5,
         'description'=>'it is a unique experience to tour the bay of los cabos and witness the beautiful sunset
@@ -42,6 +42,8 @@ Route::get('/cabo_escape/{voucher?}/{token?}', function ($voucher=null,$token=nu
 
 })->name('cabo_escape');
 
+Route::get('/payment_successfull',function(){return 'PAYMENT SUCCESSFULL';});
+Route::get('/payment_canceled',function(){return 'CANCELED PAYMENT';});
 
 
 Route::get('/whale_watching', function () {
@@ -76,9 +78,11 @@ Route::get('/checkout/{voucher}/{token}/tour',[Controllers\ReservationsControlle
 Route::post('/checkout/{voucher}/create_tour',[Controllers\ReservationsController::class, 'create'])->name('createTour');
 Route::post('/checkout/{voucher}/update_tour',[Controllers\ReservationsController::class, 'update'])->name('updateTour');
 
-//  Confirm JavaScript payment PayPal (credit card)
-Route::get('/paypal/process/{orderID}', [Controllers\Payments\PayPalCardController::class, 'process'])->name('paypal.process');
+//  Confirm JavaScript payment PayPal
+Route::get('/paypal/process/{orderID}/{voucher}', [Controllers\Payments\PayPalCardController::class, 'process'])->name('paypal.process');
 
 // CreateReservation
 // Route::post('/create_reservation',[Controllers\ReservationsController::class, 'create'])->name('createReservation');
+
+//SEND MAIL
 Route::post('/send_mail', [Controllers\ReservationsController::class,'sendMail'])->name('sendMail');

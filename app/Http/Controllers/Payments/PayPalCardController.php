@@ -15,8 +15,7 @@ class PayPalCardController extends Controller
 
     public function __construct(){
         $this->client = new Client([
-            // 'base_uri' => 'https://api-m.paypal.com'
-            'base_uri' => 'https://api-m.sandbox.paypal.com'
+            'base_uri' => env('PAYPAL_MODE') == 'sandbox' ? 'https://api-m.sandbox.paypal.com' : 'https://api-m.paypal.com',
         ]);
 
         $this->clientId = env('PAYPAL_CLIENT_ID');
@@ -45,17 +44,16 @@ class PayPalCardController extends Controller
         return $data['access_token'];
     }
 
-    private function registerReservation($data){
-        // control
-        $voucher   = "BT-".mt_rand();
+    private function registerReservation($data,$voucher){
+
         //personal info
         $fullname=$data['payer']['name']['given_name'].' '.$data['payer']['name']['surname'];
         $email=$data['payer']['email_address'];
-        $nationality=$data['payer']['address']['country_code'];
+        // $nationality=$data['payer']['address']['country_code'];
         //SET INFO
         $data['fullname']=$fullname;
         $data['email']=$email;
-        $data['nationality']=$nationality;
+        // $data['nationality']=$nationality;
         $data['voucher'] = $voucher;
 
 
@@ -85,11 +83,27 @@ class PayPalCardController extends Controller
 
         try{
 
-            $reservation=Reservation::create([
-                'status'        => $data['status'],
+            // $reservation=Reservation::create([
+            //     'status'        => $data['status'],
+            //     // 'fullname'      => $data['fullname'],
+            //     // 'email'         => $data['email'],
+            //     // 'phone'      => $data['phone'],
+            //     'voucher'       => $data['voucher'],
+            //     'order_id'      => $data['order_id'],
+            //     'payer_id'      => $data['payer_id'],
+            //     'account_id'    => $data['account_id'],
+            //     'subtotal'      => $data['total'],
+            //     'total'         => $data['total'],
+            //     'paypal_fee'    => $data['paypal_fee'],
+            //     'revenue'       => $data['revenue'],
+            //     'currency'      => $data['currency'],
+            // ]);
+
+            $reservation=Reservation::where('voucher', $voucher)->firstOrFail();
+
+            $reservation->update([
                 'fullname'      => $data['fullname'],
-                'email'         => $data['email'],
-                // 'phone'      => $data['phone'],
+                'status'        => $data['status'],
                 'voucher'       => $data['voucher'],
                 'order_id'      => $data['order_id'],
                 'payer_id'      => $data['payer_id'],
@@ -100,6 +114,7 @@ class PayPalCardController extends Controller
                 'revenue'       => $data['revenue'],
                 'currency'      => $data['currency'],
             ]);
+
             return [ 'success' => true, 'reservation' => $reservation, 'data' => $data ];
 
         }catch(\Illuminate\Database\QueryException $exception){
@@ -108,7 +123,7 @@ class PayPalCardController extends Controller
 
     }
 
-    public function process($orderId, Request $request){
+    public function process($orderId, $voucher){
 
         $access_token= $this->getAccessToken();
         $requestUrl = "/v2/checkout/orders/$orderId/capture";
@@ -122,7 +137,7 @@ class PayPalCardController extends Controller
 
         $data = json_decode($response->getBody(), true);
 
-        return $this->registerReservation($data);
+        return $this->registerReservation($data, $voucher);
         // return [ 'success' => false ];
 
     }
