@@ -1139,9 +1139,9 @@
                 $('input.timepicker').timepicker({
                     timeFormat: 'h:mm p',
                     interval: 60,
-                    minTime: '10',
-                    maxTime: '6:00pm',
-                    startTime: '10:00',
+                    minTime: '5:00pm',
+                    maxTime: '5:00pm',
+                    startTime: '5:00pm',
                     dynamic: false,
                     dropdown: true,
                     scrollbar: true,

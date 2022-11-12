@@ -35,6 +35,7 @@ Route::get('/cabo_escape/{voucher?}/{token?}', function ($voucher=null,$token=nu
         'not_includes'  => 'does not include the entrance to the dock is an access that all marinas charge for being deprived of two dlls per pax premium drinks',
         'voucher' => $voucher? $voucher:'',
         'token' => $token? $token:'',
+        'check_in'=> '4:45 PM'
     ];
     $tour= (object)$tour;
     // return  $reservation->kids_ages;

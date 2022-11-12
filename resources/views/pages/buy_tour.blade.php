@@ -710,6 +710,12 @@
                                     <span class="u-upper ticket__small-label">Time:</span>
                                     <span class="ticket__detail">{{$reservation->tour_time}}</span>
                                   </p>
+                                  @if(!empty($reservation->kids))
+                                  <p>
+                                    <span class="u-upper ticket__small-label">Check In:</span>
+                                    <span class="ticket__detail" style="color:red">{{$reservation->check_in}}</span>
+                                  </p>
+                                  @endif
                                   <p>
                                     <span class="u-upper ticket__small-label">Adults:</span>
                                     <span class="ticket__detail">{{$reservation->adults}}</span>
