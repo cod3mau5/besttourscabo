@@ -11,7 +11,7 @@ Route::get('/', function () {
 })->name('home');
 
 // TOURS_CONTROLLER
-Route::get('/traditional_arch_tour/{voucher?}/{token?}', function ($voucher=null,$token=null) {
+Route::get('/cabo_escape/{voucher?}/{token?}', function ($voucher=null,$token=null) {
 
     $reservation= new Reservation;
     if($voucher && $token){
@@ -19,7 +19,7 @@ Route::get('/traditional_arch_tour/{voucher?}/{token?}', function ($voucher=null
         $reservation=(object)$reservation;
     }
 
-
+    // $tour=new \stdClass;
 
     $tour= [
         'name' => "CABO ESCAPE",
@@ -32,15 +32,15 @@ Route::get('/traditional_arch_tour/{voucher?}/{token?}', function ($voucher=null
         they have the friendly staff of the gigantic cape scape ready...',
         'includes'      =>'includes beef chicken and vegetarian fajitas dinner, open bar in national drinks,
         dj shows',
-        'not includes'  => 'does not include the entrance to the dock is an access that all marinas charge for being deprived of two dlls per pax premium drinks',
+        'not_includes'  => 'does not include the entrance to the dock is an access that all marinas charge for being deprived of two dlls per pax premium drinks',
         'voucher' => $voucher? $voucher:'',
         'token' => $token? $token:'',
     ];
     $tour= (object)$tour;
     // return  $reservation->kids_ages;
-    return view('pages.traditional_arch_tour',compact('tour','reservation'));
+    return view('pages.cabo_escape',compact('tour','reservation'));
 
-})->name('traditional_arch_tour');
+})->name('cabo_escape');
 
 
 

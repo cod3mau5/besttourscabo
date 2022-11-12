@@ -532,32 +532,32 @@
             <div class="swiper mySwiper" v-show="step==1">
                 <div class="grid-gallery swiper-wrapper pswp-gallery" id="my-gallery">
 
-                    <a href="{{url('/assets/img/tours/traditional_arch_tour/img_1.webp')}}"
+                    <a href="{{url('/assets/img/tours/cabo_escape/ea040fcf-84c6-491d-b62c-216d8e8a7e46.jpg')}}"
                       data-pswp-width="950"
                       data-pswp-height="683"
                       target="_blank">
-                        <div class="swiper-slide" style="background-image:url('/assets/img/tours/traditional_arch_tour/img_1.webp')"></div>
+                        <div class="swiper-slide" style="background-image:url('/assets/img/tours/cabo_escape/ea040fcf-84c6-491d-b62c-216d8e8a7e46.jpg')"></div>
                     </a>
 
-                    <a href="{{url('/assets/img/tours/traditional_arch_tour/img_2.jpg')}}"
+                    <a href="{{url('/assets/img/tours/cabo_escape/cabo-escape-los-cabos-2.jpg')}}"
                       data-pswp-width="669"
                       data-pswp-height="446"
                       target="_blank">
-                        <div class="swiper-slide" style="background-image:url('/assets/img/tours/traditional_arch_tour/img_2.jpg')"></div>
+                        <div class="swiper-slide" style="background-image:url('/assets/img/tours/cabo_escape/cabo-escape-los-cabos-2.jpg')"></div>
                     </a>
 
-                    <a href="{{url('/assets/img/tours/traditional_arch_tour/img_3.jpg')}}"
+                    <a href="{{url('/assets/img/tours/cabo_escape/cabo-escape-los-cabos-5.jpg')}}"
                         data-pswp-width="669"
                         data-pswp-height="446"
                       target="_blank">
-                        <div class="swiper-slide" style="background-image:url('/assets/img/tours/traditional_arch_tour/img_3.jpg')"></div>
+                        <div class="swiper-slide" style="background-image:url('/assets/img/tours/cabo_escape/cabo-escape-los-cabos-5.jpg')"></div>
                     </a>
 
-                    <a href="{{url('/assets/img/tours/traditional_arch_tour/img_4.jpg')}}"
+                    <a href="{{url('/assets/img/tours/cabo_escape/cabo-escape-2019-r8.jpg')}}"
                         data-pswp-width="669"
                         data-pswp-height="446"
                       target="_blank">
-                        <div class="swiper-slide" style="background-image:url('/assets/img/tours/traditional_arch_tour/img_4.jpg')"></div>
+                        <div class="swiper-slide" style="background-image:url('/assets/img/tours/cabo_escape/cabo-escape-2019-r8.jpg')"></div>
                     </a>
 
                 </div>
@@ -614,7 +614,7 @@
 
                             <div class="column">
                                 <i class="fas fa-clock"></i></i><br>
-                                <p>2 Hours</p>
+                                <p>{{ $tour->duration }}</p>
                             </div>
 
                         </div>
@@ -654,61 +654,72 @@
                         </div>
                         <div class="content">
                         <p class="transition hidden">
-                            One of the Easiest and Most Pleasant Tours in Cabo!...<br>
-                            During this tour we visit the famous rock formation of Cabo San Lucas "El Arco", along with other attractive points in that area such as: the sea lion colony, Pelican Rock, Neptune's Finger, Love Beach and of Divorce and its surroundings. You will have the opportunity to observe some marine species that inhabit this little piece of the sea.<br><br>
-                            Once the tour ends, you will have the option, if you wish, to stay as long as you like at Playa del Amor, where you can walk, swim or sunbathe. You can return in any of the boats that come back to the marina every hour, the last one being at 5 or 6pm depending on the season.
+                            {{ $tour->description }}
                         </p>
                         </div>
-                        <div class="title">
-                        <i class="dropdown icon"></i>
-                        What kinds of dogs are there?
-                        </div>
-                        <div class="content">
-                        <p class="transition hidden">
-                            There are many breeds of dogs. Each breed varies in size and temperament. Owners often select a breed of dog that they find to be compatible with their own lifestyle and desires from a companion.
-                        </p>
-                        </div>
-                        <div class="title">
-                        <i class="dropdown icon"></i>
-                        How do you acquire a dog?
-                        </div>
-                        <div class="content">
-                        <p class="transition hidden">
-                            Three common ways for a prospective owner to acquire a dog is from pet shops, private owners, or shelters.
-                        </p>
-                        <p class="transition hidden">
-                            A pet shop may be the most convenient way to buy a dog. Buying a dog from a private owner allows you to assess the pedigree and upbringing of your dog before choosing to take it home. Lastly, finding your dog from a shelter, helps give a good home to a dog who may not find one so readily.
-                        </p>
-                        </div>
+
+                        {{--
+                            <div class="title">
+                                <i class="dropdown icon"></i>
+                                What kinds of dogs are there?
+                            </div>
+                            <div class="content">
+                                <p class="transition hidden">
+                                    There are many breeds of dogs. Each breed varies in size and temperament. Owners often select a breed of dog that they find to be compatible with their own lifestyle and desires from a companion.
+                                </p>
+                            </div>
+                            <div class="title">
+                                <i class="dropdown icon"></i>
+                                How do you acquire a dog?
+                            </div>
+                            <div class="content">
+                                <p class="transition hidden">
+                                    Three common ways for a prospective owner to acquire a dog is from pet shops, private owners, or shelters.
+                                </p>
+                                <p class="transition hidden">
+                                    A pet shop may be the most convenient way to buy a dog. Buying a dog from a private owner allows you to assess the pedigree and upbringing of your dog before choosing to take it home. Lastly, finding your dog from a shelter, helps give a good home to a dog who may not find one so readily.
+                                </p>
+                            </div>
+                        --}}
+
                     </div>
 
                     <h3 class="title">What to know before buying</h3>
                     <div class="ui styled fluid accordion" id="what_to_know">
                         <div class="title">
                         <i class="dropdown icon"></i>
-                        Tour description
+                        What includes?
                         </div>
                         <div class="content">
-                        <p class="transition hidden">
-                            One of the Easiest and Most Pleasant Tours in Cabo!...<br>
-                            During this tour we visit the famous rock formation of Cabo San Lucas "El Arco", along with other attractive points in that area such as: the sea lion colony, Pelican Rock, Neptune's Finger, Love Beach and of Divorce and its surroundings. You will have the opportunity to observe some marine species that inhabit this little piece of the sea.<br><br>
-                            Once the tour ends, you will have the option, if you wish, to stay as long as you like at Playa del Amor, where you can walk, swim or sunbathe. You can return in any of the boats that come back to the marina every hour, the last one being at 5 or 6pm depending on the season.</p>
+                            <p class="transition hidden">
+                                {{ $tour->includes }}
+                            </p>
                         </div>
                         <div class="title">
                         <i class="dropdown icon"></i>
-                        What kinds of dogs are there?
+                        What does not include?
                         </div>
                         <div class="content">
-                        <p class="transition hidden">There are many breeds of dogs. Each breed varies in size and temperament. Owners often select a breed of dog that they find to be compatible with their own lifestyle and desires from a companion.</p>
+                            <p class="transition hidden">
+                                {{ $tour->not_includes }}
+                            </p>
                         </div>
-                        <div class="title">
-                        <i class="dropdown icon"></i>
-                        How do you acquire a dog?
-                        </div>
-                        <div class="content">
-                        <p class="transition hidden">Three common ways for a prospective owner to acquire a dog is from pet shops, private owners, or shelters.</p>
-                        <p class="transition hidden">A pet shop may be the most convenient way to buy a dog. Buying a dog from a private owner allows you to assess the pedigree and upbringing of your dog before choosing to take it home. Lastly, finding your dog from a shelter, helps give a good home to a dog who may not find one so readily.</p>
-                        </div>
+
+                        {{--
+                            <div class="title">
+                                <i class="dropdown icon"></i>
+                                How do you acquire a dog?
+                            </div>
+                            <div class="content">
+                                <p class="transition hidden">
+                                    Three common ways for a prospective owner to acquire a dog is from pet shops, private owners, or shelters.
+                                </p>
+                                <p class="transition hidden">
+                                    A pet shop may be the most convenient way to buy a dog. Buying a dog from a private owner allows you to assess the pedigree and upbringing of your dog before choosing to take it home. Lastly, finding your dog from a shelter, helps give a good home to a dog who may not find one so readily.
+                                </p>
+                            </div>
+                        --}}
+
                     </div>
                 </div>
                 <div class="ui segment" id="location" v-show="step==1"  @click="openModal()">
@@ -915,8 +926,8 @@
         function mobil() {
 
             $('.grid-gallery').html(`
-                <div class="swiper-slide" style="background-image:url('/assets/img/tours/traditional_arch_tour/img_1.webp')">
-                    <a href="{{url('/assets/img/tours/traditional_arch_tour/img_1.webp')}}"
+                <div class="swiper-slide" style="background-image:url('/assets/img/tours/cabo_escape/ea040fcf-84c6-491d-b62c-216d8e8a7e46.jpg')">
+                    <a href="{{url('/assets/img/tours/cabo_escape/ea040fcf-84c6-491d-b62c-216d8e8a7e46.jpg')}}"
                       data-pswp-width="950"
                       data-pswp-height="683"
                       target="_blank"
@@ -925,8 +936,8 @@
                         <div class="shadow-image"></div>
                     </a>
                 </div>
-                <div class="swiper-slide" style="background-image:url('/assets/img/tours/traditional_arch_tour/img_2.jpg')">
-                    <a href="{{url('/assets/img/tours/traditional_arch_tour/img_2.jpg')}}"
+                <div class="swiper-slide" style="background-image:url('/assets/img/tours/cabo_escape/cabo-escape-los-cabos-2.jpg')">
+                    <a href="{{url('/assets/img/tours/cabo_escape/cabo-escape-los-cabos-2.jpg')}}"
                       data-pswp-width="669"
                       data-pswp-height="446"
                       target="_blank"
@@ -935,8 +946,8 @@
                         <div class="shadow-image"></div>
                     </a>
                 </div>
-                <div class="swiper-slide" style="background-image:url('/assets/img/tours/traditional_arch_tour/img_3.jpg')">
-                    <a href="{{url('/assets/img/tours/traditional_arch_tour/img_3.jpg')}}"
+                <div class="swiper-slide" style="background-image:url('/assets/img/tours/cabo_escape/cabo-escape-los-cabos-5.jpg')">
+                    <a href="{{url('/assets/img/tours/cabo_escape/cabo-escape-los-cabos-5.jpg')}}"
                         data-pswp-width="669"
                         data-pswp-height="446"
                       target="_blank"
@@ -945,8 +956,8 @@
                         <div class="shadow-image"></div>
                     </a>
                 </div>
-                <div class="swiper-slide" style="background-image:url('/assets/img/tours/traditional_arch_tour/img_4.jpg')">
-                    <a href="{{url('/assets/img/tours/traditional_arch_tour/img_4.jpg')}}"
+                <div class="swiper-slide" style="background-image:url('/assets/img/tours/cabo_escape/cabo-escape-2019-r8.jpg')">
+                    <a href="{{url('/assets/img/tours/cabo_escape/cabo-escape-2019-r8.jpg')}}"
                         data-pswp-width="669"
                         data-pswp-height="446"
                       target="_blank"
@@ -970,32 +981,32 @@
             swiper.destroy();
             $('.grid-gallery').html(`
 
-                    <a href="{{url('/assets/img/tours/traditional_arch_tour/img_1.webp')}}"
+                    <a href="{{url('/assets/img/tours/cabo_escape/ea040fcf-84c6-491d-b62c-216d8e8a7e46.jpg')}}"
                       data-pswp-width="950"
                       data-pswp-height="683"
                       target="_blank">
-                        <div class="swiper-slide" style="background-image:url('/assets/img/tours/traditional_arch_tour/img_1.webp')"></div>
+                        <div class="swiper-slide" style="background-image:url('/assets/img/tours/cabo_escape/ea040fcf-84c6-491d-b62c-216d8e8a7e46.jpg')"></div>
                     </a>
 
-                    <a href="{{url('/assets/img/tours/traditional_arch_tour/img_2.jpg')}}"
+                    <a href="{{url('/assets/img/tours/cabo_escape/cabo-escape-los-cabos-2.jpg')}}"
                       data-pswp-width="669"
                       data-pswp-height="446"
                       target="_blank">
-                        <div class="swiper-slide" style="background-image:url('/assets/img/tours/traditional_arch_tour/img_2.jpg')"></div>
+                        <div class="swiper-slide" style="background-image:url('/assets/img/tours/cabo_escape/cabo-escape-los-cabos-2.jpg')"></div>
                     </a>
 
-                    <a href="{{url('/assets/img/tours/traditional_arch_tour/img_3.jpg')}}"
+                    <a href="{{url('/assets/img/tours/cabo_escape/cabo-escape-los-cabos-5.jpg')}}"
                         data-pswp-width="669"
                         data-pswp-height="446"
                       target="_blank">
-                        <div class="swiper-slide" style="background-image:url('/assets/img/tours/traditional_arch_tour/img_3.jpg')"></div>
+                        <div class="swiper-slide" style="background-image:url('/assets/img/tours/cabo_escape/cabo-escape-los-cabos-5.jpg')"></div>
                     </a>
 
-                    <a href="{{url('/assets/img/tours/traditional_arch_tour/img_4.jpg')}}"
+                    <a href="{{url('/assets/img/tours/cabo_escape/cabo-escape-2019-r8.jpg')}}"
                         data-pswp-width="669"
                         data-pswp-height="446"
                       target="_blank">
-                        <div class="swiper-slide" style="background-image:url('/assets/img/tours/traditional_arch_tour/img_4.jpg')"></div>
+                        <div class="swiper-slide" style="background-image:url('/assets/img/tours/cabo_escape/cabo-escape-2019-r8.jpg')"></div>
                     </a>
 
             `);

@@ -17,8 +17,8 @@
 
                 <div class="drop-menu">
                     <li class="menu-item menu-button">
-                        <a href="{{ route('traditional_arch_tour')}}">
-                            TRADITIONAL ARCH TOUR
+                        <a href="{{ route('cabo_escape')}}">
+                            CABO ESCAPE
                         </a>
                     </li>
                     <li class="menu-item menu-button">
