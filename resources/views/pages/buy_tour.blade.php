@@ -717,6 +717,7 @@
                                     </p>
                                   @endif
                                   <p>
+                                    <span class="u-upper ticket__small-label">Adults:</span>
                                     <span class="ticket__detail">{{$reservation->adults}}</span>
                                   </p>
                                   @if(!empty($reservation->kids))
