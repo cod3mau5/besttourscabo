@@ -20,6 +20,9 @@
 | --------------------- |:---------------------------------------------------------------------------------------------------:|
 | <b>Tour day:</b>      | {{$reservation->tour_day}}                                                                          |
 | <b>Tour time:</b>     | {{$reservation->tour_time}}                                                                         |
+@if ($reservation->tour_name == 'CABO ESCAPE')
+| <b>Check in: </b>     |  4:45 PM                                                                                            |
+@endif
 | <b>Phone Number:</b>  | {{$reservation->phone}}                                                                             |
 | <b>E-mail:</b>        | {{$reservation->email}}                                                                             |
 | <b>Passengers: </b>   | {{ !empty($reservation->kids) ? $reservation->adults + $reservation->kids : $reservation->adults }} |

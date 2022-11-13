@@ -37,6 +37,7 @@ Route::get('/cabo_escape/{voucher?}/{token?}', function ($voucher=null,$token=nu
         'token' => $token? $token:'',
         'check_in'=> '4:45 PM'
     ];
+
     $tour= (object)$tour;
     // return  $reservation->kids_ages;
     return view('pages.cabo_escape',compact('tour','reservation'));
