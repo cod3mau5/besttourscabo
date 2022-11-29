@@ -408,8 +408,12 @@ MEDIA QUERIES
         opacity: 0;
         overflow: hidden;
         position: fixed;
-        left: -114px;
+        left: 0px;
         margin-top: 10px;
+    }
+    .drop-menu > .menu-button{
+        position: relative;
+        left: -68px;
     }
 }
 
