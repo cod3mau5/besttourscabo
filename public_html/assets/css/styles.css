@@ -3,38 +3,41 @@
     font-family: "Impact";
     src: url("../fonts/impact.eot");
     src: url("../fonts/impact.woff2") format("woff2"),
-    url("../fonts/impact.woff") format("woff"),
-    url("../fonts/impact.ttf") format("truetype");
+        url("../fonts/impact.woff") format("woff"),
+        url("../fonts/impact.ttf") format("truetype");
 }
+
 @font-face {
     font-family: "Helvetica Black";
     src: url("../fonts/helvetica_black.eot");
     src: url("../fonts/helvetica_black.woff2") format("woff2"),
-    url("../fonts/helvetica_black.woff") format("woff"),
-    url("../fonts/helvetica_black.ttf") format("truetype");
+        url("../fonts/helvetica_black.woff") format("woff"),
+        url("../fonts/helvetica_black.ttf") format("truetype");
 }
 
 @font-face {
     font-family: "Lulo Clean Bold";
     src: url("../fonts/lulo_bold.eot");
     src: url("../fonts/lulo_bold.woff2") format("woff2"),
-    url("../fonts/lulo_bold.woff") format("woff"),
-    url("../fonts/lulo_bold.ttf") format("truetype");
+        url("../fonts/lulo_bold.woff") format("woff"),
+        url("../fonts/lulo_bold.ttf") format("truetype");
 }
 
 @font-face {
     font-family: "Avenir Light";
     src: url("../fonts/avenir_light.eot");
     src: url("../fonts/avenir_light.woff2") format("woff2"),
-    url("../fonts/avenir_light.woff") format("woff"),
-    url("../fonts/avenir_light.ttf") format("truetype");
+        url("../fonts/avenir_light.woff") format("woff"),
+        url("../fonts/avenir_light.ttf") format("truetype");
 }
 
 @font-face {
-    font-family: "Futura"; src: url("../fonts/futura.eot");
+    font-family: "Futura";
+    src: url("../fonts/futura.eot");
     src: url("../fonts/futura.woff2") format("woff2"),
-    url("../fonts/futura.ttf") format("truetype");
+        url("../fonts/futura.ttf") format("truetype");
 }
+
 /* colors */
 :root {
     --color-white-100: hsl(206, 0%, 100%);
@@ -52,14 +55,14 @@
     --color-blue-400: hsl(215, 91%, 60%);
     --color-blue-500: hsl(215, 83%, 53%);
     --color-blue-600: hsl(215, 76%, 48%);
-    --main_blue:#023047;
-    --main_orange:#ffb703;
+    --main_blue: #023047;
+    --main_orange: #ffb703;
     --shadow-small: 0 1px 3px 0 rgba(0, 0, 0, 0.1),
-    0 1px 2px 0 rgba(0, 0, 0, 0.06);
+        0 1px 2px 0 rgba(0, 0, 0, 0.06);
     --shadow-medium: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
-    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        0 2px 4px -1px rgba(0, 0, 0, 0.06);
     --shadow-large: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
-    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
 
 
@@ -79,41 +82,50 @@
     border: none;
 }
 
-a{
-    color: unset!important;
+a {
+    color: unset !important;
 }
+
 html {
     font-size: 100%;
     box-sizing: inherit;
     scroll-behavior: smooth;
     height: -webkit-fill-available;
 }
-html,body{
-    overflow-x: hidden!important;
+
+html,
+body {
+    overflow-x: hidden !important;
 }
+
 body #app {
     height: 100%;
 }
-@media only screen and (max-width: 767px){
-    .no-gutter{
-    margin-left: 0px!important;
-    margin-right: 0px!important;
+
+@media only screen and (max-width: 767px) {
+    .no-gutter {
+        margin-left: 0px !important;
+        margin-right: 0px !important;
     }
 }
-.ui.dimmer{
-    background-color:rgba(255,255,255,0.99)!important;
+
+.ui.dimmer {
+    background-color: rgba(255, 255, 255, 0.99) !important;
 }
-.ui.dimmer .ui.loader{
-    color:var(--main_blue) !important;
-    font-weight: bolder!important;
+
+.ui.dimmer .ui.loader {
+    color: var(--main_blue) !important;
+    font-weight: bolder !important;
 }
-.ui.dimmer .ui.loader:before{
-    border-color: rgba(0,0,0,.15)!important;
-    border: 0.3em solid rgba(0,0,0,.1)!important;
+
+.ui.dimmer .ui.loader:before {
+    border-color: rgba(0, 0, 0, .15) !important;
+    border: 0.3em solid rgba(0, 0, 0, .1) !important;
 }
-.ui.dimmer .ui.loader:after{
-    border-color: var(--main_orange) transparent transparent!important;
-    border-width: 0.3em!important;
+
+.ui.dimmer .ui.loader:after {
+    border-color: var(--main_orange) transparent transparent !important;
+    border-width: 0.3em !important;
 }
 
 /* header */
@@ -162,9 +174,11 @@ body #app {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    margin-top: 25px;  /* Space for logo */
+    margin-top: 25px;
+    /* Space for logo */
     overflow: visible;
-    max-width: 700px;  /* Keeps the buttons getting too far from each other on largest screens */
+    max-width: 700px;
+    /* Keeps the buttons getting too far from each other on largest screens */
 }
 
 .main-menu a {
@@ -182,49 +196,55 @@ body #app {
 /* The hidden-at-first drop menus */
 .drop-menu {
     display: flex;
-    flex-direction: column; /* This never changes */
+    flex-direction: column;
+    /* This never changes */
     align-items: center;
-    width: 100%; /* Allows sub buttons to stretch across button width in main-menu*/
+    width: 100%;
+    /* Allows sub buttons to stretch across button width in main-menu*/
     transition: max-height .4s, opacity .3s;
     max-height: 0;
     opacity: 0;
-    overflow: hidden; /* Keeps links in drop menu from displaying until height is large enough */
+    overflow: hidden;
+    /* Keeps links in drop menu from displaying until height is large enough */
     position: unset;
 }
 
 
-.drop-menu > .menu-button {
+.drop-menu>.menu-button {
     height: 100%;
     transition: transform .4s;
     transform: translateY(-300%);
-    background:rgb(251,133,0); /* Makes the menu effects visible on close */
+    background: rgb(251, 133, 0);
+    /* Makes the menu effects visible on close */
     margin: 6px 0;
     padding: 5px 8px;
 }
 
 /* Makes for easy identifying when the drop menu is open */
-.dropdown-wrapper{
+.dropdown-wrapper {
     text-align: center;
 }
-.dropdown-wrapper:hover > .menu-button {
-    color: rgb(251,133,0)!important;
+
+.dropdown-wrapper:hover>.menu-button {
+    color: rgb(251, 133, 0) !important;
 }
-#menu > ul > div > div > li> a{
-    padding: 8px!important;
+
+#menu>ul>div>div>li>a {
+    padding: 8px !important;
     line-height: 1.3;
 
 }
 
 /* The dropdown-wrapper wraps both the .main-menu button and drop down menu */
 /* Expands .drop-menu to children height, not setting an expicit height allows variable # of buttons */
-.dropdown-wrapper:hover .drop-menu{
+.dropdown-wrapper:hover .drop-menu {
     max-height: 300px;
     opacity: 1;
 }
 
 /* The specifity keeps styles from affecting main menu button */
-.dropdown-wrapper:hover > .drop-menu .menu-button {
-transform: translateY(0%);
+.dropdown-wrapper:hover>.drop-menu .menu-button {
+    transform: translateY(0%);
 }
 
 
@@ -234,6 +254,7 @@ MEDIA QUERIES
 ====================================*/
 
 @media (min-width: 550px) {
+
     /*====================================
     DROP-MENU EFFECTS (LARGER SCREENS)
     ====================================*/
@@ -243,18 +264,21 @@ MEDIA QUERIES
         opacity: 1;
         background: transparent;
     }
+
     .effect .menu-button {
         transform: translateY(0%);
     }
 
 
-    .scissor .menu-button{
+    .scissor .menu-button {
         transform: translateX(-100%);
     }
+
     /* Selects every other menu button to slide the opposite way */
     .scissor .menu-button:nth-child(2n+1) {
         transform: translateX(100%);
     }
+
     .dropdown-wrapper:hover .scissor .menu-button {
         transform: translateX(0%);
     }
@@ -264,6 +288,7 @@ MEDIA QUERIES
         transition: opacity .5s;
         opacity: 0;
     }
+
     .dropdown-wrapper:hover .fade-in .menu-button {
         opacity: 1;
     }
@@ -276,17 +301,21 @@ MEDIA QUERIES
 
     .header-container {
         height: 200px;
-        justify-content: space-between; /* Pushes logo to top, nav bar all the way down */
+        justify-content: space-between;
+        /* Pushes logo to top, nav bar all the way down */
     }
 
     .main-menu {
-        flex-direction: row; /* Horizontal main menu buttons */
-        align-items: flex-start; /* Makes the top of the 'dropdown-wrapper' div stay flush with button top because it's aligned on the cross-axis */
-        height: 48px; /* Setting the height allows the dropdown outside of it's parent's bounds, therefore not compensated for by the flex. */
+        flex-direction: row;
+        /* Horizontal main menu buttons */
+        align-items: flex-start;
+        /* Makes the top of the 'dropdown-wrapper' div stay flush with button top because it's aligned on the cross-axis */
+        height: 48px;
+        /* Setting the height allows the dropdown outside of it's parent's bounds, therefore not compensated for by the flex. */
         margin: 0;
     }
 
-    .main-menu > .menu-button {
+    .main-menu>.menu-button {
         width: 23%;
         max-width: 150px;
     }
@@ -295,33 +324,38 @@ MEDIA QUERIES
 
 @media (min-width: 850px) {
     .header-container {
-        flex-direction: row; /* Places logo on the same line as .main-menu */
+        flex-direction: row;
+        /* Places logo on the same line as .main-menu */
         justify-content: space-around;
         height: 160px;
-        }
+    }
 
     .main-menu {
-            width: 60%;
+        width: 60%;
         justify-content: space-between;
     }
 }
 
 
-.menu{
+.menu {
     font-family: 'Oswald', sans-serif;
     font-size: 1.4rem;
     box-shadow: none;
     border: 0;
 }
-.menu .menu-item{
-    color: rgb(2,48,71)!important;
+
+.menu .menu-item {
+    color: rgb(2, 48, 71) !important;
 }
-.menu a.item:hover{
-    color: rgb(251,133,0)!important;
+
+.menu a.item:hover {
+    color: rgb(251, 133, 0) !important;
 }
-.menu .dropdown.item:hover{
-    color: rgb(251,133,0);
+
+.menu .dropdown.item:hover {
+    color: rgb(251, 133, 0);
 }
+
 .menu {
     position: fixed;
     top: 0;
@@ -335,19 +369,22 @@ MEDIA QUERIES
     box-shadow: var(--shadow-medium);
     transition: all 0.4s ease-in-out;
 }
-.menu .menu-item a{
+
+.menu .menu-item a {
     font-size: 1.5rem;
-    margin: 0 auto!important;
+    margin: 0 auto !important;
 }
 
 @media only screen and (min-width:840px) and (max-width:1024px) {
-    .menu .menu-item a{
-        font-size: 1.45rem!important;
+    .menu .menu-item a {
+        font-size: 1.45rem !important;
     }
 }
+
 .menu.is-active {
     left: 0;
 }
+
 .menu-inner {
     display: flex;
     flex-direction: column;
@@ -356,6 +393,7 @@ MEDIA QUERIES
     row-gap: 1.25rem;
     margin-top: 7rem;
 }
+
 .menu-link {
     font-family: inherit;
     font-size: 1rem;
@@ -365,6 +403,7 @@ MEDIA QUERIES
     text-transform: uppercase;
     transition: all 0.3s ease;
 }
+
 @media only screen and (min-width: 840px) {
     .navbar {
         display: grid;
@@ -375,6 +414,7 @@ MEDIA QUERIES
         max-width: 1127px;
 
     }
+
     .menu {
         position: relative;
         top: 0;
@@ -387,6 +427,7 @@ MEDIA QUERIES
         box-shadow: none;
         transition: none;
     }
+
     .menu-inner {
         display: flex;
         flex-direction: row;
@@ -394,6 +435,7 @@ MEDIA QUERIES
         column-gap: 2rem;
         margin: 0 auto;
     }
+
     .menu-link {
         text-transform: capitalize;
     }
@@ -411,32 +453,38 @@ MEDIA QUERIES
         left: 0px;
         margin-top: 10px;
     }
-    .drop-menu > .menu-button{
+
+    .drop-menu>.menu-button {
         position: relative;
         left: -68px;
     }
 }
 
-.logo{
-    height:auto!important;
-    width: 244px!important;
+.logo {
+    height: auto !important;
+    width: 244px !important;
 }
+
 @media (max-width: 840px) {
-    .ui.fixed.menu .ui.container{
-        display: none!important;
+    .ui.fixed.menu .ui.container {
+        display: none !important;
     }
-    .ui.fixed.menu .ui.container.mobile{
-        display: flex!important;
+
+    .ui.fixed.menu .ui.container.mobile {
+        display: flex !important;
         flex-direction: column;
     }
-    .navbar{
-        padding: 0 1.2rem!important;
+
+    .navbar {
+        padding: 0 1.2rem !important;
     }
-    .logo{
-        height: auto!important;
-        width: 185px!important;
+
+    .logo {
+        height: auto !important;
+        width: 185px !important;
     }
-    .header{
+
+    .header {
         height: 85px;
     }
 }
@@ -464,15 +512,17 @@ MEDIA QUERIES
 }
 
 @media only screen and (min-width: 840px) {
-    .logo{
-    height:auto!important;
-    width: 285px!important;
-}
+    .logo {
+        height: auto !important;
+        width: 285px !important;
+    }
+
     .burger {
         display: none;
         visibility: hidden;
-        }
+    }
 }
+
 .burger-line {
     position: absolute;
     display: block;
@@ -490,34 +540,42 @@ MEDIA QUERIES
 .burger-line:nth-child(1) {
     top: 0px;
 }
+
 .burger-line:nth-child(2) {
     top: 0.5rem;
 }
+
 .burger-line:nth-child(3) {
     top: 1rem;
 }
+
 .burger.is-active .burger-line:nth-child(1) {
     top: 0.5rem;
     transform: rotate(135deg);
 }
+
 .burger.is-active .burger-line:nth-child(2) {
     right: -1.5rem;
     opacity: 0;
     visibility: hidden;
 }
+
 .burger.is-active .burger-line:nth-child(3) {
     top: 0.5rem;
     transform: rotate(-135deg);
 }
-.no-border{
-    border: 0px transparent solid!important;
+
+.no-border {
+    border: 0px transparent solid !important;
 }
-.no-border::before{
-    content: ''!important;
-    width: 0px!important;
-    background: transparent!important;
+
+.no-border::before {
+    content: '' !important;
+    width: 0px !important;
+    background: transparent !important;
 }
-.ui.container.mobile{
+
+.ui.container.mobile {
     display: none;
 }
 
@@ -529,20 +587,24 @@ MEDIA QUERIES
 }
 
 /* Slider */
-.slider-hero img{
+.slider-hero img {
     height: auto;
     max-height: 800px;
     object-fit: cover;
     object-position: bottom;
     width: 100%;
 }
-.slick-prev,.slick-next{
+
+.slick-prev,
+.slick-next {
     z-index: 1000;
 }
-.slick-prev{
+
+.slick-prev {
     left: 0;
 }
-.slick-next{
+
+.slick-next {
     right: 0;
 }
 
@@ -553,7 +615,7 @@ MEDIA QUERIES
     padding: 1rem 0;
 }
 
-.slider-box p{
+.slider-box p {
     color: var(--main_blue);
     font-family: "Helvetica Black";
     font-size: 2.5rem;
@@ -563,7 +625,7 @@ MEDIA QUERIES
     min-height: 100px;
 }
 
-.slider-box button{
+.slider-box button {
     position: inherit;
     width: 100%;
     border: none;
@@ -576,7 +638,7 @@ MEDIA QUERIES
 }
 
 @media only screen and (min-width:992px) {
-    .slider-box{
+    .slider-box {
         position: absolute;
         top: 35%;
         left: 35%;
@@ -586,13 +648,15 @@ MEDIA QUERIES
         align-items: center;
         padding: 1rem 4rem 2.5rem 1rem;
     }
-    .slider-box p{
+
+    .slider-box p {
         font-size: 5.4rem;
         line-height: 1;
-        margin-bottom:1rem;
+        margin-bottom: 1rem;
         min-height: unset;
     }
-    .slider-box button{
+
+    .slider-box button {
         position: absolute;
         bottom: 0;
         right: 0;
@@ -604,56 +668,65 @@ MEDIA QUERIES
 /*====================================
     OUR TOURS
 ====================================*/
-@media only screen and (max-width: 767px){
-    #our-tours{
-    margin-left: 0!important;
-    margin-right: 0!important;
+@media only screen and (max-width: 767px) {
+    #our-tours {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
     }
 }
-#our-tours{
+
+#our-tours {
     background-color: #045184;
 }
-#our-tours .ui.container{
-    padding:2.5rem 0;
+
+#our-tours .ui.container {
+    padding: 2.5rem 0;
 }
-#our-tours h2{
+
+#our-tours h2 {
     font-family: "Helvetica Black";
     font-size: 3rem;
     color: #2b689c;
     letter-spacing: 3px;
 }
-#our-tours .four{
+
+#our-tours .four {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 0 0.5rem!important;
+    padding: 0 0.5rem !important;
     min-height: 260px;
 }
-#our-tours .four img{
+
+#our-tours .four img {
     width: 100%;
     margin-top: 1rem;
     margin-bottom: 1rem;
 }
-#our-tours .ui.stackable.grid{
+
+#our-tours .ui.stackable.grid {
     padding-top: 2rem;
     padding-bottom: 4rem;
 }
-#our-tours .four p{
+
+#our-tours .four p {
     position: absolute;
-    text-shadow: -1px -1px 1px rgba(255,255,255,.1), 1px 1px 1px rgba(0,0,0,.5), 3px 3px 3px rgba(0,0,0,0.54);
+    text-shadow: -1px -1px 1px rgba(255, 255, 255, .1), 1px 1px 1px rgba(0, 0, 0, .5), 3px 3px 3px rgba(0, 0, 0, 0.54);
 }
-#our-tours .four p.title{
+
+#our-tours .four p.title {
     font-family: "Helvetica Black";
-    letter-spacing:2px;
+    letter-spacing: 2px;
     color: #ffffff;
-    font-size:1.3rem;
+    font-size: 1.3rem;
 }
-#our-tours .four p a{
+
+#our-tours .four p a {
     padding-top: 1rem;
-    color: #ffffff!important;
+    color: #ffffff !important;
     position: relative;
-    font-size:1rem;
+    font-size: 1rem;
     top: 13px;
 }
 
@@ -661,35 +734,40 @@ MEDIA QUERIES
 /*====================================
     WHY CABO
 ====================================*/
-#why-cabo .img{
+#why-cabo .img {
     height: 661px;
     background-image: url('../../assets/img/why_cabo.webp');
     background-size: cover;
 }
-#why-cabo .column{
+
+#why-cabo .column {
     background-color: #8ECAE6;
 }
-#why-cabo .column:nth-child(2){
+
+#why-cabo .column:nth-child(2) {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     padding: 4rem 13rem;
     text-align: center;
 }
-#why-cabo .column:nth-child(2) h2{
+
+#why-cabo .column:nth-child(2) h2 {
     font-family: "Lulo Clean Bold";
     font-size: 2.9rem;
-    color: rgb(2,48,71);
+    color: rgb(2, 48, 71);
     padding: 0 3rem;
     margin-bottom: 2.6rem;
     letter-spacing: 7px;
 }
-#why-cabo .column:nth-child(2) p{
+
+#why-cabo .column:nth-child(2) p {
     font-family: "Avenir Light";
     font-size: 1.1rem;
     color: #000000;
 }
-#why-cabo .column:nth-child(2) button{
+
+#why-cabo .column:nth-child(2) button {
     font-size: 1rem;
     background-color: transparent;
     padding: 0.5rem 1.5rem;
@@ -698,30 +776,36 @@ MEDIA QUERIES
     max-width: 80%;
     align-self: center;
 }
-#why-cabo .column:nth-child(2) button:hover{
-    background-color: rgb(251,133,0);
-    border: 4px solid rgb(2,48,71);
+
+#why-cabo .column:nth-child(2) button:hover {
+    background-color: rgb(251, 133, 0);
+    border: 4px solid rgb(2, 48, 71);
     color: #ffffff;
     font-weight: bolder;
 }
-@media only screen and (max-width: 767px){
-    #why-cabo .column:nth-child(2){
-        padding: 2.5rem 1rem!important;
+
+@media only screen and (max-width: 767px) {
+    #why-cabo .column:nth-child(2) {
+        padding: 2.5rem 1rem !important;
     }
-    #why-cabo{
-        margin-left: 0!important;
-        margin-right: 0!important;
+
+    #why-cabo {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
     }
-    #why-cabo .img{
-        padding: 0!important;
+
+    #why-cabo .img {
+        padding: 0 !important;
         height: 368px;
     }
-    #why-cabo .ui.stackable.grid{
+
+    #why-cabo .ui.stackable.grid {
         display: flex;
         flex-direction: column-reverse;
     }
-    #why-cabo .column:nth-child(2) button{
-        margin-top:2rem;
+
+    #why-cabo .column:nth-child(2) button {
+        margin-top: 2rem;
     }
 }
 
@@ -736,82 +820,95 @@ MEDIA QUERIES
 /*====================================
     TESTIMONIALS
 ====================================*/
-#testimonials{
-    background-color: rgb(255,219,129);
+#testimonials {
+    background-color: rgb(255, 219, 129);
     padding: 3.5rem 0 5rem 0;
 }
-#testimonials h2{
+
+#testimonials h2 {
     font-family: "Helvetica Black";
     color: #FB8500;
     font-size: 3rem;
     margin-bottom: 2.5rem;
 }
-#testimonials .column{
+
+#testimonials .column {
     padding: 0 0.7rem 0 0.7rem;
 }
-#testimonials .column > .column {
+
+#testimonials .column>.column {
     display: flex;
 }
-#testimonials .column > .column > div{
+
+#testimonials .column>.column>div {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     height: 100%;
     width: 100%;
 }
-#testimonials .column > .column > div h3{
+
+#testimonials .column>.column>div h3 {
     color: var(--main_orange);
 }
-#testimonials .column > .column > div p{
+
+#testimonials .column>.column>div p {
     padding: 0.3rem 5rem;
     margin-bottom: 2rem;
     min-height: 155px;
     color: #fff;
 }
 
-.bg-blue{
+.bg-blue {
     position: relative;
     width: 100%;
     height: auto;
     background-color: rgba(4, 81, 132, 0.7);
 }
-#robert{
-    background:radial-gradient(circle, rgba(4,81,132,0.7147233893557423) 0%, rgba(4,81,132,0.85) 40%, rgba(4,81,132,0.9) 99%),
-    url('../../assets/img/robert.webp');
-    background-size:cover;
+
+#robert {
+    background: radial-gradient(circle, rgba(4, 81, 132, 0.7147233893557423) 0%, rgba(4, 81, 132, 0.85) 40%, rgba(4, 81, 132, 0.9) 99%),
+        url('../../assets/img/robert.webp');
+    background-size: cover;
     background-repeat: no-repeat;
 }
-#sammy{
-    background:radial-gradient(circle, rgba(4,81,132,0.7147233893557423) 0%, rgba(4,81,132,0.85) 40%, rgba(4,81,132,0.9) 99%),
-    url('../../assets/img/sammy.webp');
-    background-size:cover;
+
+#sammy {
+    background: radial-gradient(circle, rgba(4, 81, 132, 0.7147233893557423) 0%, rgba(4, 81, 132, 0.85) 40%, rgba(4, 81, 132, 0.9) 99%),
+        url('../../assets/img/sammy.webp');
+    background-size: cover;
     background-repeat: no-repeat;
 }
-#bryan{
-    background:radial-gradient(circle, rgba(4,81,132,0.7147233893557423) 0%, rgba(4,81,132,0.85) 40%, rgba(4,81,132,0.9) 99%),
-    url('../../assets/img/bryan.webp');
-    background-size:cover;
+
+#bryan {
+    background: radial-gradient(circle, rgba(4, 81, 132, 0.7147233893557423) 0%, rgba(4, 81, 132, 0.85) 40%, rgba(4, 81, 132, 0.9) 99%),
+        url('../../assets/img/bryan.webp');
+    background-size: cover;
     background-repeat: no-repeat;
 }
-.svg-container{
+
+.svg-container {
     fill: var(--main_orange);
     height: auto;
-    padding:0 10.1rem;
+    padding: 0 10.1rem;
     margin-bottom: 1rem;
 }
-.svg-container svg{
+
+.svg-container svg {
     color: var(--main_orange);
     transform: rotate(180deg);
 }
 
-@media only screen and (max-width: 767px){
-    #testimonials h2{
+@media only screen and (max-width: 767px) {
+    #testimonials h2 {
         font-size: 32px;
     }
-    .svg-container{
-        padding:0 7.7rem;
+
+    .svg-container {
+        padding: 0 7.7rem;
     }
-    #testimonials .column > .column > div p{
+
+    #testimonials .column>.column>div p {
         padding: 0.3rem 3.5rem;
         margin-bottom: 2rem;
         min-height: 155px;
@@ -830,54 +927,113 @@ MEDIA QUERIES
     width: 100%;
     height: 300px;
 }
-footer{
-    padding: 3.5rem 0 2rem 0!important;
+
+footer {
+    padding: 3.5rem 0 2rem 0 !important;
 }
-footer .ui.container .ui.stackable.grid{
+
+footer .ui.container .ui.stackable.grid {
     width: 100%;
 }
+
 footer p,
-footer h3{
+footer h3 {
     font-family: "Futura";
-    color: var(--main_blue)!important;
+    color: var(--main_blue) !important;
 }
-footer h3{
+
+footer h3 {
     font-size: 2rem;
 }
-footer p{
-    font-size:18px;
+
+footer p {
+    font-size: 18px;
 }
-footer #contactus-footer{
+
+footer #contactus-footer {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
-footer .social-media{
+
+footer .social-media {
     padding: 0;
-    margin:0;
+    margin: 0;
     font-size: 2.3rem;
-    margin-top:1.5rem;
+    margin-top: 1.5rem;
 }
-footer .social-media li{
+
+footer .social-media li {
     display: inline;
     margin: 1rem 1rem 0 1rem;
 }
+
 footer input,
-footer textarea{
-    background: var(--main_blue)!important;
-    border-radius: 0px!important;
+footer textarea {
+    background: var(--main_blue) !important;
+    border-radius: 0px !important;
     color: #fff !important;
 }
-footer textarea{
-    height: 11rem!important;
+
+footer textarea {
+    height: 11rem !important;
 }
-footer .button{
-    background-color:#FB8500!important;
-    border-radius: 0px!important;
-    color: var(--main_blue)!important;
-    font-family: "Impact"!important;
+
+footer .button {
+    background-color: #FB8500 !important;
+    border-radius: 0px !important;
+    color: var(--main_blue) !important;
+    font-family: "Impact" !important;
     float: right;
     width: 50%;
-    font-size: 1.3rem!important;
+    font-size: 1.3rem !important;
     padding: 0.5rem 0;
+}
+
+
+:root {
+    --scheme_1--background--accent: rgba(224, 229, 227, 1);
+    --scheme_1--background--default: rgba(250, 250, 250, 1);
+    --scheme_1--button--background--default: rgba(250, 250, 250, 1);
+    --scheme_1--button--background--hover: rgba(161, 125, 47, 1);
+    --scheme_1--button--text--default: rgba(161, 125, 47, 1);
+    --scheme_1--button--text--hover: rgba(255, 255, 255, 1);
+    --scheme_1--overline--accent: rgba(111, 111, 111, 1);
+    --scheme_1--overline--default: rgba(161, 125, 47, 1);
+    --scheme_1--text--accent: rgba(71, 96, 100, 1);
+    --scheme_1--text--default: rgba(51, 51, 51, 1);
+    --scheme_2--background--accent: rgba(71, 96, 100, 1);
+    --scheme_2--background--default: #f8f8f8;
+    --scheme_2--button--background--default: #cdcdcd;
+    --scheme_2--button--background--hover: #292929;
+    --scheme_2--button--text--default: #434442;
+    --scheme_2--button--text--hover: #ffffff;
+    --scheme_2--overline--accent: rgba(255, 255, 255, 1);
+    --scheme_2--overline--default: #747474;
+    --scheme_2--text--accent: rgba(255, 255, 255, 1);
+    --scheme_2--text--default: rgba(51, 51, 51, 1)
+}
+
+@font-face {
+    font-family: HKGrotesk-Light;
+    src: url('//citlallirico.com/wp-content/uploads/flex/fonts/HKGrotesk-Light.woff');
+    font-display: swap
+}
+
+@font-face {
+    font-family: HKGrotesk-Regular;
+    src: url('//citlallirico.com/wp-content/uploads/flex/fonts/HKGrotesk-Regular.woff');
+    font-display: swap
+}
+
+@font-face {
+    font-family: HKGrotesk-Medium;
+    src: url('//citlallirico.com/wp-content/uploads/flex/fonts/HKGrotesk-Medium.woff');
+    font-display: swap
+}
+
+@font-face {
+    font-family: HKGrotesk-SemiBold;
+    src: url('//citlallirico.com/wp-content/uploads/flex/fonts/HKGrotesk-SemiBold.woff');
+    font-display: swap
 }
