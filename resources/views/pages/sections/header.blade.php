@@ -16,32 +16,14 @@
                 <a class="menu-button">TOURS & ACTIVITIES</a>
 
                 <div class="drop-menu">
-                    <li class="menu-item menu-button">
-                        <a href="{{ route('cabo_escape')}}">
-                            CABO ESCAPE
-                        </a>
-                    </li>
-                    <li class="menu-item menu-button">
-                        <a href="{{ route('traditional_arch_tour')}}">
-                            TRADITIONAL ARCH TOUR
-                        </a>
-                    </li>
-                    
-                    <li class="menu-item menu-button">
-                        <a href="{{ route('whale_watching')}}">
-                            WHALE WATCHING
-                        </a>
-                    </li>
-                    {{-- <li class="menu-item menu-button">
-                        <a href="{{ route('sunset_at_sea')}}">
-                            SUNSET AT SEA
-                        </a>
-                    </li>
-                    <li class="menu-item menu-button">
-                        <a href="{{ route('snorkel')}}">
-                            SNORKEL
-                        </a>
-                    </li> --}}
+                    @foreach ($tours as $key => $tour)                    
+                        <li class="menu-item menu-button">
+                            <a href="{{ route('tour',$key)}}">
+                                {{ $tour['name'] }}
+                            </a>
+                        </li>
+                    @endforeach
+                        
                 </div>
             </div>
 

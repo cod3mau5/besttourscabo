@@ -7,39 +7,26 @@ use Illuminate\Support\Facades\Route;
 
 // HOMEPAGE
 Route::get('/', function () {
-    return view('pages.home');
+    $tours=[
+        'cabo_escape'=>[
+            'name'=>'CABO ESCAPE',
+            'img'=>'assets/img/tours/cabo_escape/ea040fcf-84c6-491d-b62c-216d8e8a7e46.jpg'
+        ],
+        'traditional_arch_tour'=>[
+            'name'=>'TRADITIONAL ARCH TOUR',
+            'img'=>'assets/img/tours/traditional_arch_tour/img_1.webp'
+        ],
+        'whale_watching'=>[
+            'name'=>'WHALE WATCHING',
+            'img'=>'assets/img/tours/whale_watching/1.jpeg'
+        ]
+    ];
+    $tours=(object)$tours;
+    return view('pages.home',compact('tours'));
 })->name('home');
 
 // TOURS_CONTROLLER
-//cabo escape
-Route::get('/cabo_escape/{voucher?}/{token?}', [Controllers\ToursController::class,'cabo_escape'] )->name('cabo_escape');
-
-// TRADITIONAL ARCH TOUR
-Route::get('/traditional_arch_tour/{voucher?}/{token?}', [Controllers\ToursController::class,'traditional_arch_tour'] )->name('traditional_arch_tour');
-
-// WHALE WATCHING
-Route::get('/whale_watching/{voucher?}/{token?}', [Controllers\ToursController::class,'whale_watching'] )->name('whale_watching');
-
-
-Route::get('/payment_successfull/{payer_name?}',function($payer_name=null){
-    // return 'Hello, '.$payer_name.'your payment was completed, thanks for your purchase!';
-    return view('pages.thanks',compact('payer_name'));
-});
-Route::get('/payment_canceled',function(){return 'CANCELED PAYMENT';});
-
-
-Route::get('/whale_watching', function () {
-    return view('pages.whale_watching');
-})->name('whale_watching');
-Route::get('/fishing_tours', function () {
-    return view('pages.fishing_tours');
-})->name('fishing_tours');
-Route::get('/sunset_at_sea', function () {
-    return view('pages.sunset_at_sea');
-})->name('sunset_at_sea');
-Route::get('/snorkel', function () {
-    return view('pages.snorkel');
-})->name('snorkel');
+Route::get('/{tourName}/{voucher?}/{token?}',[Controllers\ToursController::class,'tour'])->name('tour');
 
 
 // TRANSPORTATION
@@ -62,6 +49,12 @@ Route::post('/checkout/{voucher}/update_tour',[Controllers\ReservationsControlle
 
 //  Confirm JavaScript payment PayPal
 Route::get('/paypal/process/{orderID}/{voucher}', [Controllers\Payments\PayPalCardController::class, 'process'])->name('paypal.process');
+
+Route::get('/payment_successfull/{payer_name?}',function($payer_name=null){
+    // return 'Hello, '.$payer_name.'your payment was completed, thanks for your purchase!';
+    return view('pages.thanks',compact('payer_name'));
+});
+Route::get('/payment_canceled',function(){return 'CANCELED PAYMENT';});
 
 // CreateReservation
 // Route::post('/create_reservation',[Controllers\ReservationsController::class, 'create'])->name('createReservation');

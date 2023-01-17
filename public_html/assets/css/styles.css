@@ -589,7 +589,7 @@ MEDIA QUERIES
 /* Slider */
 .slider-hero img {
     height: auto;
-    max-height: 800px;
+    max-height: 600px;
     object-fit: cover;
     object-position: bottom;
     width: 100%;
@@ -640,17 +640,20 @@ MEDIA QUERIES
 @media only screen and (min-width:992px) {
     .slider-box {
         position: absolute;
-        top: 35%;
-        left: 35%;
+        top: 0;
+        left: 0;
+        transform: translate(87%, 80%);
+        width: 37%;
+        height: 37%;
         background-color: rgba(255, 255, 255, 0.65);
         display: flex;
         justify-content: center;
         align-items: center;
-        padding: 1rem 4rem 2.5rem 1rem;
+        padding: 1rem 1rem 2.5rem 1rem;
     }
 
     .slider-box p {
-        font-size: 5.4rem;
+        font-size: 3.6rem;
         line-height: 1;
         margin-bottom: 1rem;
         min-height: unset;
@@ -701,20 +704,27 @@ MEDIA QUERIES
 
 #our-tours .four img {
     width: 100%;
+    height: 100%;
     margin-top: 1rem;
     margin-bottom: 1rem;
+    object-fit: cover;
 }
 
 #our-tours .ui.stackable.grid {
+    display: flex;
+    justify-content: center!important;
     padding-top: 2rem;
     padding-bottom: 4rem;
 }
 
 #our-tours .four p {
     position: absolute;
+    line-height: 1;
     text-shadow: -1px -1px 1px rgba(255, 255, 255, .1), 1px 1px 1px rgba(0, 0, 0, .5), 3px 3px 3px rgba(0, 0, 0, 0.54);
 }
-
+#our-tours .four p.subtitle{
+    margin-top: 1.5rem;
+}
 #our-tours .four p.title {
     font-family: "Helvetica Black";
     letter-spacing: 2px;

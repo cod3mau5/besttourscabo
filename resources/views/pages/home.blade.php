@@ -7,58 +7,22 @@
         {{-- SLIDER --}}
         <section class="section banner banner-section">
             <div class="ui container fluid" style="margin:0px!important">
-                <div class="slider-hero">
-                    <div>
-                        <img src="{{ asset('assets/img/tours/cabo_escape/ea040fcf-84c6-491d-b62c-216d8e8a7e46.jpg') }}" alt="">
-                        <div class="slider-box">
-                            <p>
-                                Cabo <br>
-                                Escape
-                            </p>
-                            <a href="{{ route('cabo_escape')}}">
-                            <button>Book Now</button>
-                            </a>
+                <div class="slider-hero">               
+
+                    @foreach($tours as $key => $tour)
+                        <div>
+                            <img src="{{ asset($tour['img']) }}" alt="">
+                            <div class="slider-box">
+                                <p>
+                                    {{$tour['name']}}
+                                </p>
+                                <a href="{{ route('tour',$key)}}">
+                                    <button>Book Now</button>
+                                </a>
+                            </div>
                         </div>
-                    </div>
-                    {{--
-                    <div>
-                        <img src="{{ asset('assets/img/slider/slide_fishing.jpg') }}" alt="">
-                        <div class="slider-box">
-                            <p>
-                                Fishing <br>
-                                Tours
-                            </p>
-                            <button>Book Now</button>
-                        </div>
-                    </div>
-                    <div>
-                        <img src="{{ asset('assets/img/slider/slide_whales.jpg') }}" alt="">
-                        <div class="slider-box">
-                            <p>
-                                Whale <br>
-                                Watching
-                            </p>
-                            <button>Book Now</button>
-                        </div>
-                    </div>
-                    <div>
-                        <img src="{{ asset('assets/img/slider/slide_sunset.jpg') }}" alt="">
-                        <div class="slider-box">
-                            <p>
-                                Sunset at <br>
-                                Sea
-                            </p>
-                            <button>Book Now</button>
-                        </div>
-                    </div>
-                    <div>
-                        <img src="{{ asset('assets/img/slider/slide_snorkel.jpg') }}" alt="">
-                        <div class="slider-box">
-                            <p>Snorkel</p>
-                            <button>Book Now</button>
-                        </div>
-                    </div>
-                    --}}
+                    @endforeach
+
                 </div>
             </div>
         </section>
@@ -68,26 +32,15 @@
             <div class="ui container center aligned">
                 <h2 class="">OUR TOURS</h2>
                 <div class="ui stackable grid">
-                    <div class="four wide column">
-                    <img src="assets/img/fishing_tours.webp" alt="">
-                    <p class="title">FISHING TOURS</p>
-                    <p class="subtitle"><a href="#">Read more</a></p>
-                    </div>
-                    <div class="four wide column">
-                    <img src="assets/img/sunset.webp" alt="">
-                    <p class="title">SUNSET AT SEA</p>
-                    <p class="subtitle"><a href="#">Read more</a></p>
-                    </div>
-                    <div class="four wide column">
-                    <img src="assets/img/snorkel.webp" alt="">
-                    <p class="title">SNORKEL</p>
-                    <p class="subtitle"><a href="#">Read more</a></p>
-                    </div>
-                    <div class="four wide column">
-                    <img src="assets/img/whale_watching.webp" alt="">
-                    <p class="title">WHALE WATCHING</p>
-                    <p class="subtitle"><a href="#">Read more</a></p>
-                    </div>
+                    @foreach($tours as $key => $tour)
+                        <div class="four wide column">
+                            <img src="{{$tour['img']}}" alt="">
+                            <p class="title">{{$tour['name']}}</p>
+                            <p class="subtitle">
+                                <a href="{{route('tour',$key)}}">Read more</a>
+                            </p>
+                        </div>
+                    @endforeach
                 </div>
             </div>
         </div>
