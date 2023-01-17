@@ -30,12 +30,18 @@ class ToursController extends Controller
             'not_includes'  => 'does not include the entrance to the dock is an access that all marinas charge for being deprived of two dlls per pax premium drinks',
             'voucher' => $voucher? $voucher:'',
             'token' => $token? $token:'',
-            'check_in'=> '4:45 PM'
+            'check_in'=> '4:45 PM',
+            'gallery'       => [
+                'assets/img/tours/cabo_escape/ea040fcf-84c6-491d-b62c-216d8e8a7e46.jpg',
+                'assets/img/tours/cabo_escape/cabo-escape-los-cabos-2.jpg',
+                'assets/img/tours/cabo_escape/cabo-escape-los-cabos-5.jpg',
+                'assets/img/tours/cabo_escape/cabo-escape-2019-r8.jpg'
+            ]
         ];
     
         $tour= (object)$tour;
         // return  $reservation->kids_ages;
-        return view('pages.cabo_escape',compact('tour','reservation'));
+        return view('pages.tours',compact('tour','reservation'));
     }
 
     public function traditional_arch_tour($voucher=null,$token=null){
@@ -57,12 +63,18 @@ class ToursController extends Controller
             'includes'      =>'Includes safe equipment. Certified Captain. And drop off at Playa del Amor or Playa del Pelicano for a minimum of one hour until 4:30 p.m.',
             'not_includes'  => 'does not include transportation, drinks, or access to the pier since all are private and charge a tax of 1 to 2 dlls per person',
             'voucher'       => $voucher? $voucher:'',
-            'token'          => $token? $token:'',
+            'token'         => $token? $token:'',
+            'gallery'       => [
+                'assets/img/tours/traditional_arch_tour/img_1.webp',
+                'assets/img/tours/traditional_arch_tour/img_2.jpg',
+                'assets/img/tours/traditional_arch_tour/img_3.jpg',
+                'assets/img/tours/traditional_arch_tour/img_4.jpg'
+            ]
         ];
     
         $tour= (object)$tour;
         // return  $reservation->kids_ages;
-        return view('pages.traditional_arch_tour',compact('tour','reservation'));
+        return view('pages.tours',compact('tour','reservation'));
     }
 
     public function whale_watching($voucher=null,$token=null){

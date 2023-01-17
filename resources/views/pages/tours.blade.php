@@ -909,46 +909,18 @@
         function mobil() {
 
             $('.grid-gallery').html(`
-                <div class="swiper-slide" style="background-image:url('assets/img/tours/traditional_arch_tour/img_1.webp')">
-                    <a href="{{url('assets/img/tours/traditional_arch_tour/img_1.webp')}}"
-                      data-pswp-width="950"
-                      data-pswp-height="683"
-                      target="_blank"
-                      style="min-width:100%;min-height:100%">
-                        <div class="filler"></div>
-                        <div class="shadow-image"></div>
-                    </a>
-                </div>
-                <div class="swiper-slide" style="background-image:url('assets/img/tours/traditional_arch_tour/img_2.jpg')">
-                    <a href="{{url('assets/img/tours/traditional_arch_tour/img_2.jpg')}}"
-                      data-pswp-width="669"
-                      data-pswp-height="446"
-                      target="_blank"
-                      style="min-width:100%;min-height:100%">
-                        <div class="filler"></div>
-                        <div class="shadow-image"></div>
-                    </a>
-                </div>
-                <div class="swiper-slide" style="background-image:url('assets/img/tours/traditional_arch_tour/img_3.jpg')">
-                    <a href="{{url('assets/img/tours/traditional_arch_tour/img_3.jpg')}}"
-                        data-pswp-width="669"
-                        data-pswp-height="446"
-                      target="_blank"
-                      style="min-width:100%;min-height:100%">
-                        <div class="filler"></div>
-                        <div class="shadow-image"></div>
-                    </a>
-                </div>
-                <div class="swiper-slide" style="background-image:url('assets/img/tours/traditional_arch_tour/img_4.jpg')">
-                    <a href="{{url('assets/img/tours/traditional_arch_tour/img_4.jpg')}}"
-                        data-pswp-width="669"
-                        data-pswp-height="446"
-                      target="_blank"
-                      style="min-width:100%;min-height:100%">
-                        <div class="filler"></div>
-                        <div class="shadow-image"></div>
-                    </a>
-                </div>
+                    @foreach($tour->gallery as $img)
+                        <div class="swiper-slide" style="background-image:url({{$img}})">
+                            <a href="{{$img}}"
+                            data-pswp-width="950"
+                            data-pswp-height="683"
+                            target="_blank"
+                            style="min-width:100%;min-height:100%">
+                                <div class="filler"></div>
+                                <div class="shadow-image"></div>
+                            </a>
+                        </div>
+                    @endforeach
             `);
 
             var swiper = new Swiper(".mySwiper", {
@@ -963,12 +935,12 @@
             var swiper = new Swiper(".mySwiper");
             swiper.destroy();
             $('.grid-gallery').html(`
-
-                    <a href="{{url('assets/img/tours/traditional_arch_tour/img_1.webp')}}"
+                @foreach($tour->gallery as $img)
+                    <a href="{{$img}}"
                       data-pswp-width="950"
                       data-pswp-height="683"
                       target="_blank">
-                        <div class="swiper-slide" style="background-image:url('assets/img/tours/traditional_arch_tour/img_1.webp')"></div>
+                        <div class="swiper-slide" style="background-image:url({{$img}})"></div>
                     </a>
 
                     <a href="{{url('assets/img/tours/traditional_arch_tour/img_2.jpg')}}"
@@ -991,7 +963,7 @@
                       target="_blank">
                         <div class="swiper-slide" style="background-image:url('assets/img/tours/traditional_arch_tour/img_4.jpg')"></div>
                     </a>
-
+                @endforeach
             `);
         }
 
