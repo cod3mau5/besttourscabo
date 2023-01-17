@@ -81,11 +81,11 @@
                 // Fixed Navbar Menu on Window Resize
                 window.addEventListener("resize", () => {
                 if (window.innerWidth >= 992) {
-                    if (navbarMenu.classList.contains("is-active")) {
-                        navbarMenu.classList.remove("is-active");
-                        overlayMenu.classList.remove("is-active");
+                        if (navbarMenu.classList.contains("is-active")) {
+                            navbarMenu.classList.remove("is-active");
+                            overlayMenu.classList.remove("is-active");
+                        }
                     }
-                }
                 });
 
 

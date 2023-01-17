@@ -26,13 +26,13 @@
                             TRADITIONAL ARCH TOUR
                         </a>
                     </li>
-                    {{-- 
+                    
                     <li class="menu-item menu-button">
-                        <a href="{{ route('fishing_tours')}}">
-                            FISHING TOURS
+                        <a href="{{ route('whale_watching')}}">
+                            WHALE WATCHING
                         </a>
                     </li>
-                    <li class="menu-item menu-button">
+                    {{-- <li class="menu-item menu-button">
                         <a href="{{ route('sunset_at_sea')}}">
                             SUNSET AT SEA
                         </a>
