@@ -25,7 +25,7 @@
         @yield('header_scripts')
 
     </head>
-    <body>
+    <body @if(Route::current()=='about_us')  class="u-body" @endif>
         <div id="app">
             <div class="ui segment h-100" v-show="page == 'loading'" style="position:inherit;border-radius:0;">
                 <div class="ui active dimmer">

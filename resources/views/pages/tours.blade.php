@@ -172,6 +172,11 @@
         .swiper-horizontal>.swiper-pagination-bullets, .swiper-pagination-bullets.swiper-pagination-horizontal, .swiper-pagination-custom, .swiper-pagination-fraction{
             bottom: 1px !important;
         }
+
+        .pswp img{
+            object-fit: contain!important;
+        }
+        
         @media(min-width: 920px){
             .grid-gallery > a{
                 width: unset;
@@ -196,6 +201,10 @@
                 grid-column-start: 2;
                 grid-column-end: 4
             }
+            .grid-gallery > a:nth-child(3) > div,.grid-gallery > a:nth-child(3) > div{
+                background-position: center;
+            }
+            
             .tour-title {
                 padding-top: 1rem;
                 margin-bottom:2rem;
@@ -533,15 +542,16 @@
             <div class="swiper mySwiper" v-show="step==1">
                 <div class="grid-gallery swiper-wrapper pswp-gallery" id="my-gallery">
 
-                    @foreach($tour->gallery as $img)
-                        <a href="{{$img}}"
-                        data-pswp-width="950"
-                        data-pswp-height="683"
-                        target="_blank">
-                            <div class="swiper-slide" style="background-image:url({{$img}})"></div>
-                        </a>
-                    @endforeach
-
+                    
+                        @foreach($tour->gallery as $img)
+                            <a href="{{$img}}"
+                            data-pswp-width="950"
+                            data-pswp-height="683"
+                            target="_blank">
+                                <div class="swiper-slide" style="background-image:url({{$img}})"></div>
+                            </a>
+                        @endforeach
+                    
 
                 </div>
                 <div class="swiper-pagination"></div>
@@ -597,7 +607,9 @@
 
                             <div class="column">
                                 <i class="fas fa-clock"></i></i><br>
+                                
                                 <p>{{ $tour->duration }}</p>
+                                
                             </div>
 
                         </div>
@@ -637,7 +649,9 @@
                         </div>
                         <div class="content">
                         <p class="transition hidden">
+                            
                             {{ $tour->description }}
+                            
                         </p>
                         </div>
 
@@ -675,7 +689,9 @@
                         </div>
                         <div class="content">
                             <p class="transition hidden">
+                                
                                 {{ $tour->includes }}
+                                
                             </p>
                         </div>
                         <div class="title">
@@ -684,7 +700,9 @@
                         </div>
                         <div class="content">
                             <p class="transition hidden">
+                                
                                 {{ $tour->not_includes }}
+                                
                             </p>
                         </div>
 
@@ -909,6 +927,7 @@
         function mobil() {
 
             $('.grid-gallery').html(`
+            
                     @foreach($tour->gallery as $img)
                         <div class="swiper-slide" style="background-image:url({{$img}})">
                             <a href="{{$img}}"
@@ -921,6 +940,7 @@
                             </a>
                         </div>
                     @endforeach
+            
             `);
 
             var swiper = new Swiper(".mySwiper", {
@@ -935,6 +955,7 @@
             var swiper = new Swiper(".mySwiper");
             swiper.destroy();
             $('.grid-gallery').html(`
+            
                 @foreach($tour->gallery as $img)
                     <a href="{{$img}}"
                       data-pswp-width="950"
@@ -964,6 +985,7 @@
                         <div class="swiper-slide" style="background-image:url('assets/img/tours/traditional_arch_tour/img_4.jpg')"></div>
                     </a>
                 @endforeach
+                
             `);
         }
 
@@ -1044,13 +1066,13 @@
                 step:'{{ ( !empty($voucher) && !empty($token) ) ? 2 : 1 }}',
                 tour:{
                     name: '{{ $tour->name }}',
-                    price:'{{ $tour->price }}',
+                    price:'{{  $tour->price }}',
                     subtotal:0,
                     total:'',
                     adults:30,
                     kids:30,
                     maxAge:18,
-                    minAge:'{{ $tour->min_age }}',
+                    minAge:'{{  $tour->min_age }}',
                 },
 
                 client: {

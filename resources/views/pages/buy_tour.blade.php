@@ -674,7 +674,7 @@
                     <a class="ui left labeled icon button"
                         id="back-button-container"
                         @if (!empty($voucher) && !empty($token))
-                            href="{{ route('cabo_escape',[$voucher,$token]) }}"
+                            href="{{ route('tour',[$voucher,$token]) }}"
                             @else
                             href="#"
                         @endif

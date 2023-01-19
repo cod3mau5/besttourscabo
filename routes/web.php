@@ -5,42 +5,14 @@ use App\Models\Reservation;
 use Illuminate\Support\Facades\Route;
 
 
+
 // HOMEPAGE
-Route::get('/', function () {
-    $tours=[
-        'cabo_escape'=>[
-            'name'=>'CABO ESCAPE',
-            'img'=>'assets/img/tours/cabo_escape/ea040fcf-84c6-491d-b62c-216d8e8a7e46.jpg'
-        ],
-        'traditional_arch_tour'=>[
-            'name'=>'TRADITIONAL ARCH TOUR',
-            'img'=>'assets/img/tours/traditional_arch_tour/img_1.webp'
-        ],
-        'whale_watching'=>[
-            'name'=>'WHALE WATCHING',
-            'img'=>'assets/img/tours/whale_watching/1.jpeg'
-        ]
-    ];
-    $tours=(object)$tours;
-    return view('pages.home',compact('tours'));
-})->name('home');
-
-// TOURS_CONTROLLER
-Route::get('/{tourName}/{voucher?}/{token?}',[Controllers\ToursController::class,'tour'])->name('tour');
-
-
-// TRANSPORTATION
-Route::get('/transportation', function () {
-    return view('pages.transportation');
-})->name('transportation');
-
+Route::get('/', [Controllers\PagesController::class,'homepage'] )->name('homepage');
 // INFO PAGES
-Route::get('/about_us', function () {
-    return view('pages.about_us');
-})->name('about_us');
-Route::get('/contact', function () {
-    return view('pages.contact');
-})->name('contact');
+Route::get('/about_us', [Controllers\PagesController::class,'about_us'] )->name('about_us');
+Route::get('/contact', [Controllers\PagesController::class,'contact'] )->name('contact');
+// TRANSPORTATION
+Route::get('/transportation', [Controllers\TransportationController::class,'index'] )->name('transportation');
 
 // TOUR PAYMENT PROCESS
 Route::get('/checkout/{voucher}/{token}/tour',[Controllers\ReservationsController::class, 'edit'])->name('editTour');
@@ -61,3 +33,9 @@ Route::get('/payment_canceled',function(){return 'CANCELED PAYMENT';});
 
 //SEND MAIL
 Route::post('/send_mail', [Controllers\ReservationsController::class,'sendMail'])->name('sendMail');
+
+Auth::routes();
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+// TOURS_CONTROLLER
+Route::get('/{tourName}/{voucher?}/{token?}',[Controllers\ToursController::class,'tour'])->name('tour');

@@ -698,15 +698,18 @@ MEDIA QUERIES
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 0 0.5rem !important;
+    padding: .8rem !important;
     min-height: 260px;
+    max-height: 270px;
+    margin-top: .5rem;
+    margin-bottom: .5rem;
 }
 
 #our-tours .four img {
     width: 100%;
     height: 100%;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
+    margin-top: 0;
+    margin-bottom: 0;
     object-fit: cover;
 }
 
@@ -730,6 +733,7 @@ MEDIA QUERIES
     letter-spacing: 2px;
     color: #ffffff;
     font-size: 1.3rem;
+    padding: 0 1rem;
 }
 
 #our-tours .four p a {
