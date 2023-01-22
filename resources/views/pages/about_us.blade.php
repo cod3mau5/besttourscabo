@@ -178,7 +178,8 @@
                         <div class="u-container-layout u-valign-middle-lg u-valign-middle-xl u-container-layout-2">
                           <h4 class="u-custom-font u-font-montserrat u-text u-text-1">About Us</h4>
                           <p class="u-custom-font u-font-montserrat u-text u-text-default u-text-grey-40 u-text-2">At Best Tours Cabo, we're a team of young, local entrepreneurs dedicated to providing exceptional tourist experiences in Cabo San Lucas. Our family has been involved in the tourism industry since 1970, with my grandfather - the "Yuka" - being a pioneer in glass bottom pangas and an honorary member of Coral Negro beach. He devoted much of his life to the service, care and development of this beautiful destination, leaving behind a great legacy. That's why we created our digital platform - to offer a better service, save you time and ensure the best vacation experience possible. With our top-of-the-line boats and the most experienced guides in the area, we're ready to give you an unforgettable vacation in Cabo San Lucas!</p>
-                          <a href="https://nicepage.app" class="u-active-black u-border-none u-btn u-button-style u-hover-black u-palette-3-base u-text-active-white u-text-black u-text-hover-white u-btn-1">Send me a whatsapp</a>
+                          <a href="https://api.whatsapp.com/send?phone=5216241323343&text=%F0%9F%91%8B%20hello%2C%20I%20come%20from%20the%20page%20and%20I%20want%20information%20about..."
+                            target="_BLANK" class="u-active-black u-border-none u-btn u-button-style u-hover-black u-palette-3-base u-text-active-white u-text-black u-text-hover-white u-btn-1">Send me a whatsapp</a>
                         </div>
                       </div>
                     </div>
