@@ -23,7 +23,11 @@ class PagesController extends Controller
             ],
             'la_paz_city_tour'=>[
                 'name'=>'LA PAZ CITY TOUR',
-                'img'=>'assets/img/tours/la_paz_city_tour/6.jpeg'
+                'img'=>'assets/img/tours/la_paz_city_tour/1.jpeg'
+            ],
+            'camel_ride'=>[
+                'name'=>'CAMEL RIDE',
+                'img'=>'assets/img/tours/camel_ride/1.jpeg'
             ]
         ];
         $tours=(object)$tours;
@@ -46,7 +50,11 @@ class PagesController extends Controller
             ],
             'la_paz_city_tour'=>[
                 'name'=>'LA PAZ CITY TOUR',
-                'img'=>'assets/img/tours/la_paz_city_tour/6.jpeg'
+                'img'=>'assets/img/tours/la_paz_city_tour/1.jpeg'
+            ],
+            'camel_ride'=>[
+                'name'=>'CAMEL RIDE',
+                'img'=>'assets/img/tours/camel_ride/1.jpeg'
             ]
         ];
         $tours=(object)$tours;
@@ -69,7 +77,11 @@ class PagesController extends Controller
             ],
             'la_paz_city_tour'=>[
                 'name'=>'LA PAZ CITY TOUR',
-                'img'=>'assets/img/tours/la_paz_city_tour/6.jpeg'
+                'img'=>'assets/img/tours/la_paz_city_tour/1.jpeg'
+            ],
+            'camel_ride'=>[
+                'name'=>'CAMEL RIDE',
+                'img'=>'assets/img/tours/camel_ride/1.jpeg'
             ]
         ];
         $tours=(object)$tours;

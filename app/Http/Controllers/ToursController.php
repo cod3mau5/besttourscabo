@@ -112,6 +112,37 @@ class ToursController extends Controller
                         ]
                     ];
                 break;
+                case 'camel_ride':
+                    $tour= [
+                        'name'          => "CAMEL RIDE",
+                        'price'         => 95,
+                        'duration'      => '2 hours',
+                        'min_age'       => 4,
+                        'description'   => "Experience the ultimate desert adventure with our Camel Safari Tour in Cabo San Lucas! Join us for a 2-hour journey through the beautiful ecological reserve on the back of a majestic camel. Our experienced, bilingual guides will lead the way, providing a safe and enjoyable experience for all.
+
+                        For just $95 per person ($60 for children), you'll get to enjoy a buffet of delicious tacos including chicken, pork, and more. Plus, indulge in some tequila tasting while taking in the stunning desert landscape.
+                        
+                        Your tour includes transportation, safety equipment, and refreshing natural and flavored water. You'll have an opportunity to explore the reserve, and enjoy the stunning landscape of Cabo San Lucas.
+                        
+                        Don't miss out on this once-in-a-lifetime opportunity to take a Safari tour on a camel! Book now and experience the thrill of the desert.",
+                        'includes'      =>'Transportation included, taco buffet chicken meat pork, tequila testing, Walk through the ecological reserve, Bilingual guides with experience in handling camels, safari tour, Natural and flavored water and Safety equipment',
+                        'not_includes'  => 'does not include sunscreen.',
+                        'voucher'       => $voucher? $voucher:'',
+                        'token'         => $token? $token:'',
+                        'gallery' => [
+                            'assets/img/tours/camel_ride/1.jpeg',
+                            'assets/img/tours/camel_ride/2.jpeg',
+                            'assets/img/tours/camel_ride/3.jpeg',
+                            'assets/img/tours/camel_ride/4.jpeg',
+                            'assets/img/tours/camel_ride/5.jpeg',
+                            'assets/img/tours/camel_ride/6.jpeg',
+                            'assets/img/tours/camel_ride/8.jpeg',
+                            'assets/img/tours/camel_ride/7.jpeg',
+                            'assets/img/tours/camel_ride/9.jpeg',
+                            'assets/img/tours/camel_ride/10.jpeg',
+                        ]
+                    ];
+                break;
         }
 
         $tour= (object)$tour;
@@ -131,6 +162,10 @@ class ToursController extends Controller
             'la_paz_city_tour'=>[
                 'name'=>'LA PAZ CITY TOUR',
                 'img'=>'assets/img/tours/la_paz_city_tour/1.jpeg'
+            ],
+            'camel_ride'=>[
+                'name'=>'CAMEL RIDE',
+                'img'=>'assets/img/tours/camel_ride/1.jpeg'
             ]
         ];
         $tours=(object)$tours;
