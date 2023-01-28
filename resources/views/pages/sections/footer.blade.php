@@ -13,7 +13,7 @@
                     </div>
                     <ul class="social-media">
                         <li>
-                            <a href="https://www.instagram.com/besttourscabo/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                            <a href="https://www.instagram.com/besttours_cabo/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
                         </li>
                         <li>
                             <a href="https://www.facebook.com/besttourscabo" target="_blank"><i class="fab fa-facebook-f"></i></a>
