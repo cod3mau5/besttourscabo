@@ -2,6 +2,16 @@
 <html lang="en">
     <head>
 
+        <!-- Google tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-2JHC60Q1FQ"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-2JHC60Q1FQ');
+        </script>
+
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -23,17 +33,7 @@
         <link rel="stylesheet" href="/assets/css/styles.css?{{rand(2,50)}}">
 
         @yield('header_scripts')
-
-
-        <!-- Google tag (gtag.js) - Google Analytics -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-2JHC60Q1FQ"></script>
-        <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-
-            gtag('config', 'G-2JHC60Q1FQ');
-        </script>
+  
     </head>
     <body @if(Route::current()=='about_us')  class="u-body" @endif>
         <div id="app">
