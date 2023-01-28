@@ -1,0 +1,171 @@
+{
+    "components":{
+        "book_now_btn":"Reserva Ahora"
+    },
+    "header": {
+        "home":"Inicio",
+        "about_us":"Nosotros",
+        "gallery":"Galería",
+        "contact_us":"Contacto",
+        "book_now":"Reserva Ahora"
+    },
+    "home":{
+        "txt_hero":{
+            "txt1":"VIVE LOS CABOS",
+            "txt2":"Servicio de Transporte Turístico, Aeropuerto / Hotel, Traslados y City tour.",
+            "txt3":"Maravilloso día para viajar."
+        }
+    },
+    "about_us":{
+        "title1":{
+            "title":"¡La vida es un viaje, hazlo asombroso !!",
+            "txt":"La vida pasa tan deprisa, disfruta el ahora y ven a LOS CABOS a pasar las mejores vacaciones, nosotros haremos que sea una experiencia maravillosa, somos la mejor opción de transporte turístico en LOS CABOS."
+        },
+        "title2":{
+            "title":"Servicios Cabo Driver",
+            "txt1":"Les brindamos un servicio de calidad y profesionalismo además de que contamos con personal altamente capacitado para atender las necesidades del cliente contamos con precios accesibles y paquetes especiales.",
+            "txt2":"La atención personalizada al 100 % nuestro compromiso es estar con nuestros clientes desde que comienza a planear su viaje a Los Cabos, desde su arribo, transfer, actividades y tours hasta su salida. Incluimos un servicio de concierge para hacer sus reservaciones que les brinda la información general."
+        }
+    },
+    "contact_us":{
+        "title":"Contactanos",
+        "map":{
+            "title":"¿Cómo llegar?"
+        },
+        "form":{
+            "name":"Nombre:",
+            "email":"Direccion de correo:",
+            "phone":"Teléfono:",
+            "message":"Mensaje:",
+            "send_btn":"Enviar"
+        }
+    },
+    "book_now":{
+        "form":{
+            "title": "Reservar Ahora",
+            "trip_type":{
+                "oneway": "De Ida",
+                "roundtrip":"Ida y Vuelta"
+            },
+            "buttons":{
+                "next":"Siguiente",
+                "previous":"Anterior"
+            },
+            "steps":[
+                {
+                    "name":"Viaje",
+                    "number":"1"
+                },
+                {
+                    "name":"Contacto",
+                    "number":"2"
+                },
+                {
+                    "name":"Confirmar Detalles",
+                    "number":"3"
+                }
+            ],
+            "step_trip":{
+                "trip_type":"Tipo de viaje",
+                "start_location":"Ubicación Inicial",
+                "end_location":"Ubicación Final",
+                "number_travelers":"Adultos",
+                "children":"Niños",
+                "trip_location_title":{"name":"Viaje","to":"A"},
+                "trip1":{
+                    "arrival":"(llegada)",
+                    "arrival_date":"Fecha de llegada",
+                    "arrival_airline":"Compañia de la aerolinea",
+                    "arrival_flight_time":"Hora del vuelo",
+                    "arrival_flight_number":"Número de vuelo"
+                },
+                "trip2":{
+                    "departure":"(salida)",
+                    "departure_date":"Fecha de Salida",
+                    "departure_airline":"Compañia de la aerolinea",
+                    "departure_flight_time":"Hora del vuelo",
+                    "departure_flight_number":"Número de vuelo"
+                }
+            },
+            "step_contact":{
+                "first_name":"Nombre(s)",
+                "last_name":"Apellidos",
+                "email":"Correo Electronico",
+                "phone_number":"Numero de Teléfono",
+                "special_request":{
+                    "title":"Solicitud Especial",
+                    "paragraph":"Las aguas y cervezas ya están incluidas en los traslados privados.",
+                    "checkboxes":{
+                        "booster_seat":{
+                            "title":"Asiento elevador (gratis)"
+                        },
+                        "car_seat":{
+                            "title":"Asiento de coche (gratis)"
+                        },
+                        "shopping_stop":{
+                            "title":"Parada de comestibles",
+                            "subtitle":"30 minutos. Walmart, Costco, Fresko (25 USD)"
+                        }
+                    }
+                },
+                "comments":"Comentarios"
+            },
+            "step_details":{
+                "title":"Confirmar Detalles",
+                "paragraph":"Porfavor, confirme los detalles de su viaje a continuación. Actualmente se puede pagar en efectivo a la llegada. Si desea ponerse en contacto con nosotros por favor llame al +52 1 (624) 146 1383 o escribanos al correo cabodriverloscabos@gmail.com",
+                "trip_type":"Tipo de viaje",
+                "start_location":"Ubicación Inicial:",
+                "end_location":"Ubicación Final:",
+                "arrival_time":"Fecha de llegada:",
+                "arrival_airline":"Aerolinea de llegada:",
+                "arrival_flight":"# Vuelo de llegada:",
+                "departure_time":"Hora de salida del vuelo:",
+                "departure_airline":"Aerolinea de salida",
+                "departure_flight":"# Vuelo de salida:",
+                "name":"Nombre:",
+                "email":"Correo electronico:",
+                "number_travelers":"Adultos:",
+                "number_children":"Niños:",
+                "phone":"Telefono:",
+                "aditional_info":"Informacion adicional",
+                "total_price":"Precio Total",
+                "pay_method":"Metodo de pago",
+                "cash":"Efectivo a la llegada"
+            }
+        },
+        "summary":{
+            "title":"Resumen",
+            "start_location":"Ubicación Inicial",
+            "end_location":"Ubicación Final",
+            "trip_type":"Tipo de Viaje",
+            "total":"Total"
+        }
+    },
+    "footer":{
+        "contact_info":{
+            "title":"Contactanos",
+            "ul":[
+                {
+                    "li":"Pregúntame lo que quieras ... Estoy aquí para cualquier pregunta que tengas."
+                },                
+                {
+                    "li":"San José del Cabo, Baja California Sur, México."
+                },
+                {
+                    "li":"Oficina 624-110-41-85"
+                },
+                {
+                    "li":"Móvil 624-161-15-48 / 624-157-80-43"
+                },
+                {
+                    "li":"info@cabodriver.com"
+                }
+            ]
+        },
+        "send_mail":{
+            "title":"Envíanos un email",
+            "email_placeholder":"Ingresa tu email aqui",
+            "send_mail_btn":"Enviar"
+        }
+    }
+}

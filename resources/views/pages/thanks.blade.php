@@ -717,6 +717,9 @@
                                     </small>
                                   </div>
                             </div>
+                            {{-- <button onclick="location.href= '{{url("/payment_successfull?payer_name=")}}'+'Juan Pablo de la Torre Valdez';">
+                                URL
+                            </button> --}}
 
                             {{-- <img class="ticket__barcode"
                             src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/515428/barcode.png"

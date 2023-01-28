@@ -1,0 +1,170 @@
+@font-face {
+    font-display: block;
+    font-family: "Helvetica-W02-Bold";
+    src: url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/8c0d8b0f-d7d6-4a72-a418-c2373e4cbf27.eot?#iefix");
+    src: url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/8c0d8b0f-d7d6-4a72-a418-c2373e4cbf27.eot?#iefix") format("eot"),url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/192dac76-a6d9-413d-bb74-22308f2e0cc5.woff") format("woff"),url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/47584448-98c4-436c-89b9-8d6fbeb2a776.ttf") format("truetype"),url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/375c70e5-6822-492b-8408-7cd350440af7.svg#375c70e5-6822-492b-8408-7cd350440af7") format("svg");
+}
+@font-face {
+    font-display: block;
+    font-family: "Helvetica-LT-W10-Bold";
+    src: url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/9fe262dc-5a55-4d75-91a4-aed76bd32190.eot?#iefix");
+    src: url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/9fe262dc-5a55-4d75-91a4-aed76bd32190.eot?#iefix") format("eot"),url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/0a3939d0-3833-4db3-8b85-f64c2b3350d2.woff") format("woff"),url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/1b128d6d-126f-4c9c-8f87-3e7d30a1671c.ttf") format("truetype"),url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/b791c850-fde1-48b3-adf0-8998d55b0866.svg#b791c850-fde1-48b3-adf0-8998d55b0866") format("svg");
+}
+@font-face {
+    font-display: block;
+    font-family:"Futura-LT-W01-Light";
+    src:url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/2b40e918-d269-4fd9-a572-19f5fec7cd7f.eot?#iefix");
+    src:url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/2b40e918-d269-4fd9-a572-19f5fec7cd7f.eot?#iefix") format("eot"),url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/26091050-06ef-4fd5-b199-21b27c0ed85e.woff2") format("woff2"),url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/cca525a8-ad89-43ae-aced-bcb49fb271dc.woff") format("woff"),url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/88cc7a39-1834-4468-936a-f3c25b5d81a1.ttf") format("truetype"),url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/14d6bf5d-15f1-4794-b18e-c03fb9a5187e.svg#14d6bf5d-15f1-4794-b18e-c03fb9a5187e") format("svg");
+}
+@font-face {
+    font-family: "Futura-LT-W05-Light";
+    src: url("//static.parastorage.com/services/santa-resources/resources/viewer/user-site-fonts/fonts/Futura_Complete/v1/FuturaLTW05-LightCondensed.woff2") format("woff2"),
+    url("//static.parastorage.com/services/santa-resources/resources/viewer/user-site-fonts/fonts/Futura_Complete/v1/FuturaLTW05-LightCondensed.woff") format("woff");
+}
+@font-face {
+    font-display: block;
+    font-family: "Poppins-SemiBold";
+    src: url("//fonts.gstatic.com/s/poppins/v5/9VWMTeb5jtXkNoTv949NpVQlYEbsez9cZjKsNMjLOwM.eot?#iefix");
+    src: url("//fonts.gstatic.com/s/poppins/v5/9VWMTeb5jtXkNoTv949NpVQlYEbsez9cZjKsNMjLOwM.eot?#iefix") format("eot"),
+    url("//fonts.gstatic.com/s/poppins/v5/9VWMTeb5jtXkNoTv949Npfk_vArhqVIZ0nv9q090hN8.woff2") format("woff2"),
+    url("//fonts.gstatic.com/s/poppins/v5/9VWMTeb5jtXkNoTv949NpRsxEYwM7FgeyaSgU71cLG0.woff") format("woff"),
+    url("//fonts.gstatic.com/s/poppins/v5/9VWMTeb5jtXkNoTv949NpS3USBnSvpkopQaUR-2r7iU.ttf") format("truetype"),
+    url("//fonts.gstatic.com/l/font?kit=9VWMTeb5jtXkNoTv949NpaWUboTb-jS2tyCOQMtm97g&skey=ce7ef9d62ca89319&v=v5#Poppins") format("svg");
+}
+@font-face {
+    font-display: block;
+    font-family: "Poppins-SemiBold";
+    font-weight: 700;
+    src: url("//fonts.gstatic.com/s/poppins/v5/aDjpMND83pDErGXlVEr-SVQlYEbsez9cZjKsNMjLOwM.eot?#iefix");
+    src: url("//fonts.gstatic.com/s/poppins/v5/aDjpMND83pDErGXlVEr-SVQlYEbsez9cZjKsNMjLOwM.eot?#iefix") format("eot"),
+    url("//fonts.gstatic.com/s/poppins/v5/aDjpMND83pDErGXlVEr-Sfk_vArhqVIZ0nv9q090hN8.woff2") format("woff2"),
+    url("//fonts.gstatic.com/s/poppins/v5/aDjpMND83pDErGXlVEr-SRsxEYwM7FgeyaSgU71cLG0.woff") format("woff"),
+    url("//fonts.gstatic.com/s/poppins/v5/aDjpMND83pDErGXlVEr-SS3USBnSvpkopQaUR-2r7iU.ttf") format("truetype"),
+    url("//fonts.gstatic.com/l/font?kit=aDjpMND83pDErGXlVEr-SaWUboTb-jS2tyCOQMtm97g&skey=cea76fe63715a67a&v=v5#Poppins") format("svg");
+}
+@font-face {
+    font-display: block;
+    font-family: "Poppins-SemiBold";
+    font-style: italic;
+    src: url("//fonts.gstatic.com/s/poppins/v5/RbebACOccNN-5ixkDIVLjalSqKUsDpiXlwfj-ZM2w_A.eot?#iefix");
+    src: url("//fonts.gstatic.com/s/poppins/v5/RbebACOccNN-5ixkDIVLjalSqKUsDpiXlwfj-ZM2w_A.eot?#iefix") format("eot"),
+    url("//fonts.gstatic.com/s/poppins/v5/RbebACOccNN-5ixkDIVLjRUOjZSKWg4xBWp_C_qQx0o.woff2") format("woff2"),
+    url("//fonts.gstatic.com/s/poppins/v5/RbebACOccNN-5ixkDIVLjRa1RVmPjeKy21_GQJaLlJI.woff") format("woff"),
+    url("//fonts.gstatic.com/s/poppins/v5/RbebACOccNN-5ixkDIVLjdqQynqKV_9Plp7mupa0S4g.ttf") format("truetype"),
+    url("//fonts.gstatic.com/l/font?kit=RbebACOccNN-5ixkDIVLjd1LKoZ82bBu2f46DhHcs3c&skey=7fbc556774b13ef0&v=v5#Poppins") format("svg");
+}
+@font-face {
+    font-display: block;
+    font-family: "Poppins-SemiBold";
+    font-weight: 700;
+    font-style: italic;
+    src: url("//fonts.gstatic.com/s/poppins/v5/c4FPK8_hIFKoX59qcGwdCqlSqKUsDpiXlwfj-ZM2w_A.eot?#iefix");
+    src: url("//fonts.gstatic.com/s/poppins/v5/c4FPK8_hIFKoX59qcGwdCqlSqKUsDpiXlwfj-ZM2w_A.eot?#iefix") format("eot"),
+    url("//fonts.gstatic.com/s/poppins/v5/c4FPK8_hIFKoX59qcGwdChUOjZSKWg4xBWp_C_qQx0o.woff2") format("woff2"),
+    url("//fonts.gstatic.com/s/poppins/v5/c4FPK8_hIFKoX59qcGwdCha1RVmPjeKy21_GQJaLlJI.woff") format("woff"),
+    url("//fonts.gstatic.com/s/poppins/v5/c4FPK8_hIFKoX59qcGwdCtqQynqKV_9Plp7mupa0S4g.ttf") format("truetype"),
+    url("//fonts.gstatic.com/l/font?kit=c4FPK8_hIFKoX59qcGwdCt1LKoZ82bBu2f46DhHcs3c&skey=29c3bd833a54ba8c&v=v5#Poppins") format("svg");
+}
+@font-face {
+font-display: block;
+font-family: 'Poppins';
+font-style: italic;
+font-weight: 400;
+src: local('Poppins Italic'), local('Poppins-Italic'), url(https://fonts.gstatic.com/s/poppins/v9/pxiGyp8kv8JHgFVrJJLucXtAOvWDSHFF.woff2) format('woff2');
+unicode-range: U+0900-097F, U+1CD0-1CF6, U+1CF8-1CF9, U+200C-200D, U+20A8, U+20B9, U+25CC, U+A830-A839, U+A8E0-A8FB;
+}
+@font-face {
+font-display: block;
+font-family: 'Poppins';
+font-style: italic;
+font-weight: 400;
+src: local('Poppins Italic'), local('Poppins-Italic'), url(https://fonts.gstatic.com/s/poppins/v9/pxiGyp8kv8JHgFVrJJLufntAOvWDSHFF.woff2) format('woff2');
+unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+font-display: block;
+font-family: 'Poppins';
+font-style: italic;
+font-weight: 400;
+src: local('Poppins Italic'), local('Poppins-Italic'), url(https://fonts.gstatic.com/s/poppins/v9/pxiGyp8kv8JHgFVrJJLucHtAOvWDSA.woff2) format('woff2');
+unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+font-display: block;
+font-family: 'Poppins';
+font-style: italic;
+font-weight: 700;
+src: local('Poppins Bold Italic'), local('Poppins-BoldItalic'), url(https://fonts.gstatic.com/s/poppins/v9/pxiDyp8kv8JHgFVrJJLmy15VFteOYktMqlap.woff2) format('woff2');
+unicode-range: U+0900-097F, U+1CD0-1CF6, U+1CF8-1CF9, U+200C-200D, U+20A8, U+20B9, U+25CC, U+A830-A839, U+A8E0-A8FB;
+}
+@font-face {
+font-display: block;
+font-family: 'Poppins';
+font-style: italic;
+font-weight: 700;
+src: local('Poppins Bold Italic'), local('Poppins-BoldItalic'), url(https://fonts.gstatic.com/s/poppins/v9/pxiDyp8kv8JHgFVrJJLmy15VGdeOYktMqlap.woff2) format('woff2');
+unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+font-display: block;
+font-family: 'Poppins';
+font-style: italic;
+font-weight: 700;
+src: local('Poppins Bold Italic'), local('Poppins-BoldItalic'), url(https://fonts.gstatic.com/s/poppins/v9/pxiDyp8kv8JHgFVrJJLmy15VF9eOYktMqg.woff2) format('woff2');
+unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+font-display: block;
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+src: local('Poppins Regular'), local('Poppins-Regular'), url(https://fonts.gstatic.com/s/poppins/v9/pxiEyp8kv8JHgFVrJJbecnFHGPezSQ.woff2) format('woff2');
+unicode-range: U+0900-097F, U+1CD0-1CF6, U+1CF8-1CF9, U+200C-200D, U+20A8, U+20B9, U+25CC, U+A830-A839, U+A8E0-A8FB;
+}
+@font-face {
+font-display: block;
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+src: local('Poppins Regular'), local('Poppins-Regular'), url(https://fonts.gstatic.com/s/poppins/v9/pxiEyp8kv8JHgFVrJJnecnFHGPezSQ.woff2) format('woff2');
+unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+font-display: block;
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+src: local('Poppins Regular'), local('Poppins-Regular'), url(https://fonts.gstatic.com/s/poppins/v9/pxiEyp8kv8JHgFVrJJfecnFHGPc.woff2) format('woff2');
+unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+font-display: block;
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 700;
+src: local('Poppins Bold'), local('Poppins-Bold'), url(https://fonts.gstatic.com/s/poppins/v9/pxiByp8kv8JHgFVrLCz7Z11lFd2JQEl8qw.woff2) format('woff2');
+unicode-range: U+0900-097F, U+1CD0-1CF6, U+1CF8-1CF9, U+200C-200D, U+20A8, U+20B9, U+25CC, U+A830-A839, U+A8E0-A8FB;
+}
+@font-face {
+font-display: block;
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 700;
+src: local('Poppins Bold'), local('Poppins-Bold'), url(https://fonts.gstatic.com/s/poppins/v9/pxiByp8kv8JHgFVrLCz7Z1JlFd2JQEl8qw.woff2) format('woff2');
+unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+font-display: block;
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 700;
+src: local('Poppins Bold'), local('Poppins-Bold'), url(https://fonts.gstatic.com/s/poppins/v9/pxiByp8kv8JHgFVrLCz7Z1xlFd2JQEk.woff2) format('woff2');
+unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+    font-display: block;
+    font-family:"Bree-W01-Thin-Oblique";
+    src:url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/4e33bf74-813a-4818-8313-6ea9039db056.eot?#iefix");
+    src:url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/4e33bf74-813a-4818-8313-6ea9039db056.eot?#iefix") format("eot"),url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/ceb3b4a3-0083-44ae-95cb-e362f95cc91b.woff2") format("woff2"),url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/4d716cea-5ba0-437a-b5a8-89ad159ea2be.woff") format("woff"),url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/c458fc09-c8dd-4423-9767-e3e27082f155.ttf") format("truetype"),url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/85ffb31e-78ee-4e21-83d8-4313269135a9.svg#85ffb31e-78ee-4e21-83d8-4313269135a9") format("svg");
+}
+	

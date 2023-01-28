@@ -814,7 +814,7 @@
                                     return alert(msg);
                                 }
                                 console.log(orderData);
-                                location.href= '{{url("/payment_successfull/")}}'+'/'+orderData.data.payer.name.given_name;
+                                location.href= '{{url("/payment_successfull?payer_name=")}}'+orderData.data.payer.name.given_name;
                                 alert('Transaction completed by '+orderData.data.payer.name.given_name);
                             });
                         },

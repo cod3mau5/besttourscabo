@@ -23,7 +23,7 @@ class PagesController extends Controller
             ],
             'la_paz_city_tour'=>[
                 'name'=>'LA PAZ CITY TOUR',
-                'img'=>'assets/img/tours/la_paz_city_tour/1.jpeg'
+                'img'=>'assets/img/tours/la_paz_city_tour/6.jpeg'
             ],
             'camel_ride'=>[
                 'name'=>'CAMEL RIDE',
@@ -86,5 +86,20 @@ class PagesController extends Controller
         ];
         $tours=(object)$tours;
         return view('pages.contact',compact('tours'));
+    }
+
+    public function getLanguages($language){
+
+        $options=array(
+            "ssl"=>array(
+                "verify_peer"=>false,
+                "verify_peer_name"=>false,
+            ),
+        ); 
+        if($language == 1){
+            return json_decode(file_get_contents(asset('assets/json/english.json'),false,stream_context_create($options)), true);
+        }else{
+            return json_decode(file_get_contents(asset('assets/json/spanish.json'),false,stream_context_create($options)), true);
+        }
     }
 }
