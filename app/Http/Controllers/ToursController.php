@@ -42,7 +42,8 @@ class ToursController extends Controller
                     'check_in'=> '4:30 pm',
                     'min_time'=>'5:00pm',
                     'max_time'=>'5:00pm',
-                    'time_interval'=>30
+                    'time_interval'=>30,
+                    'extra_fees'=>null
                 ];
                 break;
             case 'traditional_arch_tour':
@@ -65,7 +66,8 @@ class ToursController extends Controller
                     ],
                     'min_time'=>'9:00am',
                     'max_time'=>'3:30pm',
-                    'time_interval'=>30
+                    'time_interval'=>30,
+                    'extra_fees'=>null
                 ];
                 break;
             case 'whale_watching':
@@ -94,7 +96,8 @@ class ToursController extends Controller
                     ],
                     'min_time'=>'9:00am',
                     'max_time'=>'3:30pm',
-                    'time_interval'=>30
+                    'time_interval'=>30,
+                    'extra_fees'=>null
                 ];
                 break;
                 case 'la_paz_city_tour':
@@ -123,7 +126,8 @@ class ToursController extends Controller
                         'check_in'=> 'we start picking up people at 4:30 am',
                         'min_time'=>'6:00am',
                         'max_time'=>'6:00pm',
-                        'time_interval'=>30
+                        'time_interval'=>30,
+                        'extra_fees'=>null
                     ];
                 break;
                 case 'camel_ride':
@@ -157,7 +161,13 @@ class ToursController extends Controller
                         ],
                         'min_time'=>'9:00am',
                         'max_time'=>'4:00pm',
-                        'time_interval'=>60
+                        'time_interval'=>60,
+                        'extra_fees'=>[
+                            'park entrance'=> [
+                                'cost'=>20,
+                                'description'=>'You must pay $20 USD park entrance fee per person. Optional protection benefits offered at check-in'
+                            ]
+                        ]
                     ];
                 break;
         }

@@ -510,6 +510,10 @@
         .field .iti{
             width: 100%!important;
         }
+        .ui.label.extra-fee:before{
+            width: 2.2em!important;
+            height: 2.2em!important;
+        }
     </style>
 
 @endsection
@@ -614,7 +618,7 @@
 
                         </div>
 
-                        <div class="six wide column" id="price">
+                        <div class="@if(!empty($tour->extra_fees))three wide column @else six wide column @endif" id="price">
                             <div class="ui up divider"></div>
                             <h5>Price</h5>
                             <div class="ui down divider"></div>
@@ -631,7 +635,28 @@
                                 </div>
                             </div>
                         </div>
+                        @if(!empty($tour->extra_fees))
+                            <div class="three wide column" id="aditional_costs">
+                                <div class="ui up divider"></div>
+                                <h5>Extra Fees</h5>
+                                <div class="ui down divider"></div>
+                                @foreach($tour->extra_fees as $key => $fee)
+                                    <div class="row">
+                                        <div class="column">
+                                            <div class="ui tag labels" style="text-align: center">
+                                                {{$key}} <br>
+                                                <a class="ui label extra-fee" style="line-height: .99;" @click="openModal('extra_fee','{{$fee['description']}}')">
+                                                    ${{$fee['cost']}} usd<br>
+                                                    <small  style="font-size:68%">click here for more info</small> <i class="question circle icon"></i>
+                                                    {{-- <span style="font-size: 11px;">(per person)</span> --}}
+                                                </a>
 
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
+                        @endif
                 </div>
                 <div class="description" v-show="step==1">
                     {{-- <h1>Descripción</h1>
@@ -723,7 +748,7 @@
 
                     </div>
                 </div>
-                <div class="ui segment" id="location" v-show="step==1"  @click="openModal()">
+                <div class="ui segment" id="location" v-show="step==1"  @click="openModal('map')">
                     <div class="ui top attached label text centered">TOUR LOCATION</div>
                     <p>
                         <i class="fa-solid fa-map-location-dot"></i>
@@ -731,6 +756,7 @@
                         <small>Cabo San Lucas Baja California Sur, México</small>
                     </p>
                 </div>
+                
 
                 @php
                     if(empty($voucher)){ $voucher="BT-".mt_rand(); }
@@ -860,6 +886,19 @@
                     @csrf
                 </form>
 
+                <div class="ui modal extra_fee" v-show="step==1">
+                    <i class="close icon"></i>
+                    <div class="header">
+                        Fee info
+                    </div>
+                    <div class="image content" id="map-container">
+                        <div class="description"></div>
+                    </div>
+                    <div class="actions">
+                        <div class="ui button" @click="closeModal('extra_fee')">OK</div>
+                    </div>
+                </div>
+
                 <div class="ui modal" v-show="step==1">
                     <i class="close icon"></i>
                     <div class="header">
@@ -872,7 +911,7 @@
                         </div>
                     </div>
                     <div class="actions">
-                        <div class="ui button" @click="closeMap">OK</div>
+                        <div class="ui button" @click="closeModal('map')">OK</div>
                     </div>
                 </div>
 
@@ -1312,11 +1351,17 @@
                     }
                 },
 
-                openModal: function(){
-                    $('.ui.modal').modal({centered: false}).modal('show');
-                    return false;
+                openModal: function(modal,desc){
+                    if(modal=='extra_fee'){
+                        $('.ui.modal.extra_fee .description').html(desc);
+                        $('.ui.modal.extra_fee').modal({centered: false}).modal('show');
+                        return false;
+                    }else{
+                        $('.ui.modal').modal({centered: false}).modal('show');
+                        return false;
+                    }
                 },
-                closeMap(){
+                closeModal(modal){
                     $('.ui.modal').modal('hide');
                 },
                 checkPhoneLength(){
