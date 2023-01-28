@@ -717,7 +717,7 @@
                                     </small>
                                   </div>
                             </div>
-                            {{-- <button onclick="location.href= '{{url("/payment_successfull?payer_name=")}}'+'Juan Pablo de la Torre Valdez';">
+                            {{-- <button onclick="location.href= '{{url("/payment_successful?payer_name=")}}'+'Juan Pablo de la Torre Valdez';">
                                 URL
                             </button> --}}
 

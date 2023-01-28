@@ -32,7 +32,7 @@ Route::post('/checkout/{voucher}/update_tour',[Controllers\ReservationsControlle
 //  Confirm JavaScript payment PayPal
 Route::get('/paypal/process/{orderID}/{voucher}', [Controllers\Payments\PayPalCardController::class, 'process'])->name('paypal.process');
 
-Route::get('/payment_successfull',function(Request $request,$payer_name=null){
+Route::get('/payment_successful',function(Request $request,$payer_name=null){
     $tours=[
         'cabo_escape'=>[
             'name'=>'CABO ESCAPE',
