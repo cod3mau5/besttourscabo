@@ -53,9 +53,9 @@ class ReservationsController extends Controller
             $reservation= (object) $reservation;
 
             $tours=[
-                'cabo_escape'=>[
-                    'name'=>'CABO ESCAPE',
-                    'img'=>'assets/img/tours/cabo_escape/ea040fcf-84c6-491d-b62c-216d8e8a7e46.jpg'
+                'sunset_cruise'=>[
+                    'name'=>'SUNSET CRUISE',
+                    'img'=>'assets/img/tours/sunset_cruise/ea040fcf-84c6-491d-b62c-216d8e8a7e46.jpg'
                 ],
                 'traditional_arch_tour'=>[
                     'name'=>'TRADITIONAL ARCH TOUR',
@@ -95,9 +95,9 @@ class ReservationsController extends Controller
             $reservation= (object) $reservation;
         }
         $tours=[
-            'cabo_escape'=>[
-                'name'=>'CABO ESCAPE',
-                'img'=>'assets/img/tours/cabo_escape/ea040fcf-84c6-491d-b62c-216d8e8a7e46.jpg'
+            'sunset_cruise'=>[
+                'name'=>'SUNSET CRUISE',
+                'img'=>'assets/img/tours/sunset_cruise/ea040fcf-84c6-491d-b62c-216d8e8a7e46.jpg'
             ],
             'traditional_arch_tour'=>[
                 'name'=>'TRADITIONAL ARCH TOUR',
@@ -159,9 +159,9 @@ class ReservationsController extends Controller
                     $token= $reservation->token;
 
                     $tours=[
-                        'cabo_escape'=>[
-                            'name'=>'CABO ESCAPE',
-                            'img'=>'assets/img/tours/cabo_escape/ea040fcf-84c6-491d-b62c-216d8e8a7e46.jpg'
+                        'sunset_cruise'=>[
+                            'name'=>'SUNSET CRUISE',
+                            'img'=>'assets/img/tours/sunset_cruise/ea040fcf-84c6-491d-b62c-216d8e8a7e46.jpg'
                         ],
                         'traditional_arch_tour'=>[
                             'name'=>'TRADITIONAL ARCH TOUR',
@@ -193,9 +193,9 @@ class ReservationsController extends Controller
 
         }
         $tours=[
-            'cabo_escape'=>[
-                'name'=>'CABO ESCAPE',
-                'img'=>'assets/img/tours/cabo_escape/ea040fcf-84c6-491d-b62c-216d8e8a7e46.jpg'
+            'sunset_cruise'=>[
+                'name'=>'SUNSET CRUISE',
+                'img'=>'assets/img/tours/sunset_cruise/ea040fcf-84c6-491d-b62c-216d8e8a7e46.jpg'
             ],
             'traditional_arch_tour'=>[
                 'name'=>'TRADITIONAL ARCH TOUR',

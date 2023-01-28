@@ -1116,10 +1116,10 @@
 
                 $('input.timepicker').timepicker({
                     timeFormat: 'h:mm p',
-                    interval: 60,
-                    minTime: '5:00pm',
-                    maxTime: '5:00pm',
-                    startTime: '5:00pm',
+                    interval: '{{ $tour->time_interval }}',
+                    minTime: '{{ $tour->min_time }}',
+                    maxTime: '{{ $tour->max_time }}',
+                    startTime: '{{ $tour->min_time }}',
                     dynamic: false,
                     dropdown: true,
                     scrollbar: true,

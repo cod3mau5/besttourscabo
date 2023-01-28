@@ -17,9 +17,10 @@ class ToursController extends Controller
         }
 
         switch ($tour) {
-            case 'cabo_escape':
+            case 'sunset_cruise':
+
                 $tour= [
-                    'name' => "CABO ESCAPE",
+                    'name' => "SUNSET CRUISE",
                     'price' => 80,
                     'duration'=> '2 hours',
                     'min_age' => 5,
@@ -32,13 +33,16 @@ class ToursController extends Controller
                     'not_includes'  => 'does not include the entrance to the dock is an access that all marinas charge for being deprived of two dlls per pax premium drinks',
                     'voucher' => $voucher? $voucher:'',
                     'token' => $token? $token:'',
-                    'check_in'=> '4:45 PM',
                     'gallery'       => [
-                        'assets/img/tours/cabo_escape/ea040fcf-84c6-491d-b62c-216d8e8a7e46.jpg',
-                        'assets/img/tours/cabo_escape/cabo-escape-los-cabos-2.jpg',
-                        'assets/img/tours/cabo_escape/cabo-escape-los-cabos-5.jpg',
-                        'assets/img/tours/cabo_escape/cabo-escape-2019-r8.jpg'
-                    ]
+                        'assets/img/tours/sunset_cruise/ea040fcf-84c6-491d-b62c-216d8e8a7e46.jpg',
+                        'assets/img/tours/sunset_cruise/cabo-escape-los-cabos-2.jpg',
+                        'assets/img/tours/sunset_cruise/cabo-escape-los-cabos-5.jpg',
+                        'assets/img/tours/sunset_cruise/cabo-escape-2019-r8.jpg'
+                    ],
+                    'check_in'=> '4:30 pm',
+                    'min_time'=>'5:00pm',
+                    'max_time'=>'5:00pm',
+                    'time_interval'=>30
                 ];
                 break;
             case 'traditional_arch_tour':
@@ -58,7 +62,10 @@ class ToursController extends Controller
                         'assets/img/tours/traditional_arch_tour/img_2.jpg',
                         'assets/img/tours/traditional_arch_tour/img_3.jpg',
                         'assets/img/tours/traditional_arch_tour/img_4.jpg'
-                    ]
+                    ],
+                    'min_time'=>'9:00am',
+                    'max_time'=>'3:30pm',
+                    'time_interval'=>30
                 ];
                 break;
             case 'whale_watching':
@@ -84,7 +91,10 @@ class ToursController extends Controller
                         'assets/img/tours/whale_watching/5.jpeg',
                         'assets/img/tours/whale_watching/6.jpeg',
                         'assets/img/tours/whale_watching/7.jpeg'
-                    ]
+                    ],
+                    'min_time'=>'9:00am',
+                    'max_time'=>'3:30pm',
+                    'time_interval'=>30
                 ];
                 break;
                 case 'la_paz_city_tour':
@@ -109,7 +119,11 @@ class ToursController extends Controller
                             'assets/img/tours/la_paz_city_tour/7.jpeg',
                             'assets/img/tours/la_paz_city_tour/9.jpeg',
                             'assets/img/tours/la_paz_city_tour/10.jpeg',
-                        ]
+                        ],
+                        'check_in'=> 'we start picking up people at 4:30 am',
+                        'min_time'=>'6:00am',
+                        'max_time'=>'6:00pm',
+                        'time_interval'=>30
                     ];
                 break;
                 case 'camel_ride':
@@ -140,16 +154,19 @@ class ToursController extends Controller
                             'assets/img/tours/camel_ride/7.jpeg',
                             'assets/img/tours/camel_ride/9.jpeg',
                             'assets/img/tours/camel_ride/10.jpeg',
-                        ]
+                        ],
+                        'min_time'=>'9:00am',
+                        'max_time'=>'4:00pm',
+                        'time_interval'=>60
                     ];
                 break;
         }
 
         $tour= (object)$tour;
         $tours=[
-            'cabo_escape'=>[
-                'name'=>'CABO ESCAPE',
-                'img'=>'assets/img/tours/cabo_escape/ea040fcf-84c6-491d-b62c-216d8e8a7e46.jpg'
+            'sunset_cruise'=>[
+                'name'=>'SUNSET CRUISE',
+                'img'=>'assets/img/tours/sunset_cruise/ea040fcf-84c6-491d-b62c-216d8e8a7e46.jpg'
             ],
             'traditional_arch_tour'=>[
                 'name'=>'TRADITIONAL ARCH TOUR',

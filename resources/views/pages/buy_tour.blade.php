@@ -100,10 +100,10 @@
             padding-bottom: 80px;
             min-height: 100%;
         }
-        #cabo_escape .ui.container {
+        #sunset_cruise .ui.container {
             padding: 1rem 0;
         }
-        #cabo_escape .ui.container .father_sticky{
+        #sunset_cruise .ui.container .father_sticky{
             padding: 0 7px;
 
         }
@@ -658,7 +658,7 @@
 @endsection
 @section('content')
 
-<main id="cabo_escape">
+<main id="sunset_cruise">
     <div class="ui container">
 
 
@@ -710,7 +710,7 @@
                                     <span class="u-upper ticket__small-label">Time:</span>
                                     <span class="ticket__detail">{{$reservation->tour_time}}</span>
                                   </p>
-                                  @if($reservation->tour_name == 'CABO ESCAPE')
+                                  @if($reservation->tour_name == 'SUNSET CRUISE')
                                     <p>
                                         <span class="u-upper ticket__small-label">Check In:</span>
                                         <span class="ticket__detail" style="color:red">4:45 PM</span>
