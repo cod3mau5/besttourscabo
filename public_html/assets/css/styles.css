@@ -6,6 +6,11 @@
         url("../fonts/impact.woff") format("woff"),
         url("../fonts/impact.ttf") format("truetype");
 }
+@font-face {
+    font-family: "ImpactRegular";
+    src: url("../fonts/impact-regular.otf") format("truetype");
+}
+
 
 @font-face {
     font-family: "Helvetica Black";
@@ -981,7 +986,10 @@ footer .social-media li {
     display: inline;
     margin: 1rem 1rem 0 1rem;
 }
-
+footer input{
+    padding: .67857143em 1em;
+    width: 100%;
+}
 footer input,
 footer textarea {
     background: var(--main_blue) !important;
@@ -997,11 +1005,12 @@ footer .button {
     background-color: #FB8500 !important;
     border-radius: 0px !important;
     color: var(--main_blue) !important;
-    font-family: "Impact" !important;
     float: right;
-    width: 50%;
-    font-size: 1.3rem !important;
-    padding: 0.5rem 0;
+    width: 33%;
+    font-size: 1.48rem !important;
+    padding: 0.77rem 0px!important;
+    font-family: 'impactRegular', sans-serif!important;
+    letter-spacing: 2px;
 }
 
 
