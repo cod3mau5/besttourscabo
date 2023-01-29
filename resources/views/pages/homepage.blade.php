@@ -132,6 +132,8 @@
 @endsection
 
 @section('footer_scripts')
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDl3QdpavEMHbNxiU9AqmO577Hir0EZ_Ho&callback=initMap"
+ defer></script>
     <script>
         function initMap() {
             var uluru = {lat: 22.879869, lng: -109.906256};
@@ -146,8 +148,7 @@
             });
         }
     </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDl3QdpavEMHbNxiU9AqmO577Hir0EZ_Ho&callback=initMap"
-    async defer></script>
+
 
     {{-- VueJs 2 --}}
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
