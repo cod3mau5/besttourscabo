@@ -34,6 +34,14 @@
         <link rel="stylesheet" href="/assets/css/styles.css?{{rand(2,50)}}">
 
         @yield('header_scripts')
+
+        <style>
+            .danger{
+                background-color: red!important;
+                color:#fff!important;
+                font-weight: bolder!important;
+            }
+        </style>
   
     </head>
     <body @if(Route::current()=='about_us')  class="u-body" @endif>
@@ -108,12 +116,20 @@
                         message:$('#message').val(),
                         _token:"{{csrf_token()}}"
                     }
-                    console.log(data);
+                    // console.log(data);
                     $.ajax({
                         type: "POST",
                         url: '{{route("sendContactMail")}}',
                         data: data,
-                        success:function(){
+                        success:function(response){
+                            if(response.success==false){
+                                response.data.email==null?$('#email').addClass('danger'):'';
+                                response.data.phone==null?$('#phone').addClass('danger'):'';
+                                response.data.phone==null?$('#message').addClass('danger'):'';
+                                response.data.email==null?$('#email').attr('placeholder','you need to put your email'):'';
+                                response.data.phone==null?$('#phone').attr('placeholder','you need to put your phone'):'';
+                                response.data.phone==null?$('#message').attr('placeholder','you need to put your message'):'';
+                            }
                             app._data.page='loaded';
                         },
                         error: function(){
