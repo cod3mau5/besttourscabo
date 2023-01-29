@@ -932,7 +932,8 @@
 @endsection
 
 @section('footer_scripts')
-
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDl3QdpavEMHbNxiU9AqmO577Hir0EZ_Ho&callback=initMap"
+    defer></script>
     <script>
         function initMap() {
             var uluru = {lat: 22.879869, lng: -109.906256};
@@ -947,8 +948,7 @@
             });
         }
     </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDl3QdpavEMHbNxiU9AqmO577Hir0EZ_Ho&callback=initMap"
-    async defer></script>
+
 
     <!-- Swiper JS -->
     <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
