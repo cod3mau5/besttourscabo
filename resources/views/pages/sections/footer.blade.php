@@ -46,7 +46,7 @@
                         </div> --}}
                         <div class="field">
                             <label>Mesage</label>
-                            <textarea placeholder="Write your message here"  id="message"></textarea>
+                            <textarea placeholder="Write your message here"  id="message" required></textarea>
                         </div>
                         <div class="ui submit button" id="sendContactEmail">Send</div>
                         </div>
