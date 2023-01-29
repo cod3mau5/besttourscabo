@@ -98,7 +98,27 @@
                     }
                 });
 
-
+                $('#sendContactEmail').click(()=>{
+                    app._data.page='loading';
+                    let data= {
+                        email:$('#email').val(),
+                        phone:$('#phone').val(),
+                        message:$('#message').val(),
+                        _token:"{{csrf_token()}}"
+                    }
+                    console.log(data);
+                    $.ajax({
+                        type: "POST",
+                        url: '{{route("sendContactMail")}}',
+                        data: data,
+                        success:function(){
+                            app._data.page='loaded';
+                        },
+                        error: function(){
+                            alert('Error sending message, please try again.');
+                        }
+                    });
+                });
 
             });
         </script>

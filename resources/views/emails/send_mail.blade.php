@@ -1,6 +1,6 @@
 @component('mail::layout')
 {{-- Header --}}
- <h1>Nuevo mensaje</h1>
+ <h1>Nuevo mensaje de contacto</h1>
 
 @slot('header')
 @component('mail::header', ['url' => config('app.url')])
@@ -9,19 +9,18 @@
 @endslot
 
 {{-- Body --}}
-<p>Correo: {{ $request->email }}</p>
+@if($request['email'])
+    Correo: {{ $request['email'] }}
+@endif
 
-@if($request->phone)
-    Telefono: {{ $request->phone }}
+@if($request['phone'])
+    Telefono: {{ $request['phone'] }}
 @endif
-@if($request->name)
-    De: {{ $request->name }}
-@endif
-<p>
+@if($request['message'])
     Mensaje: <br>
-    {{ $request->msj }}
-</p>
+    {{ $request['message'] }}
 
+@endif
 {{-- Subcopy --}}
 @isset($subcopy)
 @slot('subcopy')

@@ -71,6 +71,7 @@ Route::get('/payment_canceled',function(){return 'CANCELED PAYMENT';});
 
 //SEND MAIL
 Route::post('/send_mail', [Controllers\ReservationsController::class,'sendMail'])->name('sendMail');
+Route::post('/send_contact_mail', [Controllers\ReservationsController::class,'sendContactMail'])->name('sendContactMail');
 
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

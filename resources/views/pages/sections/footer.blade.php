@@ -33,7 +33,12 @@
                     <div class="ui form">
                         <div class="field">
                             <label>E-mail</label>
-                            <input type="email" placeholder="example@mail.com">
+                            <input type="email"  id="email" placeholder="type your email">
+                        </div>
+
+                        <div class="field">
+                            <label>Phone</label>
+                            <input type="phone"  id="phone" placeholder="type your phone">
                         </div>
                         {{-- <div class="ui error message">
                             <div class="header">Action Forbidden</div>
@@ -41,9 +46,9 @@
                         </div> --}}
                         <div class="field">
                             <label>Mesage</label>
-                            <textarea placeholder="Write your message here"></textarea>
+                            <textarea placeholder="Write your message here"  id="message"></textarea>
                         </div>
-                        <div class="ui submit button">Send</div>
+                        <div class="ui submit button" id="sendContactEmail">Send</div>
                         </div>
                 </div>
             </div>

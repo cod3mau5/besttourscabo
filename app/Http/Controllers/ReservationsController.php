@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ContactMail;
 use App\Models\Reservation;
 use Illuminate\Http\Request;
 use App\Mail\NotifyBoundReservation;
@@ -221,7 +222,6 @@ class ReservationsController extends Controller
         Mail::to('admin@besttourscabo.com')
         ->cc([
             'code.bit.mau@gmail.com',
-            'mauri.bmxxx@gmail.com',
             ])
         ->send(new NotifyBoundReservation($reservation));
 
@@ -230,6 +230,15 @@ class ReservationsController extends Controller
         // // $txt = "John Doe\n";
         // fwrite($myfile, $reservation->toJson());
         // fclose($myfile);
+    }
+    public function sendContactMail(Request $request){
+
+        Mail::to('admin@besttourscabo.com')
+        ->cc([
+            'code.bit.mau@gmail.com',
+            ])
+            ->send(new ContactMail($request->all()));
+        return [ 'success' => true, 'data' => $request->all() ];
     }
 
     public function sendReservation(Request $request){
