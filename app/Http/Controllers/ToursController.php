@@ -100,7 +100,7 @@ class ToursController extends Controller
                     'extra_fees'=>null
                 ];
                 break;
-                case 'la_paz_city_tour':
+            case 'la_paz_city_tour':
                     $tour= [
                         'name'          => "LA PAZ CITY TOUR",
                         'price'         => 119,
@@ -130,7 +130,7 @@ class ToursController extends Controller
                         'extra_fees'=>null
                     ];
                 break;
-                case 'camel_ride':
+            case 'camel_ride':
                     $tour= [
                         'name'          => "CAMEL RIDE",
                         'price'         => 95,
@@ -170,6 +170,8 @@ class ToursController extends Controller
                         ]
                     ];
                 break;
+            default:
+                abort(404);
         }
 
         $tour= (object)$tour;
