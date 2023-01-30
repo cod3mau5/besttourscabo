@@ -216,7 +216,7 @@
                     console.log(scrollY);
                 });
   
-                $(window).scroll(function(){
+                $(window).on("scroll touchmove",function(){
                     if ($(window).scrollTop() >= $(document).height() - $(window).height() - 100){
                     $("#whatsapp-btn").hide();
                     }
