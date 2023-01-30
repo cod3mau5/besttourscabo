@@ -217,7 +217,7 @@
                 });
   
                 $(window).on("scroll touchmove",function(){
-                    if ($(window).scrollTop() >= $(document).height() - $(window).height() - 100){
+                    if ($(window).scrollTop() >= $(document).height() - $(window).height() - 300){
                     $("#whatsapp-btn").hide();
                     }
                     else {
