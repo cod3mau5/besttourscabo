@@ -405,7 +405,7 @@ MEDIA QUERIES
     align-items: center;
     justify-content: center;
     row-gap: 1.25rem;
-    margin-top: 7rem;
+    margin-top: 7rem!important;
 }
 
 .menu-link {

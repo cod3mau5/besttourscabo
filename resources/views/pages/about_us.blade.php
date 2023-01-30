@@ -5,8 +5,8 @@
     <link rel="stylesheet" href="https://website890810.nicepage.io/nicepage.css?version=9b152f57-f73e-43a9-a3e1-84ad6fc93b08" media="screen">
     <script class="u-script" type="text/javascript" src="https://static.nicepage.com/shared/assets/jquery-1.9.1.min.js" defer=""></script>
     <script class="u-script" type="text/javascript" src="//capp.nicepage.com/8cd74e095ff01e34d1447974cafa993b59c7e451/nicepage.js" defer=""></script>
-    <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i">
-    <link id="u-page-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i">
+    <link  rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i">
+    <link  rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i">
     <style class="u-style">
         @media (min-width:425px){
             main{
