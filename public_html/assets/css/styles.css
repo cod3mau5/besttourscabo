@@ -995,10 +995,7 @@ footer .social-media li {
     display: inline;
     margin: 1rem 1rem 0 1rem;
 }
-footer input{
-    padding: .67857143em 1em;
-    width: 100%;
-}
+
 
 footer input,
 footer textarea, input#email:-webkit-autofill{
@@ -1009,7 +1006,10 @@ footer textarea, input#email:-webkit-autofill{
     -webkit-box-shadow: 0 0 0px 1000px var(--main_blue) inset!important;
     -webkit-text-fill-color: #fff;
 }
-
+footer input{
+    padding: .67857143em 1em!important;
+    width: 100%!important;
+}
 /* Change the white to any color */
 input:-webkit-autofill,
 input:-webkit-autofill:hover, 
