@@ -55,6 +55,25 @@
                 font-weight: bolder!important;
                 -webkit-box-shadow: 0 0 0px 1000px #800F2F inset!important;
             }
+
+            .whatsapp-btn {
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                padding: 10px 20px;
+                background-color: rgb(251, 133, 0);
+                border-radius: 50px;
+                font-weight: bold;
+                color: #fff;
+                display: flex;
+                align-items: center;
+                text-decoration: none;
+            }
+
+            .whatsapp-icon {
+                font-size: 20px;
+                margin-right: 10px;
+            }
         </style>
   
     </head>
@@ -83,6 +102,11 @@
             @yield('content')
 
             @include('pages.sections.footer')
+
+            <a href="https://wa.me/send?phone=5216241323343&text=%F0%9F%91%8B%20hello%2C%20I%20come%20from%20the%20page%20and%20I%20want%20information%20about..." class="whatsapp-btn" target="_BLANK">
+                <i class="fab fa-whatsapp whatsapp-icon"></i>
+                WhatsApp
+              </a>
 
         </div>
         {{--  #app --}}
