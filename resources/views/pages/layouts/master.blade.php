@@ -103,7 +103,7 @@
 
             @include('pages.sections.footer')
 
-            <a href="https://wa.me/send?phone=5216241323343&text=%F0%9F%91%8B%20hello%2C%20I%20come%20from%20the%20page%20and%20I%20want%20information%20about..." class="whatsapp-btn" target="_BLANK">
+            <a href="https://api.whatsapp.com/send?phone=5216241323343&text=%F0%9F%91%8B%20hello%2C%20I%20come%20from%20the%20page%20and%20I%20want%20information%20about..." class="whatsapp-btn" target="_BLANK">
                 <i class="fab fa-whatsapp whatsapp-icon"></i>
                 WhatsApp
               </a>
