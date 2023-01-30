@@ -25,7 +25,7 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap" rel="stylesheet">
-        <link href="https://www.dafontfree.net/embed/aW1wYWN0LXJlZ3VsYXImZGF0YS8yNS9pLzEyOTYxMi9pbXBhY3QudHRm" rel="stylesheet" type="text/css"/>
+        {{-- <link href="https://www.dafontfree.net/embed/aW1wYWN0LXJlZ3VsYXImZGF0YS8yNS9pLzEyOTYxMi9pbXBhY3QudHRm" rel="stylesheet" type="text/css"/> --}}
 
         {{-- FONT AWESOME --}}
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"/>
@@ -37,9 +37,10 @@
 
         <style>
             .danger{
-                background-color: red!important;
+                background-color: #800F2F!important;
                 color:#fff!important;
                 font-weight: bolder!important;
+                -webkit-box-shadow: 0 0 0px 1000px #800F2F inset!important;
             }
         </style>
   
@@ -49,6 +50,14 @@
             <div class="ui segment h-100" v-show="page == 'loading'" style="position:inherit;border-radius:0;">
                 <div class="ui active dimmer">
                     <div class="ui massive text loader">Loading</div>
+                </div>
+                <p></p>
+                <p></p>
+                <p></p>
+            </div>
+            <div class="ui segment h-100" v-show="page == 'notification'" style="position:inherit;border-radius:0;">
+                <div class="ui active dimmer">
+                    <div class="ui massive text">Message sent successfully!!</div>
                 </div>
                 <p></p>
                 <p></p>
@@ -116,7 +125,9 @@
                         message:$('#message').val(),
                         _token:"{{csrf_token()}}"
                     }
-                    // console.log(data);
+
+
+                    console.log(data);
                     $.ajax({
                         type: "POST",
                         url: '{{route("sendContactMail")}}',
@@ -129,12 +140,28 @@
                                 response.data.email==null?$('#email').attr('placeholder','you need to put your email'):'';
                                 response.data.phone==null?$('#phone').attr('placeholder','you need to put your phone'):'';
                                 response.data.phone==null?$('#message').attr('placeholder','you need to put your message'):'';
+
+                                response.phone == 0 ? $('#phone').addClass('danger')  : '';
+                                response.email == false ? $('#email').addClass('danger') : '';
+                                response.phone == 0 ? $('#phone').val('') : '';
+                                response.email == false ? $('#email').val('') : '';
+                                response.phone == 0 ? $('#phone').attr('placeholder','you need to put a real phone') : '';
+                                response.email  == false ? $('#email').attr('placeholder','you need to put a real email') : '';
+                            }else{
+                                $('#email').removeClass('danger');
+                                $('#phone').removeClass('danger');
+                                $('#message').removeClass('danger');
+                                app._data.page='notification'
                             }
-                            app._data.page='loaded';
+                            
                         },
                         error: function(){
                             alert('Error sending message, please try again.');
                         }
+                    }).then(()=>{
+                        setTimeout(function(){
+                            app._data.page='loaded';
+                        }, 2800);
                     });
                 });
 

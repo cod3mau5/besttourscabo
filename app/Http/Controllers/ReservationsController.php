@@ -233,15 +233,23 @@ class ReservationsController extends Controller
     }
     public function sendContactMail(Request $request){
 
-        if(empty($request['email']) || empty($request['phone'])){
+            
+        if(empty($request['email']) && empty($request['phone'])){
             return [ 'success' => false, 'data' => $request->all() ];
-        }else{
+        }elseif(filter_var($request['email'], FILTER_VALIDATE_EMAIL) || preg_match('/^[0-9]{10}+$/', $request['phone'] )){
             Mail::to('admin@besttourscabo.com')
             ->cc([
                 'code.bit.mau@gmail.com',
                 ])
                 ->send(new ContactMail($request->all()));
             return [ 'success' => true, 'data' => $request->all() ];
+        }else{
+            return [ 
+                'success' => false, 
+                'data' => $request->all(),
+                'email'=> empty($request['email']) ? true : filter_var($request['email'], FILTER_VALIDATE_EMAIL),
+                'phone'=> empty($request['phone']) ? true : preg_match('/^[0-9]{10}+$/', $request['phone'])
+            ];
         }
     }
 

@@ -132,6 +132,15 @@ body #app {
     border-color: var(--main_orange) transparent transparent !important;
     border-width: 0.3em !important;
 }
+.ui.dimmer .ui.massive.text{
+    color: var(--main_blue) !important;
+    font-weight: bolder !important;
+    font-size: 1.71428571em;
+}
+.ui.dimmer .ui.massive.text:before{
+    border-color: rgba(0, 0, 0, .15) !important;
+    border: 0.3em solid rgba(0, 0, 0, .1) !important;
+}
 
 /* header */
 .header {
@@ -990,13 +999,24 @@ footer input{
     padding: .67857143em 1em;
     width: 100%;
 }
+
 footer input,
-footer textarea {
-    background: var(--main_blue) !important;
+footer textarea, input#email:-webkit-autofill{
+    border-color:var(--main_blue);
+    background-color: var(--main_blue);
     border-radius: 0px !important;
     color: #fff !important;
+    -webkit-box-shadow: 0 0 0px 1000px var(--main_blue) inset!important;
+    -webkit-text-fill-color: #fff;
 }
 
+/* Change the white to any color */
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active{
+    -webkit-box-shadow: 0 0 0 30px var(--main_blue) inset !important;
+}
 footer textarea {
     height: 11rem !important;
 }

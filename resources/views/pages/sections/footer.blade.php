@@ -28,17 +28,16 @@
                 </div>
                 <div class="eight wide column" id="sendmail-footer">
                     <h3>Send us an email</h3>
-                    <div class="ui form">
-                    </div>
+
                     <div class="ui form">
                         <div class="field">
                             <label>E-mail</label>
-                            <input type="email"  id="email" placeholder="type your email">
+                            <input type="email"  id="email" placeholder="type your email (optional if you type your phone).">
                         </div>
 
                         <div class="field">
                             <label>Phone</label>
-                            <input type="phone"  id="phone" placeholder="type your phone">
+                            <input type="phone"  id="phone" placeholder="type your phone (optional).">
                         </div>
                         {{-- <div class="ui error message">
                             <div class="header">Action Forbidden</div>
@@ -46,10 +45,10 @@
                         </div> --}}
                         <div class="field">
                             <label>Mesage</label>
-                            <textarea placeholder="Write your message here"  id="message" required></textarea>
+                            <textarea placeholder="Write your message here."  id="message"></textarea>
                         </div>
-                        <div class="ui submit button" id="sendContactEmail">Send</div>
-                        </div>
+                        <button class="ui submit button"  id="sendContactEmail">Send</button>
+                    </div>
                 </div>
             </div>
         </div>

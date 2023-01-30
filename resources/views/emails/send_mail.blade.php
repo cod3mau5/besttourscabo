@@ -17,7 +17,7 @@
     Telefono: {{ $request['phone'] }}
 @endif
 @if($request['message'])
-    Mensaje: <br>
+    Mensaje: 
     {{ $request['message'] }}
 
 @endif
