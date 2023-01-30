@@ -36,6 +36,19 @@
         @yield('header_scripts')
 
         <style>
+            footer input,
+            footer textarea, input#email:-webkit-autofill{
+                border-color:var(--main_blue);
+                background-color: var(--main_blue);
+                border-radius: 0px !important;
+                color: #fff !important;
+                -webkit-box-shadow: 0 0 0px 1000px var(--main_blue) inset!important;
+                -webkit-text-fill-color: #fff;
+            }
+            footer input,input#phone{
+                padding: .67857143em 1em!important;
+                width: 100%!important;
+            }
             .danger{
                 background-color: #800F2F!important;
                 color:#fff!important;
