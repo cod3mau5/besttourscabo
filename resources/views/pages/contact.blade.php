@@ -9,7 +9,14 @@
             background-color:rgb(255, 219, 129);
         }
         h4{
-            font-size: 1.8rem;
+            font-size: 2.3rem;
+            font-family: 'Impact';
+            color: #023047;
+            margin: 2rem auto;
+            text-align: center;
+        }
+        p.subtitle{
+            font-size: 1.3rem;
             font-family: 'Montserrat';
             color: #023047;
             margin: 2rem auto;
@@ -54,7 +61,9 @@
 @endsection
 @section('content')
     <main>
-        <h4 class="u-custom-font u-font-montserrat u-text u-text-1">Contact With Best Tours Cabo's Team</h4>
+            <h4>Contact With Best Tours Cabo's Team</h4>
+            <p class="subtitle">Click on any of our options</p>
+
             <section class="contact-section container">
             <div class="contact-grid">
               <div class="contact-item">
