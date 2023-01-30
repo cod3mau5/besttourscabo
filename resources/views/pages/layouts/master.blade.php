@@ -68,6 +68,7 @@
                 display: flex;
                 align-items: center;
                 text-decoration: none;
+                z-index: 100;
             }
 
             .whatsapp-icon {
