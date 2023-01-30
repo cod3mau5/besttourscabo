@@ -183,6 +183,7 @@
                     prevArrow: false,
                     nextArrow: false
                 });
+            
             },
             methods:{
 

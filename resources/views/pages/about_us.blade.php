@@ -2,7 +2,7 @@
 @section('header_scripts')
     {{-- <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"></script>
     <script src="https://api.windy.com/assets/map-forecast/libBoot.js"></script> --}}
-    <link rel="stylesheet" href="{{url('/assets/css/about_us/about_us.css')}}" media="screen">
+
     <script class="u-script" type="text/javascript" src="https://static.nicepage.com/shared/assets/jquery-1.9.1.min.js" defer=""></script>
     <script class="u-script" type="text/javascript" src="//capp.nicepage.com/8cd74e095ff01e34d1447974cafa993b59c7e451/nicepage.js" defer=""></script>
     <link  rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i">

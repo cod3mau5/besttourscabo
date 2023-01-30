@@ -5,7 +5,7 @@
     <style>
         main{
             margin-top: 109px;
-            padding:2rem 0;
+            padding:2rem 0; 
             background-color:rgb(255, 219, 129);
         }
         h4{

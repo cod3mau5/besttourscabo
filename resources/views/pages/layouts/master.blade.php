@@ -32,8 +32,9 @@
 
         {{-- CUSTOM CSS --}}
         <link rel="stylesheet" href="/assets/css/styles.css?{{rand(2,50)}}">
-
+        <link rel="stylesheet" href="{{url('/assets/css/about_us/about_us.css')}}" media="screen">
         @yield('header_scripts')
+
 
         <style>
             footer input,
@@ -104,7 +105,11 @@
 
             @include('pages.sections.footer')
             @if(Route::current()->getName() !== 'tour')
-                <a href="https://api.whatsapp.com/send?phone=5216241323343&text=%F0%9F%91%8B%20hello%2C%20I%20come%20from%20the%20page%20and%20I%20want%20information%20about..." class="whatsapp-btn" target="_BLANK">
+                <a 
+                    href="https://api.whatsapp.com/send?phone=5216241323343&text=%F0%9F%91%8B%20hello%2C%20I%20come%20from%20the%20page%20and%20I%20want%20information%20about..." 
+                    class="whatsapp-btn" 
+                    id="whatsapp-btn" 
+                    target="_BLANK">
                     <i class="fab fa-whatsapp whatsapp-icon"></i>
                     WhatsApp
                 </a>
@@ -113,15 +118,13 @@
         </div>
         {{--  #app --}}
 
-        <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="/semantic/semantic.min.js"></script>
         <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
         <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
 
         @yield('footer_scripts')
-
-
 
         <script>
             $(document).ready(()=>{
@@ -207,6 +210,19 @@
                             app._data.page='loaded';
                         }, 2800);
                     });
+                });
+
+                window.addEventListener('scroll', function() {
+                    console.log(scrollY);
+                });
+  
+                $(window).scroll(function(){
+                    if ($(window).scrollTop() >= $(document).height() - $(window).height() - 100){
+                    $("#whatsapp-btn").hide();
+                    }
+                    else {
+                    $("#whatsapp-btn").show();
+                    }
                 });
 
             });
