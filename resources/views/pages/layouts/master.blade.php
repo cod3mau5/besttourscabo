@@ -47,14 +47,6 @@
     </head>
     <body @if(Route::current()=='about_us')  class="u-body" @endif>
         <div id="app">
-            <div class="ui segment h-100" v-show="page == 'loading'" style="position:inherit;border-radius:0;">
-                <div class="ui active dimmer">
-                    <div class="ui massive text loader">Loading</div>
-                </div>
-                <p></p>
-                <p></p>
-                <p></p>
-            </div>
             <div class="ui segment h-100" v-show="page == 'notification'" style="position:inherit;border-radius:0;">
                 <div class="ui active dimmer">
                     <div class="ui massive text">Message sent successfully!!</div>
@@ -63,6 +55,15 @@
                 <p></p>
                 <p></p>
             </div>
+            <div class="ui segment h-100" v-show="page == 'loading'" style="position:inherit;border-radius:0;">
+                <div class="ui active dimmer">
+                    <div class="ui massive text loader">Loading</div>
+                </div>
+                <p></p>
+                <p></p>
+                <p></p>
+            </div>
+
 
             @include('pages.sections.header')
 
