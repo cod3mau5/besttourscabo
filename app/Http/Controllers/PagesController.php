@@ -3,11 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\URL;
 
 class PagesController extends Controller
 {
 
     public function homepage(){
+
         $tours=[
             'sunset_cruise'=>[
                 'name'=>'SUNSET CRUISE',
@@ -60,7 +63,7 @@ class PagesController extends Controller
         $tours=(object)$tours;
         return view('pages.about_us',compact('tours'));
     }
-    
+
     public function contact(){
         $tours=[
             'sunset_cruise'=>[
@@ -95,7 +98,7 @@ class PagesController extends Controller
                 "verify_peer"=>false,
                 "verify_peer_name"=>false,
             ),
-        ); 
+        );
         if($language == 1){
             return json_decode(file_get_contents(asset('assets/json/english.json'),false,stream_context_create($options)), true);
         }else{
