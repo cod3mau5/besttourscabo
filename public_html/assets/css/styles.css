@@ -1006,7 +1006,7 @@ footer textarea, input#email:-webkit-autofill{
     -webkit-box-shadow: 0 0 0px 1000px var(--main_blue) inset!important;
     -webkit-text-fill-color: #fff;
 }
-footer input{
+footer input,input#phone{
     padding: .67857143em 1em!important;
     width: 100%!important;
 }
