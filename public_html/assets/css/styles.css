@@ -136,6 +136,9 @@ body #app {
     color: var(--main_blue) !important;
     font-weight: bolder !important;
     font-size: 1.71428571em;
+    z-index: 100000;
+    position: fixed;
+    top: 50%;
 }
 .ui.dimmer .ui.massive.text:before{
     border-color: rgba(0, 0, 0, .15) !important;
