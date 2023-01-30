@@ -41,7 +41,7 @@
             background: rgba(4, 81, 132, 1);
             border-radius: 11px;
             padding: 2rem .5rem;
-            color: #fff;
+            color: #fff!important;
         }
         
         .contact-item i {
@@ -66,20 +66,22 @@
 
             <section class="contact-section container">
             <div class="contact-grid">
-              <div class="contact-item">
+              <a href="mailto:info@besttourscabo.com" class="contact-item" target="_BLANK">
                 <i class="fas fa-envelope"></i>
                 <p>info@besttourscabo.com</p>
-              </div>
-              <div class="contact-item">
+              </a>
+              <a  href="https://api.whatsapp.com/send?phone=5216241323343&text=%F0%9F%91%8B%20hello%2C%20I%20come%20from%20the%20page%20and%20I%20want%20information%20about..."
+                class="contact-item" target="_BLANK">
                 <i class="fab fa-whatsapp"></i>
                 <p>+52 1 624 132 3343</p>
-              </div>
-              <div class="contact-item">
+              </a>
+              <a href="https://goo.gl/maps/tRZpnLsmFhTjw1rK7"
+               class="contact-item" target="_BLANK">
                 <i class="fas fa-map-marker-alt"></i>
                 <p> Blvd. Paseo de la Marina,<br/> 
                     Marina Cabo San Lucas, 23450, B.C.S.
                 </p>
-              </div>
+              </a>
             </div>
           </section>
     </main>
