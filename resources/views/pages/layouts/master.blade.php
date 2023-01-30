@@ -118,6 +118,11 @@
                     }
                 });
 
+                $('#email').click(()=>{$('#email').removeClass('danger')});
+                $('#phone').click(()=>{$('#phone').removeClass('danger')});
+                $('#message').click(()=>{ $('#message').removeClass('danger')});
+
+
                 $('#sendContactEmail').click(()=>{
                     app._data.page='loading';
                     let data= {
@@ -127,8 +132,6 @@
                         _token:"{{csrf_token()}}"
                     }
 
-
-                    console.log(data);
                     $.ajax({
                         type: "POST",
                         url: '{{route("sendContactMail")}}',
