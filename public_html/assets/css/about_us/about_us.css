@@ -40326,10 +40326,6 @@ p.u-small-text {
     margin-bottom: 20px;
 }
 
-p:not(.u-text-variant) {
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
 
 .u-btn {
     margin-top: 20px;

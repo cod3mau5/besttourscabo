@@ -4,32 +4,50 @@
 <link id="u-page-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i">
     <style>
         main{
-            margin-top: 109px;
-            padding:2rem 0; 
+            margin-top: 85px;
+            padding:2.777rem 1rem; 
             background-color:rgb(255, 219, 129);
         }
         h4{
-            font-size: 2.4rem;
+            font-size: 1.8rem;
             font-family: 'Montserrat';
             color: #023047;
             margin: 2rem auto;
             text-align: center;
         }
+
         .contact-section .contact-grid {
-          display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          gap: 20px;
-          margin: 20px 0;
+          display: flex;
+          flex-direction: column;
         }
-        
+        @media only screen and (min-width: 840px) {
+            .contact-section .contact-grid {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 2.3rem;
+                margin: 20px 0;
+            }
+        }
         .contact-item {
-          text-align: center;
+            text-align: center;
+            margin-bottom: 1.3rem;
+            background: rgba(4, 81, 132, 1);
+            border-radius: 11px;
+            padding: 2rem .5rem;
+            color: #fff;
         }
         
         .contact-item i {
           font-size: 36px;
-          color: #333;
+          color: rgb(251, 133, 0);
           margin-bottom: 10px;
+        }
+        @media(min-width:1024px){
+            .container{
+                max-width: 1024px;
+                padding: 0 1rem;
+                margin: 0 auto;
+            }
         }
     </style>
 
@@ -37,19 +55,21 @@
 @section('content')
     <main>
         <h4 class="u-custom-font u-font-montserrat u-text u-text-1">Contact With Best Tours Cabo's Team</h4>
-            <section class="contact-section">
+            <section class="contact-section container">
             <div class="contact-grid">
               <div class="contact-item">
-                <i class="fa fa-envelope"></i>
-                <p>contacto@email.com</p>
+                <i class="fas fa-envelope"></i>
+                <p>info@besttourscabo.com</p>
               </div>
               <div class="contact-item">
                 <i class="fab fa-whatsapp"></i>
-                <p>+1234567890</p>
+                <p>+52 1 624 132 3343</p>
               </div>
               <div class="contact-item">
-                <i class="fa fa-map-marker"></i>
-                <p>Calle 123, Ciudad, País</p>
+                <i class="fas fa-map-marker-alt"></i>
+                <p> Blvd. Paseo de la Marina,<br/> 
+                    Marina Cabo San Lucas, 23450, B.C.S.
+                </p>
               </div>
             </div>
           </section>
