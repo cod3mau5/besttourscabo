@@ -661,6 +661,10 @@
 <main id="sunset_cruise">
     <div class="ui container">
 
+        @php
+            $tour_route_name=strtolower(str_replace(' ', '_',$reservation->tour_name));
+
+        @endphp
 
         <div class="father_sticky">
             <ol class="steps">
@@ -674,7 +678,7 @@
                     <a class="ui left labeled icon button"
                         id="back-button-container"
                         @if (!empty($voucher) && !empty($token))
-                            href="{{ route('tour',[$voucher,$token]) }}"
+                            href="{{ route('tour',[$tour_route_name, $voucher, $token]) }}"
                             @else
                             href="#"
                         @endif

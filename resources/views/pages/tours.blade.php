@@ -548,11 +548,11 @@
 
                     
                         @foreach($tour->gallery as $img)
-                            <a href="{{$img}}"
+                            <a href="{{url($img)}}"
                             data-pswp-width="950"
                             data-pswp-height="683"
                             target="_blank">
-                                <div class="swiper-slide" style="background-image:url({{$img}})"></div>
+                                <div class="swiper-slide" style="background-image:url({{url($img)}})"></div>
                             </a>
                         @endforeach
                     
@@ -645,9 +645,14 @@
                                         <div class="column">
                                             <div class="ui tag labels" style="text-align: center">
                                                 {{$key}} <br>
-                                                <a class="ui label extra-fee" style="line-height: .99;" @click="openModal('extra_fee','{{$fee['description']}}')">
+                                                <a class="ui label extra-fee" 
+                                                    style="line-height: .99;" 
+                                                    @click="openModal('extra_fee','{{$fee['description']}}')">
                                                     ${{$fee['cost']}} usd<br>
-                                                    <small  style="font-size:68%">click here for more info</small> <i class="question circle icon"></i>
+                                                    <small  style="font-size:68%">
+                                                        click here for more info
+                                                    </small> 
+                                                    <i class="question circle icon"></i>
                                                     {{-- <span style="font-size: 11px;">(per person)</span> --}}
                                                 </a>
 
@@ -968,8 +973,8 @@
             $('.grid-gallery').html(`
             
                     @foreach($tour->gallery as $img)
-                        <div class="swiper-slide" style="background-image:url({{$img}})">
-                            <a href="{{$img}}"
+                        <div class="swiper-slide" style="background-image:url({{url($img)}})">
+                            <a href="url({{$img}})"
                             data-pswp-width="950"
                             data-pswp-height="683"
                             target="_blank"
@@ -996,33 +1001,13 @@
             $('.grid-gallery').html(`
             
                 @foreach($tour->gallery as $img)
-                    <a href="{{$img}}"
+                    <a href="url({{$img}})"
                       data-pswp-width="950"
                       data-pswp-height="683"
                       target="_blank">
-                        <div class="swiper-slide" style="background-image:url({{$img}})"></div>
+                        <div class="swiper-slide" style="background-image:url({{url($img)}})"></div>
                     </a>
 
-                    <a href="{{url('assets/img/tours/traditional_arch_tour/img_2.jpg')}}"
-                      data-pswp-width="669"
-                      data-pswp-height="446"
-                      target="_blank">
-                        <div class="swiper-slide" style="background-image:url('assets/img/tours/traditional_arch_tour/img_2.jpg')"></div>
-                    </a>
-
-                    <a href="{{url('assets/img/tours/traditional_arch_tour/img_3.jpg')}}"
-                        data-pswp-width="669"
-                        data-pswp-height="446"
-                      target="_blank">
-                        <div class="swiper-slide" style="background-image:url('assets/img/tours/traditional_arch_tour/img_3.jpg')"></div>
-                    </a>
-
-                    <a href="{{url('assets/img/tours/traditional_arch_tour/img_4.jpg')}}"
-                        data-pswp-width="669"
-                        data-pswp-height="446"
-                      target="_blank">
-                        <div class="swiper-slide" style="background-image:url('assets/img/tours/traditional_arch_tour/img_4.jpg')"></div>
-                    </a>
                 @endforeach
                 
             `);
