@@ -33,12 +33,14 @@
                 <h2 class="">OUR TOURS</h2>
                 <div class="ui stackable grid">
                     @foreach($tours as $key => $tour)
-                        <div class="four wide column">
-                            <img src="{{$tour['img']}}" alt="">
-                            <p class="title">{{$tour['name']}}</p>
-                            <p class="subtitle">
-                                <a href="{{route('tour',$key)}}">Read more</a>
-                            </p>
+                        <div class="four wide column" style="background-image: url({{$tour['img']}})">
+                            <a href="{{route('tour',$key)}}">
+                                <p class="title">{{$tour['name']}}</p>
+                                <p class="subtitle">
+                                    <a href="{{route('tour',$key)}}">Read more</a>
+                                </p>
+                                <div class="polarized"></div>
+                            </a>
                         </div>
                     @endforeach
                 </div>

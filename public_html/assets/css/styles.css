@@ -718,16 +718,16 @@ MEDIA QUERIES
     padding: .8rem !important;
     min-height: 260px;
     max-height: 270px;
-    margin-top: .5rem;
-    margin-bottom: .5rem;
+    margin: .5rem!important;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
 }
-
-#our-tours .four img {
-    width: 100%;
+#our-tours .four > .polarized{
+    position: absolute;
     height: 100%;
-    margin-top: 0;
-    margin-bottom: 0;
-    object-fit: cover;
+    width: 100%;
+    background-color: rgba(0, 0, 0, .20);
 }
 
 #our-tours .ui.stackable.grid {
@@ -738,27 +738,28 @@ MEDIA QUERIES
 }
 
 #our-tours .four p {
-    position: absolute;
     line-height: 1;
     text-shadow: -1px -1px 1px rgba(255, 255, 255, .1), 1px 1px 1px rgba(0, 0, 0, .5), 3px 3px 3px rgba(0, 0, 0, 0.54);
 }
+#our-tours .four a{
+    z-index: 100;
+}
 #our-tours .four p.subtitle{
-    margin-top: 1.5rem;
+    width: 100%;
+    padding: 0.333rem;
+    line-height: 1.5;
+    z-index: 100;
+}
+#our-tours .four p.subtitle a{
+    color: #ffffff !important;
+    font-size: 1.333rem;
 }
 #our-tours .four p.title {
     font-family: "Helvetica Black";
     letter-spacing: 2px;
     color: #ffffff;
-    font-size: 1.3rem;
+    font-size: 1.8rem;
     padding: 0 1rem;
-}
-
-#our-tours .four p a {
-    padding-top: 1rem;
-    color: #ffffff !important;
-    position: relative;
-    font-size: 1rem;
-    top: 13px;
 }
 
 
