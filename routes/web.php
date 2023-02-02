@@ -40,7 +40,7 @@ Route::get('/payment_successful',function(Request $request,$payer_name=null){
         ],
         'traditional_arch_tour'=>[
             'name'=>'TRADITIONAL ARCH TOUR',
-            'img'=>'assets/img/tours/traditional_arch_tour/img_1.webp'
+            'img'=>'assets/img/tours/traditional_arch_tour/tat_5.jpg'
         ],
         'whale_watching'=>[
             'name'=>'WHALE WATCHING',

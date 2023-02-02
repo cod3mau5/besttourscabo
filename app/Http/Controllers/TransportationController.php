@@ -8,6 +8,26 @@ use App\Models\Transportation\Resort;
 
 class TransportationController extends Controller
 {
+
+    private $tours=[
+        'sunset_cruise'=>[
+            'name'=>'SUNSET CRUISE',
+            'img'=>'assets/img/tours/sunset_cruise/ea040fcf-84c6-491d-b62c-216d8e8a7e46.jpg'
+        ],
+        'traditional_arch_tour'=>[
+            'name'=>'TRADITIONAL ARCH TOUR',
+            'img'=>'assets/img/tours/traditional_arch_tour/tat_5.jpg'
+        ],
+        'whale_watching'=>[
+            'name'=>'WHALE WATCHING',
+            'img'=>'assets/img/tours/whale_watching/1.jpeg'
+        ],
+        'la_paz_city_tour'=>[
+            'name'=>'LA PAZ CITY TOUR',
+            'img'=>'assets/img/tours/la_paz_city_tour/6.jpeg'
+        ]
+    ];
+
     public function index($language=1){
         $resort_options = '';
         $unit_options   = '';
@@ -55,26 +75,7 @@ class TransportationController extends Controller
             $langUpdate=0;
         }
 
-        $tours=[
-            'sunset_cruise'=>[
-                'name'=>'SUNSET CRUISE',
-                'img'=>'assets/img/tours/sunset_cruise/ea040fcf-84c6-491d-b62c-216d8e8a7e46.jpg'
-            ],
-            'traditional_arch_tour'=>[
-                'name'=>'TRADITIONAL ARCH TOUR',
-                'img'=>'assets/img/tours/traditional_arch_tour/img_1.webp'
-            ],
-            'whale_watching'=>[
-                'name'=>'WHALE WATCHING',
-                'img'=>'assets/img/tours/whale_watching/1.jpeg'
-            ],
-            'la_paz_city_tour'=>[
-                'name'=>'LA PAZ CITY TOUR',
-                'img'=>'assets/img/tours/la_paz_city_tour/6.jpeg'
-            ]
-        ];
-        $tours=(object)$tours;
-
+        $tours=(object)$this->tours;
 
         return view('pages.transportation',compact(
                                                 'resort_options','unit_options','vehicles',
