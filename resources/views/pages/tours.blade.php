@@ -974,7 +974,7 @@
             
                     @foreach($tour->gallery as $img)
                         <div class="swiper-slide" style="background-image:url({{url($img)}})">
-                            <a href="url({{$img}})"
+                            <a href="{{url($img)}}"
                             data-pswp-width="950"
                             data-pswp-height="683"
                             target="_blank"
