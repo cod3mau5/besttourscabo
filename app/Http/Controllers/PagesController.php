@@ -34,7 +34,22 @@ class PagesController extends Controller
             'name'=>'CLEAR BOAT',
             'img'=>'assets/img/tours/clear_boat/Enva-Tours-Clear-Boat1.jpg'
         ],
-
+        'horseback_riding_for_begginer_and_novice'=>[
+            'name'=>'HORSEBACK RIDING FOR BEGGINER AND NOVICE',
+            'img'=>'assets/img/tours/horseback_riding_for_begginer_and_novice/8.jpg'
+        ],
+        'single_atv_tour'=>[
+            'name'=>'SINGLE ATV TOUR',
+            'img'=>'assets/img/tours/single_atv_tour/1.jpg'
+        ],
+        'horseback_riding_for_intermediate_and_advanced'=>[
+            'name'=>'HORSEBACK RIDING FOR INTERMEDIATE AND ADVANCED',
+            'img'=>'assets/img/tours/horseback_riding_for_intermediate_and_advanced/5.jpg'
+        ],
+        'side_by_side_adventure'=>[
+            'name'=>'SIDE BY SIDE ADVENTURE',
+            'img'=>'assets/img/tours/side_by_side_adventure/7.jpg'
+        ],
 ];
 
 

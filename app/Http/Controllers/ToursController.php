@@ -128,6 +128,97 @@ class ToursController extends Controller
                     'time_interval'=>30,
                     'extra_fees'=>null
                 ],
+                'horseback_riding_for_begginer_and_novice'=>[
+                    'name' => "HORSEBACK RIDING FOR BEGGINER AND NOVICE",
+                    'price' => 115,
+                    'duration'=> '2 Hours',
+                    'min_age' => 6,
+                    'description'=>'Are you ready for a truly breathtaking experience? Imagine yourself leisurely strolling on a magnificent horse, feeling the gentle breeze caressing your face as you take in the stunning views of the Pacific Ocean. As you gaze upon the huge rolling waves, you\'ll feel a sense of peace and tranquility wash over you. This is a once-in-a-lifetime opportunity to connect with nature, escape the hustle and bustle of everyday life, and immerse yourself in a world of pure relaxation. Whether you\'re an experienced equestrian or a newcomer to horseback riding, this is the perfect chance to experience the beauty and wonder of the Pacific coast like never before. So, why wait? Book your horseback riding adventure today and let the journey begin!
+                    WE SEPARATE THE TOUR IN TWO GROUPS DEPENDING ON YOUR RIDING SKILLS.',
+                    'includes'      =>'life jacket, certified guide, Water, Helmet, Goggles',
+                    'not_includes'  => 'Transportation, Professional Photos, tips',
+                    'voucher' => null, // se rellena dinamicamente mas adelante en la funcion tour()
+                    'token' => null, // se rellena dinamicamente mas adelante en la funcion tour()
+                    'gallery'       => [], // se rellena dinamicamente mas adelante en la funcion tour()
+                    'check_in'=> null,
+                    'min_time'=>'9:00am',
+                    'max_time'=>'3:00pm',
+                    'time_interval'=>180,
+                    'extra_fees'=>[
+                        'park entrance'=> [
+                            'cost'=>20,
+                            'description'=>'You must pay $20 USD park entrance fee per person. Optional protection benefits offered at check-in'
+                        ]
+                    ]
+                ],
+                'single_atv_tour'=>[
+                    'name' => "SINGLE ATV TOUR",
+                    'price' => 160,
+                    'duration'=> '2 Hours',
+                    'min_age' => 3,
+                    'description'=>'Enjoy your favorite routes riding along the beautiful desert and the unmatchable Pacific Ocean beaches on our stunning Kawasaki ATV, which due to its light weight, FULY AUTOMATIC TRANSMISSION and easy driving, was ranked as the best option for women and inexperienced riders.',
+                    'includes'      =>'Delicious beef, pork and chicken tacos, soft drinks and water, Helmet, Water',
+                    'not_includes'  => 'Professional Photos, tips',
+                    'voucher' => null, // se rellena dinamicamente mas adelante en la funcion tour()
+                    'token' => null, // se rellena dinamicamente mas adelante en la funcion tour()
+                    'gallery'       => [], // se rellena dinamicamente mas adelante en la funcion tour()
+                    'check_in'=> null,
+                    'min_time'=>'9:00am',
+                    'max_time'=>'4:00pm',
+                    'time_interval'=>60,
+                    'extra_fees'=>[
+                        'park entrance'=> [
+                            'cost'=>20,
+                            'description'=>'You must pay $20 USD park entrance fee per person. Optional protection benefits offered at check-in'
+                        ]
+                    ]
+                ],
+                'horseback_riding_for_intermediate_and_advanced'=>[
+                    'name' => "HORSEBACK RIDING FOR INTERMEDIATE AND ADVANCED",
+                    'price' => 150,
+                    'duration'=> '2 Hours',
+                    'min_age' => 6,
+                    'description'=>'If You are a confident rider with a good seat and comfortable at all paces, then you belong to this category; Come and experience a perfect ride through challenging mountains, desert trails and amazing flat open beaches.',
+                    'includes'      =>'life jacket, certified guide',
+                    'not_includes'  => 'Transportation, Professional Photos, tips',
+                    'voucher' => null, // se rellena dinamicamente mas adelante en la funcion tour()
+                    'token' => null, // se rellena dinamicamente mas adelante en la funcion tour()
+                    'gallery'       => [], // se rellena dinamicamente mas adelante en la funcion tour()
+                    'check_in'=> null,
+                    'min_time'=>'9:00am',
+                    'max_time'=>'3:00pm',
+                    'time_interval'=>180,
+                    'extra_fees'=>[
+                        'park entrance'=> [
+                            'cost'=>20,
+                            'description'=>'You must pay $20 USD park entrance fee per person. Optional protection benefits offered at check-in'
+                        ]
+                    ]
+                ],
+                'side_by_side_adventure'=>[
+                    'name' => 'SIDE BY SIDE ADVENTURE',
+                    'price' => 210,
+                    'duration'=> '2 Hours',
+                    'min_age' => 0,
+                    'description'=>'This off-road adventure is focused on making You have the fun of your life.You will ride on desert trails that are a wild treat offering a new world to explore and You will have an exciting ride on two beautiful white sand beaches with huge dunes and beautiful views.
+                    FIRTS TIMERS? Don´t worry, no experience necessary. If You know how to drive a regular automatic car, you will be fine.
+Prices with tax included',
+                    'includes'      =>'Water, Helmet, Goggles, Round trip transportation',
+                    'not_includes'  => 'Professional Photos, tips',
+                    'voucher' => null, // se rellena dinamicamente mas adelante en la funcion tour()
+                    'token' => null, // se rellena dinamicamente mas adelante en la funcion tour()
+                    'gallery'       => [], // se rellena dinamicamente mas adelante en la funcion tour()
+                    'check_in'=> null,
+                    'min_time'=>'9:00am',
+                    'max_time'=>'4:00pm',
+                    'time_interval'=>60,
+                    'extra_fees'=>[
+                        'park entrance'=> [
+                            'cost'=>20,
+                            'description'=>'You must pay $20 USD park entrance fee per person. Optional protection benefits offered at check-in'
+                        ]
+                    ]
+                ],
     ];
 
     private $tours_images=[
@@ -155,7 +246,22 @@ class ToursController extends Controller
                     'name'=>'CLEAR BOAT',
                     'img'=>'assets/img/tours/clear_boat/Enva-Tours-Clear-Boat1.jpg'
                 ],
-
+                'horseback_riding_for_begginer_and_novice'=>[
+                    'name'=>'HORSEBACK RIDING FOR BEGGINER AND NOVICE',
+                    'img'=>'assets/img/tours/horseback_riding_for_begginer_and_novice/8.jpg'
+                ],
+                'single_atv_tour'=>[
+                    'name'=>'SINGLE ATV TOUR',
+                    'img'=>'assets/img/tours/single_atv_tour/1.jpg'
+                ],
+                'horseback_riding_intermediate_for_and_advanced'=>[
+                    'name'=>'HORSEBACK RIDING FOR INTERMEDIATE AND ADVANCED',
+                    'img'=>'assets/img/tours/horseback_riding_for_intermediate_and_advanced/5.jpg'
+                ],
+                'side_by_side_adventure'=>[
+                    'name'=>'SIDE BY SIDE ADVENTURE',
+                    'img'=>'assets/img/tours/side_by_side_adventure/7.jpg'
+                ],
     ];
 
     public function tour($tour,$voucher=null,$token=null){
@@ -183,9 +289,20 @@ class ToursController extends Controller
                 break;
             case 'clear_boat':
                 $tour= $this->tours['clear_boat'];
-            break;
-            default:
-                abort(404);
+                break;
+            case 'horseback_riding_for_begginer_and_novice':
+                $tour= $this->tours['horseback_riding_for_begginer_and_novice'];
+                break;
+            case 'single_atv_tour':
+                $tour= $this->tours['single_atv_tour'];
+                break;
+            case 'horseback_riding_for_intermediate_and_advanced':
+                    $tour= $this->tours['horseback_riding_for_intermediate_and_advanced'];
+                    break;
+            case 'side_by_side_adventure':
+                $tour= $this->tours['side_by_side_adventure'];
+                break;
+
         }
 
         
