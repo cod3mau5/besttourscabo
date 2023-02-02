@@ -605,13 +605,18 @@ MEDIA QUERIES
 
 /* Slider */
 .slider-hero img {
-    height: auto;
+    height: 360px;
     max-height: 600px;
     object-fit: cover;
-    object-position: bottom;
+    object-position: center;
     width: 100%;
 }
-
+@media (min-width:1200px) {
+    .slider-hero img {
+        height: 560px;
+        max-height: 600px;
+    }
+}
 .slick-prev,
 .slick-next {
     z-index: 1000;
