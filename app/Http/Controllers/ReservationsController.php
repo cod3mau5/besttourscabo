@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Mail;
 
 class ReservationsController extends Controller
 {
-    private $tours=[
+    private $tours_images=[
         'sunset_cruise'=>[
             'name'=>'SUNSET CRUISE',
             'img'=>'assets/img/tours/sunset_cruise/ea040fcf-84c6-491d-b62c-216d8e8a7e46.jpg'
@@ -25,9 +25,18 @@ class ReservationsController extends Controller
         ],
         'la_paz_city_tour'=>[
             'name'=>'LA PAZ CITY TOUR',
-            'img'=>'assets/img/tours/la_paz_city_tour/6.jpeg'
-        ]
-    ];
+            'img'=>'assets/img/tours/la_paz_city_tour/1.jpeg'
+        ],
+        'clear_boat'=>[
+            'name'=>'CAMEL RIDE',
+            'img'=>'assets/img/tours/camel_ride/1.jpeg'
+        ],
+        'clear_boat'=>[
+            'name'=>'CLEAR BOAT',
+            'img'=>'assets/img/tours/clear_boat/Enva-Tours-Clear-Boat1.jpg'
+        ],
+
+];
 
     public function create(Request $request)
     {
@@ -73,7 +82,7 @@ class ReservationsController extends Controller
             $this->sendMail($reservation);
             $reservation= (object) $reservation;
 
-            $tours=(object)$this->tours;
+            $tours=(object)$this->tours_images;
             return view('pages.buy_tour',compact('reservation','voucher','token','tours'));
 
         }catch(\Illuminate\Database\QueryException $exception){
@@ -97,25 +106,7 @@ class ReservationsController extends Controller
             $reservation=Reservation::where('voucher',$voucher)->where('token',$token)->firstOrFail();
             $reservation= (object) $reservation;
         }
-        $tours=[
-            'sunset_cruise'=>[
-                'name'=>'SUNSET CRUISE',
-                'img'=>'assets/img/tours/sunset_cruise/ea040fcf-84c6-491d-b62c-216d8e8a7e46.jpg'
-            ],
-            'traditional_arch_tour'=>[
-                'name'=>'TRADITIONAL ARCH TOUR',
-                'img'=>'assets/img/tours/traditional_arch_tour/tat_5.jpg'
-            ],
-            'whale_watching'=>[
-                'name'=>'WHALE WATCHING',
-                'img'=>'assets/img/tours/whale_watching/1.jpeg'
-            ],
-            'la_paz_city_tour'=>[
-                'name'=>'LA PAZ CITY TOUR',
-                'img'=>'assets/img/tours/la_paz_city_tour/6.jpeg'
-            ]
-        ];
-        $tours=(object)$this->tours;
+        $tours=(object)$this->tours_images;
 
         return view('pages.buy_tour',compact('reservation','voucher','token','tours'));
     }
@@ -161,7 +152,7 @@ class ReservationsController extends Controller
                     $reservation= (object) $reservation;
                     $token= $reservation->token;
 
-                    $tours=(object)$this->tours;
+                    $tours=(object)$this->tours_images;
 
                     return view('pages.buy_tour',compact('reservation','voucher','token','tours'));
 
@@ -178,7 +169,7 @@ class ReservationsController extends Controller
 
         }
 
-        $tours=(object)$this->tours;
+        $tours=(object)$this->tours_images;
         return view('pages.buy_tour',compact('data','voucher','token','tours'));
 
     }

@@ -18,9 +18,9 @@ class ToursController extends Controller
                     1. Piedra del Pelícano (also known as Playa Pelícano, where the natural aquarium is located, we find reefs and thousands of marine species, one of the best areas for snorkeling 2. Playa del Amor (the only beach in America where we will find two seas In Playa del Amor Mar de Cortez and a few meters walking we find the Pacific Ocean or better known as Playa del Dicorcio for its open sea that is a bit aggressive 3. The finger of Neptune (or BAJA CALIFORNIA SUR backwards 4. window to the pacific ( also known as the kiss since the two seas meet there 5. the emblematic arch (the most expected here we can appreciate the iconic arch where we will take the best photos and take our memories home 6. colony of sea lions (here we will find many sea lions marine depending on the time and season as they go hunting for their food or partner 7.the end of the earth (the last stone in BAJA where we can still see a sea lion). he is always taking care of it 8. the stone of scobby doo papa xD (in one of the largest rock formations and similar to the famous figure of scobby doo, cast by nothing more and nothing less than the best architect in the world NATURE 8. the pirate's cave . (The story goes that the pirates protected their treasures there when they came shouting from their enemies.",
                     'includes'      =>'Includes safe equipment. Certified Captain. And drop off at Playa del Amor or Playa del Pelicano for a minimum of one hour until 4:30 p.m.',
                     'not_includes'  => 'does not include transportation, drinks, or access to the pier since all are private and charge a tax of 1 to 2 dlls per person',
-                    'voucher'       => null,
-                    'token'         => null,
-                    'gallery'       => [],
+                    'voucher'       => null,// se rellena dinamicamente mas adelante en la funcion tour()
+                    'token'         => null,// se rellena dinamicamente mas adelante en la funcion tour()
+                    'gallery'       => [],// se rellena dinamicamente mas adelante en la funcion tour()
                     'min_time'=>'9:00am',
                     'max_time'=>'3:30pm',
                     'time_interval'=>30,
@@ -38,9 +38,9 @@ class ToursController extends Controller
                     'includes'      =>'includes beef chicken and vegetarian fajitas dinner, open bar in national drinks,
                     dj shows',
                     'not_includes'  => 'does not include the entrance to the dock is an access that all marinas charge for being deprived of two dlls per pax premium drinks',
-                    'voucher' => null,
-                    'token' => null,
-                    'gallery'       => [],
+                    'voucher' => null,// se rellena dinamicamente mas adelante en la funcion tour()
+                    'token' => null,// se rellena dinamicamente mas adelante en la funcion tour()
+                    'gallery'       => [],// se rellena dinamicamente mas adelante en la funcion tour()
                     'check_in'=> '4:30 pm',
                     'min_time'=>'5:00pm',
                     'max_time'=>'5:00pm',
@@ -98,9 +98,9 @@ class ToursController extends Controller
                     Don't miss out on this once-in-a-lifetime opportunity to take a Safari tour on a camel! Book now and experience the thrill of the desert.",
                     'includes'      =>'Transportation included, taco buffet chicken meat pork, tequila testing, Walk through the ecological reserve, Bilingual guides with experience in handling camels, safari tour, Natural and flavored water and Safety equipment',
                     'not_includes'  => 'does not include sunscreen.',
-                    'voucher'       => null,
-                    'token'         => null,
-                    'gallery' => [],
+                    'voucher'       => null,// se rellena dinamicamente mas adelante en la funcion tour()
+                    'token'         => null,// se rellena dinamicamente mas adelante en la funcion tour()
+                    'gallery' => [],// se rellena dinamicamente mas adelante en la funcion tour()
                     'min_time'=>'9:00am',
                     'max_time'=>'4:00pm',
                     'time_interval'=>60,
@@ -110,7 +110,24 @@ class ToursController extends Controller
                             'description'=>'You must pay $20 USD park entrance fee per person. Optional protection benefits offered at check-in'
                         ]
                     ]
-                ]
+                ],
+                'clear_boat'=>[
+                    'name' => "CLEAR BOAT",
+                    'price' => 35,
+                    'duration'=> '45 to 50 minutes',
+                    'min_age' => 3,
+                    'description'=>'Experience a unique adventure in Cabo with a 100% transparent boat ride to the Arch. We will visit the famous Arch and several rock formations such as the "Scooby Doo" rock, the Pelican rock, and the reef with its diverse variety of fish. Discover the famous "Baja California Reversa" or better known as "Neptune\'s Finger", Pelican Beach, Love and Divorce Beach, and the last rock of southern Baja California.',
+                    'includes'      =>'life jacket, certified guide',
+                    'not_includes'  => 'Transportation, Professional Photos, tips',
+                    'voucher' => null, // se rellena dinamicamente mas adelante en la funcion tour()
+                    'token' => null, // se rellena dinamicamente mas adelante en la funcion tour()
+                    'gallery'       => [], // se rellena dinamicamente mas adelante en la funcion tour()
+                    'check_in'=> null,
+                    'min_time'=>'9:00am',
+                    'max_time'=>'5:30pm',
+                    'time_interval'=>30,
+                    'extra_fees'=>null
+                ],
     ];
 
     private $tours_images=[
@@ -133,7 +150,12 @@ class ToursController extends Controller
                 'camel_ride'=>[
                     'name'=>'CAMEL RIDE',
                     'img'=>'assets/img/tours/camel_ride/1.jpeg'
-                ]
+                ],
+                'clear_boat'=>[
+                    'name'=>'CLEAR BOAT',
+                    'img'=>'assets/img/tours/clear_boat/Enva-Tours-Clear-Boat1.jpg'
+                ],
+
     ];
 
     public function tour($tour,$voucher=null,$token=null){
@@ -142,28 +164,26 @@ class ToursController extends Controller
             $reservation=Reservation::where('voucher',$voucher)->where('token',$token)->firstOrFail();
             $reservation=(object)$reservation;
         }
-
+        $directory = base_path("public_html/assets/img/tours/$tour/");
         switch ($tour) {
             case 'sunset_cruise':
-                $directory = base_path("public_html/assets/img/tours/$tour/");
                 $tour= $this->tours['sunset_cruise'];
                 break;
             case 'traditional_arch_tour':
-                $directory = base_path("public_html/assets/img/tours/$tour/");
                 $tour= $this->tours['traditional_arch_tour'];
                 break;
             case 'whale_watching':
-                $directory = base_path("public_html/assets/img/tours/$tour/");
                 $tour= $this->tours['whale_watching'];
                 break;
             case 'la_paz_city_tour':
-                $directory = base_path("public_html/assets/img/tours/$tour/");
                     $tour= $this->tours['la_paz_city_tour'];
                 break;
             case 'camel_ride':
-                $directory = base_path("public_html/assets/img/tours/$tour/");
                     $tour= $this->tours['camel_ride'];
                 break;
+            case 'clear_boat':
+                $tour= $this->tours['clear_boat'];
+            break;
             default:
                 abort(404);
         }
@@ -181,9 +201,9 @@ class ToursController extends Controller
                 array_push($img_gallery, $relativepath);
             }
         }
-        // return $img_gallery;
         // Cierra el directorio
         closedir($dir);
+
         $tour['gallery']=$img_gallery;
         $tour['voucher']=$voucher? $voucher:'';
         $tour['token']=$token? $token:'';

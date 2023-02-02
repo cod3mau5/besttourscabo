@@ -33,7 +33,7 @@ Route::post('/checkout/{voucher}/update_tour',[Controllers\ReservationsControlle
 Route::get('/paypal/process/{orderID}/{voucher}', [Controllers\Payments\PayPalCardController::class, 'process'])->name('paypal.process');
 
 Route::get('/payment_successful',function(Request $request,$payer_name=null){
-    $tours=[
+    $tours_images=[
         'sunset_cruise'=>[
             'name'=>'SUNSET CRUISE',
             'img'=>'assets/img/tours/sunset_cruise/ea040fcf-84c6-491d-b62c-216d8e8a7e46.jpg'
@@ -48,14 +48,19 @@ Route::get('/payment_successful',function(Request $request,$payer_name=null){
         ],
         'la_paz_city_tour'=>[
             'name'=>'LA PAZ CITY TOUR',
-            'img'=>'assets/img/tours/la_paz_city_tour/6.jpeg'
+            'img'=>'assets/img/tours/la_paz_city_tour/1.jpeg'
         ],
         'camel_ride'=>[
             'name'=>'CAMEL RIDE',
             'img'=>'assets/img/tours/camel_ride/1.jpeg'
-        ]
-    ];
-    $tours=(object)$tours;
+        ],
+        'clear_boat'=>[
+            'name'=>'CLEAR BOAT',
+            'img'=>'assets/img/tours/clear_boat/Enva-Tours-Clear-Boat1.jpg'
+        ],
+
+];
+    $tours=(object)$tours_images;
     if ($request->has('payer_name')) {
         $payer_name = $request->input('payer_name');
         return view('pages.thanks',compact('payer_name','tours'));

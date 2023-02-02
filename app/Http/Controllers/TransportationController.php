@@ -9,7 +9,7 @@ use App\Models\Transportation\Resort;
 class TransportationController extends Controller
 {
 
-    private $tours=[
+    private $tours_images=[
         'sunset_cruise'=>[
             'name'=>'SUNSET CRUISE',
             'img'=>'assets/img/tours/sunset_cruise/ea040fcf-84c6-491d-b62c-216d8e8a7e46.jpg'
@@ -24,9 +24,18 @@ class TransportationController extends Controller
         ],
         'la_paz_city_tour'=>[
             'name'=>'LA PAZ CITY TOUR',
-            'img'=>'assets/img/tours/la_paz_city_tour/6.jpeg'
-        ]
-    ];
+            'img'=>'assets/img/tours/la_paz_city_tour/1.jpeg'
+        ],
+        'camel_ride'=>[
+            'name'=>'CAMEL RIDE',
+            'img'=>'assets/img/tours/camel_ride/1.jpeg'
+        ],
+        'clear_boat'=>[
+            'name'=>'CLEAR BOAT',
+            'img'=>'assets/img/tours/clear_boat/Enva-Tours-Clear-Boat1.jpg'
+        ],
+
+];
 
     public function index($language=1){
         $resort_options = '';
@@ -75,7 +84,7 @@ class TransportationController extends Controller
             $langUpdate=0;
         }
 
-        $tours=(object)$this->tours;
+        $tours=(object)$this->tours_images;
 
         return view('pages.transportation',compact(
                                                 'resort_options','unit_options','vehicles',
