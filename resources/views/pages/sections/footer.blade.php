@@ -13,13 +13,16 @@
                     </div>
                     <ul class="social-media">
                         <li>
-                            <a href="https://www.instagram.com/besttours_cabo/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                            <a href="https://www.instagram.com/besttours_cabo/" target="_blank"><i class="fa fa-instagram"></i></a>
                         </li>
                         <li>
-                            <a href="https://www.facebook.com/besttourscabo" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                            <a href="https://www.facebook.com/besttourscabo" target="_blank"><i class="fa fa-facebook-f"></i></a>
                         </li>
                         <li>
-                            <a href="https://www.youtube.com/" target="_blank"><i class="fab fa-youtube"></i></a>
+                            <a href="https://www.youtube.com/@besttourscabo9328" target="_blank"><i class="fa fa-youtube"></i></a>
+                        </li>
+                        <li>
+                            <a href="https://www.tripadvisor.com.mx/Profile/besttourscabo" target="_blank"><i class="fa fa-tripadvisor"></i></a>
                         </li>
                         <li>
                             <a href="https://www.tiktok.com/@besttourscabo" target="_blank"><i class="fab fa-tiktok"></i></a>
