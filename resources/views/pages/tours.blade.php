@@ -588,16 +588,16 @@
                             <div class="ui two column grid">
                                 <div class="row">
                                     <div class="column">
-                                        <i class="fa-solid fa-fish-fins"></i> <br> food & drinks
+                                        <i class="fa fa-cutlery"></i> <br> food & drinks
                                     </div>
                                     <div class="column">
-                                        <i class="fas fa-ticket"></i> <br> electronic voucher
+                                        <i class="fa fa-ticket"></i> <br> electronic voucher
                                     </div>
                                     <div class="column">
-                                        <i class="fa-solid fa-bullhorn"></i> <br> guide
+                                        <i class="fa fa-bullhorn"></i> <br> guide
                                     </div>
                                     <div class="column">
-                                        <i class="fas fa-head-side-mask"></i> <br> sanitization & safety
+                                        <i class="fa fa-medkit"></i> <br> sanitization & safety
                                     </div>
 
                                 </div>

@@ -110,7 +110,7 @@
                     class="whatsapp-btn" 
                     id="whatsapp-btn" 
                     target="_BLANK">
-                    <i class="fab fa-whatsapp whatsapp-icon"></i>
+                    <i class="fa fa-whatsapp"></i>
                     WhatsApp
                 </a>
             @endif
