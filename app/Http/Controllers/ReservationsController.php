@@ -21,11 +21,11 @@ class ReservationsController extends Controller
         ],
         'whale_watching'=>[
             'name'=>'WHALE WATCHING',
-            'img'=>'assets/img/tours/whale_watching/1.jpeg'
+            'img'=>'assets/img/tours/whale_watching/ww_9.jpg'
         ],
         'la_paz_city_tour'=>[
             'name'=>'LA PAZ CITY TOUR',
-            'img'=>'assets/img/tours/la_paz_city_tour/1.jpeg'
+            'img'=>'assets/img/tours/la_paz_city_tour/6.jpeg'
         ],
         'camel_ride'=>[
             'name'=>'CAMEL RIDE',
